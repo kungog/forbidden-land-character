@@ -1,6 +1,7 @@
-export const DATABASE = 'dog-booking-system';
+export const DATABASE = 'forbidden-land';
 
 export const COLLECTION = {
-	DOGS: 'dogs',
-	OWNERS: 'owners'
+	CHARACTERS: 'characters',
+	PROFILES: 'profiles',
+	TALENTS: 'talents'
 };

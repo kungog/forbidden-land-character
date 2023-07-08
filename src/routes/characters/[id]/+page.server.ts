@@ -1,15 +1,15 @@
 import { error } from '@sveltejs/kit';
 import { getMongoClient } from '$lib/server/client';
-import type { PageServerLoad } from './$types';
+import type { PageServerLoad } from '../$types';
 import { DATABASE, COLLECTION } from '$lib/server/database';
 import { ObjectId } from 'mongodb';
 
-export const load = (async () => {
+export const load = (async ({ params: { id } }) => {
 	const database = await getMongoClient();
 	const reponse = await database
 		.db(DATABASE)
-		.collection(COLLECTION.DOGS)
-		.findOne({ _id: new ObjectId('6414e12ea44c9f28f3603b1b') });
+		.collection(COLLECTION.CHARACTERS)
+		.findOne({ _id: new ObjectId(id) });
 
 	// Remove objectId from mongo
 	const parsedData = await JSON.stringify(reponse);
@@ -19,7 +19,7 @@ export const load = (async () => {
 
 	if (reponse) {
 		return {
-			dog: JSON.parse(parsedData)
+			character: JSON.parse(parsedData)
 		};
 	}
 

@@ -1,8 +1,9 @@
-export const BASE_URL = 'http://localhost:5000';
+export const BASE_URL = 'http://localhost:5173';
 
 const API = {
-	DOGS: '/api/dogs',
-	OWNERS: '/api/owners'
+	CHARACTERS: '/api/characters',
+	PROFILES: '/api/profiles',
+	TALENTS: '/api/talents'
 };
 
 export default API;
