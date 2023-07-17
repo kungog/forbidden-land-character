@@ -107,7 +107,7 @@ a:hover {
 }
 
 h1 {
-  font-size: 120px;
+  font-size: 30px;
   font-weight: 900;
   text-transform: uppercase;
 }
@@ -119,7 +119,7 @@ p {
 
 @media (max-width: 900px) {
   h1 {
-    font-size: 60px;
+    font-size: 18px;
   }
 
   p {
