@@ -103,6 +103,14 @@ a:hover {
   flex-direction: column;
 }
 
+.flex {
+  display: flex;
+}
+
+.space-b {
+  justify-content: space-between;
+}
+
 .border-divider {
   position: relative;
 }
