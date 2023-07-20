@@ -19,7 +19,7 @@ export const load = (async ({ params: { id } }) => {
 
 	if (reponse) {
 		return {
-			character: JSON.parse(parsedData)
+			character: JSON.parse(parsedData) as Character
 		};
 	}
 
