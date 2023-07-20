@@ -15,6 +15,6 @@
 		padding-bottom: var(--spacing-20);
 		font-size: 16px;
 		background: var(--color-black);
-		color: var(--color-white);
+		color: var(--color-text);
 	}
 </style>
