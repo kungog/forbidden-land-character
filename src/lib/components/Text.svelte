@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let size: 'large' | 'medium' | 'normal' |'small' = "normal",  bold: boolean = false;;
+	export let size: 'large' | 'medium' | 'normal' |'small' = "normal",  bold: boolean = false;
 
   const sizes = {
     large: '24px',
