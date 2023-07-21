@@ -1,26 +1,29 @@
 <script lang="ts">
+	import Text from '../Text.svelte';
 	import CharismaIcon from './Icons/Property/CharismaIcon.svelte';
 	import FlexibilityIcon from './Icons/Property/FlexibilityIcon.svelte';
 	import IntelligenceIcon from './Icons/Property/IntelligenceIcon.svelte';
 	import StrengthIcon from './Icons/Property/StrengthIcon.svelte';
 
-	export let type: string, isActive: boolean;
-
-	const color = isActive ? '#BA4047' : '#676464';
+	export let type: string, amount: number;
 </script>
 
-{#if type === 'strength'}
-	<StrengthIcon />
-{:else if type === 'charisma'}
-	<CharismaIcon />
-{:else if type === 'flexibility'}
-	<FlexibilityIcon />
-{:else if type === 'intelligence'}
-	<IntelligenceIcon />
-{/if}
+<div>
+	{#if type === 'strength'}
+		<StrengthIcon />
+	{:else if type === 'charisma'}
+		<CharismaIcon />
+	{:else if type === 'flexibility'}
+		<FlexibilityIcon />
+	{:else if type === 'intelligence'}
+		<IntelligenceIcon />
+	{/if}
+	<Text>{amount}</Text>
+</div>
 
 <style lang="scss">
-	svg:not(:last-child) {
-		margin-right: var(--spacing-08);
+	div {
+		display: grid;
+		gap: 10px;
 	}
 </style>
