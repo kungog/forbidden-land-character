@@ -103,6 +103,10 @@ a:hover {
   flex-direction: column;
 }
 
+.align-c {
+  align-items: center;
+}
+
 .flex {
   display: flex;
 }
