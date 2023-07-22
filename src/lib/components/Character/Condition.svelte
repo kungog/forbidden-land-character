@@ -9,18 +9,20 @@
 	const color = isActive ? '#BA4047' : '#676464';
 </script>
 
-{#if type === 'cooled'}
-	<CooledIcon {color} />
-{:else if type === 'dry'}
-	<DryIcon {color} />
-{:else if type === 'sleepless'}
-	<SleeplessIcon {color} />
-{:else if type === 'starved'}
-	<StarvedIcon {color} />
-{/if}
+<div>
+	{#if type === 'cooled'}
+		<CooledIcon {color} />
+	{:else if type === 'dry'}
+		<DryIcon {color} />
+	{:else if type === 'sleepless'}
+		<SleeplessIcon {color} />
+	{:else if type === 'starved'}
+		<StarvedIcon {color} />
+	{/if}
+</div>
 
-<style lang="scss">
-	svg:not(:last-child) {
+<style>
+	div:not(:last-child) {
 		margin-right: var(--spacing-08);
 	}
 </style>

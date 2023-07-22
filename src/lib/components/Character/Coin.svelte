@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Text from '../Text.svelte';
 	import CoinIcon from './Icons/General/CoinIcon.svelte';
 
 	export let type: 'gold' | 'silver' | 'copper', amount: number;
@@ -20,17 +21,15 @@
 
 <div>
 	<CoinIcon {color} />
-	<span>{amount}</span>
+	<Text>{amount}</Text>
 </div>
 
 <style lang="scss">
 	div {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-
-		:last-child {
-			margin-left: var(--spacing-08);
-		}
+		display: grid;
+		justify-items: center;
+		gap: 10px;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr;
 	}
 </style>

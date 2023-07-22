@@ -1,9 +1,10 @@
 <script lang="ts">
 	export let handleClick: any,
+		className: string = '',
 		size: 'medium' | 'small' = 'small';
 </script>
 
-<button on:click={handleClick} class={`box-btn-${size}`}>
+<button on:click={handleClick} class={`${className} box-btn-${size}`}>
 	<slot />
 </button>
 

@@ -24,6 +24,7 @@
 <style lang="scss">
 	div {
 		display: grid;
+		justify-items: center;
 		gap: 10px;
 	}
 </style>
