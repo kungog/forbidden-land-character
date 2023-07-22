@@ -8,6 +8,8 @@ declare global {
 		// interface Platform {}
 	}
 
+	type MenuItems = 'experience' | 'talent' | 'armor' | 'horse' | 'inventory' | 'relation';
+
 	interface Character {
 		animals: Animals[];
 		carrying_capacity: number;

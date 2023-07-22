@@ -14,7 +14,7 @@
 		powerPoints: Character['power_points'];
 </script>
 
-<div class="main">
+<div>
 	<Conditions {critical} {condition} />
 	<Properties {properties} />
 	<Consumables {consumables} />
@@ -23,7 +23,7 @@
 </div>
 
 <style lang="scss">
-	.main {
+	div {
 		display: grid;
 		grid-template-rows: auto;
 		gap: var(--spacing-08);

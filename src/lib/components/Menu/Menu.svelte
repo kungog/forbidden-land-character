@@ -10,10 +10,10 @@
 		'relation'
 	];
 
-	let currentActiveItem = 'experience';
+	$: currentActiveItem = 'experience';
 
 	const handleChangeMenuItem = (string: string) => {
-		currentActiveItem = string;
+		$currentActiveItem = string;
 	};
 </script>
 
