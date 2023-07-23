@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Text from '../Text.svelte';
+	import Text from '../../../Text.svelte';
 	export let powerPoints: Character['power_points'];
 
 	const kpString = `${powerPoints}/10`;

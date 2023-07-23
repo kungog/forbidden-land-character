@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Text from '../Text.svelte';
-	import CharismaIcon from './Icons/Property/CharismaIcon.svelte';
-	import FlexibilityIcon from './Icons/Property/FlexibilityIcon.svelte';
-	import IntelligenceIcon from './Icons/Property/IntelligenceIcon.svelte';
-	import StrengthIcon from './Icons/Property/StrengthIcon.svelte';
+	import Text from '../../../Text.svelte';
+	import CharismaIcon from '../../Icons/Property/CharismaIcon.svelte';
+	import FlexibilityIcon from '../../Icons/Property/FlexibilityIcon.svelte';
+	import IntelligenceIcon from '../../Icons/Property/IntelligenceIcon.svelte';
+	import StrengthIcon from '../../Icons/Property/StrengthIcon.svelte';
 
 	export let type: string, amount: number;
 </script>

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Box from '../Box.svelte';
-	import Consumable from '../Character/Consumable.svelte';
+	import Box from '../../Box.svelte';
+	import Consumable from './Parts/Consumable.svelte';
 	export let consumables: Character['consumables'];
 </script>
 

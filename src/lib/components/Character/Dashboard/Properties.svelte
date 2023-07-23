@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Box from '../Box.svelte';
-	import Property from '../Character/Property.svelte';
+	import Box from '../../Box.svelte';
+	import Property from './Parts/Property.svelte';
 	export let properties: Character['basic_properties'];
 </script>
 

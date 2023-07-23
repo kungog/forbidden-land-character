@@ -34,6 +34,8 @@ declare global {
 		talents: Talent[];
 		relations: string[];
 		notes: string[];
+		inventory: Inventory[];
+		skills: Skills;
 	}
 
 	interface Talent {

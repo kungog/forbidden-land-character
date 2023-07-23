@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Text from '../Text.svelte';
-	import ArrowIcon from './Icons/Consumable/ArrowIcon.svelte';
-	import FoodIcon from './Icons/Consumable/FoodIcon.svelte';
-	import TorchIcon from './Icons/Consumable/TorchIcon.svelte';
-	import WaterIcon from './Icons/Consumable/WaterIcon.svelte';
+	import Text from '../../../Text.svelte';
+	import ArrowIcon from '../../Icons/Consumable/ArrowIcon.svelte';
+	import FoodIcon from '../../Icons/Consumable/FoodIcon.svelte';
+	import TorchIcon from '../../Icons/Consumable/TorchIcon.svelte';
+	import WaterIcon from '../../Icons/Consumable/WaterIcon.svelte';
 
 	export let type: string, dice: number;
 </script>

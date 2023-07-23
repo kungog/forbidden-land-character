@@ -1,6 +1,7 @@
 <script lang="ts">
-	import Box from '../Box.svelte';
-	import Condition from '../Character/Condition.svelte';
+	import Box from '$lib/components/Box.svelte';
+	import Condition from './Parts/Condition.svelte';
+
 	export let condition: Character['condition'], critical: Character['critical_injuries'];
 </script>
 

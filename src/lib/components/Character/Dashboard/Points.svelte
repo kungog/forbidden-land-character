@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Box from '../Box.svelte';
-	import Experience from '../Character/Experience.svelte';
-	import PowerPoint from '../Character/PowerPoint.svelte';
+	import Box from '../../Box.svelte';
+	import Experience from './Parts/Experience.svelte';
+	import PowerPoint from './Parts/PowerPoint.svelte';
 	export let experience: Character['experience'], powerPoints: Character['power_points'];
 </script>
 

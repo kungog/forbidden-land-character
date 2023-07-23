@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Conditions from './Dashboard/Conditions.svelte';
-	import Consumables from './Dashboard/Consumables.svelte';
-	import Money from './Dashboard/Money.svelte';
-	import Points from './Dashboard/Points.svelte';
-	import Properties from './Dashboard/Properties.svelte';
+	import Conditions from './Conditions.svelte';
+	import Consumables from './Consumables.svelte';
+	import Money from './Money.svelte';
+	import Points from './Points.svelte';
+	import Properties from './Properties.svelte';
 
 	export let consumables: Character['consumables'],
 		properties: Character['basic_properties'],

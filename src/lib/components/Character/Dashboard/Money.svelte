@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Box from '../Box.svelte';
-	import Coin from '../Character/Coin.svelte';
+	import Box from '../../Box.svelte';
+	import Coin from './Parts/Coin.svelte';
 	export let money: Character['money'];
 </script>
 
