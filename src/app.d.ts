@@ -112,7 +112,7 @@ declare global {
 		mobility: number;
 		scout: number;
 		see_through: number;
-		shell_art: number;
+		poetry_art: number;
 		sneak: number;
 		stamina: number;
 		strength_test: number;
