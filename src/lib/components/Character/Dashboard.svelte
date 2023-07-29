@@ -24,6 +24,6 @@
 			'condition condition condition condition'
 			'properties properties consumables consumables'
 			'points points money money';
-		margin-bottom: var(--spacing-24);
+		padding: 0 var(--spacing-10) var(--spacing-24);
 	}
 </style>

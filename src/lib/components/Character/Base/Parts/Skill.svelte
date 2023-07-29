@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import Box from '$lib/components/Box.svelte';
 	import Dices from '$lib/components/Dices.svelte';
+	import Text from '$lib/components/Text.svelte';
 	import { getSkillDice } from '$lib/helpers/getDices';
 
 	import getSkillObject from '$lib/helpers/getSkills';
@@ -13,14 +14,12 @@
 	const label = skillObject.languages['sv'];
 
 	const dices = getSkillDice({ properties: basic_properties, skill: skillObject, value });
-
-	console.log(dices);
 </script>
 
 <div>
 	<Box handleClick={() => {}}>
-		<div>
-			<span>{label}</span>
+		<div class="flex space-b">
+			<Text>{label}</Text>
 			<Dices {...dices} />
 		</div>
 	</Box>

@@ -62,7 +62,8 @@
   --radius-04: 0.4rem;
   --radius-08: 0.8rem;
 
-  --header-height-mobile: 70px;
+  --header-height-mobile: 40px;
+  --footer-height-mobile: 40px;
   --header-height-desktop: 100px;
   --index-header: 10;
   --index-panel: 30;
@@ -71,14 +72,15 @@
   --body-padding-desktop: calc(
     var(--header-height-desktop) + var(--spacing-20)
   );
-  --body-padding-mobile: calc(var(--header-height-mobile) + var(--spacing-16));
+  --body-height-mobile: calc(var(--header-height-mobile) + var(--footer-height-mobile) + calc(var(--spacing-16) * 4));
 }
 
 body {
+  overflow: hidden;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  color: var(--color-black);
+  color: var(--color-text);
   background-color: var(--color-background);
   font-size: 16px;
   font-family: 'Gilroy', sans-serif;

@@ -3,6 +3,7 @@
 	import '../globals.css';
 	import Header from '$lib/layouts/Header.svelte';
 	import Container from '$lib/components/Container.svelte';
+	import Footer from '$lib/layouts/Footer.svelte';
 </script>
 
 <Header />
@@ -11,15 +12,10 @@
 		<slot />
 	</Container>
 </main>
+<Footer />
 
 <style>
 	main {
-		padding: calc(var(--body-padding-desktop)) 0;
-	}
-
-	@media (max-width: 1200px) {
-		main {
-			padding: calc(var(--body-padding-mobile)) 0;
-		}
+		height: calc(100vh - var(--body-height-mobile));
 	}
 </style>
