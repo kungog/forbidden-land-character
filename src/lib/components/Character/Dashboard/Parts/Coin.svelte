@@ -4,17 +4,21 @@
 
 	export let type: 'gold' | 'silver' | 'copper', amount: number;
 
-	let color: '#F2A965' | '#929292' | '#FFF7AE' | '#676464';
+	let color:
+		| 'var(--color-copper)'
+		| 'var(--color-silver)'
+		| 'var(--color-gold)'
+		| 'var(--color-inactive)';
 
 	switch (type) {
 		case 'gold':
-			color = '#FFF7AE';
+			color = 'var(--color-gold)';
 			break;
 		case 'silver':
-			color = '#929292';
+			color = 'var(--color-silver)';
 			break;
 		case 'copper':
-			color = '#F2A965';
+			color = 'var(--color-copper)';
 			break;
 	}
 </script>

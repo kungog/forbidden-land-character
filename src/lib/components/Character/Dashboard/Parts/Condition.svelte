@@ -6,7 +6,7 @@
 
 	export let type: string, isActive: boolean;
 
-	const color = isActive ? '#BA4047' : '#676464';
+	const color = isActive ? 'var(--color-active)' : 'var(--color-inactive)';
 </script>
 
 <div>

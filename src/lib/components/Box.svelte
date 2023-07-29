@@ -15,6 +15,8 @@
 		border-radius: var(--radius-04);
 		border: none;
 		width: 100%;
+		height: 100%;
+		align-items: center;
 	}
 
 	.box-btn-small {

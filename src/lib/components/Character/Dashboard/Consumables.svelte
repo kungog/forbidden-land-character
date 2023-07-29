@@ -1,7 +1,9 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import Box from '../../Box.svelte';
 	import Consumable from './Parts/Consumable.svelte';
-	export let consumables: Character['consumables'];
+
+	const { consumables }: Character = $page.data.character;
 </script>
 
 <div>

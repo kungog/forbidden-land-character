@@ -20,5 +20,6 @@
 		font-size: var(--size);
 		font-weight: var(--weight);
 		text-align: start;
+		align-self: center;
 	}
 </style>

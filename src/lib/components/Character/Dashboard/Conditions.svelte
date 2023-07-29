@@ -1,8 +1,9 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import Box from '$lib/components/Box.svelte';
 	import Condition from './Parts/Condition.svelte';
 
-	export let condition: Character['condition'], critical: Character['critical_injuries'];
+	const { condition, critical_injuries: critical }: Character = $page.data.character;
 </script>
 
 <div>
