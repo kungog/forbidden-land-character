@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { currentActiveMenu } from '../store';
+	import { BASE_LABELS } from '$lib/helpers/constants/languages';
+	import Text from '../Text.svelte';
+	import { currentActiveMenu, language } from '$lib/store';
 	import Animals from './Base/Animals.svelte';
 	import Equipment from './Base/Equipment.svelte';
 	import Inventory from './Base/Inventory.svelte';
@@ -21,12 +23,28 @@
 	};
 </script>
 
-<div>
-	<svelte:component this={component[menuItem]} />
+<div class="base">
+	<div class="flex space-b">
+		<Text>{BASE_LABELS[$language][menuItem]}</Text>
+		<button on:click={() => console.log('click')}>ikon</button>
+	</div>
+	<div class="main-part">
+		<svelte:component this={component[menuItem]} />
+	</div>
 </div>
 
 <style lang="scss">
-	div {
+	.base {
 		width: 100%;
+	}
+
+	.space-b {
+		padding: 0 var(--spacing-15) var(--spacing-10) 0;
+	}
+
+	.main-part {
+		height: calc(100vh - var(--body-height-mobile) - 200px - 32px);
+		overflow: auto;
+		padding: var(--spacing-10) var(--spacing-15) var(--spacing-20) 0;
 	}
 </style>

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { language } from '$lib/store';
 	import Box from '$lib/components/Box.svelte';
 	import Dices from '$lib/components/Dices.svelte';
 	import Text from '$lib/components/Text.svelte';
@@ -11,7 +12,7 @@
 	export let skill: keyof Character['skills'], value: number;
 
 	const skillObject = getSkillObject(skill);
-	const label = skillObject.languages['sv'];
+	const label = skillObject.languages[$language];
 
 	const dices = getSkillDice({ properties: basic_properties, skill: skillObject, value });
 </script>
@@ -28,8 +29,5 @@
 <style lang="scss">
 	div:not(:last-child) {
 		margin-bottom: var(--spacing-10);
-	}
-	span {
-		color: white;
 	}
 </style>
