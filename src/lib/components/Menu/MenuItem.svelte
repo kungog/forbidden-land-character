@@ -1,29 +1,34 @@
 <script lang="ts">
-	import ArmorIcon from './Icons/ArmorIcon.svelte';
+	import { currentActiveMenu } from '../store';
+	import EquipmentIcon from './Icons/EquipmentIcon.svelte';
 	import ExperienceIcon from './Icons/ExperienceIcon.svelte';
 	import HorseIcon from './Icons/HorseIcon.svelte';
 	import InventoryIcon from './Icons/InventoryIcon.svelte';
 	import RelationIcon from './Icons/RelationIcon.svelte';
 	import TalentIcon from './Icons/TalentIcon.svelte';
+	import NotesIcon from './Icons/NotesIcon.svelte';
 
-	export let type: MenuItems, active: boolean, handleClick: () => void;
+	export let type: MenuItems;
+
+	const component = {
+		experience: ExperienceIcon,
+		inventory: InventoryIcon,
+		horse: HorseIcon,
+		relation: RelationIcon,
+		talent: TalentIcon,
+		equipment: EquipmentIcon,
+		notes: NotesIcon
+	};
+
+	const handleChange = () => {
+		$currentActiveMenu = type;
+	};
+
+	$: isActive = type === $currentActiveMenu ? 'active' : null;
 </script>
 
-<button on:click={handleClick} class={active ? 'active' : null}>
-	{#if type === 'experience'}
-		<ExperienceIcon />
-	{:else if type === 'inventory'}
-		<InventoryIcon />
-	{:else if type === 'horse'}
-		<HorseIcon />
-	{:else if type === 'relation'}
-		<RelationIcon />
-	{:else if type === 'talent'}
-		<TalentIcon />
-	{:else if type === 'armor'}
-		<ArmorIcon />
-	{/if}
-
+<button on:click={() => handleChange()} class={isActive}>
+	<svelte:component this={component[type]} />
 </button>
 
 <style lang="scss">
