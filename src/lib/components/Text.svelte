@@ -6,7 +6,7 @@
 		large: '24px',
 		medium: '20px',
 		normal: '18px',
-		small: '16px'
+		small: '14px'
 	};
 
 	$: fontSize = sizes[size];
