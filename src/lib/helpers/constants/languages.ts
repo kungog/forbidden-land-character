@@ -6,7 +6,8 @@ export const BASE_LABELS = {
 		horse: 'Djur',
 		relation: 'Relationer',
 		equipment: 'Utrustning',
-		notes: 'Anteckningar'
+		notes: 'Anteckningar',
+		weapons: 'Vapen'
 	},
 	en: {
 		experience: 'Experience',
@@ -15,6 +16,22 @@ export const BASE_LABELS = {
 		horse: 'Animals',
 		relation: 'Relations',
 		equipment: 'Equipments',
-		notes: 'Notes'
+		notes: 'Notes',
+		weapons: 'Weapons'
 	}
+};
+
+export const NO_NOTES = {
+	sv: 'Ojdå, du var inte stark på att skriva. . .',
+	en: "Seems writing isn't your strongest. . ."
+};
+
+export const NO_RELATIONS = {
+	sv: 'Du måste vara ensam',
+	en: "Lonely, I'm Mr. Lonely"
+};
+
+export const NO_INVENTORY = {
+	sv: 'Woah, äger du ingenting?!',
+	en: 'Oh no, it seems you are poor...'
 };
