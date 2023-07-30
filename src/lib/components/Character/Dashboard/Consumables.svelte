@@ -1,16 +1,19 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import createArrayFromObject from '$lib/helpers/getObjectKeys';
 	import Box from '../../Box.svelte';
 	import Consumable from './Parts/Consumable.svelte';
 
 	const { consumables }: Character = $page.data.character;
+
+	const items = createArrayFromObject(consumables);
 </script>
 
 <div>
 	<Box size="medium" handleClick={() => {}}>
 		<div class="flex space-b align-c">
-			{#each Object.entries(consumables) as [key, value]}
-				<Consumable type={key} dice={value} />
+			{#each items as item}
+				<Consumable type={item.key} dice={item.value} />
 			{/each}
 		</div>
 	</Box>

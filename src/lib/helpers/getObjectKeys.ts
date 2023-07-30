@@ -1,16 +1,20 @@
-interface SkillItem {
-	key: keyof Character['skills'];
+interface SkillItem<T> {
+	key: keyof T;
 	value: number;
 }
 
-const getObject = (key: any, value: any): SkillItem => {
+const getObject = <T>(key: any, value: any): SkillItem<T> => {
 	return {
 		key,
 		value
 	};
 };
 
-const createArrayFromObject = (objects: any): SkillItem[] => {
+type CreateArrayFromObject<T> = {
+	[key in keyof T]: string | boolean | number | object;
+};
+
+const createArrayFromObject = <T>(objects: CreateArrayFromObject<T>): SkillItem<T>[] => {
 	return Object.entries(objects).map((object) => {
 		return getObject(object[0], object[1]);
 	});

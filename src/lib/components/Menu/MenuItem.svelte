@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { currentActiveMenu } from '../store';
+	import { currentActiveMenu } from '$lib/store';
 	import EquipmentIcon from './Icons/EquipmentIcon.svelte';
 	import ExperienceIcon from './Icons/ExperienceIcon.svelte';
 	import HorseIcon from './Icons/HorseIcon.svelte';
