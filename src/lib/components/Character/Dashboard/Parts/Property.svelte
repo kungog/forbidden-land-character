@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Text from '../../../Text.svelte';
+	import Text from '$lib/components/Text.svelte';
 	import CharismaIcon from '../../Icons/Property/CharismaIcon.svelte';
 	import FlexibilityIcon from '../../Icons/Property/FlexibilityIcon.svelte';
 	import IntelligenceIcon from '../../Icons/Property/IntelligenceIcon.svelte';

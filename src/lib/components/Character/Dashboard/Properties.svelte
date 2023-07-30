@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import Box from '../../Box.svelte';
+	import Box from '$lib/components/Box.svelte';
 	import Property from './Parts/Property.svelte';
 	const { basic_properties: properties }: Character = $page.data.character;
 </script>
