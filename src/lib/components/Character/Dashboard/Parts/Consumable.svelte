@@ -5,19 +5,18 @@
 	import TorchIcon from '../../Icons/Consumable/TorchIcon.svelte';
 	import WaterIcon from '../../Icons/Consumable/WaterIcon.svelte';
 
-	export let type: string, dice: number;
+	export let type: keyof Consumables, dice: number;
+
+	const component = {
+		arrows: ArrowIcon,
+		food: FoodIcon,
+		torches: TorchIcon,
+		water: WaterIcon
+	};
 </script>
 
 <div>
-	{#if type === 'arrows'}
-		<ArrowIcon />
-	{:else if type === 'food'}
-		<FoodIcon />
-	{:else if type === 'torches'}
-		<TorchIcon />
-	{:else if type === 'water'}
-		<WaterIcon />
-	{/if}
+	<svelte:component this={component[type]} />
 	<Text>T{dice}</Text>
 </div>
 

@@ -4,21 +4,20 @@
 	import SleeplessIcon from '../../Icons/Condition/SleeplessIcon.svelte';
 	import StarvedIcon from '../../Icons/Condition/StarvedIcon.svelte';
 
-	export let type: string, isActive: boolean;
+	export let type: keyof Condition, isActive: boolean;
+
+	const component = {
+		cooled: CooledIcon,
+		dry: DryIcon,
+		sleepless: SleeplessIcon,
+		starved: StarvedIcon
+	};
 
 	const color = isActive ? 'var(--color-active)' : 'var(--color-inactive)';
 </script>
 
 <div>
-	{#if type === 'cooled'}
-		<CooledIcon {color} />
-	{:else if type === 'dry'}
-		<DryIcon {color} />
-	{:else if type === 'sleepless'}
-		<SleeplessIcon {color} />
-	{:else if type === 'starved'}
-		<StarvedIcon {color} />
-	{/if}
+	<svelte:component this={component[type]} {color} />
 </div>
 
 <style>

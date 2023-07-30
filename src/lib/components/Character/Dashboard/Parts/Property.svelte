@@ -5,19 +5,18 @@
 	import IntelligenceIcon from '../../Icons/Property/IntelligenceIcon.svelte';
 	import StrengthIcon from '../../Icons/Property/StrengthIcon.svelte';
 
-	export let type: string, amount: number;
+	export let type: BasicProperties['id'], amount: number;
+
+	const component = {
+		strength: StrengthIcon,
+		charisma: CharismaIcon,
+		flexibility: FlexibilityIcon,
+		intelligence: IntelligenceIcon
+	};
 </script>
 
 <div>
-	{#if type === 'strength'}
-		<StrengthIcon />
-	{:else if type === 'charisma'}
-		<CharismaIcon />
-	{:else if type === 'flexibility'}
-		<FlexibilityIcon />
-	{:else if type === 'intelligence'}
-		<IntelligenceIcon />
-	{/if}
+	<svelte:component this={component[type]} />
 	<Text>{amount}</Text>
 </div>
 

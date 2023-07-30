@@ -7,7 +7,6 @@
 	const { skills }: Character = $page.data.character;
 
 	const items = createArrayFromObject(skills);
-	console.log(items);
 </script>
 
 <div>

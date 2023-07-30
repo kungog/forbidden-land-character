@@ -1,10 +1,7 @@
 <script lang="ts">
-	export let relations: Character['relations'];
 </script>
 
-<div>
-	{relations.map((i) => i)}
-</div>
+<div>relations</div>
 
 <style lang="scss">
 </style>

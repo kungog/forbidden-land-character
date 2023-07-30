@@ -1,10 +1,7 @@
 <script lang="ts">
-	export let animals: Character['animals'];
 </script>
 
-<div>
-	{animals.map((i) => i)}
-</div>
+<div>Animals</div>
 
 <style lang="scss">
 </style>
