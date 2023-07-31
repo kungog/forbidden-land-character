@@ -1,10 +1,10 @@
 <script lang="ts">
 	import Text from '$lib/components/Text.svelte';
-	import WeaponBonusIcon from '../../Icons/General/WeaponBonusIcon.svelte';
-	import WeaponDamageIcon from '../../Icons/General/WeaponDamageIcon.svelte';
-	import WeaponLengthIcon from '../../Icons/General/WeaponLengthIcon.svelte';
-
+	import { language } from '$lib/store';
+	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
 	export let additionals: string, bonus: string, damage: string, range: string, type: string;
+
+	const LABELS = GENERAL_LABELS[$language];
 </script>
 
 <div class="weapon">
@@ -14,11 +14,9 @@
 	</div>
 
 	<div class="flex stats">
-		<Text size="small">Bonus: {bonus}</Text>
-
-		<Text size="small">Skada: {damage}</Text>
-
-		<Text size="small">Räckvidd: {range.toLocaleLowerCase()}</Text>
+		<Text size="small">{LABELS['bonus']}: {bonus}</Text>
+		<Text size="small">{LABELS['damage']}: {damage}</Text>
+		<Text size="small">{LABELS['range']}: {range.toLocaleLowerCase()}</Text>
 	</div>
 </div>
 

@@ -11,7 +11,7 @@
 		armor: { head, body, shield },
 		weapons
 	}: Character = $page.data.character;
-	console.log(weapons);
+	const LABELS = BASE_LABELS[$language];
 </script>
 
 <div>
@@ -22,7 +22,7 @@
 	</Box>
 </div>
 <div class="flex space-b">
-	<Text>{BASE_LABELS[$language]['weapons']}</Text>
+	<Text>{LABELS['weapons']}</Text>
 	<button on:click={() => console.log('click')}>ikon</button>
 </div>
 <div>
