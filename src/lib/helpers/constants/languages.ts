@@ -35,3 +35,18 @@ export const NO_INVENTORY = {
 	sv: 'Woah, äger du ingenting?!',
 	en: 'Oh no, it seems you are poor...'
 };
+
+export const GENERAL_LABELS = {
+	sv: {
+		weight: 'Vikt',
+		bonus: 'Bonus',
+		damage: 'Skada',
+		range: 'Räckvidd'
+	},
+	en: {
+		weight: 'Weight',
+		bonus: 'Bonus',
+		damage: 'Damage',
+		range: 'Range'
+	}
+};
