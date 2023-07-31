@@ -15,7 +15,7 @@
 
 <style lang="scss">
 	div {
-		height: calc(calc(100vh - var(--body-height-mobile)) - 200px);
+		height: calc(calc(100svh - var(--body-height-mobile)) - 200px);
 		gap: var(--spacing-18);
 	}
 </style>

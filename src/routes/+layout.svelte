@@ -16,6 +16,6 @@
 
 <style>
 	main {
-		height: calc(100vh - var(--body-height-mobile));
+		height: calc(100svh - var(--body-height-mobile));
 	}
 </style>

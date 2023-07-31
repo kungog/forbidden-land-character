@@ -49,7 +49,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: var(--spacing-10);
-		height: calc(100vh - var(--body-height-mobile) - 200px - 32px);
+		height: calc(100svh - var(--body-height-mobile) - 200px - 32px);
 		overflow: auto;
 		padding: var(--spacing-10) var(--spacing-15) var(--spacing-20) 0;
 	}
