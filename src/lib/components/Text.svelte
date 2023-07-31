@@ -1,11 +1,11 @@
 <script lang="ts">
-	export let size: 'large' | 'medium' | 'normal' | 'small' = 'normal',
+	export let size: 'large' | 'medium' | 'normal' | 'small' = 'small',
 		bold: boolean = false;
 
 	const sizes = {
-		large: '24px',
-		medium: '20px',
-		normal: '18px',
+		large: '20px',
+		medium: '18px',
+		normal: '16px',
 		small: '14px'
 	};
 

@@ -7,18 +7,10 @@
 </script>
 
 {#each talents as talent}
-	<div>
-		<Box handleClick={() => {}}>
-			<div class="flex space-b">
-				<Text>{talent.id}</Text>
-				{talent.value}
-			</div>
-		</Box>
-	</div>
+	<Box handleClick={() => {}}>
+		<div class="flex space-b">
+			<Text size="normal">{talent.id}</Text>
+			{talent.value}
+		</div>
+	</Box>
 {/each}
-
-<style lang="scss">
-	div:not(:last-child) {
-		margin-bottom: var(--spacing-10);
-	}
-</style>

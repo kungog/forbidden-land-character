@@ -8,17 +8,12 @@
 	const { relations }: Character = $page.data.character;
 </script>
 
-<div>
-	{#if relations.length > 0}
-		<Box handleClick={() => {}}>
-			{#each relations as relation}
-				<Text>{relation}</Text>
-			{/each}
-		</Box>
-	{:else}
-		<Text>{NO_RELATIONS[$language]}</Text>
-	{/if}
-</div>
-
-<style lang="scss">
-</style>
+{#if relations.length > 0}
+	<Box handleClick={() => {}}>
+		{#each relations as relation}
+			<Text>{relation}</Text>
+		{/each}
+	</Box>
+{:else}
+	<Text>{NO_RELATIONS[$language]}</Text>
+{/if}

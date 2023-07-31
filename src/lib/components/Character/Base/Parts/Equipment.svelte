@@ -16,7 +16,7 @@
 <div class="flex equipment">
 	<div class="flex">
 		<svelte:component this={equipmentIcon[icon]} />
-		<Text>{name ?? ''}</Text>
+		<Text size="normal">{name ?? '-'}</Text>
 	</div>
 	<Text>{value ?? 0}</Text>
 </div>

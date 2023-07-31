@@ -6,16 +6,7 @@
 	const { experience, power_points: powerPoints }: Character = $page.data.character;
 </script>
 
-<div>
-	<Box className="flex space-b" size="small" handleClick={() => {}}>
-		<Experience {experience} />
-		<PowerPoint {powerPoints} />
-	</Box>
-</div>
-
-<style lang="scss">
-	div:has(button) {
-		grid-area: points;
-		width: 100%;
-	}
-</style>
+<Box className="points flex space-b align-c" size="small" handleClick={() => {}}>
+	<Experience {experience} />
+	<PowerPoint {powerPoints} />
+</Box>

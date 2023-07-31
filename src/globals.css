@@ -95,6 +95,10 @@ a:hover {
   color: var(--color-box);
 }
 
+.add-more {
+  width: auto;
+}
+
 .center {
   display: flex;
   align-items: center;
@@ -128,6 +132,30 @@ a:hover {
   width: 100%;
   background: var(--color-box);
   bottom: 0;
+}
+
+.condition {
+  grid-area: condition;
+}
+
+  .properties {
+  grid-area: properties;
+}
+
+  .consumables {
+  grid-area: consumables;
+}
+
+  .points {
+  grid-area: points;
+}
+
+  .money {
+  grid-area: money;
+}
+
+.upper-part > :first-child {
+  margin-bottom: var(--spacing-10);
 }
 
 h1 {

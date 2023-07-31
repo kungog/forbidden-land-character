@@ -9,19 +9,10 @@
 	const items = createArrayFromObject(consumables);
 </script>
 
-<div>
-	<Box size="medium" handleClick={() => {}}>
-		<div class="flex space-b align-c">
-			{#each items as item}
-				<Consumable type={item.key} dice={item.value} />
-			{/each}
-		</div>
-	</Box>
-</div>
-
-<style lang="scss">
-	div:has(button) {
-		grid-area: consumables;
-		width: 100%;
-	}
-</style>
+<Box className="consumables" size="medium" handleClick={() => {}}>
+	<div class="flex space-b align-c">
+		{#each items as item}
+			<Consumable type={item.key} dice={item.value} />
+		{/each}
+	</div>
+</Box>

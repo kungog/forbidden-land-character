@@ -8,24 +8,15 @@
 	const items = createArrayFromObject(condition);
 </script>
 
-<div>
-	<Box size="small" handleClick={() => {}}>
-		<div class="flex space-b align-c">
-			<div class="flex align-c">
-				{critical ?? 'No critical injuries'}
-			</div>
-			<div class="flex align-c">
-				{#each items as item}
-					<Condition type={item.key} isActive={!!item.value} />
-				{/each}
-			</div>
+<Box size="small" handleClick={() => {}} className="condition">
+	<div class="flex space-b align-c">
+		<div class="flex align-c">
+			{critical ?? 'No critical injuries'}
 		</div>
-	</Box>
-</div>
-
-<style lang="scss">
-	div:has(button) {
-		grid-area: condition;
-		width: 100%;
-	}
-</style>
+		<div class="flex align-c">
+			{#each items as item}
+				<Condition type={item.key} isActive={!!item.value} />
+			{/each}
+		</div>
+	</div>
+</Box>

@@ -8,17 +8,15 @@
 	const { notes }: Character = $page.data.character;
 </script>
 
-<div>
-	{#if notes.length > 0}
+{#if notes.length > 0}
+	{#each notes as note}
 		<Box handleClick={() => {}}>
-			{#each notes as note}
-				<Text>{note}</Text>
-			{/each}
+			<Text>{note}</Text>
 		</Box>
-	{:else}
-		<Text>{NO_NOTES[$language]}</Text>
-	{/if}
-</div>
+	{/each}
+{:else}
+	<Text>{NO_NOTES[$language]}</Text>
+{/if}
 
 <style lang="scss">
 </style>

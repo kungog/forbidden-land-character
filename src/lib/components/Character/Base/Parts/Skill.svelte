@@ -17,17 +17,9 @@
 	const dices = getSkillDice({ properties: basic_properties, skill: skillObject, value });
 </script>
 
-<div>
-	<Box handleClick={() => {}}>
-		<div class="flex space-b">
-			<Text>{label}</Text>
-			<Dices {...dices} />
-		</div>
-	</Box>
-</div>
-
-<style lang="scss">
-	div:not(:last-child) {
-		margin-bottom: var(--spacing-10);
-	}
-</style>
+<Box handleClick={() => {}}>
+	<div class="flex space-b">
+		<Text size="normal">{label}</Text>
+		<Dices {...dices} />
+	</div>
+</Box>

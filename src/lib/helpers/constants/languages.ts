@@ -26,6 +26,11 @@ export const NO_NOTES = {
 	en: "Seems writing isn't your strongest. . ."
 };
 
+export const NO_ANIMALS = {
+	sv: 'Inte ens djur gillar dig, synd. . .',
+	en: 'Not even animals seem to like you, pity. . .'
+};
+
 export const NO_RELATIONS = {
 	sv: 'Du måste vara ensam',
 	en: "Lonely, I'm Mr. Lonely"
@@ -41,12 +46,16 @@ export const GENERAL_LABELS = {
 		weight: 'Vikt',
 		bonus: 'Bonus',
 		damage: 'Skada',
-		range: 'Räckvidd'
+		range: 'Räckvidd',
+		strength: 'Styrka',
+		flexibility: 'Smidighet'
 	},
 	en: {
 		weight: 'Weight',
 		bonus: 'Bonus',
 		damage: 'Damage',
-		range: 'Range'
+		range: 'Range',
+		strength: 'Strength',
+		flexibility: 'Flexibility'
 	}
 };

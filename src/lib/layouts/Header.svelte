@@ -14,7 +14,7 @@
 			/>
 		</svg>
 	</a>
-	<Text>{name}</Text>
+	<Text size="medium">{name}</Text>
 	<button on:click={() => console.log('open modal')}>
 		<svg width="20" height="27" viewBox="0 0 20 27" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path

@@ -10,29 +10,24 @@
 	const LABELS = GENERAL_LABELS[$language];
 </script>
 
-<div>
-	{#each inventory as item}
-		<Box handleClick={() => {}}>
-			<div class="weapon">
-				<div class="flex space-b">
-					<Text size="small">{item.name}</Text>
-					<Text size="small">{item.additionals ?? ''}</Text>
-				</div>
-
-				<div class="flex stats">
-					<Text size="small">{LABELS['weight']}: {item.weight}</Text>
-					<Text size="small">{LABELS['bonus']}: {item.bonus}</Text>
-				</div>
+{#each inventory as item}
+	<Box handleClick={() => {}}>
+		<div class="upper-part">
+			<div class="flex space-b">
+				<Text size="normal">{item.name}</Text>
+				<Text>{item.additionals ?? ''}</Text>
 			</div>
-		</Box>
-	{/each}
-</div>
+
+			<div class="flex stats">
+				<Text>{LABELS['weight']}: {item.weight}</Text>
+				<Text>{LABELS['bonus']}: {item.bonus}</Text>
+			</div>
+		</div>
+	</Box>
+{/each}
 
 <style lang="scss">
 	.stats {
 		gap: var(--spacing-18);
-	}
-	.weapon > :first-child {
-		margin-bottom: 10px;
 	}
 </style>
