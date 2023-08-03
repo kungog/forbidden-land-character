@@ -15,6 +15,10 @@
 
 <style lang="scss">
 	div {
+		display: grid;
+		grid-template-columns: calc(100vw - var(--spacing-18) - 80%) calc(
+				100vw - var(--spacing-18) - 20%
+			);
 		height: calc(calc(100svh - var(--body-height-mobile)) - 200px);
 		gap: var(--spacing-18);
 	}

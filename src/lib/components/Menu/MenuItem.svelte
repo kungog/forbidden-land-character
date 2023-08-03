@@ -37,8 +37,8 @@
 		align-items: center;
 		border: none;
 		justify-content: center;
-		height: 53px;
-		width: 63px;
+		height: 10%;
+		width: 100%;
 		background-color: var(--color-blue);
 		border-radius: 0 var(--radius-04) var(--radius-04) 0;
 	}

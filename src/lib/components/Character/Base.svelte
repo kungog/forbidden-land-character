@@ -24,7 +24,7 @@
 	};
 </script>
 
-<div class="base">
+<div>
 	<div class="flex space-b">
 		<Text size="medium">{BASE_LABELS[$language][menuItem]}</Text>
 		<Box handleClick={() => console.log('click')}>
@@ -37,12 +37,8 @@
 </div>
 
 <style lang="scss">
-	.base {
-		width: 100%;
-	}
-
 	.space-b {
-		padding: 0 var(--spacing-15) var(--spacing-10) 0;
+		padding-bottom: var(--spacing-10);
 	}
 
 	.main-part {
@@ -51,6 +47,6 @@
 		gap: var(--spacing-10);
 		height: calc(100svh - var(--body-height-mobile) - 200px - 32px);
 		overflow: auto;
-		padding: var(--spacing-10) var(--spacing-15) var(--spacing-20) 0;
+		padding-bottom: var(--spacing-20);
 	}
 </style>
