@@ -45,7 +45,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: var(--spacing-10);
-		height: calc(100svh - var(--body-height-mobile) - 200px - 32px);
+		height: calc(var(--main-height) - var(--body-height-mobile) - 200px - 32px);
 		overflow: auto;
 		padding-bottom: var(--spacing-20);
 	}

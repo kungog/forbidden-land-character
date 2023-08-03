@@ -73,11 +73,12 @@
     var(--header-height-desktop) + var(--spacing-20)
   );
   --body-height-mobile: calc(var(--header-height-mobile) + var(--footer-height-mobile) + calc(var(--spacing-16) * 4));
+  --main-height: 100dvh;
 }
 
 body {
   overflow: hidden;
-  min-height: 100svh;
+  min-height: var(--main-height);
   display: flex;
   flex-direction: column;
   color: var(--color-text);
