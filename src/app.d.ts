@@ -88,7 +88,7 @@ declare global {
 	}
 
 	interface BasicProperties {
-		failure: number;
+		failure: 1 | 2 | 3 | 4 | 5;
 		id: 'strength' | 'flexibility' | 'intelligence' | 'charisma';
 		value: 1 | 2 | 3 | 4 | 5;
 	}

@@ -8,7 +8,7 @@
 <Box className="properties" size="medium" handleClick={() => {}}>
 	<div class="flex space-b align-c">
 		{#each properties as property}
-			<Property type={property.id} amount={property.value} />
+			<Property type={property.id} amount={property.value} failure={property.failure} />
 		{/each}
 	</div>
 </Box>
