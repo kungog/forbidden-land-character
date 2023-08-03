@@ -16,6 +16,6 @@
 
 <style>
 	main {
-		height: calc(var(--main-height) - var(--body-height-mobile));
+		height: var(--body-height-mobile);
 	}
 </style>

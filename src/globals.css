@@ -62,18 +62,16 @@
   --radius-04: 0.4rem;
   --radius-08: 0.8rem;
 
-  --header-height-mobile: 40px;
-  --footer-height-mobile: 40px;
+  --header-height-mobile:  calc(40px + calc(var(--spacing-16) * 2)); 
+  --footer-height-mobile: calc(40px + var(--spacing-10) + var(--spacing-16)); 
   --header-height-desktop: 100px;
   --index-header: 10;
   --index-panel: 30;
   --index-modal: 20;
 
-  --body-padding-desktop: calc(
-    var(--header-height-desktop) + var(--spacing-20)
-  );
-  --body-height-mobile: calc(var(--header-height-mobile) + var(--footer-height-mobile) + calc(var(--spacing-16) * 4));
   --main-height: 100dvh;
+  --header-and-footer-height: calc(var(--header-height-mobile) + var(--footer-height-mobile));
+  --body-height-mobile: calc(var(--main-height) - var(--header-and-footer-height));
 }
 
 body {
