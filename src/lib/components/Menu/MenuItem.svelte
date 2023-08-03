@@ -41,13 +41,10 @@
 		width: 100%;
 		background-color: var(--color-blue);
 		border-radius: 0 var(--radius-04) var(--radius-04) 0;
+		padding: 0;
 	}
 
 	button.active {
 		background-color: var(--color-blue-active);
-	}
-
-	button:not(:last-child) {
-		margin-bottom: var(--spacing-08);
 	}
 </style>

@@ -44,8 +44,8 @@
 	.main-part {
 		display: flex;
 		flex-direction: column;
-		gap: var(--spacing-10);
-		height: calc(var(--body-height-mobile) - 200px - 32px);
+		gap: var(--spacing-08);
+		height: calc(var(--body-height-mobile) - 200px - var(--spacing-35));
 		overflow: auto;
 		padding-bottom: var(--spacing-20);
 	}

@@ -69,7 +69,7 @@
   --index-panel: 30;
   --index-modal: 20;
 
-  --main-height: 100dvh;
+  --main-height: 100svh;
   --header-and-footer-height: calc(var(--header-height-mobile) + var(--footer-height-mobile));
   --body-height-mobile: calc(var(--main-height) - var(--header-and-footer-height));
 }
