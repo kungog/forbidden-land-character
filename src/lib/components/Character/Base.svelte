@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { BASE_LABELS } from '$lib/helpers/constants/languages';
 	import Text from '../Text.svelte';
-	import { currentActiveMenu, language } from '$lib/store';
+	import { currentActiveMenu, language, modal } from '$lib/store';
 	import Animals from './Base/Animals.svelte';
 	import Equipment from './Base/Equipment.svelte';
 	import Inventory from './Base/Inventory.svelte';
@@ -13,6 +13,7 @@
 
 	$: menuItem = $currentActiveMenu;
 
+	const hide = ['experience', 'equipment'];
 	const component = {
 		experience: Skills,
 		talent: Talents,
@@ -22,12 +23,19 @@
 		equipment: Equipment,
 		notes: Notes
 	};
+
+	const handleModal = () => {
+		$modal = {
+			type: menuItem,
+			id: 'base'
+		};
+	};
 </script>
 
 <div>
 	<div class="flex space-b">
 		<Text size="medium">{BASE_LABELS[$language][menuItem]}</Text>
-		<Box handleClick={() => console.log('click')}>
+		<Box handleClick={() => handleModal()} hidden={hide.includes(menuItem)}>
 			<Text size="large">+</Text>
 		</Box>
 	</div>

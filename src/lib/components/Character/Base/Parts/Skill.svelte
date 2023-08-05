@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { language } from '$lib/store';
+	import { language, modal } from '$lib/store';
 	import Box from '$lib/components/Box.svelte';
 	import Dices from '$lib/components/Dices.svelte';
 	import Text from '$lib/components/Text.svelte';
@@ -27,9 +27,16 @@
 	const label = skillObject.languages[$language];
 
 	const dices = getSkillDice({ properties: basic_properties, skill: skillObject, value });
+
+	const handleModal = () => {
+		$modal = {
+			type: skill,
+			id: 'skill'
+		};
+	};
 </script>
 
-<Box handleClick={() => {}}>
+<Box handleClick={() => handleModal()}>
 	<div class="flex space-b">
 		<div class="flex align-c">
 			<svelte:component this={propertyIcon[skillObject.type]} width={16} height={16} />

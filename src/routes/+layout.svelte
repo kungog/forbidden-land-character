@@ -4,6 +4,7 @@
 	import Header from '$lib/layouts/Header.svelte';
 	import Container from '$lib/components/Container.svelte';
 	import Footer from '$lib/layouts/Footer.svelte';
+	import Modals from '$lib/layouts/Modals.svelte';
 </script>
 
 <Header />
@@ -13,6 +14,7 @@
 	</Container>
 </main>
 <Footer />
+<Modals />
 
 <style>
 	main {

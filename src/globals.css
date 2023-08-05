@@ -185,10 +185,6 @@ p {
 
 .circle::after {
   position: absolute;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  box-shadow: 0px 0px 1px 1px #0000001a;
 }
 
 .pulse {
@@ -197,9 +193,9 @@ p {
 
 @keyframes pulse-animation {
   0% {
-    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.3);
   }
   100% {
-    box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
   }
 }

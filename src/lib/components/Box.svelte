@@ -1,10 +1,13 @@
 <script lang="ts">
 	export let handleClick: any,
 		className: string = '',
+		hidden: boolean = false,
 		size: 'medium' | 'small' = 'small';
+
+	$: isHidden = hidden ? 'hidden' : '';
 </script>
 
-<button on:click={handleClick} class={`${className} box-btn-${size}`}>
+<button on:click={handleClick} class={`${className} box-btn-${size} ${isHidden}`}>
 	<slot />
 </button>
 
@@ -24,5 +27,10 @@
 	.box-btn-medium {
 		@extend %button-shared;
 		padding: var(--spacing-18);
+	}
+
+	.hidden {
+		opacity: 0;
+		pointer-events: none;
 	}
 </style>
