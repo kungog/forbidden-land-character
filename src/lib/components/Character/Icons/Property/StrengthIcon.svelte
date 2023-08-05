@@ -1,12 +1,14 @@
 <script lang="ts">
 	export let color: string = 'var(--color-accent)',
-		pulse: boolean = false;
+		pulse: boolean = false,
+		width: number = 20,
+		height: number = 20;
 </script>
 
 <svg
 	class={pulse ? 'pulse circle' : ''}
-	width="20"
-	height="20"
+	{width}
+	{height}
 	viewBox="0 0 20 20"
 	fill="none"
 	xmlns="http://www.w3.org/2000/svg"
