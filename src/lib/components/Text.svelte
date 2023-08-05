@@ -1,6 +1,7 @@
 <script lang="ts">
 	export let size: 'large' | 'medium' | 'normal' | 'small' = 'small',
 		bold: boolean = false,
+		selfCenter: boolean = true,
 		color: string = 'var(--color-text)';
 	const sizes = {
 		large: '20px',
@@ -11,9 +12,12 @@
 
 	$: fontSize = sizes[size];
 	$: weightStyle = bold ? '600' : '500';
+	$: selfStyle = selfCenter ? 'center' : 'initial';
 </script>
 
-<p style="--size: {fontSize}; --weight: {weightStyle}; color: {color};"><slot /></p>
+<p style="--align: {selfStyle}; --size: {fontSize}; --weight: {weightStyle}; color: {color};">
+	<slot />
+</p>
 
 <style>
 	p {
@@ -21,6 +25,6 @@
 		font-weight: var(--weight);
 
 		text-align: start;
-		align-self: center;
+		align-self: var(--align);
 	}
 </style>
