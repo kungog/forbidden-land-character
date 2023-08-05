@@ -43,6 +43,8 @@ export const NO_INVENTORY = {
 
 export const GENERAL_LABELS = {
 	sv: {
+		title: 'Titel',
+		name: 'namn',
 		weight: 'Vikt',
 		bonus: 'Bonus',
 		damage: 'Skada',
@@ -54,9 +56,12 @@ export const GENERAL_LABELS = {
 		armor: 'Rustning',
 		shield: 'Sköld',
 		additionals: 'Övrigt',
-		weapon: 'Vapen'
+		weapon: 'Vapen',
+		save: 'Spara'
 	},
 	en: {
+		title: 'Title',
+		name: 'namn',
 		weight: 'Weight',
 		bonus: 'Bonus',
 		damage: 'Damage',
@@ -68,6 +73,7 @@ export const GENERAL_LABELS = {
 		armor: 'Armor',
 		shield: 'Shield',
 		additionals: 'Additionals',
-		weapon: 'Vapen'
+		weapon: 'Weapon',
+		save: 'Save'
 	}
 };

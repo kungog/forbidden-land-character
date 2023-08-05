@@ -4,12 +4,17 @@
 	import ModalArmor from '$lib/components/Modals/ModalArmor.svelte';
 	import ModalWeapon from '$lib/components/Modals/ModalWeapon.svelte';
 	import ModalSkill from '$lib/components/Modals/ModalSkill.svelte';
+	import ModalTalent from '$lib/components/Modals/ModalTalent.svelte';
+	import ModalInventory from '$lib/components/Modals/ModalInventory.svelte';
+
 	$: id = $modal?.id;
 
 	const component = {
 		armor: ModalArmor,
 		weapon: ModalWeapon,
-		skill: ModalSkill
+		skill: ModalSkill,
+		inventory: ModalInventory,
+		talent: ModalTalent
 	};
 </script>
 

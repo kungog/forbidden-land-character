@@ -1,9 +1,13 @@
 <script lang="ts">
-	export let iValue: number, iFor: string;
+	export let iValue: number | string,
+		iFor: string,
+		amount: number = 5;
+
+	const amountOfButtons = Array.from({ length: amount }, (_, i) => i + 1);
 </script>
 
 <div class="radio">
-	{#each [1, 2, 3, 4, 5] as item}
+	{#each amountOfButtons as item}
 		<div>
 			<input type="radio" name={iFor} value={item} checked={iValue === item} />
 			<label for={iFor}>{item}</label>

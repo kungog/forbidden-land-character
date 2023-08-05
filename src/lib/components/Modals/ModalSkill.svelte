@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { language, modal } from '$lib/store';
-	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
-	import Input from '../Input.svelte';
+	import { modal } from '$lib/store';
 	import Text from '../Text.svelte';
 	import RadioButton from '../RadioButton.svelte';
 
@@ -10,9 +8,6 @@
 
 	const key: keyof Skills = $modal?.type;
 	const skill = skills[key];
-	const LABELS = GENERAL_LABELS[$language];
-
-	console.log(skill);
 </script>
 
 <div>

@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
+	import { emptyWeaponObject } from '$lib/helpers/getCharacterObject';
 	import { language, modal } from '$lib/store';
 	import Input from '../Input.svelte';
 	import GridTemplate from './GridTemplate.svelte';
 
 	const { weapons }: Character = $page.data.character;
 	const LABELS = GENERAL_LABELS[$language];
-
-	const weapon = weapons[$modal?.type ?? 0];
+	const weapon = typeof $modal?.type === 'number' ? weapons[$modal.type] : emptyWeaponObject;
 </script>
 
 <GridTemplate template="1fr">

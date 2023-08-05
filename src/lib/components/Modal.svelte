@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
 	import getSkillObject from '$lib/helpers/getSkills';
 	import { capitalize } from '$lib/helpers/utilites';
 	import { language, modal } from '$lib/store';
@@ -10,7 +11,7 @@
 		console.log(formValues);
 	};
 
-	const noLabels = ['weapon', 'newWeapon'];
+	const noLabels = ['weapon', 'newWeapon', 'newTalent'];
 	const getLabel = () => {
 		if (!$modal?.id) return '';
 
@@ -24,6 +25,7 @@
 	};
 
 	const label = getLabel();
+	const save = GENERAL_LABELS[$language]['save'];
 </script>
 
 <dialog>
@@ -41,7 +43,7 @@
 		</div>
 		<div class="bottom">
 			<button on:click={() => ($modal = null)}><TrashIcon /></button>
-			<button name="submit" on:click={() => getFormData('#modalForm')}>spara</button>
+			<button name="submit" on:click={() => getFormData('#modalForm')}>{capitalize(save)}</button>
 		</div>
 	</div>
 </dialog>

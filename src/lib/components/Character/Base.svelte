@@ -26,8 +26,8 @@
 
 	const handleModal = () => {
 		$modal = {
-			type: menuItem,
-			id: 'base'
+			type: null,
+			id: menuItem
 		};
 	};
 </script>
