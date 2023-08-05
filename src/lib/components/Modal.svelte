@@ -1,24 +1,45 @@
 <script lang="ts">
-	import { modal } from '$lib/store';
+	import getSkillObject from '$lib/helpers/getSkills';
+	import { capitalize } from '$lib/helpers/utilites';
+	import { language, modal } from '$lib/store';
 	import TrashIcon from './Character/Icons/General/TrashIcon.svelte';
 	import Text from './Text.svelte';
 
-	const label = $modal?.type ?? '';
+	const getFormData = (selector: any) => {
+		let formValues = Object.fromEntries(new FormData(document.querySelector(selector)));
+		console.log(formValues);
+	};
+
+	const noLabels = ['weapon', 'newWeapon'];
+	const getLabel = () => {
+		if (noLabels.includes($modal?.id)) return '';
+		if ($modal?.id === 'skill') {
+			const skillObject = getSkillObject($modal?.type);
+			return skillObject.languages[$language];
+		}
+
+		return '';
+	};
+
+	const label = getLabel();
 </script>
 
 <dialog>
 	<button class="overlay" on:click={() => ($modal = null)} />
 	<div class="modal">
 		<div class="top">
-			<Text size="medium">{label}</Text>
+			<Text size="medium">{capitalize(label)}</Text>
 			<button on:click={() => ($modal = null)}>x</button>
 		</div>
+
 		<div class="content">
-			<slot />
+			<form id="modalForm">
+				<slot />
+			</form>
 		</div>
 		<div class="bottom">
 			<button on:click={() => ($modal = null)}><TrashIcon /></button>
-			<button>spara</button>
+			<button name="submit" on:click={() => getFormData('#modalForm')}>spara</button>
 		</div>
 	</div>
 </dialog>
@@ -60,9 +81,8 @@
 		position: relative;
 		z-index: 101;
 		min-height: 10%;
-		width: 75%;
-		border: 1px solid white;
-		background: var(--color-background);
+		width: 90%;
+		background: var(--color-box);
 		border-radius: var(--radius-04);
 		padding: var(--spacing-16);
 	}
@@ -83,7 +103,7 @@
 	}
 
 	.content {
-		padding-bottom: var(--spacing-48);
+		padding: var(--spacing-18) 0 var(--spacing-48);
 	}
 
 	.bottom {
