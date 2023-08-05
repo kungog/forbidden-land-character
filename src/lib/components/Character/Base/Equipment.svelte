@@ -36,7 +36,9 @@
 
 <div class="flex space-b">
 	<Text size="normal">{LABELS['weapons']}</Text>
-	<button on:click={() => handleWeaponModal(null)}>ikon</button>
+	<Box handleClick={() => handleWeaponModal(null)}>
+		<Text size="large">+</Text>
+	</Box>
 </div>
 
 {#each weapons as weapon, index}
@@ -44,3 +46,9 @@
 		<Weapon {...weapon} />
 	</Box>
 {/each}
+
+<style>
+	.flex {
+		margin-top: var(--spacing-18);
+	}
+</style>

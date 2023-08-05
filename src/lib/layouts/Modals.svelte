@@ -24,7 +24,7 @@
 	};
 </script>
 
-{#if $modal}
+{#if $modal && id}
 	<Modal>
 		<svelte:component this={component[id]} />
 	</Modal>

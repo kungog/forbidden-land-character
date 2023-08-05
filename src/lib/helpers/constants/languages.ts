@@ -59,7 +59,7 @@ export const GENERAL_LABELS = {
 		additionals: 'Övrigt',
 		weapon: 'Vapen',
 		save: 'Spara',
-		note: 'Notering'
+		note: 'Anteckning'
 	},
 	en: {
 		title: 'Title',
