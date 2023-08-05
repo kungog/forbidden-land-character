@@ -1,5 +1,5 @@
 export interface SkillObject {
-	type: string;
+	type: BasicProperties['id'];
 	languages: { sv: string; en: string };
 }
 
