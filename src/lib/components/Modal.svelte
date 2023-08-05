@@ -12,6 +12,8 @@
 
 	const noLabels = ['weapon', 'newWeapon'];
 	const getLabel = () => {
+		if (!$modal?.id) return '';
+
 		if (noLabels.includes($modal?.id)) return '';
 		if ($modal?.id === 'skill') {
 			const skillObject = getSkillObject($modal?.type);

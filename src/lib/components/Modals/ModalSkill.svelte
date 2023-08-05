@@ -7,7 +7,9 @@
 	import RadioButton from '../RadioButton.svelte';
 
 	const { skills }: Character = $page.data.character;
-	const skill = skills[$modal?.type ?? ''];
+
+	const key: keyof Skills = $modal?.type;
+	const skill = skills[key];
 	const LABELS = GENERAL_LABELS[$language];
 
 	console.log(skill);
