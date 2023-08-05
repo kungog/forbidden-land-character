@@ -1,41 +1,37 @@
 <script lang="ts">
-	export let iType: 'text' | 'password' | 'number', iLabel: string, iValue: string, iFor: string;
+	import { capitalize } from '$lib/helpers/utilites';
+
+	export let iType: 'text' | 'number', iLabel: string, iValue: string | number, iFor: string;
 </script>
 
 <div>
-  <label for={iFor}>{iLabel}</label>
-  <input type={iType} name={iFor} value={iValue} />
+	<label for={iFor}>{capitalize(iLabel)}</label>
+	<input type={iType} name={iFor} value={iValue} />
 </div>
 
 <style lang="scss">
-  div {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: var(--spacing-12);
+	div {
+		display: flex;
+		flex-direction: column;
 
-    &:not(:last-child) {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: var(--spacing-24);
-    }
+		input {
+			background: var(--color-background);
+			border: 1px solid transparent;
+			padding: var(--spacing-10) var(--spacing-14);
+			color: var(--color-text);
+			width: 100%;
+			border-radius: var(--radius-04);
 
-    input {
-      background: transparent;
-      border: 1px solid var(--secondary-color);
-      padding: var(--spacing-10) var(--spacing-14);
+			&:focus {
+				outline: none;
+				border: 1px solid var(--color-accent);
+			}
+		}
 
-        &:focus {
-        border: 1px solid var(--accent-color);
-      }
-    }
-
-    label {
-      margin-bottom: var(--spacing-08);
-      transition: all 0.3s;
-    }
-
-    &:has(input:focus) > label {
-      margin-left: var(--spacing-08);
-    }
-  }
+		label {
+			font-size: 14px;
+			margin-bottom: var(--spacing-08);
+			color: var(--color-text);
+		}
+	}
 </style>
