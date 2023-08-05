@@ -3,17 +3,24 @@
 	import Box from '$lib/components/Box.svelte';
 	import Text from '$lib/components/Text.svelte';
 	import { NO_RELATIONS } from '$lib/helpers/constants/languages';
-	import { language } from '$lib/store';
+	import { language, modal } from '$lib/store';
 
 	const { relations }: Character = $page.data.character;
+
+	const handleRelationModal = (type: number) => {
+		$modal = {
+			type,
+			id: 'relation'
+		};
+	};
 </script>
 
 {#if relations.length > 0}
-	<Box handleClick={() => {}}>
-		{#each relations as relation}
+	{#each relations as relation, index}
+		<Box handleClick={() => handleRelationModal(index)}>
 			<Text>{relation}</Text>
-		{/each}
-	</Box>
+		</Box>
+	{/each}
 {:else}
 	<Text>{NO_RELATIONS[$language]}</Text>
 {/if}

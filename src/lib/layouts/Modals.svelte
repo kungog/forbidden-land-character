@@ -6,6 +6,9 @@
 	import ModalSkill from '$lib/components/Modals/ModalSkill.svelte';
 	import ModalTalent from '$lib/components/Modals/ModalTalent.svelte';
 	import ModalInventory from '$lib/components/Modals/ModalInventory.svelte';
+	import ModalRelation from '$lib/components/Modals/ModalRelation.svelte';
+	import ModalNote from '$lib/components/Modals/ModalNote.svelte';
+	import ModalAnimal from '$lib/components/Modals/ModalAnimal.svelte';
 
 	$: id = $modal?.id;
 
@@ -14,7 +17,10 @@
 		weapon: ModalWeapon,
 		skill: ModalSkill,
 		inventory: ModalInventory,
-		talent: ModalTalent
+		talent: ModalTalent,
+		relation: ModalRelation,
+		notes: ModalNote,
+		horse: ModalAnimal
 	};
 </script>
 

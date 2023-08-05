@@ -1,15 +1,12 @@
 <script lang="ts">
 	import { capitalize } from '$lib/helpers/utilites';
 
-	export let iType: 'text' | 'number' | 'textarea',
-		iLabel: string,
-		iValue: string | number,
-		iFor: string;
+	export let iLabel: string, iValue: string | number, iFor: string;
 </script>
 
 <div>
 	<label for={iFor}>{capitalize(iLabel)}</label>
-	<input type={iType} name={iFor} value={iValue} />
+	<textarea name={iFor} value={iValue} />
 </div>
 
 <style lang="scss">
@@ -17,13 +14,14 @@
 		display: flex;
 		flex-direction: column;
 
-		input {
+		textarea {
 			background: var(--color-background);
 			border: 1px solid transparent;
 			padding: var(--spacing-10) var(--spacing-14);
 			color: var(--color-text);
 			width: 100%;
 			border-radius: var(--radius-04);
+			resize: vertical;
 
 			&:focus {
 				outline: none;

@@ -3,14 +3,21 @@
 	import Box from '$lib/components/Box.svelte';
 	import Text from '$lib/components/Text.svelte';
 	import { NO_NOTES } from '$lib/helpers/constants/languages';
-	import { language } from '$lib/store';
+	import { language, modal } from '$lib/store';
 
 	const { notes }: Character = $page.data.character;
+
+	const handleNoteModal = (type: number) => {
+		$modal = {
+			type,
+			id: 'notes'
+		};
+	};
 </script>
 
 {#if notes.length > 0}
-	{#each notes as note}
-		<Box handleClick={() => {}}>
+	{#each notes as note, index}
+		<Box handleClick={() => handleNoteModal(index)}>
 			<Text>{note}</Text>
 		</Box>
 	{/each}

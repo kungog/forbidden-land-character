@@ -79,6 +79,7 @@
 		align-items: center;
 		justify-content: center;
 		background: none;
+		border: 0;
 	}
 
 	.modal {
