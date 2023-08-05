@@ -48,7 +48,13 @@ export const GENERAL_LABELS = {
 		damage: 'Skada',
 		range: 'Räckvidd',
 		strength: 'Styrka',
-		flexibility: 'Smidighet'
+		flexibility: 'Smidighet',
+		protection: 'Skydd',
+		helm: 'Hjälm',
+		armor: 'Rustning',
+		shield: 'Sköld',
+		additionals: 'Övrigt',
+		weapon: 'Vapen'
 	},
 	en: {
 		weight: 'Weight',
@@ -56,6 +62,12 @@ export const GENERAL_LABELS = {
 		damage: 'Damage',
 		range: 'Range',
 		strength: 'Strength',
-		flexibility: 'Flexibility'
+		flexibility: 'Flexibility',
+		protection: 'Protection',
+		helm: 'Helm',
+		armor: 'Armor',
+		shield: 'Shield',
+		additionals: 'Additionals',
+		weapon: 'Vapen'
 	}
 };
