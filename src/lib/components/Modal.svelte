@@ -1,22 +1,27 @@
 <script lang="ts">
 	import { modal } from '$lib/store';
+	import TrashIcon from './Character/Icons/General/TrashIcon.svelte';
+	import Text from './Text.svelte';
+
+	const label = $modal?.type ?? '';
 </script>
 
-<div class="modal">
+<dialog>
 	<button class="overlay" on:click={() => ($modal = null)} />
-	<div class="content">
+	<div class="modal">
 		<div class="top">
+			<Text size="medium">{label}</Text>
 			<button on:click={() => ($modal = null)}>x</button>
 		</div>
-
-		<slot />
-
+		<div class="content">
+			<slot />
+		</div>
 		<div class="bottom">
-			<button on:click={() => ($modal = null)}>trash</button>
+			<button on:click={() => ($modal = null)}><TrashIcon /></button>
 			<button>spara</button>
 		</div>
 	</div>
-</div>
+</dialog>
 
 <style lang="scss">
 	%shared-position {
@@ -28,6 +33,7 @@
 		padding: 0;
 		margin: 0;
 		background: none;
+		color: var(--color-text);
 	}
 
 	.overlay {
@@ -39,7 +45,7 @@
 		backdrop-filter: blur(2px);
 	}
 
-	.modal {
+	dialog {
 		height: 100%;
 		width: 100%;
 		position: fixed;
@@ -47,9 +53,10 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		background: none;
 	}
 
-	.content {
+	.modal {
 		position: relative;
 		z-index: 101;
 		min-height: 10%;
@@ -61,18 +68,22 @@
 	}
 
 	.top {
+		display: flex;
+
 		button {
 			@extend %shared-button;
-			@extend %shared-position;
 			font-size: 20px;
 			height: 24px;
 			width: 24px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			right: var(--spacing-10);
-			top: var(--spacing-10);
+			margin-left: auto;
 		}
+	}
+
+	.content {
+		padding-bottom: var(--spacing-48);
 	}
 
 	.bottom {
@@ -86,10 +97,17 @@
 
 		button:first-child {
 			background: var(--color-active);
+			border-radius: 4px;
+			height: var(--spacing-48);
+			width: var(--spacing-54);
+			margin-right: var(--spacing-10);
 		}
 
 		button:last-child {
 			background: var(--color-inactive);
+			width: var(--spacing-130);
+			height: var(--spacing-48);
+			border-radius: 4px;
 		}
 	}
 </style>
