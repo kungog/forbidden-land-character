@@ -9,7 +9,20 @@ export const language = writable(ACTIVE_LANGUAGE);
 
 interface Modal {
 	type: string | number;
-	id: 'armor' | 'weapon' | 'skill' | 'inventory' | 'talent' | 'relation' | 'notes' | 'horse';
+	id:
+		| 'armor'
+		| 'weapon'
+		| 'skill'
+		| 'inventory'
+		| 'talent'
+		| 'relation'
+		| 'notes'
+		| 'horse'
+		| 'condition'
+		| 'properties'
+		| 'consumables'
+		| 'points'
+		| 'money';
 }
 
 export const modal = writable<Modal | null>(null);

@@ -4,12 +4,18 @@
 	export let iType: 'text' | 'number' | 'textarea',
 		iLabel: string,
 		iValue: string | number,
+		warning: boolean = false,
 		iFor: string;
 </script>
 
 <div>
 	<label for={iFor}>{capitalize(iLabel)}</label>
-	<input type={iType} name={iFor} value={iValue} />
+	<input
+		type={iType}
+		name={iFor}
+		value={iValue}
+		style={warning ? 'color: var(--color-active);' : 'color: var(--color-text);'}
+	/>
 </div>
 
 <style lang="scss">
