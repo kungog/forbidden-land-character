@@ -25,7 +25,7 @@
 		talent: ModalTalent,
 		relation: ModalRelation,
 		notes: ModalNote,
-		horse: ModalAnimal,
+		animal: ModalAnimal,
 		condition: ModalCondition,
 		properties: ModalProperties,
 		consumables: ModalConsumables,

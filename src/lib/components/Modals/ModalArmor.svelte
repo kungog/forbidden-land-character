@@ -8,18 +8,18 @@
 	const {
 		armor: { head, body, shield }
 	}: Character = $page.data.character;
-	const LABELS = GENERAL_LABELS[$language];
+	const LABEL = GENERAL_LABELS[$language];
 </script>
 
 <GridTemplate>
-	<Input iType="text" iLabel={LABELS.helm} iValue={head.name} iFor="helm_name" />
-	<Input iType="number" iLabel={LABELS.protection} iValue={head.value} iFor="helm_value" />
+	<Input iType="text" iLabel={LABEL.helm} iValue={head.name} iFor="helm_name" />
+	<Input iType="number" iLabel={LABEL.protection} iValue={head.value} iFor="helm_value" />
 </GridTemplate>
 <GridTemplate>
-	<Input iType="text" iLabel={LABELS.armor} iValue={body.name} iFor="body_name" />
-	<Input iType="number" iLabel={LABELS.protection} iValue={body.value} iFor="body_value" />
+	<Input iType="text" iLabel={LABEL.armor} iValue={body.name} iFor="body_name" />
+	<Input iType="number" iLabel={LABEL.protection} iValue={body.value} iFor="body_value" />
 </GridTemplate>
 <GridTemplate>
-	<Input iType="text" iLabel={LABELS.shield} iValue={shield.name} iFor="shield_name" />
-	<Input iType="number" iLabel={LABELS.bonus} iValue={shield.value} iFor="shield_value" />
+	<Input iType="text" iLabel={LABEL.shield} iValue={shield.name} iFor="shield_name" />
+	<Input iType="number" iLabel={LABEL.bonus} iValue={shield.value} iFor="shield_value" />
 </GridTemplate>

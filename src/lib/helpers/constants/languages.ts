@@ -3,7 +3,7 @@ export const BASE_LABELS = {
 		experience: 'Färdigheter',
 		talent: 'Talanger',
 		inventory: 'Ägodelar',
-		horse: 'Djur',
+		animal: 'Djur',
 		relation: 'Relationer',
 		equipment: 'Utrustning',
 		notes: 'Anteckningar',
@@ -13,7 +13,7 @@ export const BASE_LABELS = {
 		experience: 'Experience',
 		talent: 'Talents',
 		inventory: 'Inventory',
-		horse: 'Animals',
+		animal: 'Animals',
 		relation: 'Relations',
 		equipment: 'Equipments',
 		notes: 'Notes',
@@ -39,6 +39,11 @@ export const NO_RELATIONS = {
 export const NO_INVENTORY = {
 	sv: 'Woah, äger du ingenting?!',
 	en: 'Oh no, it seems you are poor...'
+};
+
+export const NO_INVENTORY_ANIMAL = {
+	sv: 'Varför inte låta djuret bära något?',
+	en: 'Why not let your animal carry?'
 };
 
 export const GENERAL_LABELS = {

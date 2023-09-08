@@ -6,12 +6,12 @@
 	import GridTemplate from './GridTemplate.svelte';
 
 	const { experience, power_points: powerPoints }: Character = $page.data.character;
-	const LABELS = GENERAL_LABELS[$language];
+	const LABEL = GENERAL_LABELS[$language];
 </script>
 
 <GridTemplate template="1fr">
-	<Input iType="number" iLabel={LABELS.experience} iValue={experience} iFor="experience" />
+	<Input iType="number" iLabel={LABEL.experience} iValue={experience} iFor="experience" />
 </GridTemplate>
 <GridTemplate template="1fr">
-	<Input iType="number" iLabel={LABELS.power_points} iValue={powerPoints} iFor="power_points" />
+	<Input iType="number" iLabel={LABEL.power_points} iValue={powerPoints} iFor="power_points" />
 </GridTemplate>

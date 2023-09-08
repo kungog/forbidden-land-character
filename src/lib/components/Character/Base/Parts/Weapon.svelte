@@ -4,7 +4,7 @@
 	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
 	export let additionals: string, bonus: string, damage: string, range: string, type: string;
 
-	const LABELS = GENERAL_LABELS[$language];
+	const LABEL = GENERAL_LABELS[$language];
 </script>
 
 <div class="upper-part">
@@ -14,9 +14,9 @@
 	</div>
 
 	<div class="flex stats">
-		<Text>{LABELS['bonus']}: {bonus}</Text>
-		<Text>{LABELS['damage']}: {damage}</Text>
-		<Text>{LABELS['range']}: {range.toLocaleLowerCase()}</Text>
+		<Text>{LABEL['bonus']}: {bonus}</Text>
+		<Text>{LABEL['damage']}: {damage}</Text>
+		<Text>{LABEL['range']}: {range.toLocaleLowerCase()}</Text>
 	</div>
 </div>
 

@@ -13,7 +13,7 @@
 	const component = {
 		experience: ExperienceIcon,
 		inventory: InventoryIcon,
-		horse: HorseIcon,
+		animal: HorseIcon,
 		relation: RelationIcon,
 		talent: TalentIcon,
 		equipment: EquipmentIcon,

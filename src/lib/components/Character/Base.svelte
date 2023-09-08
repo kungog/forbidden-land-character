@@ -18,7 +18,7 @@
 		experience: Skills,
 		talent: Talents,
 		inventory: Inventory,
-		horse: Animals,
+		animal: Animals,
 		relation: Relations,
 		equipment: Equipment,
 		notes: Notes

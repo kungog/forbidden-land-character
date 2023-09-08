@@ -6,15 +6,15 @@
 	import GridTemplate from './GridTemplate.svelte';
 
 	const { money }: Character = $page.data.character;
-	const LABELS = GENERAL_LABELS[$language];
+	const LABEL = GENERAL_LABELS[$language];
 </script>
 
 <GridTemplate template="1fr">
-	<Input iType="number" iLabel={LABELS.gold} iValue={money.gold} iFor="money_gold" />
+	<Input iType="number" iLabel={LABEL.gold} iValue={money.gold} iFor="money_gold" />
 </GridTemplate>
 <GridTemplate template="1fr">
-	<Input iType="number" iLabel={LABELS.silver} iValue={money.silver} iFor="money_silver" />
+	<Input iType="number" iLabel={LABEL.silver} iValue={money.silver} iFor="money_silver" />
 </GridTemplate>
 <GridTemplate template="1fr">
-	<Input iType="number" iLabel={LABELS.copper} iValue={money.copper} iFor="money_copper" />
+	<Input iType="number" iLabel={LABEL.copper} iValue={money.copper} iFor="money_copper" />
 </GridTemplate>

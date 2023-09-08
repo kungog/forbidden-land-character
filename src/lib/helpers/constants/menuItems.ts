@@ -2,7 +2,7 @@ const MENU_ITEMS: MenuItems[] = [
 	'experience',
 	'talent',
 	'equipment',
-	'horse',
+	'animal',
 	'inventory',
 	'relation',
 	'notes'

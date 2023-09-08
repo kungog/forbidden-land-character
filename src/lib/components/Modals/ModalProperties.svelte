@@ -8,11 +8,11 @@
 	import GridTemplate from './GridTemplate.svelte';
 
 	const { basic_properties: properties }: Character = $page.data.character;
-	const LABELS = GENERAL_LABELS[$language];
+	const LABEL = GENERAL_LABELS[$language];
 </script>
 
 {#each properties as property}
-	<Text>{capitalize(LABELS[property.id])}</Text>
+	<Text>{capitalize(LABEL[property.id])}</Text>
 	<GridTemplate template="1fr 1fr">
 		<Input iType="number" iLabel={''} iValue={property.value} iFor="property_value" />
 		<Input warning iType="number" iLabel={''} iValue={property.failure} iFor="property_failure" />

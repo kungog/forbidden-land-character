@@ -5,8 +5,8 @@
 	import Textarea from '../Textarea.svelte';
 
 	const { notes }: Character = $page.data.character;
-	const LABELS = GENERAL_LABELS[$language];
+	const LABEL = GENERAL_LABELS[$language];
 	const note = notes[$modal?.type] ?? '';
 </script>
 
-<Textarea iLabel={LABELS.note} iValue={note} iFor="note" />
+<Textarea iLabel={LABEL.note} iValue={note} iFor="note" />

@@ -11,7 +11,7 @@
 		armor: { head, body, shield },
 		weapons
 	}: Character = $page.data.character;
-	const LABELS = BASE_LABELS[$language];
+	const LABEL = BASE_LABELS[$language];
 
 	const handleArmor = () => {
 		$modal = {
@@ -35,7 +35,7 @@
 </Box>
 
 <div class="flex space-b">
-	<Text size="normal">{LABELS['weapons']}</Text>
+	<Text size="normal">{LABEL['weapons']}</Text>
 	<Box handleClick={() => handleWeaponModal(null)}>
 		<Text size="large">+</Text>
 	</Box>

@@ -5,8 +5,8 @@
 	import Textarea from '../Textarea.svelte';
 
 	const { relations }: Character = $page.data.character;
-	const LABELS = GENERAL_LABELS[$language];
+	const LABEL = GENERAL_LABELS[$language];
 	const relation = relations[$modal?.type] ?? '';
 </script>
 
-<Textarea iLabel={LABELS.relation} iValue={relation} iFor="relation" />
+<Textarea iLabel={LABEL.relation} iValue={relation} iFor="relation" />

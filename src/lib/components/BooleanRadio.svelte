@@ -5,7 +5,7 @@
 	import Text from './Text.svelte';
 
 	export let iValue: boolean, iFor: string, iLabel: string;
-	const LABELS = GENERAL_LABELS[$language];
+	const LABEL = GENERAL_LABELS[$language];
 </script>
 
 <div>
@@ -13,11 +13,11 @@
 	<div class="radio">
 		<div>
 			<input type="radio" name={iFor} value="false" checked={!iValue} />
-			<label for={iFor}>{LABELS.no}</label>
+			<label for={iFor}>{LABEL.no}</label>
 		</div>
 		<div>
 			<input type="radio" name={iFor} value="true" checked={iValue} />
-			<label for={iFor}>{LABELS.yes}</label>
+			<label for={iFor}>{LABEL.yes}</label>
 		</div>
 	</div>
 </div>

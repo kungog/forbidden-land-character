@@ -7,7 +7,7 @@
 
 	const { inventory }: Character = $page.data.character;
 
-	const LABELS = GENERAL_LABELS[$language];
+	const LABEL = GENERAL_LABELS[$language];
 
 	const handleInventoryModal = (type: number) => {
 		$modal = {
@@ -26,8 +26,8 @@
 			</div>
 
 			<div class="flex stats">
-				<Text>{LABELS['weight']}: {item.weight}</Text>
-				<Text>{LABELS['bonus']}: {item.bonus}</Text>
+				<Text>{LABEL['weight']}: {item.weight}</Text>
+				<Text>{LABEL['bonus']}: {item.bonus}</Text>
 			</div>
 		</div>
 	</Box>

@@ -6,28 +6,28 @@
 	import GridTemplate from './GridTemplate.svelte';
 
 	const { consumables }: Character = $page.data.character;
-	const LABELS = GENERAL_LABELS[$language];
+	const LABEL = GENERAL_LABELS[$language];
 </script>
 
 <GridTemplate template="1fr">
 	<Input
 		iType="number"
-		iLabel={LABELS.arrows}
+		iLabel={LABEL.arrows}
 		iValue={consumables.arrows}
 		iFor="consumables_arrows"
 	/>
 </GridTemplate>
 <GridTemplate template="1fr">
-	<Input iType="number" iLabel={LABELS.food} iValue={consumables.food} iFor="consumables_food" />
+	<Input iType="number" iLabel={LABEL.food} iValue={consumables.food} iFor="consumables_food" />
 </GridTemplate>
 <GridTemplate template="1fr">
 	<Input
 		iType="number"
-		iLabel={LABELS.torches}
+		iLabel={LABEL.torches}
 		iValue={consumables.torches}
 		iFor="consumables_torches"
 	/>
 </GridTemplate>
 <GridTemplate template="1fr">
-	<Input iType="number" iLabel={LABELS.water} iValue={consumables.water} iFor="consumables_water" />
+	<Input iType="number" iLabel={LABEL.water} iValue={consumables.water} iFor="consumables_water" />
 </GridTemplate>
