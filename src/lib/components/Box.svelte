@@ -2,12 +2,19 @@
 	export let handleClick: any,
 		className: string = '',
 		hidden: boolean = false,
+		inverted: boolean = false,
+		active: boolean = false,
 		size: 'medium' | 'small' = 'small';
 
 	$: isHidden = hidden ? 'hidden' : '';
+	$: isInverted = inverted ? 'inverted' : '';
+	$: isActive = active ? 'active' : '';
 </script>
 
-<button on:click={handleClick} class={`${className} box-btn-${size} ${isHidden}`}>
+<button
+	on:click={handleClick}
+	class={`${className} box-btn-${size} ${isHidden} ${isInverted} ${isActive}`}
+>
 	<slot />
 </button>
 
@@ -32,5 +39,13 @@
 	.hidden {
 		opacity: 0;
 		pointer-events: none;
+	}
+
+	.inverted {
+		background: var(--color-background);
+	}
+
+	.active {
+		border: 1px solid var(--color-accent);
 	}
 </style>
