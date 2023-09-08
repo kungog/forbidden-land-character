@@ -2,32 +2,54 @@
 	import { page } from '$app/stores';
 	import Box from '$lib/components/Box.svelte';
 	import Text from '$lib/components/Text.svelte';
-	import { NO_ANIMALS, GENERAL_LABELS } from '$lib/helpers/constants/languages';
+	import {
+		NO_ANIMALS,
+		GENERAL_LABELS,
+		BASE_LABELS,
+		NO_INVENTORY_ANIMAL
+	} from '$lib/helpers/constants/languages';
 	import { language, modal } from '$lib/store';
+	import { onMount } from 'svelte';
 
 	const { animals }: Character = $page.data.character;
 
-	const LABELS = GENERAL_LABELS[$language];
+	const LABEL = GENERAL_LABELS[$language];
+	const BASE_LABEL = BASE_LABELS[$language];
 
-	const handleAnimalModal = (type: number) => {
+	$: activeIndex = null as null | number;
+	$: inventory = [] as [] | Animal['inventory'];
+
+	const handleModal = (type: number | null, id: 'animal' | 'inventory') => {
 		$modal = {
 			type,
-			id: 'horse'
+			id
 		};
 	};
+
+	const handleAnimalClick = (index: number) => {
+		if (index !== activeIndex) return (activeIndex = index);
+		return handleModal(index, 'animal');
+	};
+
+	onMount(() => {
+		if (animals.length > 0) {
+			activeIndex = 0;
+			inventory = animals[activeIndex].inventory;
+		}
+	});
 </script>
 
 {#if animals.length > 0}
 	{#each animals as animal, index}
-		<Box handleClick={() => handleAnimalModal(index)}>
+		<Box handleClick={() => handleAnimalClick(index)} active={index === activeIndex}>
 			<div class="upper-part">
 				<div class="flex space-b">
 					<Text size="normal">{animal.name}</Text>
 				</div>
 
 				<div class="flex stats">
-					<Text>{LABELS['strength']}: {animal.strength}</Text>
-					<Text>{LABELS['flexibility']}: {animal.flexibility}</Text>
+					<Text>{LABEL['strength']}: {animal.strength}</Text>
+					<Text>{LABEL['flexibility']}: {animal.flexibility}</Text>
 				</div>
 			</div>
 		</Box>
@@ -36,8 +58,39 @@
 	<Text>{NO_ANIMALS[$language]}</Text>
 {/if}
 
+<div class="test flex space-b">
+	<Text size="normal">{BASE_LABEL['inventory']}</Text>
+	<Box handleClick={() => handleModal(null, 'inventory')}>
+		<Text size="large">+</Text>
+	</Box>
+</div>
+
+{#if inventory.length > 0}
+	{#each inventory as item, index}
+		<Box handleClick={() => handleModal(index, 'inventory')}>
+			<div class="upper-part">
+				<div class="flex space-b">
+					<Text size="normal">{item.name}</Text>
+					<Text>{item.additionals ?? ''}</Text>
+				</div>
+
+				<div class="flex stats">
+					<Text>{LABEL['weight']}: {item.weight}</Text>
+					<Text>{LABEL['bonus']}: {item.bonus}</Text>
+				</div>
+			</div>
+		</Box>
+	{/each}
+{:else}
+	<Text>{NO_INVENTORY_ANIMAL[$language]}</Text>
+{/if}
+
 <style lang="scss">
 	.stats {
 		gap: var(--spacing-18);
+	}
+
+	.test {
+		margin-top: var(--spacing-18);
 	}
 </style>
