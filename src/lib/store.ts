@@ -8,7 +8,7 @@ export const currentActiveMenu = writable(MENU_ITEMS[0]);
 export const language = writable(ACTIVE_LANGUAGE);
 
 interface Modal {
-	type: string | number;
+	type: string | number | null;
 	id:
 		| 'armor'
 		| 'weapon'
@@ -17,11 +17,13 @@ interface Modal {
 		| 'talent'
 		| 'relation'
 		| 'notes'
-		| 'horse'
+		| 'animal'
 		| 'condition'
 		| 'properties'
 		| 'consumables'
 		| 'points'
+		| 'experience'
+		| 'equipment'
 		| 'money';
 }
 

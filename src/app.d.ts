@@ -12,13 +12,13 @@ declare global {
 		| 'experience'
 		| 'talent'
 		| 'equipment'
-		| 'horse'
+		| 'animal'
 		| 'inventory'
 		| 'relation'
 		| 'notes';
 
 	interface Character {
-		animals: Animals[];
+		animals: Animal[];
 		carrying_capacity: number;
 		experience: number;
 		name: string;
