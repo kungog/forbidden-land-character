@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { modal } from '$lib/store';
-	import Box from '../../Box.svelte';
+	import Box from '$lib/components/Box.svelte';
 	import Coin from './Parts/Coin.svelte';
 
 	const { money }: Character = $page.data.character;

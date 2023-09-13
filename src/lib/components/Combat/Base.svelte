@@ -1,27 +1,17 @@
 <script lang="ts">
 	import { BASE_LABELS } from '$lib/helpers/constants/languages';
 	import Text from '../Text.svelte';
-	import { characterActiveMenu, language, modal } from '$lib/store';
-	import Animals from '../Base/Animals.svelte';
-	import Equipment from '../Base/Equipment.svelte';
-	import Inventory from '../Base/Inventory.svelte';
-	import Notes from '../Base/Notes.svelte';
-	import Relations from '../Base/Relations.svelte';
+	import { combatActiveMenu, language, modal } from '$lib/store';
 	import Skills from '../Base/Skills.svelte';
 	import Talents from '../Base/Talents.svelte';
 	import Box from '../Box.svelte';
 
-	$: menuItem = $characterActiveMenu;
+	$: menuItem = $combatActiveMenu;
 
-	const hide = ['experience', 'equipment'];
+	const hide = ['experience'];
 	const component = {
 		experience: Skills,
-		talent: Talents,
-		inventory: Inventory,
-		animal: Animals,
-		relation: Relations,
-		equipment: Equipment,
-		notes: Notes
+		talent: Talents
 	};
 
 	const handleModal = () => {

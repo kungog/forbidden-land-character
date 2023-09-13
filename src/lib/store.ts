@@ -1,10 +1,11 @@
-import MENU_ITEMS from '$lib/helpers/constants/menuItems';
+import { COMBAT_MENU_ITEMS, CHARACTER_MENU_ITEMS } from '$lib/helpers/constants/menuItems';
 import { writable } from 'svelte/store';
 
 const MAIN_LANGUAGES: ['sv', 'en'] = ['sv', 'en'];
 const ACTIVE_LANGUAGE = MAIN_LANGUAGES[0];
 
-export const currentActiveMenu = writable(MENU_ITEMS[0]);
+export const combatActiveMenu = writable(COMBAT_MENU_ITEMS[0]);
+export const characterActiveMenu = writable(CHARACTER_MENU_ITEMS[0]);
 export const language = writable(ACTIVE_LANGUAGE);
 
 interface Modal {

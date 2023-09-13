@@ -8,7 +8,9 @@ declare global {
 		// interface Platform {}
 	}
 
-	type MenuItems =
+	type CombatMenuItems = 'experience' | 'talent';
+
+	type CharacterMenuItems =
 		| 'experience'
 		| 'talent'
 		| 'equipment'

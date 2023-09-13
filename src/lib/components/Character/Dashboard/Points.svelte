@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { modal } from '$lib/store';
-	import Box from '../../Box.svelte';
+	import Box from '$lib/components/Box.svelte';
 	import Experience from './Parts/Experience.svelte';
 	import PowerPoint from './Parts/PowerPoint.svelte';
 	const { experience, power_points: powerPoints }: Character = $page.data.character;

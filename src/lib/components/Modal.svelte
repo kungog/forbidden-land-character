@@ -3,7 +3,7 @@
 	import getSkillObject from '$lib/helpers/getSkills';
 	import { capitalize } from '$lib/helpers/utilites';
 	import { language, modal } from '$lib/store';
-	import TrashIcon from './Character/Icons/General/TrashIcon.svelte';
+	import TrashIcon from './Icons/General/TrashIcon.svelte';
 	import Text from './Text.svelte';
 
 	const getFormData = (selector: any) => {

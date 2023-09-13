@@ -1,4 +1,6 @@
-const MENU_ITEMS: MenuItems[] = [
+export const COMBAT_MENU_ITEMS: CombatMenuItems[] = ['experience', 'talent'];
+
+export const CHARACTER_MENU_ITEMS: CharacterMenuItems[] = [
 	'experience',
 	'talent',
 	'equipment',
@@ -7,5 +9,3 @@ const MENU_ITEMS: MenuItems[] = [
 	'relation',
 	'notes'
 ];
-
-export default MENU_ITEMS;

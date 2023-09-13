@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import { modal } from '$lib/store';
 	import createArrayFromObject from '$lib/helpers/getObjectKeys';
-	import Box from '../../Box.svelte';
+	import Box from '$lib/components/Box.svelte';
 	import Consumable from './Parts/Consumable.svelte';
 
 	const { consumables }: Character = $page.data.character;

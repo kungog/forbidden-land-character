@@ -9,7 +9,7 @@
 
 <Dashboard />
 <div class="flex">
-	<Menu />
+	<Menu combat />
 	<Base />
 </div>
 

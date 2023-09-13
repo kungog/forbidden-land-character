@@ -6,10 +6,10 @@
 	import Text from '$lib/components/Text.svelte';
 	import { getSkillDice } from '$lib/helpers/getDices';
 
-	import CharismaIcon from '../../Icons/Property/CharismaIcon.svelte';
-	import FlexibilityIcon from '../../Icons/Property/FlexibilityIcon.svelte';
-	import IntelligenceIcon from '../../Icons/Property/IntelligenceIcon.svelte';
-	import StrengthIcon from '../../Icons/Property/StrengthIcon.svelte';
+	import CharismaIcon from '$lib/components/Icons/Property/CharismaIcon.svelte';
+	import FlexibilityIcon from '$lib/components/Icons/Property/FlexibilityIcon.svelte';
+	import IntelligenceIcon from '$lib/components/Icons/Property/IntelligenceIcon.svelte';
+	import StrengthIcon from '$lib/components/Icons/Property/StrengthIcon.svelte';
 
 	import getSkillObject from '$lib/helpers/getSkills';
 
