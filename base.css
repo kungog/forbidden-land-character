@@ -1,0 +1,29 @@
+.cluster {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.flexible-grid > * {
+  flex: 1;
+}
+
+.auto-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(
+    auto-fit,
+    min-max(
+      min(10rem, 100%), 1fr)
+    );
+}
+
+.reel {
+  display: grid;
+  gap: 1rem;
+  grid-auto-flow: column;
+  grid-auto-columns: 45%;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 1rem;
+}
