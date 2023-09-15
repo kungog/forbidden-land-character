@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import Dashboard from '$lib/components/Combat/Dashboard.svelte';
+	import Dashboard from '$lib/components/Character/Dashboard.svelte';
 	import Menu from '$lib/components/Menu/Menu.svelte';
 	import Base from '$lib/components/Combat/Base.svelte';
 	export let data: PageData;

@@ -6,7 +6,13 @@
 	import Properties from './Dashboard/Properties.svelte';
 </script>
 
-<div>combat dashboard</div>
+<div>
+	<Conditions />
+	<Properties />
+	<Consumables />
+	<Points />
+	<Money />
+</div>
 
 <style lang="scss">
 	div {

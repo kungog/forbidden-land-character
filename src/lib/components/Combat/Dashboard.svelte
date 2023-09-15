@@ -1,18 +1,7 @@
 <script lang="ts">
-	import Conditions from './Dashboard/Conditions.svelte';
-	import Consumables from './Dashboard/Consumables.svelte';
-	import Money from './Dashboard/Money.svelte';
-	import Points from './Dashboard/Points.svelte';
-	import Properties from './Dashboard/Properties.svelte';
 </script>
 
-<div>
-	<Conditions />
-	<Properties />
-	<Consumables />
-	<Points />
-	<Money />
-</div>
+<div>Combat</div>
 
 <style lang="scss">
 	div {
