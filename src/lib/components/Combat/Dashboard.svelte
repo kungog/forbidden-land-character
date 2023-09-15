@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Conditions from '$lib/Widgets/Conditions.svelte';
+	import Conditions from '$lib/widgets/Conditions.svelte';
 	import Arrows from '$lib/widgets/Arrows.svelte';
 	import Weapons from '$lib/widgets/Weapons.svelte';
 	import Points from '$lib/widgets/Points.svelte';
-	import Armor from '$lib/Widgets/Armor.svelte';
+	import Armor from '$lib/widgets/Armor.svelte';
 </script>
 
 <div>
