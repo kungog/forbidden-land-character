@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Armor from './Dashboard/Armor.svelte';
-	import Conditions from './Dashboard/Conditions.svelte';
-	import Arrows from './Dashboard/Arrows.svelte';
-	import Weapons from './Dashboard/Weapons.svelte';
-	import Points from './Dashboard/Points.svelte';
+	import Conditions from '$lib/Widgets/Conditions.svelte';
+	import Arrows from '$lib/widgets/Arrows.svelte';
+	import Weapons from '$lib/widgets/Weapons.svelte';
+	import Points from '$lib/widgets/Points.svelte';
+	import Armor from '$lib/Widgets/Armor.svelte';
 </script>
 
 <div>
@@ -11,7 +11,7 @@
 	<Weapons />
 	<Armor />
 	<Arrows />
-	<Points />
+	<Points gridLayout />
 </div>
 
 <style lang="scss">
