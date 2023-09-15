@@ -2,12 +2,10 @@
 	import { page } from '$app/stores';
 	import { modal } from '$lib/store';
 	import Box from '$lib/components/Box.svelte';
-	import Equipment from '$lib/components/Base/Parts/Equipment.svelte';
 	import HelmetIcon from '$lib/components/Icons/General/HelmetIcon.svelte';
 	import BodyIcon from '$lib/components/Icons/General/BodyIcon.svelte';
 	import ShieldIcon from '$lib/components/Icons/General/ShieldIcon.svelte';
 	import Text from '$lib/components/Text.svelte';
-	import Divider from '$lib/components/Divider.svelte';
 
 	const {
 		armor: { head, body, shield }
@@ -21,38 +19,36 @@
 	};
 </script>
 
-<Box className="armor" handleClick={() => handleArmor()}>
-	<div class="flex column">
-		<div class="flex space-b">
-			<div class="flex column">
-				<svelte:component this={HelmetIcon} />
+<Box className="armor grid" handleClick={() => handleArmor()}>
+	<div class="flex space-b">
+		<div class="flex column">
+			<svelte:component this={HelmetIcon} />
 
-				<Text size="normal">{head.name ?? '-'}</Text>
-			</div>
-			<Text>{head.value ?? 0}</Text>
+			<Text size="normal">{head.name ?? '-'}</Text>
 		</div>
+		<Text>{head.value ?? 0}</Text>
+	</div>
 
-		<div class="flex space-b">
-			<div class="flex column">
-				<svelte:component this={BodyIcon} />
-				<Text size="normal">{body.name ?? '-'}</Text>
-			</div>
-			<Text>{body.value ?? 0}</Text>
+	<div class="flex space-b">
+		<div class="flex column">
+			<svelte:component this={BodyIcon} />
+			<Text size="normal">{body.name ?? '-'}</Text>
 		</div>
+		<Text>{body.value ?? 0}</Text>
+	</div>
 
-		<div class="flex space-b">
-			<div class="flex column">
-				<svelte:component this={ShieldIcon} />
-				<Text size="normal">{shield.name ?? '-'}</Text>
-			</div>
-			<Text>{shield.value ?? 0}</Text>
+	<div class="flex space-b">
+		<div class="flex column">
+			<svelte:component this={ShieldIcon} />
+			<Text size="normal">{shield.name ?? '-'}</Text>
 		</div>
+		<Text>{shield.value ?? 0}</Text>
 	</div>
 </Box>
 
 <style lang="scss">
 	.space-b:not(:last-child) {
-		margin-bottom: var(--spacing-20);
+		margin-bottom: var(--spacing-18);
 
 		> .column {
 			gap: var(--spacing-10);
