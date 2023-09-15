@@ -2,11 +2,11 @@ import type { SkillObject } from './constants/skills';
 
 interface GetDice {
 	properties: Character['basic_properties'];
-	skill: SkillObject;
-	value: number;
+	skill: SkillObject & { value: number };
+	attack?: string | number;
 }
 
-export const getSkillDice = ({ properties, skill, value }: GetDice) => {
+export const getSkillDice = ({ properties, skill, attack }: GetDice) => {
 	const property = properties.find((property: BasicProperties) => property.id === skill.type);
 
 	if (!property) {
@@ -17,7 +17,7 @@ export const getSkillDice = ({ properties, skill, value }: GetDice) => {
 
 	return {
 		property: property.value - property.failure,
-		skill: value,
-		attack: null
+		skill: skill.value,
+		attack: attack ?? null
 	};
 };
