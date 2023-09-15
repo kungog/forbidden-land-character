@@ -1,11 +1,11 @@
 <script lang="ts">
 	import Dice from './Dice.svelte';
 
-	export let property: number | null, skill: number | null, attack: number | null;
+	export let property: number | null, skill: number | null, attack: number | string | null;
 
 	const showProperty = typeof property === 'number';
 	const showSkill = typeof skill === 'number';
-	const showAttack = typeof attack === 'number';
+	const showAttack = typeof attack === 'number' || typeof attack === 'string';
 </script>
 
 <div>

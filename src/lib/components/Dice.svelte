@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Text from './Text.svelte';
 
-	export let type: 'property' | 'skill' | 'attack', amount: number | null;
+	export let type: 'property' | 'skill' | 'attack', amount: number | string | null;
 
 	let color: 'var(--color-active)' | 'var(--color-blue)' | 'var(--color-accent)';
 
