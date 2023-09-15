@@ -23,10 +23,10 @@
 		intelligence: IntelligenceIcon
 	};
 
-	const skillObject = getSkillObject(skill);
+	const skillObject = getSkillObject(skill, value);
 	const label = skillObject.languages[$language];
 
-	const dices = getSkillDice({ properties: basic_properties, skill: skillObject, value });
+	const dices = getSkillDice({ properties: basic_properties, skill: skillObject });
 
 	const handleModal = () => {
 		$modal = {
