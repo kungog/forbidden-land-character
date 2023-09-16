@@ -16,8 +16,8 @@
 		if (!$modal?.id) return '';
 
 		if (noLabels.includes($modal?.id)) return '';
-		if ($modal?.id === 'skill') {
-			const skillObject = getSkillObject($modal?.type);
+		if ($modal?.id === 'skill' && typeof $modal?.type === 'string') {
+			const skillObject = getSkillObject($modal?.type as keyof Skills, 0);
 			return skillObject.languages[$language];
 		}
 

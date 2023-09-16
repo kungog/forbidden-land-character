@@ -32,8 +32,6 @@
 			id: menuItem
 		};
 	};
-
-	console.log('Character ', { $activeMenu });
 </script>
 
 <div>
