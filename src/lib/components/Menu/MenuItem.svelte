@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { characterActiveMenu } from '$lib/store';
-	import EquipmentIcon from './Icons/EquipmentIcon.svelte';
+	import ArmorIcon from './Icons/ArmorIcon.svelte';
+	import WeaponIcon from './Icons/WeaponIcon.svelte';
 	import ExperienceIcon from './Icons/ExperienceIcon.svelte';
 	import HorseIcon from './Icons/HorseIcon.svelte';
 	import InventoryIcon from './Icons/InventoryIcon.svelte';
@@ -16,7 +17,8 @@
 		animal: HorseIcon,
 		relation: RelationIcon,
 		talent: TalentIcon,
-		equipment: EquipmentIcon,
+		armor: ArmorIcon,
+		weapon: WeaponIcon,
 		notes: NotesIcon
 	};
 

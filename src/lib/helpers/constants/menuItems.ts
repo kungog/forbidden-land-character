@@ -1,9 +1,10 @@
-export const COMBAT_MENU_ITEMS: CombatMenuItems[] = ['experience', 'talent'];
+export const COMBAT_MENU_ITEMS: CombatMenuItems[] = ['talent'];
 
 export const CHARACTER_MENU_ITEMS: CharacterMenuItems[] = [
 	'experience',
 	'talent',
-	'equipment',
+	'armor',
+	'weapon',
 	'animal',
 	'inventory',
 	'relation',
