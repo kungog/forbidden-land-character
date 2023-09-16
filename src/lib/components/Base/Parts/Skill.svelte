@@ -28,12 +28,15 @@
 
 	const dices = getSkillDice({ properties: basic_properties, skill: skillObject });
 
-	const handleModal = () => {
-		$modal = {
-			type: skill,
-			id: 'skill'
-		};
-	};
+	const handleModal = () =>
+		($modal = {
+			id: $page.data.character._id,
+			type: 'PUT',
+			key: 'skills',
+			objectKey: skill,
+			value: value,
+			index: 0
+		});
 </script>
 
 <Box handleClick={() => handleModal()}>

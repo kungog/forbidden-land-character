@@ -6,12 +6,14 @@
 
 	const { money }: Character = $page.data.character;
 
-	const handleMoneyModal = () => {
-		$modal = {
-			type: '',
-			id: 'money'
-		};
-	};
+	const handleMoneyModal = () =>
+		($modal = {
+			id: $page.data.character._id,
+			type: 'PUT',
+			key: 'money',
+			index: 0,
+			value: money
+		});
 </script>
 
 <Box className="money" size="small" handleClick={() => handleMoneyModal()}>

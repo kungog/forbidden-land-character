@@ -7,12 +7,14 @@
 
 	const { notes }: Character = $page.data.character;
 
-	const handleNoteModal = (type: number) => {
-		$modal = {
-			type,
-			id: 'notes'
-		};
-	};
+	const handleNoteModal = (index: number) =>
+		($modal = {
+			id: $page.data.character._id,
+			type: 'PUT',
+			key: 'notes',
+			index: index,
+			value: notes[index]
+		});
 </script>
 
 {#if notes.length > 0}
@@ -24,6 +26,3 @@
 {:else}
 	<Text>{NO_NOTES[$language]}</Text>
 {/if}
-
-<style lang="scss">
-</style>

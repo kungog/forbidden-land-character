@@ -6,24 +6,29 @@ const ACTIVE_LANGUAGE = MAIN_LANGUAGES[0];
 export const activeMenu = writable<MenuItems>();
 export const language = writable(ACTIVE_LANGUAGE);
 
+export type ModalKeys =
+	| 'armor'
+	| 'weapons'
+	| 'skills'
+	| 'inventory'
+	| 'talents'
+	| 'relations'
+	| 'notes'
+	| 'animals'
+	| 'condition'
+	| 'basic_properties'
+	| 'consumables'
+	| 'power_points'
+	| 'money';
+
 interface Modal {
-	type: string | number | null;
-	id:
-		| 'armor'
-		| 'weapon'
-		| 'skill'
-		| 'inventory'
-		| 'talent'
-		| 'relation'
-		| 'note'
-		| 'animal'
-		| 'condition'
-		| 'properties'
-		| 'consumables'
-		| 'points'
-		| 'experience'
-		| 'equipment'
-		| 'money';
+	id: Character['_id']; // _id,
+	key: ModalKeys;
+	type: 'POST' | 'PUT' | 'DELETE';
+	index: number;
+	value: any; // formValues
+	objectKey?: keyof Skills;
+	talentId?: string;
 }
 
 export const modal = writable<Modal | null>(null);

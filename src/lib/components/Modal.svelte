@@ -6,18 +6,29 @@
 	import TrashIcon from './Icons/General/TrashIcon.svelte';
 	import Text from './Text.svelte';
 
-	const getFormData = (selector: any) => {
+	const handlePostForm = async (selector: any) => {
 		let formValues = Object.fromEntries(new FormData(document.querySelector(selector)));
-		console.log(formValues);
+
+		console.log(formValues, $modal);
+		const response = await fetch('/api/weapon', {
+			method: 'POST',
+			body: JSON.stringify({ formValues, modal: $modal }),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+
+		const data = await response.json();
+		console.log(data);
 	};
 
-	const noLabels = ['weapon', 'newWeapon', 'newTalent'];
+	const noLabels = ['weapons', 'newWeapon', 'newTalent'];
 	const getLabel = () => {
 		if (!$modal?.id) return '';
 
 		if (noLabels.includes($modal?.id)) return '';
-		if ($modal?.id === 'skill' && typeof $modal?.type === 'string') {
-			const skillObject = getSkillObject($modal?.type as keyof Skills, 0);
+		if ($modal?.key === 'skills' && $modal?.objectKey) {
+			const skillObject = getSkillObject($modal?.objectKey as keyof Skills, 0);
 			return skillObject.languages[$language];
 		}
 
@@ -26,6 +37,8 @@
 
 	const label = getLabel();
 	const save = GENERAL_LABELS[$language]['save'];
+
+	console.log('------------>', $modal);
 </script>
 
 <dialog>
@@ -37,13 +50,14 @@
 		</div>
 
 		<div class="content">
-			<form id="modalForm">
+			<form id="modalForm" method="POST">
 				<slot />
 			</form>
 		</div>
 		<div class="bottom">
 			<button on:click={() => ($modal = null)}><TrashIcon /></button>
-			<button name="submit" on:click={() => getFormData('#modalForm')}>{capitalize(save)}</button>
+			<button name="submit" on:click={() => handlePostForm('#modalForm')}>{capitalize(save)}</button
+			>
 		</div>
 	</div>
 </dialog>

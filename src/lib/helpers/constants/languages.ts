@@ -1,23 +1,23 @@
 export const BASE_LABELS = {
 	sv: {
 		experience: 'Färdigheter',
-		talent: 'Talanger',
+		talents: 'Talanger',
 		inventory: 'Ägodelar',
-		animal: 'Djur',
-		relation: 'Relationer',
+		animals: 'Djur',
+		relations: 'Relationer',
 		armor: 'Utrustning',
-		note: 'Anteckningar',
-		weapon: 'Vapen'
+		notes: 'Anteckningar',
+		weapons: 'Vapen'
 	},
 	en: {
 		experience: 'Experience',
-		talent: 'Talents',
+		talents: 'Talents',
 		inventory: 'Inventory',
-		animal: 'Animals',
-		relation: 'Relations',
+		animals: 'Animals',
+		relations: 'Relations',
 		armor: 'Equipments',
-		note: 'Notes',
-		weapon: 'Weapons'
+		notes: 'Notes',
+		weapons: 'Weapons'
 	}
 };
 
@@ -62,7 +62,7 @@ export const GENERAL_LABELS = {
 		armor: 'Rustning',
 		shield: 'Sköld',
 		additionals: 'Övrigt',
-		weapon: 'Vapen',
+		weapons: 'Vapen',
 		save: 'Spara',
 		note: 'Anteckning',
 		gold: 'Guld',
@@ -99,7 +99,7 @@ export const GENERAL_LABELS = {
 		armor: 'Armor',
 		shield: 'Shield',
 		additionals: 'Additionals',
-		weapon: 'Weapon',
+		weapons: 'Weapon',
 		save: 'Save',
 		note: 'Note',
 		gold: 'Gold',

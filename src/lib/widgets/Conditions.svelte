@@ -9,12 +9,15 @@
 	const { condition, critical_injuries: critical }: Character = $page.data.character;
 	const items = createArrayFromObject(condition);
 
-	const handleConditionModal = () => {
-		$modal = {
-			type: '',
-			id: 'condition'
-		};
-	};
+	//FIXME
+	const handleConditionModal = () =>
+		($modal = {
+			id: $page.data.character._id,
+			type: 'PUT',
+			key: 'condition',
+			value: condition,
+			index: 0
+		});
 
 	const layout = gridLayout ? 'grid' : 'flex space-b';
 </script>

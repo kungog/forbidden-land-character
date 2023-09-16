@@ -14,12 +14,12 @@
 	const component = {
 		experience: ExperienceIcon,
 		inventory: InventoryIcon,
-		animal: HorseIcon,
-		relation: RelationIcon,
-		talent: TalentIcon,
+		animals: HorseIcon,
+		relations: RelationIcon,
+		talents: TalentIcon,
 		armor: ArmorIcon,
-		weapon: WeaponIcon,
-		note: NotesIcon
+		weapons: WeaponIcon,
+		notes: NotesIcon
 	};
 
 	const handleChange = () => ($activeMenu = type);
@@ -39,7 +39,7 @@
 		width: 100%;
 		background-color: var(--color-blue);
 		border-radius: 0 var(--radius-04) var(--radius-04) 0;
-		padding: var(--spacing-06) 0;
+		padding: var(--spacing-04) 0;
 	}
 
 	button.active {

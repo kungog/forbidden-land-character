@@ -9,12 +9,14 @@
 
 	const LABEL = GENERAL_LABELS[$language];
 
-	const handleInventoryModal = (type: number) => {
-		$modal = {
-			type,
-			id: 'inventory'
-		};
-	};
+	const handleInventoryModal = (index: number) =>
+		($modal = {
+			id: $page.data.character._id,
+			type: 'PUT',
+			key: 'inventory',
+			index: index,
+			value: inventory[index]
+		});
 </script>
 
 {#each inventory as item, index}

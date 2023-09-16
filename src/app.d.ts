@@ -10,13 +10,13 @@ declare global {
 
 	type MenuItems =
 		| 'experience'
-		| 'talent'
+		| 'talents'
 		| 'armor'
-		| 'weapon'
-		| 'animal'
+		| 'weapons'
+		| 'animals'
 		| 'inventory'
-		| 'relation'
-		| 'note';
+		| 'relations'
+		| 'notes';
 
 	interface Character {
 		animals: Animal[];

@@ -5,19 +5,22 @@
 	import Experience from './Parts/Experience.svelte';
 	import PowerPoint from './Parts/PowerPoint.svelte';
 	export let gridLayout = false;
-	const { experience, power_points: powerPoints }: Character = $page.data.character;
+	const { experience, power_points }: Character = $page.data.character;
 
-	const handlePointsModal = () => {
-		$modal = {
-			type: '',
-			id: 'points'
-		};
-	};
+	//FIXME
+	const handlePointsModal = () =>
+		($modal = {
+			id: $page.data.character._id,
+			type: 'PUT',
+			key: 'power_points',
+			index: 0,
+			value: power_points
+		});
 
 	const layout = gridLayout ? 'grid' : 'flex space-b';
 </script>
 
 <Box className="points {layout} align-c" size="small" handleClick={() => handlePointsModal()}>
 	<Experience {experience} />
-	<PowerPoint {powerPoints} />
+	<PowerPoint {power_points} />
 </Box>

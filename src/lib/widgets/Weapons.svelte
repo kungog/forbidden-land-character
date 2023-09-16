@@ -11,12 +11,14 @@
 	const skill = 'strength_test';
 	const skillObject = getSkillObject(skill, skills[skill]);
 
-	const handleWeaponModal = (type: null | number) => {
-		$modal = {
-			type,
-			id: 'weapon'
-		};
-	};
+	const handleWeaponModal = (index: number) =>
+		($modal = {
+			id: $page.data.character._id,
+			type: 'PUT',
+			key: 'weapons',
+			index: index,
+			value: weapons
+		});
 </script>
 
 <div class="flex column weapons">

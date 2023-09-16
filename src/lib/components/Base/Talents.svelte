@@ -6,12 +6,14 @@
 
 	const { talents }: Character = $page.data.character;
 
-	const handleTalentModal = (type: number) => {
-		$modal = {
-			type,
-			id: 'talent'
-		};
-	};
+	const handleTalentModal = (index: number) =>
+		($modal = {
+			id: $page.data.character._id,
+			type: 'PUT',
+			key: 'talents',
+			index: index,
+			value: talents[index]
+		});
 </script>
 
 {#each talents as talent, index}

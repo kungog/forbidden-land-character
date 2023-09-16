@@ -9,12 +9,15 @@
 
 	const items = createArrayFromObject(consumables);
 
-	const handleConsumablesModal = () => {
-		$modal = {
-			type: '',
-			id: 'consumables'
-		};
-	};
+	//FIXME
+	const handleConsumablesModal = () =>
+		($modal = {
+			id: $page.data.character._id,
+			type: 'PUT',
+			key: 'consumables',
+			index: 0,
+			value: consumables
+		});
 </script>
 
 <Box className="consumables" size="medium" handleClick={() => handleConsumablesModal()}>

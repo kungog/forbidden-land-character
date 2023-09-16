@@ -1,35 +1,35 @@
-<script>
+<script lang="ts">
 	import { modal } from '$lib/store';
 	import Modal from '$lib/components/Modal.svelte';
-	import ModalArmor from '$lib/components/Modals/ModalArmor.svelte';
-	import ModalWeapon from '$lib/components/Modals/ModalWeapon.svelte';
-	import ModalSkill from '$lib/components/Modals/ModalSkill.svelte';
-	import ModalTalent from '$lib/components/Modals/ModalTalent.svelte';
-	import ModalInventory from '$lib/components/Modals/ModalInventory.svelte';
-	import ModalRelation from '$lib/components/Modals/ModalRelation.svelte';
-	import ModalNote from '$lib/components/Modals/ModalNote.svelte';
-	import ModalAnimal from '$lib/components/Modals/ModalAnimal.svelte';
-	import ModalMoney from '$lib/components/Modals/ModalMoney.svelte';
-	import ModalProperties from '$lib/components/Modals/ModalProperties.svelte';
-	import ModalCondition from '$lib/components/Modals/ModalCondition.svelte';
-	import ModalPoints from '$lib/components/Modals/ModalPoints.svelte';
-	import ModalConsumables from '$lib/components/Modals/ModalConsumables.svelte';
+	import ModalArmor from '$lib/modals/ModalArmor.svelte';
+	import ModalWeapon from '$lib/modals/ModalWeapon.svelte';
+	import ModalSkill from '$lib/modals/ModalSkill.svelte';
+	import ModalTalent from '$lib/modals/ModalTalent.svelte';
+	import ModalInventory from '$lib/modals/ModalInventory.svelte';
+	import ModalRelation from '$lib/modals/ModalRelation.svelte';
+	import ModalNote from '$lib/modals/ModalNote.svelte';
+	import ModalAnimal from '$lib/modals/ModalAnimal.svelte';
+	import ModalMoney from '$lib/modals/ModalMoney.svelte';
+	import ModalProperties from '$lib/modals/ModalProperties.svelte';
+	import ModalCondition from '$lib/modals/ModalCondition.svelte';
+	import ModalPoints from '$lib/modals/ModalPoints.svelte';
+	import ModalConsumables from '$lib/modals/ModalConsumables.svelte';
 
-	$: id = $modal?.id;
+	$: id = $modal?.key;
 
 	const component = {
 		armor: ModalArmor,
-		weapon: ModalWeapon,
-		skill: ModalSkill,
+		weapons: ModalWeapon,
+		skills: ModalSkill,
 		inventory: ModalInventory,
-		talent: ModalTalent,
-		relation: ModalRelation,
+		talents: ModalTalent,
+		relations: ModalRelation,
 		notes: ModalNote,
-		animal: ModalAnimal,
+		animals: ModalAnimal,
 		condition: ModalCondition,
-		properties: ModalProperties,
+		basic_properties: ModalProperties,
 		consumables: ModalConsumables,
-		points: ModalPoints,
+		power_points: ModalPoints,
 		money: ModalMoney
 	};
 </script>

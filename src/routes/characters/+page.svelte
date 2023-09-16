@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import Divider from '$lib/components/Divider.svelte';
 	import Grid from '$lib/components/Grid.svelte';
 	import PickCharacter from '$lib/components/PickCharacter.svelte';

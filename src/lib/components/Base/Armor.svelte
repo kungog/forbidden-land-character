@@ -8,12 +8,14 @@
 		armor: { head, body, shield }
 	}: Character = $page.data.character;
 
-	const handleArmor = () => {
-		$modal = {
-			type: null,
-			id: 'armor'
-		};
-	};
+	const handleArmor = () =>
+		($modal = {
+			id: $page.data.character._id,
+			type: 'PUT',
+			key: 'armor',
+			index: 0,
+			value: { head, body, shield }
+		});
 </script>
 
 <Box handleClick={() => handleArmor()}>

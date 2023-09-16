@@ -7,12 +7,14 @@
 
 	const { relations }: Character = $page.data.character;
 
-	const handleRelationModal = (type: number) => {
-		$modal = {
-			type,
-			id: 'relation'
-		};
-	};
+	const handleRelationModal = (index: number) =>
+		($modal = {
+			id: $page.data.character._id,
+			type: 'PUT',
+			key: 'relations',
+			index: index,
+			value: relations[index]
+		});
 </script>
 
 {#if relations.length > 0}

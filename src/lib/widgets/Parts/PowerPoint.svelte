@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Text from '$lib/components/Text.svelte';
-	export let powerPoints: Character['power_points'];
+	export let power_points: Character['power_points'];
 
-	const kpString = `${powerPoints}/10`;
+	const kpString = `${power_points}/10`;
 </script>
 
 <div>

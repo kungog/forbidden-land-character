@@ -4,21 +4,24 @@
 	import Base from '$lib/components/Character/Base.svelte';
 	import { onMount } from 'svelte';
 	import { activeMenu } from '$lib/store';
-
+	import type { PageData } from './$types';
+	export let data: PageData;
 	const MENU_ITEMS: MenuItems[] = [
-		'talent',
+		'talents',
 		'experience',
 		'armor',
-		'weapon',
-		'animal',
+		'weapons',
+		'animals',
 		'inventory',
-		'relation',
-		'note'
+		'relations',
+		'notes'
 	];
 
 	onMount(() => {
 		$activeMenu = MENU_ITEMS[0];
 	});
+
+	console.log(data.character);
 </script>
 
 <Dashboard />

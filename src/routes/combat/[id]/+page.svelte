@@ -5,7 +5,7 @@
 	import { onMount } from 'svelte';
 	import { activeMenu } from '$lib/store';
 
-	const MENU_ITEMS: MenuItems[] = ['talent', 'weapon'];
+	const MENU_ITEMS: MenuItems[] = ['talents', 'weapons'];
 	onMount(() => {
 		$activeMenu = MENU_ITEMS[0];
 	});

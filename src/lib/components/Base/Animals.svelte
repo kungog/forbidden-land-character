@@ -19,16 +19,19 @@
 	$: activeIndex = null as null | number;
 	$: inventory = [] as [] | Animal['inventory'];
 
-	const handleModal = (type: number | null, id: 'animal' | 'inventory') => {
-		$modal = {
-			type,
-			id
-		};
-	};
+	//FIXME
+	const handleModal = (index: number) =>
+		($modal = {
+			id: $page.data.character._id,
+			type: 'PUT',
+			key: 'animals',
+			index: index,
+			value: animals[index]
+		});
 
 	const handleAnimalClick = (index: number) => {
 		if (index !== activeIndex) return (activeIndex = index);
-		return handleModal(index, 'animal');
+		return handleModal(index);
 	};
 
 	onMount(() => {
@@ -60,14 +63,14 @@
 
 <div class="test flex space-b">
 	<Text size="normal">{BASE_LABEL['inventory']}</Text>
-	<Box handleClick={() => handleModal(null, 'inventory')}>
+	<Box handleClick={() => alert('fix')}>
 		<Text size="large">+</Text>
 	</Box>
 </div>
 
 {#if inventory.length > 0}
 	{#each inventory as item, index}
-		<Box handleClick={() => handleModal(index, 'inventory')}>
+		<Box handleClick={() => alert('fix --')}>
 			<div class="upper-part">
 				<div class="flex space-b">
 					<Text size="normal">{item.name}</Text>

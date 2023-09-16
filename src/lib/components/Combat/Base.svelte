@@ -1,24 +1,27 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { BASE_LABELS } from '$lib/helpers/constants/languages';
 	import Text from '../Text.svelte';
-	import { activeMenu, language, modal } from '$lib/store';
+	import { activeMenu, language, modal, type ModalKeys } from '$lib/store';
 	import Talents from '../Base/Talents.svelte';
 	import Box from '../Box.svelte';
 	import Weapons from '../Base/Weapons.svelte';
 
-	$: menuItem = $activeMenu as 'weapon' | 'talent';
-	const hide = ['weapon', 'talent'];
+	$: menuItem = $activeMenu as 'weapons' | 'talents';
+	const hide = ['weapons', 'talents'];
 	const component = {
-		weapon: Weapons,
-		talent: Talents
+		weapons: Weapons,
+		talents: Talents
 	};
 
-	const handleModal = () => {
-		$modal = {
-			type: null,
-			id: menuItem
-		};
-	};
+	const handleModal = () =>
+		($modal = {
+			id: $page.data.character._id,
+			type: 'POST',
+			key: menuItem as ModalKeys,
+			value: null,
+			index: 0
+		});
 </script>
 
 <div>

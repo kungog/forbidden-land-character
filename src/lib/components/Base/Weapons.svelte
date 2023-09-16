@@ -6,12 +6,14 @@
 
 	const { weapons }: Character = $page.data.character;
 
-	const handleWeaponModal = (type: null | number) => {
-		$modal = {
-			type,
-			id: 'weapon'
-		};
-	};
+	const handleWeaponModal = (index: number) =>
+		($modal = {
+			id: $page.data.character._id,
+			type: 'PUT',
+			key: 'weapons',
+			index: index,
+			value: weapons[index]
+		});
 </script>
 
 {#each weapons as weapon, index}
