@@ -2,11 +2,11 @@
 	import { page } from '$app/stores';
 	import { language, modal } from '$lib/store';
 	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
-	import Textarea from '../Textarea.svelte';
+	import Textarea from '$lib/components/Textarea.svelte';
 
 	const { relations }: Character = $page.data.character;
 	const LABEL = GENERAL_LABELS[$language];
-	const relation = relations[$modal?.type] ?? '';
+	const relation = $modal ? relations[$modal?.index] : '';
 </script>
 
 <Textarea iLabel={LABEL.relation} iValue={relation} iFor="relation" />

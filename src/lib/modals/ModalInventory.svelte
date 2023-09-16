@@ -3,12 +3,12 @@
 	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
 	import { emptyInventoryObject } from '$lib/helpers/getCharacterObject';
 	import { language, modal } from '$lib/store';
-	import Input from '../Input.svelte';
+	import Input from '$lib/components/Input.svelte';
 	import GridTemplate from './GridTemplate.svelte';
 
 	const { inventory }: Character = $page.data.character;
 	const LABEL = GENERAL_LABELS[$language];
-	const item = typeof $modal?.type === 'number' ? inventory[$modal.type] : emptyInventoryObject;
+	const item = $modal ? inventory[$modal.index] : emptyInventoryObject;
 </script>
 
 <GridTemplate template="1fr">

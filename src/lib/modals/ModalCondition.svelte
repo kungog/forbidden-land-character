@@ -2,8 +2,8 @@
 	import { page } from '$app/stores';
 	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
 	import { language } from '$lib/store';
-	import BooleanRadio from '../BooleanRadio.svelte';
-	import Input from '../Input.svelte';
+	import BooleanRadio from '$lib/components/BooleanRadio.svelte';
+	import Input from '$lib/components/Input.svelte';
 	import GridTemplate from './GridTemplate.svelte';
 
 	const { condition, critical_injuries: critical }: Character = $page.data.character;

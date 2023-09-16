@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { modal } from '$lib/store';
-	import Text from '../Text.svelte';
-	import RadioButton from '../RadioButton.svelte';
+	import Text from '$lib/components/Text.svelte';
+	import RadioButton from '$lib/components/RadioButton.svelte';
 	import { emptyTalentObject } from '$lib/helpers/getCharacterObject';
 
 	const { talents }: Character = $page.data.character;
 
 	const getTalent = () => {
-		const talent = talents.find((talent) => talent.id === $modal?.type);
+		const talent = talents.find((talent) => talent.id === $modal?.talentId);
 		if (!talent) return emptyTalentObject;
 		return talent;
 	};
@@ -18,7 +18,7 @@
 
 <div>
 	<Text selfCenter={false} size="normal">FV</Text>
-	<RadioButton iValue={talent.value} iFor={$modal?.type} amount={3} />
+	<RadioButton iValue={talent.value} iFor={$modal?.talentId ?? ''} amount={3} />
 </div>
 
 <style lang="scss">

@@ -3,8 +3,8 @@
 	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
 	import { capitalize } from '$lib/helpers/utilites';
 	import { language } from '$lib/store';
-	import Input from '../Input.svelte';
-	import Text from '../Text.svelte';
+	import Input from '$lib/components/Input.svelte';
+	import Text from '$lib/components/Text.svelte';
 	import GridTemplate from './GridTemplate.svelte';
 
 	const { basic_properties: properties }: Character = $page.data.character;

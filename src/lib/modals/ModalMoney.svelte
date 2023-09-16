@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
 	import { language } from '$lib/store';
-	import Input from '../Input.svelte';
+	import Input from '$lib/components/Input.svelte';
 	import GridTemplate from './GridTemplate.svelte';
 
 	const { money }: Character = $page.data.character;
