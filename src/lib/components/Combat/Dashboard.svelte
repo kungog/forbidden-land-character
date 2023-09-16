@@ -6,7 +6,7 @@
 </script>
 
 <div>
-	<Conditions />
+	<Conditions gridLayout />
 	<Armor />
 	<Arrows />
 	<Points gridLayout />

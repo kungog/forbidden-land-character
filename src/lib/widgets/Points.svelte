@@ -4,7 +4,7 @@
 	import Box from '$lib/components/Box.svelte';
 	import Experience from './Parts/Experience.svelte';
 	import PowerPoint from './Parts/PowerPoint.svelte';
-	export let gridLayout: boolean = false;
+	export let gridLayout = false;
 	const { experience, power_points: powerPoints }: Character = $page.data.character;
 
 	const handlePointsModal = () => {

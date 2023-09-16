@@ -4,6 +4,7 @@
 	import Box from '$lib/components/Box.svelte';
 	import createArrayFromObject from '$lib/helpers/getObjectKeys';
 	import Condition from './Parts/Condition.svelte';
+	export let gridLayout = false;
 
 	const { condition, critical_injuries: critical }: Character = $page.data.character;
 	const items = createArrayFromObject(condition);
@@ -14,10 +15,12 @@
 			id: 'condition'
 		};
 	};
+
+	const layout = gridLayout ? 'grid' : 'flex space-b';
 </script>
 
 <Box size="small" handleClick={() => handleConditionModal()} className="condition">
-	<div class="flex space-b align-c">
+	<div class="{layout} align-c">
 		<div class="flex align-c">
 			{critical ?? '-'}
 		</div>
@@ -28,3 +31,9 @@
 		</div>
 	</div>
 </Box>
+
+<style lang="scss">
+	.grid {
+		gap: var(--spacing-10);
+	}
+</style>
