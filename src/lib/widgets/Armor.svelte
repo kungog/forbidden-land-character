@@ -17,41 +17,39 @@
 			id: 'armor'
 		};
 	};
+
+	const iconSize = 22;
 </script>
 
-<Box className="armor grid" handleClick={() => handleArmor()}>
+<Box className="armor grid align-c" handleClick={() => handleArmor()}>
 	<div class="flex space-b">
-		<div class="flex column">
-			<svelte:component this={HelmetIcon} />
+		<div class="flex align-c">
+			<svelte:component this={HelmetIcon} height={iconSize} width={iconSize} />
 
-			<Text size="normal">{head.name ?? '-'}</Text>
+			<Text>{head.name ?? '-'}</Text>
 		</div>
-		<Text>{head.value ?? 0}</Text>
+		<Text size="normal">{head.value ?? 0}</Text>
 	</div>
 
 	<div class="flex space-b">
-		<div class="flex column">
-			<svelte:component this={BodyIcon} />
-			<Text size="normal">{body.name ?? '-'}</Text>
+		<div class="flex align-c">
+			<svelte:component this={BodyIcon} height={iconSize} width={iconSize} />
+			<Text>{body.name ?? '-'}</Text>
 		</div>
-		<Text>{body.value ?? 0}</Text>
+		<Text size="normal">{body.value ?? 0}</Text>
 	</div>
 
 	<div class="flex space-b">
-		<div class="flex column">
-			<svelte:component this={ShieldIcon} />
-			<Text size="normal">{shield.name ?? '-'}</Text>
+		<div class="flex align-c">
+			<svelte:component this={ShieldIcon} height={iconSize} width={iconSize} />
+			<Text>{shield.name ?? '-'}</Text>
 		</div>
-		<Text>{shield.value ?? 0}</Text>
+		<Text size="normal">{shield.value ?? 0}</Text>
 	</div>
 </Box>
 
 <style lang="scss">
-	.space-b:not(:last-child) {
-		margin-bottom: var(--spacing-18);
-
-		> .column {
-			gap: var(--spacing-10);
-		}
+	.flex.align-c {
+		gap: var(--spacing-10);
 	}
 </style>
