@@ -5,10 +5,11 @@
 	import { language, modal } from '$lib/store';
 	import Input from '$lib/components/Input.svelte';
 	import GridTemplate from './GridTemplate.svelte';
+	import { typeCheckPost } from '$lib/helpers/utilites';
 
 	const { inventory }: Character = $page.data.character;
 	const LABEL = GENERAL_LABELS[$language];
-	const item = $modal ? inventory[$modal.index] : emptyInventoryObject;
+	const item = !typeCheckPost($modal) ? inventory[$modal.index] : emptyInventoryObject;
 </script>
 
 <GridTemplate template="1fr">

@@ -31,4 +31,4 @@ interface Modal {
 	talentId?: string;
 }
 
-export const modal = writable<Modal | null>(null);
+export const modal = writable<Modal>();

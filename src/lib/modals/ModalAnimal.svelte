@@ -5,10 +5,11 @@
 	import { language, modal } from '$lib/store';
 	import Input from '$lib/components/Input.svelte';
 	import GridTemplate from './GridTemplate.svelte';
+	import { typeCheckPost } from '$lib/helpers/utilites';
 
 	const { animals }: Character = $page.data.character;
 	const LABEL = GENERAL_LABELS[$language];
-	const animal = $modal ? animals[$modal.index] : emptyAnimalObject;
+	const animal = !typeCheckPost($modal) ? animals[$modal.index] : emptyAnimalObject;
 </script>
 
 <GridTemplate template="1fr">

@@ -2,6 +2,14 @@ export const nullCheck = (value: any) => {
 	return value || value === '' ? value : null;
 };
 
+export const nullCheckNumber = (value: any) => {
+	return !!(value && typeof value === 'number');
+};
+
+export const typeCheckPost = (value: any): boolean => {
+	return !!value && value.type === 'POST';
+};
+
 export const capitalize = (string: string): string => {
 	return string.toUpperCase();
 };
