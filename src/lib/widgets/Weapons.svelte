@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { modal } from '$lib/store';
+	import { modal, showModal } from '$lib/store';
 	import Box from '$lib/components/Box.svelte';
 	import Dices from '$lib/components/Dices.svelte';
 	import Text from '$lib/components/Text.svelte';
@@ -11,14 +11,16 @@
 	const skill = 'strength_test';
 	const skillObject = getSkillObject(skill, skills[skill]);
 
-	const handleWeaponModal = (index: number) =>
-		($modal = {
+	const handleWeaponModal = (index: number) => {
+		$showModal = true;
+		$modal = {
 			id: $page.data.character._id,
 			type: 'PUT',
 			key: 'weapons',
 			index: index,
 			value: weapons
-		});
+		};
+	};
 </script>
 
 <div class="flex column weapons">

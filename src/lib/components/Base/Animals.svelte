@@ -8,7 +8,7 @@
 		BASE_LABELS,
 		NO_INVENTORY_ANIMAL
 	} from '$lib/helpers/constants/languages';
-	import { language, modal } from '$lib/store';
+	import { language, modal, showModal } from '$lib/store';
 	import { onMount } from 'svelte';
 
 	const { animals }: Character = $page.data.character;
@@ -20,14 +20,16 @@
 	$: inventory = [] as [] | Animal['inventory'];
 
 	//FIXME
-	const handleModal = (index: number) =>
-		($modal = {
+	const handleModal = (index: number) => {
+		$showModal = true;
+		$modal = {
 			id: $page.data.character._id,
 			type: 'PUT',
 			key: 'animals',
 			index: index,
 			value: animals[index]
-		});
+		};
+	};
 
 	const handleAnimalClick = (index: number) => {
 		if (index !== activeIndex) return (activeIndex = index);

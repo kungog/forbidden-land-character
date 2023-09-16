@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { modal } from '$lib/store';
+	import { modal, showModal } from '$lib/store';
 	import Box from '$lib/components/Box.svelte';
 	import createArrayFromObject from '$lib/helpers/getObjectKeys';
 	import Condition from './Parts/Condition.svelte';
@@ -10,14 +10,16 @@
 	const items = createArrayFromObject(condition);
 
 	//FIXME
-	const handleConditionModal = () =>
-		($modal = {
+	const handleConditionModal = () => {
+		$showModal = true;
+		$modal = {
 			id: $page.data.character._id,
 			type: 'PUT',
 			key: 'condition',
 			value: condition,
 			index: 0
-		});
+		};
+	};
 
 	const layout = gridLayout ? 'grid' : 'flex space-b';
 </script>

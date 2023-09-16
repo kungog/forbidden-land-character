@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { modal } from '$lib/store';
+	import { modal, showModal } from '$lib/store';
 	import Text from '$lib/components/Text.svelte';
 	import RadioButton from '$lib/components/RadioButton.svelte';
 	import { emptyTalentObject } from '$lib/helpers/getCharacterObject';

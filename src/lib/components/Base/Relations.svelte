@@ -3,18 +3,20 @@
 	import Box from '$lib/components/Box.svelte';
 	import Text from '$lib/components/Text.svelte';
 	import { NO_RELATIONS } from '$lib/helpers/constants/languages';
-	import { language, modal } from '$lib/store';
+	import { language, modal, showModal } from '$lib/store';
 
 	const { relations }: Character = $page.data.character;
 
-	const handleRelationModal = (index: number) =>
-		($modal = {
+	const handleRelationModal = (index: number) => {
+		$showModal = true;
+		$modal = {
 			id: $page.data.character._id,
 			type: 'PUT',
 			key: 'relations',
 			index: index,
 			value: relations[index]
-		});
+		};
+	};
 </script>
 
 {#if relations.length > 0}

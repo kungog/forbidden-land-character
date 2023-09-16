@@ -5,6 +5,7 @@ const ACTIVE_LANGUAGE = MAIN_LANGUAGES[0];
 
 export const activeMenu = writable<MenuItems>();
 export const language = writable(ACTIVE_LANGUAGE);
+export const showModal = writable(false);
 
 export type ModalKeys =
 	| 'armor'
@@ -24,7 +25,7 @@ export type ModalKeys =
 interface Modal {
 	id: Character['_id']; // _id,
 	key: ModalKeys;
-	type: 'POST' | 'PUT' | 'DELETE';
+	type: 'NULL' | 'POST' | 'PUT' | 'DELETE';
 	index: number;
 	value: any; // formValues
 	objectKey?: keyof Skills;

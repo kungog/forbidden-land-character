@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import { BASE_LABELS } from '$lib/helpers/constants/languages';
 	import Text from '../Text.svelte';
-	import { activeMenu, language, modal, type ModalKeys } from '$lib/store';
+	import { activeMenu, language, modal, showModal, type ModalKeys } from '$lib/store';
 	import Talents from '../Base/Talents.svelte';
 	import Box from '../Box.svelte';
 	import Weapons from '../Base/Weapons.svelte';
@@ -14,14 +14,16 @@
 		talents: Talents
 	};
 
-	const handleModal = () =>
-		($modal = {
+	const handleModal = () => {
+		$showModal = true;
+		$modal = {
 			id: $page.data.character._id,
 			type: 'POST',
 			key: menuItem as ModalKeys,
 			value: null,
 			index: 0
-		});
+		};
+	};
 </script>
 
 <div>

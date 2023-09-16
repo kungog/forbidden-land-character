@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { language, modal } from '$lib/store';
+	import { language, modal, showModal } from '$lib/store';
 	import Box from '$lib/components/Box.svelte';
 	import Dices from '$lib/components/Dices.svelte';
 	import Text from '$lib/components/Text.svelte';
@@ -28,15 +28,17 @@
 
 	const dices = getSkillDice({ properties: basic_properties, skill: skillObject });
 
-	const handleModal = () =>
-		($modal = {
+	const handleModal = () => {
+		$showModal = true;
+		$modal = {
 			id: $page.data.character._id,
 			type: 'PUT',
 			key: 'skills',
 			objectKey: skill,
 			value: value,
 			index: 0
-		});
+		};
+	};
 </script>
 
 <Box handleClick={() => handleModal()}>

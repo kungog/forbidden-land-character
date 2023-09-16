@@ -2,7 +2,7 @@
 	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
 	import getSkillObject from '$lib/helpers/getSkills';
 	import { capitalize } from '$lib/helpers/utilites';
-	import { language, modal } from '$lib/store';
+	import { language, modal, showModal } from '$lib/store';
 	import TrashIcon from './Icons/General/TrashIcon.svelte';
 	import Text from './Text.svelte';
 
@@ -37,16 +37,15 @@
 
 	const label = getLabel();
 	const save = GENERAL_LABELS[$language]['save'];
-
-	console.log('------------>', $modal);
+	const handleCloseModal = () => ($showModal = false);
 </script>
 
 <dialog>
-	<button class="overlay" on:click={() => ($modal = null)} />
+	<button class="overlay" on:click={() => handleCloseModal()} />
 	<div class="modal">
 		<div class="top">
 			<Text size="medium">{capitalize(label)}</Text>
-			<button on:click={() => ($modal = null)}>x</button>
+			<button on:click={() => handleCloseModal()}>x</button>
 		</div>
 
 		<div class="content">
@@ -55,7 +54,7 @@
 			</form>
 		</div>
 		<div class="bottom">
-			<button on:click={() => ($modal = null)}><TrashIcon /></button>
+			<button on:click={() => handleCloseModal()}><TrashIcon /></button>
 			<button name="submit" on:click={() => handlePostForm('#modalForm')}>{capitalize(save)}</button
 			>
 		</div>

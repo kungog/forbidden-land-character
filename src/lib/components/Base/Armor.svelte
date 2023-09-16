@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { modal } from '$lib/store';
+	import { modal, showModal } from '$lib/store';
 	import Box from '$lib/components/Box.svelte';
 	import Equipment from './Parts/Equipment.svelte';
 
@@ -8,14 +8,16 @@
 		armor: { head, body, shield }
 	}: Character = $page.data.character;
 
-	const handleArmor = () =>
-		($modal = {
+	const handleArmor = () => {
+		$showModal = true;
+		$modal = {
 			id: $page.data.character._id,
 			type: 'PUT',
 			key: 'armor',
 			index: 0,
 			value: { head, body, shield }
-		});
+		};
+	};
 </script>
 
 <Box handleClick={() => handleArmor()}>

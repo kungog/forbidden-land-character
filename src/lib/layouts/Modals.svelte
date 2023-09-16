@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { modal } from '$lib/store';
+	import { modal, showModal } from '$lib/store';
 	import Modal from '$lib/components/Modal.svelte';
 	import ModalArmor from '$lib/modals/ModalArmor.svelte';
 	import ModalWeapon from '$lib/modals/ModalWeapon.svelte';
@@ -16,6 +16,7 @@
 	import ModalConsumables from '$lib/modals/ModalConsumables.svelte';
 
 	$: id = $modal?.key;
+	$: show = $showModal;
 
 	const component = {
 		armor: ModalArmor,
@@ -34,7 +35,7 @@
 	};
 </script>
 
-{#if $modal && id}
+{#if $modal && id && show}
 	<Modal>
 		<svelte:component this={component[id]} />
 	</Modal>

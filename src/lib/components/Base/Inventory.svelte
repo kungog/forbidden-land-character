@@ -2,21 +2,23 @@
 	import { page } from '$app/stores';
 	import Text from '$lib/components/Text.svelte';
 	import Box from '$lib/components/Box.svelte';
-	import { language, modal } from '$lib/store';
+	import { language, modal, showModal } from '$lib/store';
 	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
 
 	const { inventory }: Character = $page.data.character;
 
 	const LABEL = GENERAL_LABELS[$language];
 
-	const handleInventoryModal = (index: number) =>
-		($modal = {
+	const handleInventoryModal = (index: number) => {
+		$showModal = true;
+		$modal = {
 			id: $page.data.character._id,
 			type: 'PUT',
 			key: 'inventory',
 			index: index,
 			value: inventory[index]
-		});
+		};
+	};
 </script>
 
 {#each inventory as item, index}

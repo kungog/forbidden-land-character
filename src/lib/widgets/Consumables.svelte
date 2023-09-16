@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { modal } from '$lib/store';
+	import { modal, showModal } from '$lib/store';
 	import createArrayFromObject from '$lib/helpers/getObjectKeys';
 	import Box from '$lib/components/Box.svelte';
 	import Consumable from './Parts/Consumable.svelte';
@@ -10,14 +10,16 @@
 	const items = createArrayFromObject(consumables);
 
 	//FIXME
-	const handleConsumablesModal = () =>
-		($modal = {
+	const handleConsumablesModal = () => {
+		$showModal = true;
+		$modal = {
 			id: $page.data.character._id,
 			type: 'PUT',
 			key: 'consumables',
 			index: 0,
 			value: consumables
-		});
+		};
+	};
 </script>
 
 <Box className="consumables" size="medium" handleClick={() => handleConsumablesModal()}>
