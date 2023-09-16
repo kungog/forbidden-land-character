@@ -20,7 +20,7 @@
 </script>
 
 <div class="flex column weapons">
-	{#each [...weapons, ...weapons, ...weapons, ...weapons, ...weapons] as weapon, index}
+	{#each weapons as weapon, index}
 		<Box handleClick={() => handleWeaponModal(index)}>
 			<div class="upper-part">
 				<div class="flex space-b">
