@@ -1,7 +1,3 @@
-<script>
-	import Container from '$lib/components/Container.svelte';
-</script>
-
 <footer>
 	<a href="/characters/64a930716ed04fcc1e9d5c30">
 		<svg width="38" height="37" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
