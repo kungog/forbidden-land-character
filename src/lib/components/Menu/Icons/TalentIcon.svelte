@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { checkIfSmallNumber } from './helpers';
-
-	export let height: number = 30,
-		width: number = 30;
+	import { checkIfSmallNumber, DEFAULT_NUMBER } from './helpers';
+	export let height = DEFAULT_NUMBER,
+		width = DEFAULT_NUMBER;
 
 	onMount(() => {
 		const number = checkIfSmallNumber();
