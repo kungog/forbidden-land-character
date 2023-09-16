@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { characterActiveMenu } from '$lib/store';
+	import { activeMenu } from '$lib/store';
 	import ArmorIcon from './Icons/ArmorIcon.svelte';
 	import WeaponIcon from './Icons/WeaponIcon.svelte';
 	import ExperienceIcon from './Icons/ExperienceIcon.svelte';
@@ -9,7 +9,7 @@
 	import TalentIcon from './Icons/TalentIcon.svelte';
 	import NotesIcon from './Icons/NotesIcon.svelte';
 
-	export let type: CharacterMenuItems;
+	export let type: MenuItems;
 
 	const component = {
 		experience: ExperienceIcon,
@@ -19,14 +19,11 @@
 		talent: TalentIcon,
 		armor: ArmorIcon,
 		weapon: WeaponIcon,
-		notes: NotesIcon
+		note: NotesIcon
 	};
 
-	const handleChange = () => {
-		$characterActiveMenu = type;
-	};
-
-	$: isActive = type === $characterActiveMenu ? 'active' : null;
+	const handleChange = () => ($activeMenu = type);
+	$: isActive = type === $activeMenu ? 'active' : null;
 </script>
 
 <button on:click={() => handleChange()} class={isActive}>

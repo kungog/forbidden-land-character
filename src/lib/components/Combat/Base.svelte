@@ -1,16 +1,15 @@
 <script lang="ts">
 	import { BASE_LABELS } from '$lib/helpers/constants/languages';
 	import Text from '../Text.svelte';
-	import { combatActiveMenu, language, modal } from '$lib/store';
-	import Skills from '../Base/Skills.svelte';
+	import { activeMenu, language, modal } from '$lib/store';
 	import Talents from '../Base/Talents.svelte';
 	import Box from '../Box.svelte';
+	import Weapons from '../Base/Weapons.svelte';
 
-	$: menuItem = $combatActiveMenu;
-
-	const hide = ['experience'];
+	$: menuItem = $activeMenu as 'weapon' | 'talent';
+	const hide = ['weapon', 'talent'];
 	const component = {
-		experience: Skills,
+		weapon: Weapons,
 		talent: Talents
 	};
 

@@ -1,12 +1,33 @@
 <script lang="ts">
 	import Dashboard from '$lib/components/Character/Dashboard.svelte';
-	import Menu from '$lib/components/Menu/Menu.svelte';
-	import Base from '$lib/components/Combat/Base.svelte';
+	import MenuItem from '$lib/components/Menu/MenuItem.svelte';
+	import Base from '$lib/components/Character/Base.svelte';
+	import { onMount } from 'svelte';
+	import { activeMenu } from '$lib/store';
+
+	const MENU_ITEMS: MenuItems[] = [
+		'talent',
+		'experience',
+		'armor',
+		'weapon',
+		'animal',
+		'inventory',
+		'relation',
+		'note'
+	];
+
+	onMount(() => {
+		$activeMenu = MENU_ITEMS[0];
+	});
 </script>
 
 <Dashboard />
 <div class="flex">
-	<Menu />
+	<aside class="flex column">
+		{#each MENU_ITEMS as item}
+			<MenuItem type={item} />
+		{/each}
+	</aside>
 	<Base />
 </div>
 
@@ -18,5 +39,9 @@
 			);
 		height: calc(var(--body-height-mobile) - 200px);
 		gap: var(--spacing-18);
+	}
+
+	aside {
+		gap: var(--spacing-08);
 	}
 </style>

@@ -8,16 +8,15 @@ declare global {
 		// interface Platform {}
 	}
 
-	type CombatMenuItems = 'experience' | 'talent';
-
-	type CharacterMenuItems =
+	type MenuItems =
 		| 'experience'
 		| 'talent'
-		| 'equipment'
+		| 'armor'
+		| 'weapon'
 		| 'animal'
 		| 'inventory'
 		| 'relation'
-		| 'notes';
+		| 'note';
 
 	interface Character {
 		animals: Animal[];

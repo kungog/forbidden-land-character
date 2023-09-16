@@ -1,15 +1,23 @@
 <script lang="ts">
-	import type { PageData } from './$types';
 	import Dashboard from '$lib/components/Combat/Dashboard.svelte';
-	import Menu from '$lib/components/Menu/Menu.svelte';
+	import MenuItem from '$lib/components/Menu/MenuItem.svelte';
 	import Base from '$lib/components/Combat/Base.svelte';
-	export let data: PageData;
-	console.log('DATA ---->', data.character);
+	import { onMount } from 'svelte';
+	import { activeMenu } from '$lib/store';
+
+	const MENU_ITEMS: MenuItems[] = ['talent', 'weapon'];
+	onMount(() => {
+		$activeMenu = MENU_ITEMS[0];
+	});
 </script>
 
 <Dashboard />
 <div>
-	<Menu combat />
+	<aside class="flex column">
+		{#each MENU_ITEMS as item}
+			<MenuItem type={item} />
+		{/each}
+	</aside>
 	<Base />
 </div>
 
@@ -21,5 +29,9 @@
 			);
 		height: calc(var(--body-height-mobile) - 200px);
 		gap: var(--spacing-18);
+	}
+
+	aside {
+		gap: var(--spacing-08);
 	}
 </style>

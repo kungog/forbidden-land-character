@@ -5,9 +5,9 @@ export const BASE_LABELS = {
 		inventory: 'Ägodelar',
 		animal: 'Djur',
 		relation: 'Relationer',
-		equipment: 'Utrustning',
-		notes: 'Anteckningar',
-		weapons: 'Vapen'
+		armor: 'Utrustning',
+		note: 'Anteckningar',
+		weapon: 'Vapen'
 	},
 	en: {
 		experience: 'Experience',
@@ -15,9 +15,9 @@ export const BASE_LABELS = {
 		inventory: 'Inventory',
 		animal: 'Animals',
 		relation: 'Relations',
-		equipment: 'Equipments',
-		notes: 'Notes',
-		weapons: 'Weapons'
+		armor: 'Equipments',
+		note: 'Notes',
+		weapon: 'Weapons'
 	}
 };
 
