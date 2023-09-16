@@ -36,11 +36,10 @@
 		align-items: center;
 		border: none;
 		justify-content: center;
-		height: 10%;
 		width: 100%;
 		background-color: var(--color-blue);
 		border-radius: 0 var(--radius-04) var(--radius-04) 0;
-		padding: 0;
+		padding: var(--spacing-06) 0;
 	}
 
 	button.active {
