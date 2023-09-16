@@ -40,8 +40,4 @@
 		height: calc(var(--body-height-mobile) - 200px);
 		gap: var(--spacing-18);
 	}
-
-	aside {
-		gap: var(--spacing-08);
-	}
 </style>
