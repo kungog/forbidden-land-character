@@ -1,4 +1,5 @@
-<script>
+<script lang="ts">
+	import Button from '$lib/components/Button.svelte';
 	import Divider from '$lib/components/Divider.svelte';
 	import Input from '$lib/components/Input.svelte';
 	import Text from '$lib/components/Text.svelte';
@@ -14,17 +15,29 @@
 		return retVal;
 	};
 
-	let passcode = generatePassword();
+	const getOldUserPasscode = () => {
+		if (!localStorage) return '';
+		let passcode = localStorage?.getItem('passcode');
+		return passcode && passcode.length > 0 ? passcode : '';
+	};
 
+	let passcode = generatePassword();
+	let oldUserPasscode = '';
 	let isOldUser = false;
+
 	onMount(() => {
-		if (localStorage.getItem('passcode')) {
+		if (localStorage && localStorage?.getItem('passcode')) {
 			isOldUser = true;
+			oldUserPasscode = getOldUserPasscode();
 		}
 	});
 
 	const handleClick = () => {
-		if (localStorage.getItem('passcode')) return;
+		if (localStorage?.getItem('passcode')) return;
+		if (isOldUser && oldUserPasscode.length > 0) {
+			localStorage.setItem('passcode', oldUserPasscode);
+			return;
+		}
 		localStorage.setItem('passcode', passcode);
 	};
 </script>
@@ -47,17 +60,24 @@
 			<Text>Keep your character online and easier to montior during game time</Text>
 			<Text>It tells you how many dices you should use</Text>
 
+			<Button loading={false} handleClick={() => (isOldUser = true)}
+				>Old user and have my passcode</Button
+			>
+
 			<Divider />
+
 			{#if !isOldUser}
 				<Text bold>Passcode</Text>
-				<Input iType="text" iLabel="" iValue={passcode} iFor="passcode" />
+				<input bind:value={passcode} />
 			{/if}
 
 			{#if isOldUser}
 				<Text>Welcome back! Your passcode is:</Text>
-				<Text><span>{localStorage.getItem('passcode')}</span></Text>
+				<input bind:value={oldUserPasscode} />
 			{/if}
+
 			<Divider />
+
 			<a href="/characters" on:click={() => handleClick()}>Continue</a>
 		</div>
 	</div>
@@ -74,6 +94,20 @@
 	img {
 		max-width: 300px;
 		width: 100%;
+	}
+
+	input {
+		background: var(--color-background);
+		border: 1px solid transparent;
+		padding: var(--spacing-10) var(--spacing-14);
+		color: var(--color-text);
+		width: 100%;
+		border-radius: var(--radius-04);
+
+		&:focus {
+			outline: none;
+			border: 1px solid var(--color-accent);
+		}
 	}
 
 	span {
