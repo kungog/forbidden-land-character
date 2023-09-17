@@ -81,7 +81,6 @@
 
 				<button type="submit">Continue</button>
 			</form>
-
 			<Divider />
 		</div>
 	</div>

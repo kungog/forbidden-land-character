@@ -11,7 +11,7 @@ export async function POST({ request, cookies }) {
 	const body = { [modal.key]: formValues };
 	console.log('BODY --->', body);
 
-	const userid = cookies.get('userid');
+	const passcode = cookies.get('passcode');
 	// const { id } = await database.createTodo({ userid, description });
 	const database = await getMongoClient();
 	const reponse = await database
@@ -27,7 +27,7 @@ export async function PUT({ request, cookies }) {
 
 	console.log('PUT --->', formValues, modal);
 
-	const userid = cookies.get('userid');
+	const passcode = cookies.get('passcode');
 	// const { id } = await database.createTodo({ userid, description });
 
 	return json({ formValues }, { status: 201 });
