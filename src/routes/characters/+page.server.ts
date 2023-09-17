@@ -5,11 +5,7 @@ import { DATABASE, COLLECTION } from '$lib/server/database';
 
 export const load = (async () => {
 	const database = await getMongoClient();
-	const reponse = await database
-		.db(DATABASE)
-		.collection(COLLECTION.CHARACTERS)
-		.find({})
-		.toArray();
+	const reponse = await database.db(DATABASE).collection(COLLECTION.CHARACTERS).find({}).toArray();
 
 	// Remove objectId from mongo
 	const parsedData = await JSON.stringify(reponse);

@@ -1,10 +1,31 @@
 import { json } from '@sveltejs/kit';
-// import * as database from '$lib/server/database.js';
+import { getMongoClient } from '$lib/server/client';
+import { DATABASE, COLLECTION } from '$lib/server/database';
+import { ObjectId } from 'mongodb';
 
 export async function POST({ request, cookies }) {
-	const { formValues } = await request.json();
+	const { formValues, modal } = await request.json();
 
-	console.log('--->', formValues);
+	console.log('POST --->', formValues, modal);
+
+	const body = { [modal.key]: formValues };
+	console.log('BODY --->', body);
+
+	const userid = cookies.get('userid');
+	// const { id } = await database.createTodo({ userid, description });
+	const database = await getMongoClient();
+	const reponse = await database
+		.db(DATABASE)
+		.collection(COLLECTION.CHARACTERS)
+		.findOneAndUpdate({ _id: new ObjectId(modal.id) }, { $push: body });
+
+	return json({ reponse }, { status: 201 });
+}
+
+export async function PUT({ request, cookies }) {
+	const { formValues, modal } = await request.json();
+
+	console.log('PUT --->', formValues, modal);
 
 	const userid = cookies.get('userid');
 	// const { id } = await database.createTodo({ userid, description });
