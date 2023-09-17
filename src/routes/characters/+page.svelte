@@ -2,22 +2,17 @@
 	import Divider from '$lib/components/Divider.svelte';
 	import Grid from '$lib/components/Grid.svelte';
 	import PickCharacter from '$lib/components/PickCharacter.svelte';
-	import { onMount } from 'svelte';
+	import type { PageData } from './$types';
+	export let data: PageData;
 
-	let myCharacters: Character[] = [];
-	onMount(async () => {
-		const response = await fetch(`/api/characters/${localStorage.getItem('passcode')}`);
-		const data = await response.json();
-		myCharacters = data.characters;
-		console.log(myCharacters);
-	});
+	const characters = data?.characters;
 </script>
 
 <div class="main-page center column">
 	<h1>Choose your character</h1>
 	<Divider />
 	<Grid>
-		{#each myCharacters as character}
+		{#each characters as character}
 			<a href="/characters/{character._id}">
 				<PickCharacter image="/assets/forbidden-lands-placeholder.jpeg" name={character.name} />
 			</a>

@@ -1,7 +1,8 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
+	export let form: { error?: string } | null;
 	import Button from '$lib/components/Button.svelte';
 	import Divider from '$lib/components/Divider.svelte';
-	import Input from '$lib/components/Input.svelte';
 	import Text from '$lib/components/Text.svelte';
 	import { onMount } from 'svelte';
 
@@ -40,6 +41,15 @@
 		}
 		localStorage.setItem('passcode', passcode);
 	};
+
+	/* TODO
+		Clean up
+		Better looking with nicer looking buttons
+		Randomize button
+		Continue button
+		Better input field
+		Give option to save in localstorage
+	*/
 </script>
 
 <div class="grid">
@@ -49,36 +59,30 @@
 		<Divider />
 		<div class="center column">
 			<h1>Character builder</h1>
-			<Divider />
-			<Text
-				>Forbidden Lands is a fantasy role-playing game published by Free League Publishing in 2018.
-				It takes place in a medieval fantasy post-apocalyptic setting, where the destruction has
-				limited itself to one kingdom. A fatal mist, which had killed any person venturing outside
-				at night, has cleared.</Text
-			>
+
 			<Divider />
 			<Text>Keep your character online and easier to montior during game time</Text>
-			<Text>It tells you how many dices you should use</Text>
 
-			<Button loading={false} handleClick={() => (isOldUser = true)}
-				>Old user and have my passcode</Button
-			>
+			<Divider />
+			<Button loading={false} handleClick={() => (isOldUser = true)}>I'm oldie</Button>
 
 			<Divider />
 
-			{#if !isOldUser}
-				<Text bold>Passcode</Text>
-				<input bind:value={passcode} />
-			{/if}
+			<form class="center column" method="post" use:enhance>
+				{#if !isOldUser}
+					<Text bold>Passcode</Text>
+					<input bind:value={passcode} name="passcode" />
+				{/if}
 
-			{#if isOldUser}
-				<Text>Welcome back! Your passcode is:</Text>
-				<input bind:value={oldUserPasscode} />
-			{/if}
+				{#if isOldUser}
+					<Text>Welcome back! Your passcode is:</Text>
+					<input bind:value={oldUserPasscode} name="oldUserPasscode" />
+				{/if}
+
+				<button type="submit">Continue</button>
+			</form>
 
 			<Divider />
-
-			<a href="/characters" on:click={() => handleClick()}>Continue</a>
 		</div>
 	</div>
 	<span />
@@ -108,6 +112,11 @@
 			outline: none;
 			border: 1px solid var(--color-accent);
 		}
+	}
+
+	button {
+		background: transparent;
+		border: 0;
 	}
 
 	span {
