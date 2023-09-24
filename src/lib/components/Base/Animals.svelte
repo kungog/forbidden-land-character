@@ -46,7 +46,7 @@
 
 {#if animals.length > 0}
 	{#each animals as animal, index}
-		<Box handleClick={() => handleAnimalClick(index)} active={index === activeIndex}>
+		<Box handleClick={() => handleAnimalClick(index)} active={index === activeIndex} transition>
 			<div class="upper-part">
 				<div class="flex space-b">
 					<Text size="normal">{animal.name}</Text>
