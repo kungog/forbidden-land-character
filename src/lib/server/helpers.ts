@@ -66,15 +66,3 @@ export const handleUpdateDatabase = async ({ id, object, post }: HandleUpdateDat
 	database.close();
 	return response;
 };
-
-export const handleInsertDatabase = async ({ id, object, post }: HandleUpdateDatabaseProps) => {
-	const body = post ? { $push: object } : { $set: object };
-	const database = await getMongoClient();
-	const response = await database
-		.db(DATABASE)
-		.collection(COLLECTION.CHARACTERS)
-		.findOneAndUpdate({ _id: new ObjectId(id) }, body);
-
-	database.close();
-	return response;
-};

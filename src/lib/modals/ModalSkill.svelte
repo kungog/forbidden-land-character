@@ -16,7 +16,10 @@
 
 <ModalBody action="?/{id}" {id}>
 	<FormAttributes objectKey="skills" />
+	{#each Object.entries(skills) as [key, value]}
+		<input type="hidden" name={key} {value} />
+	{/each}
 	<Text selfCenter={false} size="normal">FV</Text>
-	<RadioButton iValue={skill} iFor={$modal?.objectKey ?? ''} />
+	<RadioButton iValue={skill} iFor={key} />
 </ModalBody>
 <ModalFooter action={id} />

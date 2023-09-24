@@ -32,22 +32,20 @@ export const actions = {
 	update: async ({ cookies, request }) => {
 		const { body, id, data } = await handleValidateFormInput({ cookies, request });
 		const objectKey = data.get('objectKey') as string;
-
-		console.log(data);
-
-		return;
+		const object = objectKey === 'base' ? body : { [objectKey]: body };
 		await handleUpdateDatabase({
 			id,
-			object: { [objectKey]: body },
+			object,
 			post: false
 		});
 	},
 	create: async ({ cookies, request }) => {
 		const { body, id, data } = await handleValidateFormInput({ cookies, request });
 		const objectKey = data.get('objectKey') as string;
+		const object = objectKey === 'base' ? body : { [objectKey]: body };
 		await handleUpdateDatabase({
 			id,
-			object: { [objectKey]: body },
+			object,
 			post: true
 		});
 	},

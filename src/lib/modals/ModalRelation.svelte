@@ -17,6 +17,6 @@
 
 <ModalBody action="?/{id}" {id}>
 	<FormAttributes objectKey="relations" />
-	<Textarea iLabel={LABEL.relation} iValue={relation} iFor="" />
+	<Textarea iLabel={LABEL.relation} iValue={relation} iFor="relation" />
 </ModalBody>
 <ModalFooter action={id} />
