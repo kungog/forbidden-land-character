@@ -20,8 +20,6 @@
 	onMount(() => {
 		$activeMenu = MENU_ITEMS[0];
 	});
-
-	console.log(data.character);
 </script>
 
 <Dashboard />

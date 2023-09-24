@@ -1,26 +1,12 @@
 <script lang="ts">
-	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
+	import { page } from '$app/stores';
+	import { formValues } from '$lib/helpers/form';
 	import getSkillObject from '$lib/helpers/getSkills';
 	import { capitalize } from '$lib/helpers/utilites';
 	import { language, modal, showModal } from '$lib/store';
-	import TrashIcon from './Icons/General/TrashIcon.svelte';
+	import Overlay from './Overlay.svelte';
 	import Text from './Text.svelte';
-
-	const handlePostForm = async (selector: any) => {
-		let formValues = Object.fromEntries(new FormData(document.querySelector(selector)));
-
-		console.log(formValues, $modal);
-		const response = await fetch('/api/weapon', {
-			method: 'POST',
-			body: JSON.stringify({ formValues, modal: $modal }),
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		});
-
-		const data = await response.json();
-		console.log(data);
-	};
+	const { profile_id }: Character = $page.data.character;
 
 	const noLabels = ['weapons', 'newWeapon', 'newTalent'];
 	const getLabel = () => {
@@ -36,53 +22,21 @@
 	};
 
 	const label = getLabel();
-	const save = GENERAL_LABELS[$language]['save'];
 	const handleCloseModal = () => ($showModal = false);
 </script>
 
+<Overlay handleClick={() => handleCloseModal()} />
 <dialog>
-	<button class="overlay" on:click={() => handleCloseModal()} />
-	<div class="modal">
-		<div class="top">
+	<section>
+		<div>
 			<Text size="medium">{capitalize(label)}</Text>
 			<button on:click={() => handleCloseModal()}>x</button>
 		</div>
-
-		<div class="content">
-			<form id="modalForm" method="POST">
-				<slot />
-			</form>
-		</div>
-		<div class="bottom">
-			<button on:click={() => handleCloseModal()}><TrashIcon /></button>
-			<button name="submit" on:click={() => handlePostForm('#modalForm')}>{capitalize(save)}</button
-			>
-		</div>
-	</div>
+		<slot />
+	</section>
 </dialog>
 
 <style lang="scss">
-	%shared-position {
-		position: absolute;
-	}
-
-	%shared-button {
-		border: none;
-		padding: 0;
-		margin: 0;
-		background: none;
-		color: var(--color-text);
-	}
-
-	.overlay {
-		@extend %shared-button;
-		@extend %shared-position;
-		height: 100%;
-		width: 100%;
-		background-color: rgba(0, 0, 0, 20%);
-		backdrop-filter: blur(2px);
-	}
-
 	dialog {
 		height: 100%;
 		width: 100%;
@@ -93,9 +47,11 @@
 		justify-content: center;
 		background: none;
 		border: 0;
+		pointer-events: none;
+		padding: 0;
 	}
 
-	.modal {
+	section {
 		position: relative;
 		z-index: 101;
 		min-height: 10%;
@@ -103,49 +59,21 @@
 		background: var(--color-box);
 		border-radius: var(--radius-04);
 		padding: var(--spacing-16);
+		pointer-events: initial;
 	}
 
-	.top {
-		display: flex;
-
-		button {
-			@extend %shared-button;
-			font-size: 20px;
-			height: 24px;
-			width: 24px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			margin-left: auto;
-		}
-	}
-
-	.content {
-		padding: var(--spacing-18) 0 var(--spacing-48);
-	}
-
-	.bottom {
+	button {
+		border: none;
+		padding: 0;
+		margin: 0;
+		background: none;
+		color: var(--color-text);
+		font-size: 20px;
+		height: 24px;
+		width: 24px;
 		display: flex;
 		align-items: center;
-		justify-content: flex-end;
-
-		button {
-			@extend %shared-button;
-		}
-
-		button:first-child {
-			background: var(--color-active);
-			border-radius: 4px;
-			height: var(--spacing-48);
-			width: var(--spacing-54);
-			margin-right: var(--spacing-10);
-		}
-
-		button:last-child {
-			background: var(--color-inactive);
-			width: var(--spacing-130);
-			height: var(--spacing-48);
-			border-radius: 4px;
-		}
+		justify-content: center;
+		margin-left: auto;
 	}
 </style>
