@@ -12,12 +12,15 @@
 
 	const { weapons }: Character = $page.data.character;
 	const LABEL = GENERAL_LABELS[$language];
-	const weapon = !typeCheckPost($modal) ? weapons[$modal.index] : emptyWeaponObject;
-	const id = !typeCheckPost($modal) ? 'update_weapon' : 'new_weapon';
+
+	const isUpdate = !typeCheckPost($modal);
+	const weapon = isUpdate ? weapons[$modal.index] : emptyWeaponObject;
+	const id = isUpdate ? 'update' : 'create';
+	const objectKey = isUpdate ? `${$modal.key}.${$modal.index}` : 'weapons';
 </script>
 
 <ModalBody action="?/{id}" {id}>
-	<FormAttributes />
+	<FormAttributes {objectKey} />
 	<GridTemplate template="1fr">
 		<Input iType="text" iLabel={LABEL.weapons} iValue={weapon.type} iFor="type" />
 	</GridTemplate>

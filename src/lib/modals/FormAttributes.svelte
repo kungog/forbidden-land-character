@@ -1,9 +1,7 @@
 <script lang="ts">
+	export let objectKey: string;
 	import { page } from '$app/stores';
-	import { modal } from '$lib/store';
-
 	const { profile_id, _id }: Character = $page.data.character;
-	const objectKey = `${$modal.key}.${$modal.index}`;
 </script>
 
 <input type="hidden" name="profile_id" value={profile_id} />

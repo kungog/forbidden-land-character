@@ -1,3 +1,4 @@
+import { formArmorValues, formPropertiesValues } from '$lib/helpers/form';
 import { validateUserAccess } from '$lib/helpers/validate';
 import { getMongoClient } from '$lib/server/client';
 import { DATABASE, COLLECTION } from '$lib/server/database';
@@ -26,8 +27,8 @@ export const handleValidateFormInput = async ({ request, cookies }: HandleValida
 type BodyObject = object & { profile_id?: never; id?: never; objectKey?: never };
 
 export const getBodyObject = (data: FormData) => {
+	const objectKey = data.get('objectKey') as string;
 	let body: BodyObject = {};
-
 	for (const object of data.entries()) {
 		body = { ...body, [object[0]]: object[1] };
 	}
@@ -36,6 +37,14 @@ export const getBodyObject = (data: FormData) => {
 	delete body.profile_id;
 	delete body.id;
 	delete body.objectKey;
+
+	if (['armor'].includes(objectKey)) {
+		body = formArmorValues(body);
+	}
+
+	if (['basic_properties'].includes(objectKey)) {
+		body = formPropertiesValues(body);
+	}
 
 	return body;
 };

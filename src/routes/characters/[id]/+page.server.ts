@@ -3,6 +3,7 @@ import { getMongoClient } from '$lib/server/client';
 import type { PageServerLoad } from '../$types';
 import { DATABASE, COLLECTION } from '$lib/server/database';
 import { ObjectId } from 'mongodb';
+import { handleUpdateDatabase, handleValidateFormInput } from '$lib/server/helpers';
 
 export const load = (async ({ params }) => {
 	const { id } = params as { id: Character['_id'] };
@@ -26,3 +27,34 @@ export const load = (async ({ params }) => {
 
 	throw error(404, 'Not found');
 }) satisfies PageServerLoad;
+
+export const actions = {
+	update: async ({ cookies, request }) => {
+		const { body, id, data } = await handleValidateFormInput({ cookies, request });
+		const objectKey = data.get('objectKey') as string;
+
+		console.log(data);
+
+		return;
+		await handleUpdateDatabase({
+			id,
+			object: { [objectKey]: body },
+			post: false
+		});
+	},
+	create: async ({ cookies, request }) => {
+		const { body, id, data } = await handleValidateFormInput({ cookies, request });
+		const objectKey = data.get('objectKey') as string;
+		await handleUpdateDatabase({
+			id,
+			object: { [objectKey]: body },
+			post: true
+		});
+	},
+	delete: async ({ cookies, request }) => {
+		const { body, id, data } = await handleValidateFormInput({ cookies, request });
+		const objectKey = data.get('objectKey') as string;
+
+		console.log('--- DELETE ITEM ---');
+	}
+};

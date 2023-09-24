@@ -1,12 +1,9 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { formValues } from '$lib/helpers/form';
 	import getSkillObject from '$lib/helpers/getSkills';
 	import { capitalize } from '$lib/helpers/utilites';
 	import { language, modal, showModal } from '$lib/store';
 	import Overlay from './Overlay.svelte';
 	import Text from './Text.svelte';
-	const { profile_id }: Character = $page.data.character;
 
 	const noLabels = ['weapons', 'newWeapon', 'newTalent'];
 	const getLabel = () => {

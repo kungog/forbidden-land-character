@@ -1,34 +1,54 @@
-import { json } from '@sveltejs/kit';
-import { getMongoClient } from '$lib/server/client';
-import { DATABASE, COLLECTION } from '$lib/server/database';
-import { ObjectId } from 'mongodb';
+import { json } from '@sveltejs/kit'
+import { getMongoClient } from '$lib/server/client'
+import { DATABASE, COLLECTION } from '$lib/server/database'
+import { ObjectId } from 'mongodb'
+import { validateUserAccess } from '$lib/helpers/validate.js'
 
 export async function POST({ request, cookies }) {
-	const { formValues, modal } = await request.json();
+  const { body, modal, passcode } = await request.json()
+  const validate = cookies.get('passcode')
 
-	console.log('POST --->', formValues, modal);
+  validateUserAccess(passcode, validate)
 
-	const body = { [modal.key]: formValues };
-	console.log('BODY --->', body);
+  console.log('POST --->', body, modal, passcode)
 
-	const passcode = cookies.get('passcode');
-	// const { id } = await database.createTodo({ userid, description });
-	const database = await getMongoClient();
-	const reponse = await database
-		.db(DATABASE)
-		.collection(COLLECTION.CHARACTERS)
-		.findOneAndUpdate({ _id: new ObjectId(modal.id) }, { $push: body });
+  // const { id } = await database.createTodo({ userid, description });
+  const database = await getMongoClient()
+  const response = await database
+    .db(DATABASE)
+    .collection(COLLECTION.CHARACTERS)
+    .findOneAndUpdate({ _id: new ObjectId(modal.id) }, { $push: body })
 
-	return json({ reponse }, { status: 201 });
+  return json({ response }, { status: 201 })
 }
 
 export async function PUT({ request, cookies }) {
-	const { formValues, modal } = await request.json();
+  const { body, modal, passcode } = await request.json()
+  const validate = cookies.get('passcode')
 
-	console.log('PUT --->', formValues, modal);
+  validateUserAccess(passcode, validate)
 
-	const passcode = cookies.get('passcode');
-	// const { id } = await database.createTodo({ userid, description });
+  // const arrayKey = `${modal.key}.$`;
+  console.log('PUT --->', body, modal)
+  console.log({ _id: new ObjectId(modal.id), [modal.key]: modal.index })
+  console.log({
+    $set: {
+      [`${modal.key}.$`]: body,
+    },
+  })
 
-	return json({ formValues }, { status: 201 });
+  const database = await getMongoClient()
+  const response = await database
+    .db(DATABASE)
+    .collection(COLLECTION.CHARACTERS)
+    .findOneAndUpdate(
+      { _id: new ObjectId(modal.id) },
+      {
+        $set: {
+          [`${modal.key}.${modal.index}`]: body,
+        },
+      }
+    )
+
+  return json({ response }, { status: 201 })
 }
