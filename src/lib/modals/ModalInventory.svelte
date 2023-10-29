@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
 	import { emptyInventoryObject } from '$lib/helpers/getCharacterObject';
-	import { language, modal } from '$lib/store';
+	import { language, modal, showConfirm } from '$lib/store';
 	import Input from '$lib/components/Input.svelte';
 	import GridTemplate from './GridTemplate.svelte';
 	import { typeCheckPost } from '$lib/helpers/utilites';
@@ -14,8 +14,8 @@
 	const LABEL = GENERAL_LABELS[$language];
 	const isUpdate = !typeCheckPost($modal);
 	const item = isUpdate ? inventory[$modal.index] : emptyInventoryObject;
-	const id = isUpdate ? 'update' : 'create';
-	const objectKey = isUpdate ? `${$modal.key}.${$modal.index}` : 'inventory';
+	$: id = $showConfirm ? 'delete' : isUpdate ? 'update' : 'create';
+	$: objectKey = isUpdate && !$showConfirm ? `${$modal.key}.${$modal.index}` : 'inventory';
 </script>
 
 <ModalBody action="?/{id}" {id}>
