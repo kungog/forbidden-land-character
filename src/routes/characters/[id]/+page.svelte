@@ -5,7 +5,6 @@
 	import { onMount } from 'svelte';
 	import { activeMenu } from '$lib/store';
 	import type { PageData } from './$types';
-	export let data: PageData;
 	const MENU_ITEMS: MenuItems[] = [
 		'talents',
 		'experience',

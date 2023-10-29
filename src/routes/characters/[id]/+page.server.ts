@@ -3,7 +3,11 @@ import { getMongoClient } from '$lib/server/client';
 import type { PageServerLoad } from '../$types';
 import { DATABASE, COLLECTION } from '$lib/server/database';
 import { ObjectId } from 'mongodb';
-import { handleUpdateDatabase, handleValidateFormInput } from '$lib/server/helpers';
+import {
+	handleDeleteDatabase,
+	handleUpdateDatabase,
+	handleValidateFormInput
+} from '$lib/server/helpers';
 
 export const load = (async ({ params }) => {
 	const { id } = params as { id: Character['_id'] };
@@ -33,16 +37,21 @@ export const actions = {
 		const { body, id, data } = await handleValidateFormInput({ cookies, request });
 		const objectKey = data.get('objectKey') as string;
 		const object = objectKey === 'base' ? body : { [objectKey]: body };
+
+		console.log('--- UPDATE ITEM ---');
+		console.log(object, body);
 		await handleUpdateDatabase({
 			id,
-			object,
-			post: false
+			object
 		});
 	},
 	create: async ({ cookies, request }) => {
 		const { body, id, data } = await handleValidateFormInput({ cookies, request });
 		const objectKey = data.get('objectKey') as string;
 		const object = objectKey === 'base' ? body : { [objectKey]: body };
+
+		console.log('--- CREATE ITEM ---');
+		console.log(object, body);
 		await handleUpdateDatabase({
 			id,
 			object,
@@ -52,7 +61,12 @@ export const actions = {
 	delete: async ({ cookies, request }) => {
 		const { body, id, data } = await handleValidateFormInput({ cookies, request });
 		const objectKey = data.get('objectKey') as string;
-
+		const object = { [objectKey]: body };
 		console.log('--- DELETE ITEM ---');
+		console.log(object, body);
+		await handleDeleteDatabase({
+			id,
+			object
+		});
 	}
 };
