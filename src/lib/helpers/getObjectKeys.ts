@@ -1,20 +1,11 @@
-interface SkillItem<T> {
-	key: keyof T;
-	value: number;
-}
-
-const getObject = <T>(key: any, value: any): SkillItem<T> => {
+const getObject = (key: any, value: any) => {
 	return {
 		key,
 		value
 	};
 };
 
-type CreateArrayFromObject<T> = {
-	[key in keyof T]: string | boolean | number | object;
-};
-
-const createArrayFromObject = <T>(objects: CreateArrayFromObject<T>): SkillItem<T>[] => {
+const createArrayFromObject = (objects: any) => {
 	return Object.entries(objects).map((object) => {
 		return getObject(object[0], object[1]);
 	});

@@ -1,7 +1,6 @@
 /*
  * Create base objects
  */
-
 const getBaseObjects = (formObject: object) => {
 	let newObject = {};
 	Object.keys(formObject).forEach((key) => {
@@ -15,7 +14,6 @@ const getBaseObjects = (formObject: object) => {
 /*
  * Fill new objects with data
  */
-
 const fillObjectWithValue = (
 	formObject: object,
 	object: { [index: string]: object },
@@ -23,7 +21,10 @@ const fillObjectWithValue = (
 ) => {
 	let newObject = object;
 	for (const [key, value] of Object.entries(formObject)) {
-		let objectValue = { [key.split('_')[1]]: value };
+		const keyOjbect = key.split('_')[1];
+
+		let objectValue =
+			keyOjbect === 'value' ? { [keyOjbect]: Number(value) } : { [keyOjbect]: value };
 		if (addId) {
 			objectValue = { ...objectValue, id: key.split('_')[0] };
 		}

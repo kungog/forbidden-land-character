@@ -82,7 +82,9 @@ export const GENERAL_LABELS = {
 		experience: 'Erfarenhet',
 		power_points: 'Kraftpoäng',
 		intelligence: 'Intelligence',
-		charisma: 'Karisma'
+		charisma: 'Karisma',
+		sure: 'Är du säker?',
+		no_regrets: 'Går inte att ångra'
 	},
 	en: {
 		title: 'Title',
@@ -119,6 +121,8 @@ export const GENERAL_LABELS = {
 		experience: 'Experience',
 		power_points: 'Power points',
 		intelligence: 'Intelligence',
-		charisma: 'Charisma'
+		charisma: 'Charisma',
+		sure: 'Are you sure?',
+		no_regrets: 'Cannot reverse'
 	}
 };
