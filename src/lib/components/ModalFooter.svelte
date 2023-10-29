@@ -1,6 +1,7 @@
 <script lang="ts">
-	export let action: string;
-	import { language, showModal } from '$lib/store';
+	export let action: string,
+		remove = true;
+	import { language, showConfirm } from '$lib/store';
 	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
 	import { capitalize } from '$lib/helpers/utilites';
 	import TrashIcon from './Icons/General/TrashIcon.svelte';
@@ -8,8 +9,10 @@
 </script>
 
 <div>
-	<button on:click={() => ($showModal = false)}><TrashIcon /></button>
-	<button type="submit" form={action}>{capitalize(save)}</button>
+	{#if remove}
+		<button on:click={() => ($showConfirm = true)}><TrashIcon /></button>
+	{/if}
+	<button form={action}>{capitalize(save)}</button>
 </div>
 
 <style lang="scss">
@@ -25,6 +28,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;
+		gap: var(--spacing-10);
 	}
 
 	button {
@@ -36,7 +40,6 @@
 		border-radius: 4px;
 		height: var(--spacing-48);
 		width: var(--spacing-54);
-		margin-right: var(--spacing-10);
 	}
 
 	button:last-child {
