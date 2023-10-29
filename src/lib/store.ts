@@ -6,6 +6,8 @@ const ACTIVE_LANGUAGE = MAIN_LANGUAGES[0];
 export const activeMenu = writable<MenuItems>();
 export const language = writable(ACTIVE_LANGUAGE);
 export const showModal = writable(false);
+export const showConfirm = writable(false);
+export const activeAnimal = writable(0);
 
 export type ModalKeys =
 	| 'armor'
@@ -20,7 +22,8 @@ export type ModalKeys =
 	| 'basic_properties'
 	| 'consumables'
 	| 'power_points'
-	| 'money';
+	| 'money'
+	| 'animals_inventory';
 
 interface Modal {
 	id: Character['_id']; // _id,
