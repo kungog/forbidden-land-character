@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { language, modal } from '$lib/store';
+	import { language, modal, showConfirm } from '$lib/store';
 	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
 	import Textarea from '$lib/components/Textarea.svelte';
 	import { typeCheckPost } from '$lib/helpers/utilites';
@@ -12,11 +12,12 @@
 	const LABEL = GENERAL_LABELS[$language];
 	const isUpdate = !typeCheckPost($modal);
 	const relation = isUpdate ? relations[$modal?.index] : '';
-	const id = isUpdate ? 'update' : 'create';
+	$: id = $showConfirm ? 'delete' : isUpdate ? 'update' : 'create';
+	$: objectKey = isUpdate && !$showConfirm ? `${$modal.key}.${$modal.index}` : 'relations';
 </script>
 
 <ModalBody action="?/{id}" {id}>
-	<FormAttributes objectKey="relations" />
+	<FormAttributes {objectKey} />
 	<Textarea iLabel={LABEL.relation} iValue={relation} iFor="relation" />
 </ModalBody>
 <ModalFooter action={id} />

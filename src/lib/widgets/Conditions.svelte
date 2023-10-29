@@ -31,7 +31,7 @@
 		</div>
 		<div class="flex align-c">
 			{#each items as item}
-				<Condition type={item.key} isActive={!!item.value} />
+				<Condition type={item.key} isActive={item.value === 'true'} />
 			{/each}
 		</div>
 	</div>

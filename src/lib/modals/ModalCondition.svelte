@@ -28,4 +28,4 @@
 		<BooleanRadio iLabel={LABEL.starved} iValue={condition.starved} iFor="starved" />
 	</GridTemplate>
 </ModalBody>
-<ModalFooter action={id} />
+<ModalFooter action={id} remove={false} />

@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
 	import { emptyWeaponObject } from '$lib/helpers/getCharacterObject';
-	import { language, modal } from '$lib/store';
+	import { language, modal, showConfirm } from '$lib/store';
 	import Input from '$lib/components/Input.svelte';
 	import GridTemplate from './GridTemplate.svelte';
 	import { typeCheckPost } from '$lib/helpers/utilites';
@@ -15,8 +15,8 @@
 
 	const isUpdate = !typeCheckPost($modal);
 	const weapon = isUpdate ? weapons[$modal.index] : emptyWeaponObject;
-	const id = isUpdate ? 'update' : 'create';
-	const objectKey = isUpdate ? `${$modal.key}.${$modal.index}` : 'weapons';
+	$: id = $showConfirm ? 'delete' : isUpdate ? 'update' : 'create';
+	$: objectKey = isUpdate && !$showConfirm ? `${$modal.key}.${$modal.index}` : 'weapons';
 </script>
 
 <ModalBody action="?/{id}" {id}>

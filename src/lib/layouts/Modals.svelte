@@ -14,6 +14,7 @@
 	import ModalCondition from '$lib/modals/ModalCondition.svelte';
 	import ModalPoints from '$lib/modals/ModalPoints.svelte';
 	import ModalConsumables from '$lib/modals/ModalConsumables.svelte';
+	import ModalAnimalInventory from '$lib/modals/ModalAnimalInventory.svelte';
 
 	$: id = $modal?.key;
 	$: show = $showModal;
@@ -31,7 +32,8 @@
 		basic_properties: ModalProperties,
 		consumables: ModalConsumables,
 		power_points: ModalPoints,
-		money: ModalMoney
+		money: ModalMoney,
+		animals_inventory: ModalAnimalInventory
 	};
 </script>
 

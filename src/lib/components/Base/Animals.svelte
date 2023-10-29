@@ -8,16 +8,16 @@
 		BASE_LABELS,
 		NO_INVENTORY_ANIMAL
 	} from '$lib/helpers/constants/languages';
-	import { language, modal, showModal } from '$lib/store';
-	import { onMount } from 'svelte';
+	import { language, modal, showModal, activeAnimal } from '$lib/store';
 
 	const { animals }: Character = $page.data.character;
 
 	const LABEL = GENERAL_LABELS[$language];
 	const BASE_LABEL = BASE_LABELS[$language];
 
-	$: activeIndex = null as null | number;
-	$: inventory = [] as [] | Animal['inventory'];
+	$: animalIndex = $activeAnimal;
+	$: inventory =
+		animals.length > 0 ? animals[$activeAnimal].inventory : ([] as [] | Animal['inventory']);
 
 	//FIXME
 	const handleModal = (index: number) => {
@@ -31,22 +31,40 @@
 		};
 	};
 
-	const handleAnimalClick = (index: number) => {
-		if (index !== activeIndex) return (activeIndex = index);
-		return handleModal(index);
+	const handleAnimalInventoryModal = (index: number) => {
+		$showModal = true;
+		$modal = {
+			id: $page.data.character._id,
+			type: 'PUT',
+			key: 'animals_inventory',
+			index: index,
+			value: animals[animalIndex].inventory[index]
+		};
 	};
 
-	onMount(() => {
-		if (animals.length > 0) {
-			activeIndex = 0;
-			inventory = animals[activeIndex].inventory;
+	const handleAnimalInventory = () => {
+		$showModal = true;
+		$modal = {
+			id: $page.data.character._id,
+			type: 'POST',
+			key: 'animals_inventory',
+			value: null,
+			index: 0
+		};
+	};
+
+	const handleAnimalClick = (index: number) => {
+		if (index !== $activeAnimal) {
+			return ($activeAnimal = index);
 		}
-	});
+
+		return handleModal(index);
+	};
 </script>
 
 {#if animals.length > 0}
 	{#each animals as animal, index}
-		<Box handleClick={() => handleAnimalClick(index)} active={index === activeIndex} transition>
+		<Box handleClick={() => handleAnimalClick(index)} active={index === $activeAnimal} transition>
 			<div class="upper-part">
 				<div class="flex space-b">
 					<Text size="normal">{animal.name}</Text>
@@ -65,14 +83,14 @@
 
 <div class="test flex space-b">
 	<Text size="normal">{BASE_LABEL['inventory']}</Text>
-	<Box handleClick={() => alert('fix')}>
+	<Box handleClick={() => handleAnimalInventory()}>
 		<Text size="large">+</Text>
 	</Box>
 </div>
 
-{#if inventory.length > 0}
+{#if inventory?.length > 0}
 	{#each inventory as item, index}
-		<Box handleClick={() => alert('fix --')}>
+		<Box handleClick={() => handleAnimalInventoryModal(index)}>
 			<div class="upper-part">
 				<div class="flex space-b">
 					<Text size="normal">{item.name}</Text>
