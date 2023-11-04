@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
 import { getMongoClient } from '$lib/server/client';
-import type { PageServerLoad } from '../$types';
+import type { PageServerLoad } from '../../$types';
 import { DATABASE, COLLECTION } from '$lib/server/database';
 import { ObjectId } from 'mongodb';
 import {

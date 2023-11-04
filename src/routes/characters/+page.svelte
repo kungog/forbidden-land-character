@@ -6,8 +6,7 @@
 	import Text from '$lib/components/Text.svelte';
 	import type { PageData } from './$types';
 	export let data: PageData;
-
-	let characters = data?.characters;
+	const characters = data?.characters;
 </script>
 
 <div class="main-page center column">
@@ -15,7 +14,7 @@
 	<Divider />
 	<Grid>
 		{#each characters as character}
-			<a href="/characters/{character._id}">
+			<a href="/characters/{character._id}/base">
 				<PickCharacter image="/assets/forbidden-lands-placeholder.jpeg" name={character.name} />
 			</a>
 		{/each}

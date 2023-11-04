@@ -22,7 +22,7 @@
 		return passcode && passcode.length > 0 ? passcode : '';
 	};
 
-	let passcode = generatePassword();
+	let passcode = ''; // generatePassword();
 	let oldUserPasscode = '';
 	let isOldUser = false;
 
@@ -53,45 +53,49 @@
 </script>
 
 <div class="grid">
-	<span />
-	<div class="center column">
+	<div class="flex column align-c">
+		<Divider />
 		<img src="assets/fblands1.png" alt="forbidden-lands-logo" />
 		<Divider />
-		<div class="center column">
-			<h1>Character builder</h1>
+		<Divider />
+		<h1>Character builder</h1>
+		<Text size="small">
+			Keep track on your character online with this tool that keeps it digital. Here you can get
+			your dices, add new talents, add weapons and a lot more.
+		</Text>
 
-			<Divider />
-			<Text>Keep your character online and easier to montior during game time</Text>
+		<Divider />
+		<Divider />
+		<form class="center column" method="post" use:enhance>
+			<label>
+				<Text bold>Your passcode</Text>
+				<input bind:value={passcode} name="passcode" />
+			</label>
 
-			<Divider />
-			<Button loading={false} handleClick={() => (isOldUser = true)}>I'm oldie</Button>
+			<button disabled={passcode.length <= 5} type="submit">Continue</button>
 
-			<Divider />
-
-			<form class="center column" method="post" use:enhance>
-				{#if !isOldUser}
-					<Text bold>Passcode</Text>
-					<input bind:value={passcode} name="passcode" />
-				{/if}
-
-				{#if isOldUser}
-					<Text>Welcome back! Your passcode is:</Text>
-					<input bind:value={oldUserPasscode} name="oldUserPasscode" />
-				{/if}
-
-				<button type="submit">Continue</button>
-			</form>
-			<Divider />
+			<!-- 			{#if isOldUser}
+				<Text>Welcome back! Your passcode is:</Text>
+				<input bind:value={oldUserPasscode} name="oldUserPasscode" />
+			{/if} -->
+		</form>
+		<Divider />
+		<div class="flex generate-code-container">
+			<p>Don't have code?</p>
+			<button on:click={() => (passcode = generatePassword())}> Generate code </button>
 		</div>
 	</div>
-	<span />
 </div>
 
 <style lang="scss">
 	.grid {
 		padding: 0 var(--spacing-16);
 		grid-template-columns: 25px 1fr 25px;
-		align-items: center;
+		height: 100vh;
+
+		> div {
+			grid-column-start: 2;
+		}
 	}
 
 	img {
@@ -99,13 +103,19 @@
 		width: 100%;
 	}
 
+	h1 {
+		margin-bottom: var(--spacing-10);
+	}
+
 	input {
-		background: var(--color-background);
+		margin-top: 12px;
+		background: var(--color-box);
 		border: 1px solid transparent;
 		padding: var(--spacing-10) var(--spacing-14);
 		color: var(--color-text);
 		width: 100%;
 		border-radius: var(--radius-04);
+		margin-bottom: var(--spacing-10);
 
 		&:focus {
 			outline: none;
@@ -113,12 +123,40 @@
 		}
 	}
 
-	button {
-		background: transparent;
+	form > button {
 		border: 0;
+		padding: var(--spacing-08) var(--spacing-16);
+		background: var(--color-active);
+		border-radius: var(--radius-04);
+
+		&:not(:last-child) {
+			margin-right: var(--spacing-18);
+		}
+
+		&:disabled {
+			background: var(--color-inactive);
+			opacity: 0.8;
+			cursor: not-allowed;
+		}
 	}
 
-	span {
-		font-weight: 700;
+	.generate-code-container {
+		gap: var(--spacing-06);
+
+		P {
+			font-size: 12px;
+			font-weight: normal;
+		}
+
+		button {
+			background: transparent;
+			border: 0;
+			padding: 0;
+			font-size: 12px;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
 	}
 </style>
