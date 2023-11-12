@@ -24,6 +24,7 @@ export type ModalKeys =
 	| 'power_points'
 	| 'money'
 	| 'description'
+	| 'name'
 	| 'animals_inventory';
 
 interface Modal {

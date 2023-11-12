@@ -16,6 +16,7 @@
 	import ModalConsumables from '$lib/modals/ModalConsumables.svelte';
 	import ModalAnimalInventory from '$lib/modals/ModalAnimalInventory.svelte';
 	import ModalDescription from '$lib/modals/ModalDescription.svelte';
+	import ModalName from '$lib/modals/ModalName.svelte';
 
 	$: id = $modal?.key;
 	$: show = $showModal;
@@ -35,7 +36,8 @@
 		power_points: ModalPoints,
 		money: ModalMoney,
 		animals_inventory: ModalAnimalInventory,
-		description: ModalDescription
+		description: ModalDescription,
+		name: ModalName
 	};
 </script>
 
