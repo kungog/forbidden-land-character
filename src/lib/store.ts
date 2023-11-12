@@ -23,6 +23,7 @@ export type ModalKeys =
 	| 'consumables'
 	| 'power_points'
 	| 'money'
+	| 'description'
 	| 'animals_inventory';
 
 interface Modal {

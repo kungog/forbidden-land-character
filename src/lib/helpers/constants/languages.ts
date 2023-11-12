@@ -84,7 +84,14 @@ export const GENERAL_LABELS = {
 		intelligence: 'Intelligence',
 		charisma: 'Karisma',
 		sure: 'Är du säker?',
-		no_regrets: 'Går inte att ångra'
+		no_regrets: 'Går inte att ångra',
+		face: 'Ansikte',
+		age: 'Ålder',
+		reputation: 'Rykte',
+		body: 'Kropp',
+		cloths: 'Kläder',
+		pride: 'Stolthet',
+		dark_secret: 'Mörk hemlighet'
 	},
 	en: {
 		title: 'Title',
@@ -123,6 +130,13 @@ export const GENERAL_LABELS = {
 		intelligence: 'Intelligence',
 		charisma: 'Charisma',
 		sure: 'Are you sure?',
-		no_regrets: 'Cannot reverse'
+		no_regrets: 'Cannot reverse',
+		face: 'Face',
+		age: 'Age',
+		reputation: 'Reputation',
+		body: 'Body',
+		cloths: 'Cloths',
+		pride: 'Pride',
+		dark_secret: 'Dark secret'
 	}
 };

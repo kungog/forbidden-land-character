@@ -44,6 +44,15 @@ declare global {
 		notes: string[];
 		inventory: Inventory[];
 		skills: Skills;
+		description: {
+			face: string;
+			body: string;
+			age: number;
+			reputation: number;
+			pride: string;
+			dark_secret: string;
+			cloths: string;
+		};
 	}
 
 	interface Talent {
