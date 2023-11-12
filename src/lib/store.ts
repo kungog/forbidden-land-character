@@ -26,11 +26,11 @@ export type ModalKeys =
 	| 'animals_inventory';
 
 interface Modal {
-	id: Character['_id']; // _id,
+	id: Character['_id'];
 	key: ModalKeys;
 	type: 'NULL' | 'POST' | 'PUT' | 'DELETE';
 	index: number;
-	value: any; // formValues
+	value: any;
 	objectKey?: keyof Skills;
 	talentId?: string;
 }

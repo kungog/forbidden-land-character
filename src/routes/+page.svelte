@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	export let form: { error?: string } | null;
-	import Button from '$lib/components/Button.svelte';
 	import Divider from '$lib/components/Divider.svelte';
 	import Text from '$lib/components/Text.svelte';
 	import { onMount } from 'svelte';
@@ -23,33 +21,16 @@
 	};
 
 	let passcode = ''; // generatePassword();
-	let oldUserPasscode = '';
-	let isOldUser = false;
 
 	onMount(() => {
 		if (localStorage && localStorage?.getItem('passcode')) {
-			isOldUser = true;
-			oldUserPasscode = getOldUserPasscode();
+			passcode = getOldUserPasscode();
 		}
 	});
 
 	const handleClick = () => {
-		if (localStorage?.getItem('passcode')) return;
-		if (isOldUser && oldUserPasscode.length > 0) {
-			localStorage.setItem('passcode', oldUserPasscode);
-			return;
-		}
 		localStorage.setItem('passcode', passcode);
 	};
-
-	/* TODO
-		Clean up
-		Better looking with nicer looking buttons
-		Randomize button
-		Continue button
-		Better input field
-		Give option to save in localstorage
-	*/
 </script>
 
 <div class="grid">
@@ -72,17 +53,12 @@
 				<input bind:value={passcode} name="passcode" />
 			</label>
 
-			<button disabled={passcode.length <= 5} type="submit">Continue</button>
-
-			<!-- 			{#if isOldUser}
-				<Text>Welcome back! Your passcode is:</Text>
-				<input bind:value={oldUserPasscode} name="oldUserPasscode" />
-			{/if} -->
+			<button disabled={passcode.length <= 5} type="submit" on:click={handleClick}>Continue</button>
 		</form>
 		<Divider />
 		<div class="flex generate-code-container">
 			<p>Don't have code?</p>
-			<button on:click={() => (passcode = generatePassword())}> Generate code </button>
+			<button on:click={() => (passcode = generatePassword())}> Generate passcode </button>
 		</div>
 	</div>
 </div>
@@ -143,7 +119,7 @@
 	.generate-code-container {
 		gap: var(--spacing-06);
 
-		P {
+		p {
 			font-size: 12px;
 			font-weight: normal;
 		}
