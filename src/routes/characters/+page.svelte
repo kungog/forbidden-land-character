@@ -1,16 +1,16 @@
 <script lang="ts">
-	import Divider from '$lib/components/Divider.svelte';
 	import Grid from '$lib/components/Grid.svelte';
 	import Input from '$lib/components/Input.svelte';
+	import Overlay from '$lib/components/Overlay.svelte';
 	import PickCharacter from '$lib/components/PickCharacter.svelte';
-	import Text from '$lib/components/Text.svelte';
 	import type { PageData } from './$types';
 	export let data: PageData;
 	const characters = data?.characters;
 	let name = '';
+	let showModal = false;
 </script>
 
-<div class="add-more">
+<button on:click={() => (showModal = true)} class="add-more">
 	<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 		<g clip-path="url(#clip0_439_2)">
 			<path
@@ -24,10 +24,9 @@
 			</clipPath>
 		</defs>
 	</svg>
-</div>
+</button>
 
 <div class="main-page center column">
-	<Divider />
 	<h1>Characters</h1>
 	<Grid>
 		{#each characters as character}
@@ -36,43 +35,71 @@
 			</a>
 		{/each}
 	</Grid>
-
-	<Divider />
-
-	<Text size="medium" />
-	<form id="create" method="POST">
-		<label>
-			<Text bold>New character</Text>
-			<input bind:value={name} name="passcode" />
-		</label>
-		<button disabled={name.length <= 2} type="submit">Save</button>
-	</form>
 </div>
 
+{#if showModal}
+	<Overlay handleClick={() => (showModal = false)} />
+	<dialog>
+		<section>
+			<form id="create" method="POST">
+				<Input bind:iValue={name} iType="text" iFor="name" iLabel="New character name" />
+				<button disabled={name.length <= 2} type="submit">Save</button>
+			</form>
+		</section>
+	</dialog>
+{/if}
+
 <style lang="scss">
+	.main-page {
+		padding: var(--spacing-48) 0;
+	}
+
+	.add-more {
+		position: absolute;
+		right: 12px;
+		top: 12px;
+		height: auto;
+		background-color: transparent;
+		border: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	dialog {
+		height: 100%;
+		width: 100%;
+		position: fixed;
+		z-index: 100;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: none;
+		border: 0;
+		pointer-events: none;
+		padding: 0;
+	}
+
+	section {
+		position: relative;
+		z-index: 101;
+		min-height: 10%;
+		width: 90%;
+		background: var(--color-box);
+		border-radius: var(--radius-04);
+		padding: var(--spacing-16);
+		pointer-events: initial;
+	}
+
 	h1 {
 		margin-bottom: var(--spacing-10);
 	}
-	input {
-		margin-top: 12px;
-		background: var(--color-box);
-		border: 1px solid transparent;
-		padding: var(--spacing-10) var(--spacing-14);
-		color: var(--color-text);
-		width: 100%;
-		border-radius: var(--radius-04);
-		margin-bottom: var(--spacing-10);
 
-		&:focus {
-			outline: none;
-			border: 1px solid var(--color-accent);
-		}
-	}
 	form > button {
 		border: 0;
 		padding: var(--spacing-08) var(--spacing-16);
 		background: var(--color-active);
 		border-radius: var(--radius-04);
+		margin-top: var(--spacing-10);
 
 		&:not(:last-child) {
 			margin-right: var(--spacing-18);

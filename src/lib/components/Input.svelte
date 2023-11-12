@@ -11,9 +11,9 @@
 <label>
 	{capitalize(iLabel)}
 	<input
-		type={iType}
 		name={iFor}
-		value={iValue}
+		{...{ type: iType }}
+		bind:value={iValue}
 		style={warning ? 'color: var(--color-active);' : 'color: var(--color-text);'}
 	/>
 </label>
