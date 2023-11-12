@@ -4,7 +4,6 @@
 	import Base from '$lib/components/Character/Base.svelte';
 	import { onMount } from 'svelte';
 	import { activeMenu } from '$lib/store';
-	import type { PageData } from './$types';
 	const MENU_ITEMS: MenuItems[] = [
 		'talents',
 		'experience',
@@ -16,9 +15,7 @@
 		'notes'
 	];
 
-	onMount(() => {
-		$activeMenu = MENU_ITEMS[0];
-	});
+	onMount(() => ($activeMenu = MENU_ITEMS[0]));
 </script>
 
 <Dashboard />

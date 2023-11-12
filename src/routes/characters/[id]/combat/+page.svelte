@@ -6,9 +6,7 @@
 	import { activeMenu } from '$lib/store';
 
 	const MENU_ITEMS: MenuItems[] = ['talents', 'weapons'];
-	onMount(() => {
-		$activeMenu = MENU_ITEMS[0];
-	});
+	onMount(() => ($activeMenu = MENU_ITEMS[0]));
 </script>
 
 <Dashboard />
