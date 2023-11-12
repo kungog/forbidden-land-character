@@ -1,1 +1,0 @@
-// Fetch users talents
