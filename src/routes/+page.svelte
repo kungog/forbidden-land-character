@@ -20,7 +20,7 @@
 		return passcode && passcode.length > 0 ? passcode : '';
 	};
 
-	let passcode = ''; // generatePassword();
+	let passcode = '';
 
 	onMount(() => {
 		if (localStorage && localStorage?.getItem('passcode')) {

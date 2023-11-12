@@ -1,7 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 
-//FIXME
 export const actions: Actions = {
 	default: async ({ request, cookies }) => {
 		const formData = await request.formData();

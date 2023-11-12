@@ -46,7 +46,7 @@ export const getBodyObject = (data: FormData) => {
 		if (BOOLEANS.includes(key)) {
 			value = value === 'true' ? true : false;
 		}
-		if (NUMBERS.includes(key)) {
+		if (NUMBERS.includes(key) && key === 'body' && objectKey !== 'description') {
 			value = Number(value);
 		}
 
