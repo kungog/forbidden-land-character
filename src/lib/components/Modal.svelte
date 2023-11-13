@@ -52,6 +52,8 @@
 		position: relative;
 		z-index: 101;
 		min-height: 10%;
+		max-height: 90vh;
+		overflow: auto;
 		width: 90%;
 		background: var(--color-box);
 		border-radius: var(--radius-04);
