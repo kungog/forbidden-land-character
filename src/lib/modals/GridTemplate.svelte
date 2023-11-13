@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let template: '2fr 1fr' | '1fr' | '1fr 1fr' = '2fr 1fr',
+	export let template: '2fr 1fr' | '1fr' | '1fr 1fr' | '1fr 2fr' | '1fr 2fr 50px' = '2fr 1fr',
 		gap: number = 10;
 </script>
 
