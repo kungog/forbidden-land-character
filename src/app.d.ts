@@ -66,6 +66,12 @@ declare global {
 		damage: string;
 		range: string;
 		type: string;
+		extra_dices: WeaponExtraDices[];
+	}
+
+	interface WeaponExtraDices {
+		info: string;
+		value: number;
 	}
 
 	interface Inventory {

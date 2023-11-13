@@ -3,7 +3,8 @@ export const emptyWeaponObject: Weapon = {
 	bonus: '',
 	damage: '',
 	range: '',
-	additionals: ''
+	additionals: '',
+	extra_dices: []
 };
 
 export const emptyAnimalObject: Animal = {

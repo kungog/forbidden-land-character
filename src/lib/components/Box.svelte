@@ -18,6 +18,7 @@
 	on:click={handleClick}
 	class={`${className} box-btn-${size} ${isHidden} ${isInverted} ${isActive}`}
 	in:fly={hasTransition}
+	type="button"
 >
 	<slot />
 </button>
