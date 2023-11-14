@@ -47,5 +47,6 @@ export const NUMBERS = [
 	'shield',
 	'weight',
 	'bonus',
-	'damage'
+	'damage',
+	'value'
 ];

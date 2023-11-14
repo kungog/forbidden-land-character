@@ -65,8 +65,6 @@ export const getBodyObject = (data: FormData) => {
 			value = Number(value);
 		}
 
-		console.log('KEYS :', key);
-		console.log('OBJECT :', object);
 		if (weapons === 'weapons.' && !WEAPONS.includes(key)) {
 			body = checkIfArrayExist(body, 'extra_dices');
 			const slicedKey = key.split('_');

@@ -21,8 +21,8 @@ export const emptyInventoryObject: Inventory = {
 	weight: 0
 };
 
-export const emptyTalentObject: Talent = {
-	id: 'empty',
+export const emptyTalentObject: CharacterTalent = {
+	_id: 'empty',
 	value: 1
 };
 

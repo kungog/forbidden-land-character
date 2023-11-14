@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { modal } from '$lib/store';
+	import { modal, showConfirm } from '$lib/store';
 	import Text from '$lib/components/Text.svelte';
 	import RadioButton from '$lib/components/RadioButton.svelte';
 	import { emptyTalentObject } from '$lib/helpers/getCharacterObject';
@@ -10,19 +10,16 @@
 	import { typeCheckPost } from '$lib/helpers/utilites';
 
 	const { talents }: Character = $page.data.character;
-
 	const isUpdate = !typeCheckPost($modal);
-	let talent = isUpdate
-		? talents.find((talent) => talent.id === $modal?.talentId) ?? emptyTalentObject
-		: emptyTalentObject;
-	const id = isUpdate ? 'update' : 'create';
-
-	// FIXME
+	const talent = isUpdate ? talents[$modal.index] : emptyTalentObject;
+	$: id = $showConfirm ? 'delete' : isUpdate ? 'update' : 'create';
+	$: objectKey = isUpdate && !$showConfirm ? `${$modal.key}.${$modal.index}` : 'talents';
 </script>
 
 <ModalBody action="?/{id}" {id}>
-	<FormAttributes objectKey="talents" />
+	<FormAttributes {objectKey} />
 	<Text selfCenter={false} size="normal">FV</Text>
-	<RadioButton iValue={talent.value} iFor={$modal?.talentId ?? ''} amount={3} />
+	<input type="hidden" name="_id" value={talent._id} />
+	<RadioButton iValue={talent.value} iFor="value" amount={3} />
 </ModalBody>
 <ModalFooter action={id} />
