@@ -1,10 +1,12 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import getSkillObject from '$lib/helpers/getSkills';
 	import { capitalize } from '$lib/helpers/utilites';
 	import { language, modal, showModal } from '$lib/store';
 	import Overlay from './Overlay.svelte';
 	import Text from './Text.svelte';
 
+	const dbTalents: Talent[] = $page.data.talents;
 	const noLabels = ['weapons', 'newWeapon', 'newTalent'];
 	const getLabel = () => {
 		if (!$modal?.id) return '';
@@ -13,6 +15,11 @@
 		if ($modal?.key === 'skills' && $modal?.objectKey) {
 			const skillObject = getSkillObject($modal?.objectKey as keyof Skills, 0);
 			return skillObject.languages[$language];
+		}
+
+		if ($modal?.key === 'talents') {
+			const talent = dbTalents.find((talent) => talent._id === $modal.value.id);
+			return talent?.name ?? '';
 		}
 
 		return '';
