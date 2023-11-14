@@ -8,16 +8,30 @@
 	import ModalFooter from '$lib/components/ModalFooter.svelte';
 	import FormAttributes from './FormAttributes.svelte';
 	import { typeCheckPost } from '$lib/helpers/utilites';
+	import Divider from '$lib/components/Divider.svelte';
 
-	const { talents }: Character = $page.data.character;
+	const { talents: t }: Character = $page.data.character;
+	const dbTalents: Talents[] = $page.data.talents;
 	const isUpdate = !typeCheckPost($modal);
-	const talent = isUpdate ? talents[$modal.index] : emptyTalentObject;
+	const talent = isUpdate ? t[$modal.index] : emptyTalentObject;
 	$: id = $showConfirm ? 'delete' : isUpdate ? 'update' : 'create';
 	$: objectKey = isUpdate && !$showConfirm ? `${$modal.key}.${$modal.index}` : 'talents';
+
+	const talentInfo = dbTalents.find((item) => item._id === talent._id);
+	console.log(talentInfo);
 </script>
 
 <ModalBody action="?/{id}" {id}>
 	<FormAttributes {objectKey} />
+	<Text selfCenter={false} size="small">{talentInfo.description}</Text>
+	<Divider />
+	<Text selfCenter={false} size="small">Nivå 1: {talentInfo.stages.one}</Text>
+	<Divider />
+	<Text selfCenter={false} size="small">Nivå 2: {talentInfo.stages.two}</Text>
+	<Divider />
+	<Text selfCenter={false} size="small">Nivå 3: {talentInfo.stages.three}</Text>
+	<Divider />
+
 	<Text selfCenter={false} size="normal">FV</Text>
 	<input type="hidden" name="_id" value={talent._id} />
 	<RadioButton iValue={talent.value} iFor="value" amount={3} />
