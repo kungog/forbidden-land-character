@@ -1,3 +1,13 @@
+export const WEAPONS = [
+	'profile_id',
+	'id',
+	'objectKey',
+	'type',
+	'bonus',
+	'damage',
+	'range',
+	'additionals'
+];
 export const BOOLEANS = ['cooled', 'dry', 'sleepless', 'starved'];
 export const NUMBERS = [
 	'carrying_capacity',
@@ -35,5 +45,7 @@ export const NUMBERS = [
 	'body',
 	'head',
 	'shield',
-	'weight'
+	'weight',
+	'bonus',
+	'damage'
 ];

@@ -40,6 +40,7 @@ export const actions = {
 
 		console.log('--- UPDATE ITEM ---');
 		console.log(object, body);
+
 		await handleUpdateDatabase({
 			id,
 			object

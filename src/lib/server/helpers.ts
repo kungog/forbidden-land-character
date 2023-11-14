@@ -1,4 +1,5 @@
-import { BOOLEANS, NUMBERS } from '$lib/helpers/constants/formValueTypes';
+//@ts-nocheck
+import { BOOLEANS, NUMBERS, WEAPONS } from '$lib/helpers/constants/formValueTypes';
 import { formArmorValues, formPropertiesValues } from '$lib/helpers/form';
 import { validateUserAccess } from '$lib/helpers/validate';
 import { getMongoClient } from '$lib/server/client';
@@ -33,14 +34,23 @@ type BodyObject = object & {
 	relation?: string;
 };
 
+const checkIfArrayExist = (obj: object, key: string) => {
+	return !Object.prototype.hasOwnProperty.call(obj, key) ? { ...obj, [key]: [] } : obj;
+};
+
+const createArrayObject = (key, value) => {
+	return { [key]: key === 'value' ? Number(value) : value };
+};
+
 export const getBodyObject = (data: FormData) => {
 	const objectKey = data.get('objectKey') as string;
 	let body: BodyObject = {};
+	const weapons = objectKey.replace(/[0-9]/g, '');
 
 	// Loop through form values
 	for (const object of data.entries()) {
 		let value = object[1] as string | number | boolean;
-		const key = object[0];
+		let key = object[0];
 
 		// Check if value should be a boolean/number else save as string
 		if (BOOLEANS.includes(key)) {
@@ -55,7 +65,29 @@ export const getBodyObject = (data: FormData) => {
 			value = Number(value);
 		}
 
-		body = { ...body, [key]: value };
+		console.log('KEYS :', key);
+		console.log('OBJECT :', object);
+		if (weapons === 'weapons.' && !WEAPONS.includes(key)) {
+			body = checkIfArrayExist(body, 'extra_dices');
+			const slicedKey = key.split('_');
+			const index = Number(slicedKey[0]);
+
+			if (!body.extra_dices[index]) {
+				body.extra_dices[index] = createArrayObject(slicedKey[1], object[1]);
+			}
+
+			if (body.extra_dices[index]) {
+				body.extra_dices[index] = {
+					...body.extra_dices[index],
+					...createArrayObject(slicedKey[1], object[1])
+				};
+			}
+
+			value = '';
+			key = '';
+		}
+
+		body = key || value ? { ...body, [key]: value } : body;
 	}
 
 	// Remove these properties
