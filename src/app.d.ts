@@ -18,6 +18,17 @@ declare global {
 		| 'relations'
 		| 'notes';
 
+	interface Talent {
+		description: string;
+		_id: string;
+		name: string;
+		stages: {
+			one: string | null;
+			two: string | null;
+			three: string | null;
+		};
+	}
+
 	interface Character {
 		animals: Animal[];
 		carrying_capacity: number;
@@ -39,7 +50,7 @@ declare global {
 		condition: Condition;
 		consumables: Consumables;
 		weapons: Weapon[];
-		talents: Talent[];
+		talents: CharacterTalent[];
 		relations: string[];
 		notes: string[];
 		inventory: Inventory[];
@@ -55,8 +66,8 @@ declare global {
 		};
 	}
 
-	interface Talent {
-		id: string;
+	interface CharacterTalent {
+		_id: string;
 		value: 1 | 2 | 3;
 	}
 
