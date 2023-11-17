@@ -58,7 +58,15 @@
 		width: 100%;
 	}
 
+	svg {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
 	.round-button {
+		position: relative;
 		background: var(--color-box);
 		border-radius: 999px;
 		height: 40px;

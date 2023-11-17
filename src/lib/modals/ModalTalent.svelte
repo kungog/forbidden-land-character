@@ -11,14 +11,13 @@
 	import Divider from '$lib/components/Divider.svelte';
 
 	const { talents: t }: Character = $page.data.character;
-	const dbTalents: Talents[] = $page.data.talents;
+	const dbTalents: Talent[] = $page.data.talents;
 	const isUpdate = !typeCheckPost($modal);
 	const talent = isUpdate ? t[$modal.index] : emptyTalentObject;
 	$: id = $showConfirm ? 'delete' : isUpdate ? 'update' : 'create';
 	$: objectKey = isUpdate && !$showConfirm ? `${$modal.key}.${$modal.index}` : 'talents';
 
-	const talentInfo = dbTalents.find((item) => item._id === talent._id);
-	console.log(talentInfo);
+	const talentInfo = dbTalents.find((item) => item._id === talent._id) as Talent;
 </script>
 
 <ModalBody action="?/{id}" {id}>
