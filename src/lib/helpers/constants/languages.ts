@@ -21,6 +21,11 @@ export const BASE_LABELS = {
 	}
 };
 
+export const NO_TALENTS = {
+	sv: 'Man blir bättre med tiden. . .',
+	en: 'With time you evolve. . .'
+};
+
 export const NO_NOTES = {
 	sv: 'Ojdå, du var inte stark på att skriva. . .',
 	en: "Seems writing isn't your strongest. . ."
