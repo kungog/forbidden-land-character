@@ -53,6 +53,14 @@ export const NO_INVENTORY_ANIMAL = {
 
 export const GENERAL_LABELS = {
 	sv: {
+		no_code: 'Ingen kod?',
+		generate: 'Generera kod',
+		character_build: 'Karaktärs byggare',
+		info_text:
+			'Håll koll på din karaktär med hjälp av detta verktyget som håller det digitalt. Här kan du få direkt vilka tärningar du behöver, lägg till en talang, vapen och massa mer.',
+		continue: 'Gå vidare',
+		your_passcode: 'Din kod',
+		pick_language: 'Välj språk',
 		title: 'Titel',
 		name: 'namn',
 		weight: 'Vikt',
@@ -99,6 +107,14 @@ export const GENERAL_LABELS = {
 		dark_secret: 'Mörk hemlighet'
 	},
 	en: {
+		no_code: "Don't have code?",
+		generate: 'Generate passcode',
+		continue: 'Continue',
+		your_passcode: 'Your passcode',
+		character_build: 'Character builder',
+		pick_language: 'Choose language',
+		info_text:
+			'Keep track on your character online with this tool that keeps it digital. Here you can get your dices, add new talents, add weapons and a lot more.',
 		title: 'Title',
 		name: 'namn',
 		weight: 'Weight',

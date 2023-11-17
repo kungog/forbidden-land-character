@@ -4,7 +4,7 @@ const MAIN_LANGUAGES: ['sv', 'en'] = ['sv', 'en'];
 const ACTIVE_LANGUAGE = MAIN_LANGUAGES[0];
 
 export const activeMenu = writable<MenuItems>();
-export const language = writable(ACTIVE_LANGUAGE);
+export const language = writable<'sv' | 'en'>(ACTIVE_LANGUAGE);
 export const showModal = writable(false);
 export const showConfirm = writable(false);
 export const activeAnimal = writable(0);
