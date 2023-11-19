@@ -16,9 +16,10 @@
 
 	const isUpdate = !typeCheckPost($modal);
 	let weapon = isUpdate ? weapons[$modal.index] : emptyWeaponObject;
+	let objectKey = 'weapons';
 	$: id = $showConfirm ? 'delete' : isUpdate ? 'update' : 'create';
-	$: objectKey = isUpdate && !$showConfirm ? `${$modal.key}.${$modal.index}` : 'weapons';
 
+	console.log('WEAPON :', weapon);
 	const handleAddDice = () => {
 		weapon.extra_dices = [...weapon.extra_dices, { value: 0, info: '' }];
 	};
@@ -42,7 +43,7 @@
 	<GridTemplate template="1fr">
 		<Input iType="text" iLabel={LABEL.additionals} iValue={weapon.additionals} iFor="additionals" />
 	</GridTemplate>
-	{#if weapon.extra_dices.length > 0}
+	{#if weapon.extra_dices}
 		{#each weapon.extra_dices as extra, index}
 			<GridTemplate template="1fr 2fr 50px" gap={12}>
 				<Input iType="number" iLabel={LABEL.damage} iValue={extra.value} iFor="{index}_value" />

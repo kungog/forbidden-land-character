@@ -14,8 +14,8 @@
 	const LABEL = GENERAL_LABELS[$language];
 	const isUpdate = !typeCheckPost($modal);
 	const animal = isUpdate ? animals[$modal.index] : emptyAnimalObject;
+	let objectKey = 'animals';
 	$: id = $showConfirm ? 'delete' : isUpdate ? 'update' : 'create';
-	$: objectKey = isUpdate && !$showConfirm ? `${$modal.key}.${$modal.index}` : 'animals';
 </script>
 
 <ModalBody action="?/{id}" {id}>

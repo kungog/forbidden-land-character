@@ -12,8 +12,8 @@
 	const LABEL = GENERAL_LABELS[$language];
 	const isUpdate = !typeCheckPost($modal);
 	const relation = isUpdate ? relations[$modal?.index] : '';
+	let objectKey = 'relations';
 	$: id = $showConfirm ? 'delete' : isUpdate ? 'update' : 'create';
-	$: objectKey = isUpdate && !$showConfirm ? `${$modal.key}.${$modal.index}` : 'relations';
 </script>
 
 <ModalBody action="?/{id}" {id}>
