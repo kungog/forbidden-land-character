@@ -82,7 +82,7 @@
 		margin-top: var(--spacing-20);
 		gap: var(--spacing-12);
 		overflow: auto;
-		height: 75%;
+		height: calc(80% - (var(--spacing-48) * 2));
 		padding: var(--spacing-12) var(--spacing-10);
 		outline: 1px solid var(--color-background);
 		border-radius: 4px;
