@@ -28,6 +28,9 @@
 	<GridTemplate template="1fr">
 		<Input iType="text" iLabel={LABEL.three} iValue="" iFor="three" />
 	</GridTemplate>
+	<GridTemplate template="1fr">
+		<Input iType="text" iLabel={LABEL.comment} iValue="" iFor="comment" />
+	</GridTemplate>
 	<button type="submit">Save</button>
 </form>
 

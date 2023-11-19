@@ -8,6 +8,7 @@ export const actions = {
 		const body = {
 			name: data.get('name'),
 			description: data.get('description'),
+			comment: data.get('comment'),
 			stages: {
 				one: data.get('one'),
 				two: data.get('two'),

@@ -24,19 +24,25 @@ export const BASE_LABELS = {
 export const ADD_NEW_TALENT = {
 	sv: {
 		add_new: 'Lägg till ny talang',
+		search: 'Hitta talang',
+		search_talents: 'Sök på titel',
 		title: 'Titel',
 		description: 'Beskrivning',
 		one: 'Nivå ett',
 		two: 'Nivå två',
-		three: 'Nivå tree'
+		three: 'Nivå tree',
+		comment: 'Kommentar'
 	},
 	en: {
+		search: 'Find talents',
+		search_talents: 'Search by title',
 		add_new: 'Add new talent',
 		title: 'Title',
 		description: 'Description',
 		one: 'Stage one',
 		two: 'Stage two',
-		three: 'Stage three'
+		three: 'Stage three',
+		comment: 'Comment'
 	}
 };
 
