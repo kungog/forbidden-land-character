@@ -1,9 +1,21 @@
-<div />
+<script lang="ts">
+	export let size: 'large' | 'medium' | 'normal' | 'small' = 'medium';
+	const sizes = {
+		large: 'var(--spacing-32)',
+		medium: 'var(--spacing-24)',
+		normal: 'var(--spacing-16)',
+		small: 'var(--spacing-12)'
+	};
+
+	$: spacingSize = sizes[size];
+</script>
+
+<div style="--size: {spacingSize};" />
 
 <style>
 	div {
-    padding: 24px 0;
-    width: 100%;
+		padding: var(--size) 0;
+		width: 100%;
 	}
 
 	@media (max-width: 1000px) {

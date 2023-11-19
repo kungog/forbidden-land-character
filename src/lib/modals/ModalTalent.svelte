@@ -23,13 +23,13 @@
 <ModalBody action="?/{id}" {id}>
 	<FormAttributes {objectKey} />
 	<Text selfCenter={false} size="small">{talentInfo.description}</Text>
-	<Divider />
+	<Divider size="small" />
 	<Text selfCenter={false} size="small">Nivå 1: {talentInfo.stages.one}</Text>
-	<Divider />
+	<Divider size="small" />
 	<Text selfCenter={false} size="small">Nivå 2: {talentInfo.stages.two}</Text>
-	<Divider />
+	<Divider size="small" />
 	<Text selfCenter={false} size="small">Nivå 3: {talentInfo.stages.three}</Text>
-	<Divider />
+	<Divider size="small" />
 
 	<Text selfCenter={false} size="normal">FV</Text>
 	<input type="hidden" name="_id" value={talent._id} />

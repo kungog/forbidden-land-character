@@ -22,6 +22,7 @@ declare global {
 		description: string;
 		_id: string;
 		name: string;
+		comment: string;
 		stages: {
 			one: string | null;
 			two: string | null;
