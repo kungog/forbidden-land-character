@@ -3,8 +3,30 @@ import { writable } from 'svelte/store';
 const MAIN_LANGUAGES: ['sv', 'en'] = ['sv', 'en'];
 const ACTIVE_LANGUAGE = MAIN_LANGUAGES[0];
 
+export const DAY_TIME = [
+	{
+		text: 'Night',
+		period: 'night'
+	},
+	{
+		text: 'Morning',
+		period: 'morning'
+	},
+	{
+		text: 'Day',
+		period: 'day'
+	},
+	{
+		text: 'Evening',
+		period: 'evening'
+	}
+];
+
+const CURRENT_TIME = DAY_TIME[0];
+
 export const activeMenu = writable<MenuItems>();
 export const language = writable<'sv' | 'en'>(ACTIVE_LANGUAGE);
+export const currentDayTime = writable(CURRENT_TIME);
 export const showModal = writable(false);
 export const showConfirm = writable(false);
 export const activeAnimal = writable(0);

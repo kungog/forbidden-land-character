@@ -61,7 +61,7 @@
 
 			{#if talent?.stages.three?.length}
 				<Divider size="small" />
-				<Text selfCenter={false} size="small">{LABEL.one}: {talent?.stages.three}</Text>
+				<Text selfCenter={false} size="small">{LABEL.three}: {talent?.stages.three}</Text>
 			{/if}
 
 			{#if talent?.comment.length}
