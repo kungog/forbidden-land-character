@@ -5,15 +5,15 @@ import { COLLECTION, DATABASE } from '$lib/server/database';
 
 export const load: LayoutServerLoad = (async () => {
 	const database = await getMongoClient();
-	const reponse = await database.db(DATABASE).collection(COLLECTION.TALENTS).find({}).toArray();
+	const response = await database.db(DATABASE).collection(COLLECTION.TALENTS).find({}).toArray();
 
 	// Remove objectId from mongo
-	const parsedData = await JSON.stringify(reponse);
+	const parsedData = await JSON.stringify(response);
 
 	// close connection
 	database.close();
 
-	if (reponse) {
+	if (response) {
 		return {
 			talents: JSON.parse(parsedData)
 		};
