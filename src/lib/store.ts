@@ -22,7 +22,7 @@ export const DAY_TIME = [
 	}
 ];
 
-export const AMOUNT_OF_PLAYERS = [3, 4, 5, 6];
+export const AMOUNT_OF_PLAYERS = [2, 3, 4, 5, 6, 7];
 
 const CURRENT_TIME = DAY_TIME[0];
 const PLAYER_AMOUNT = AMOUNT_OF_PLAYERS[0];

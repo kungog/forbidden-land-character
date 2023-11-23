@@ -55,19 +55,20 @@
 	<Overlay handleClick={() => (showModal = false)} />
 	<dialog>
 		<section>
-			<Text size="large">{GENERAL_LABELS[$language].amount_players}:</Text>
-			<div>
+			<Divider size="small" />
+			<Text textCenter size="large">{capitalize(GENERAL_LABELS[$language].amount_players)}:</Text>
+			<Divider size="small" />
+			<div class="grid">
 				{#each AMOUNT_OF_PLAYERS as players}
-					<label class="container">
-						{players}
-						<input
-							checked={players === $amountOfPlayers}
-							on:change={() => ($amountOfPlayers = players)}
-							type="radio"
-							name="radio"
-						/>
-						<span class="checkmark" />
-					</label>
+					<Box
+						special
+						inverted
+						handleClick={() => (($amountOfPlayers = players), (showModal = false))}
+						active={players === $amountOfPlayers}
+					>
+						<Divider />
+						<span class="small"><Text textCenter size="large">{players}</Text></span>
+					</Box>
 				{/each}
 			</div>
 		</section>
@@ -128,7 +129,7 @@
 				{#each ACTIVITES as activity}
 					<Box special inverted handleClick={() => handlePlayerActivity(activity)}>
 						<Divider />
-						<span class="small">{activity.text}</span>
+						<span class="small"><Text textCenter>{activity.text}</Text></span>
 					</Box>
 				{/each}
 			</div>
@@ -224,57 +225,6 @@
 		position: absolute;
 		right: var(--spacing-12);
 		top: var(--spacing-12);
-	}
-
-	.container {
-		display: block;
-		position: relative;
-		padding-left: 25px;
-		margin-bottom: 12px;
-		cursor: pointer;
-		font-size: 14px;
-		user-select: none;
-		color: var(--color-white);
-	}
-
-	/* Hide the browser's default radio button */
-	.container input {
-		position: absolute;
-		opacity: 0;
-		cursor: pointer;
-	}
-
-	/* Create a custom radio button */
-	.checkmark {
-		position: absolute;
-		top: 0;
-		left: 0;
-		height: 15px;
-		width: 15px;
-		background-color: #eee;
-		border-radius: 50%;
-	}
-
-	/* On mouse-over, add a grey background color */
-	.container:hover input ~ .checkmark {
-		background-color: #ccc;
-	}
-
-	/* When the radio button is checked, add a blue background */
-	.container input:checked ~ .checkmark {
-		background-color: var(--color-accent);
-	}
-
-	/* Create the indicator (the dot/circle - hidden when not checked) */
-	.checkmark:after {
-		content: '';
-		position: absolute;
-		display: none;
-	}
-
-	/* Show the indicator (dot/circle) when checked */
-	.container input:checked ~ .checkmark:after {
-		display: block;
 	}
 
 	dialog {
