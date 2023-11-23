@@ -22,11 +22,15 @@ export const DAY_TIME = [
 	}
 ];
 
+export const AMOUNT_OF_PLAYERS = [3, 4, 5, 6];
+
 const CURRENT_TIME = DAY_TIME[0];
+const PLAYER_AMOUNT = AMOUNT_OF_PLAYERS[0];
 
 export const activeMenu = writable<MenuItems>();
 export const language = writable<'sv' | 'en'>(ACTIVE_LANGUAGE);
 export const currentDayTime = writable(CURRENT_TIME);
+export const amountOfPlayers = writable(PLAYER_AMOUNT);
 export const showModal = writable(false);
 export const showConfirm = writable(false);
 export const activeAnimal = writable(0);

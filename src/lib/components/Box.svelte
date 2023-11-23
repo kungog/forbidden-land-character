@@ -1,22 +1,24 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
-	export let handleClick: any,
-		className: string = '',
-		hidden: boolean = false,
-		inverted: boolean = false,
-		active: boolean = false,
-		transition: boolean = false,
-		size: 'medium' | 'small' = 'small';
+	export let handleClick: any;
+	export let className: string = '';
+	export let hidden: boolean = false;
+	export let inverted: boolean = false;
+	export let active: boolean = false;
+	export let transition: boolean = false;
+	export let special: boolean = false;
+	export let size: 'medium' | 'small' = 'small';
 
 	$: isHidden = hidden ? 'hidden' : '';
 	$: isInverted = inverted ? 'inverted' : '';
 	$: isActive = active ? 'active' : '';
+	$: isSpecial = special ? 'special' : '';
 	$: hasTransition = transition ? { y: 20 } : {};
 </script>
 
 <button
 	on:click={handleClick}
-	class={`${className} box-btn-${size} ${isHidden} ${isInverted} ${isActive}`}
+	class={`${className} box-btn-${size} ${isHidden} ${isInverted} ${isActive} ${isSpecial}`}
 	in:fly={hasTransition}
 	type="button"
 >
@@ -28,7 +30,8 @@
 		background: var(--color-box);
 		color: var(--color-text);
 		border-radius: var(--radius-04);
-		border: none;
+		// border: none;
+		border: 1px solid transparent;
 	}
 
 	.box-btn-small {
@@ -41,6 +44,13 @@
 		padding: var(--spacing-18);
 	}
 
+	.special {
+		border-color: var(--color-box);
+		height: 100%;
+		width: 100%;
+		position: relative;
+	}
+
 	.hidden {
 		opacity: 0;
 		pointer-events: none;
@@ -51,6 +61,6 @@
 	}
 
 	.active {
-		border: 1px solid var(--color-accent);
+		border-color: var(--color-accent);
 	}
 </style>

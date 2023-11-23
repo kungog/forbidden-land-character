@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Loading from './Loading.svelte';
-	export let handleClick: any,
-		loading: boolean = false,
-		size: 'large' | 'medium' | 'small' = 'small';
+	export let handleClick: any;
+	export let loading: boolean = false;
+	export let size: 'large' | 'medium' | 'small' = 'small';
 </script>
 
 <button on:click={handleClick} class={`btn-${size}`} type="button">

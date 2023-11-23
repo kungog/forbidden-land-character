@@ -8,6 +8,8 @@
 	const characters = data?.characters;
 	let name = '';
 	let showModal = false;
+
+	console.log(characters);
 </script>
 
 <button on:click={() => (showModal = true)} class="add-more">

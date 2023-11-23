@@ -1,26 +1,43 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import GridTemplate from '$lib/modals/GridTemplate.svelte';
-	import Input from '$lib/components/Input.svelte';
-	import { ADD_NEW_TALENT, BASE_LABELS } from '$lib/helpers/constants/languages';
 	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
-	import { language, currentDayTime, DAY_TIME } from '$lib/store';
+	import {
+		language,
+		amountOfPlayers,
+		AMOUNT_OF_PLAYERS,
+		currentDayTime,
+		DAY_TIME
+	} from '$lib/store';
 	import Text from '$lib/components/Text.svelte';
-	import { capitalize } from '$lib/helpers/utilites';
-	import Divider from '$lib/components/Divider.svelte';
-	import Box from '$lib/components/Box.svelte';
 	import Overlay from '$lib/components/Overlay.svelte';
+	import Ball from '$lib/components/Ball.svelte';
+	import { ACTIVITES, type IActivities } from './helpers';
+	import Button from '$lib/components/Button.svelte';
+	import Box from '$lib/components/Box.svelte';
+	import Divider from '$lib/components/Divider.svelte';
+	import { capitalize } from '$lib/helpers/utilites';
 
-	const LABEL = ADD_NEW_TALENT[$language];
-	const BASE = BASE_LABELS[$language];
-	let search = '';
+	let activeBall = 0;
+	let active = '';
 	let showModal = false;
+	let showTimeModal = false;
+	/* 	let activities = {
+		night: [],
+		day: [],
+		morning: [],
+		evening: []
+	} as IActivities; */
 
-	const handleClick = (item: Talent) => {
-		showModal = true;
+	/* 	console.log(activities); */
+	/* 	const handlePlayerActivity = (id: number) => {
+		console.log('hej', { type: id, id: activeBall });
+		return activities[active].push({ type: id, id: activeBall });
+	}; */
+
+	const handlePeriodEvent = (time: any) => {
+		showTimeModal = true;
+		active = time.period;
+		console.log('hej', active);
 	};
-
-	const handleOnChange = (period: { text: string; period: string }) => ($currentDayTime = period);
 </script>
 
 <button on:click={() => (showModal = true)} class="settings">
@@ -32,29 +49,19 @@
 	</svg>
 </button>
 
-<div class="main-page">
-	<Text size="large" bold>{capitalize($currentDayTime.text)}</Text>
-	<Divider />
-	<GridTemplate template="1fr">
-		<Input bind:iValue={search} iType="text" iFor="search" iLabel={LABEL.search_talents} />
-	</GridTemplate>
-	<Text size="large">{BASE.talents}</Text>
-	<div class="flex column" />
-</div>
-
 {#if showModal}
 	<Overlay handleClick={() => (showModal = false)} />
 	<dialog>
 		<section>
-			<Text size="large">{GENERAL_LABELS[$language].pick_time}:</Text>
+			<Text size="large">{GENERAL_LABELS[$language].amount_players}:</Text>
 			<div>
-				{#each DAY_TIME as time}
+				{#each AMOUNT_OF_PLAYERS as players}
 					<label class="container">
-						{time.text}
+						{players}
 						<input
+							checked={players === $amountOfPlayers}
+							on:change={() => ($amountOfPlayers = players)}
 							type="radio"
-							checked={time.period === $currentDayTime.period}
-							on:change={() => handleOnChange(time)}
 							name="radio"
 						/>
 						<span class="checkmark" />
@@ -65,7 +72,132 @@
 	</dialog>
 {/if}
 
+<div class="main">
+	<div class="players-picker flex">
+		{#each [...Array($amountOfPlayers).keys()] as player}
+			<Ball
+				--color={`var(--color-player-${player})`}
+				handleClick={() => (activeBall = player)}
+				active={activeBall === player}
+			/>
+		{/each}
+	</div>
+
+	<div class="time-picker flex space-b">
+		{#each DAY_TIME as time}
+			<Button handleClick={() => ($currentDayTime = time)}>
+				{time.text}
+			</Button>
+		{/each}
+	</div>
+
+	{#each DAY_TIME as time}
+		<Box
+			special
+			inverted
+			handleClick={() => handlePeriodEvent(time)}
+			active={$currentDayTime.period === time.period}
+		>
+			<span>{time.text}</span>
+			<div class="flex column">
+				<!-- {#each activities.night as player}
+					<Ball --color={`var(--color-player-${player})`} --size={'25px'} />
+				{/each} -->
+			</div>
+		</Box>
+	{/each}
+</div>
+
+{#if showTimeModal}
+	<Overlay handleClick={() => (showTimeModal = false)} />
+	<dialog>
+		<section>
+			<Divider size="small" />
+			<Text textCenter size="large">{capitalize('Vad vill du göra?')}</Text>
+			<Divider size="small" />
+			<div class="grid">
+				{#each ACTIVITES as activity}
+					<Box special inverted handleClick={() => activity.id}>
+						<Divider />
+						<span class="small">{activity.text}</span>
+					</Box>
+				{/each}
+			</div>
+		</section>
+	</dialog>
+{/if}
+
 <style lang="scss">
+	.players-picker {
+		position: absolute;
+		gap: 10px;
+		padding-top: 10px;
+		top: 0;
+	}
+
+	.time-picker {
+		width: calc(100% - var(--spacing-20) * 2);
+		justify-content: space-around;
+		position: absolute;
+		gap: 10px;
+		padding-top: 10px;
+		top: 80px;
+
+		@media (max-width: 660px) {
+			top: 40px;
+		}
+	}
+
+	.grid {
+		grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+		gap: var(--spacing-20);
+
+		@media (max-width: 660px) {
+			grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
+		}
+	}
+
+	.main {
+		display: grid;
+		height: var(--main-height);
+		gap: var(--spacing-20);
+		padding: var(--spacing-130) var(--spacing-20) var(--spacing-20);
+		grid-template-columns: repeat(2, 1fr);
+
+		@media (max-width: 660px) {
+			padding: var(--spacing-80) var(--spacing-12) var(--spacing-12);
+			gap: var(--spacing-12);
+			grid-template-columns: repeat(1, 1fr);
+		}
+	}
+
+	.column {
+		gap: var(--spacing-10);
+	}
+
+	span {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-size: 100px;
+		color: var(--color-box);
+		user-select: none;
+
+		@media (max-width: 1200px) {
+			font-size: 70px;
+		}
+
+		@media (max-width: 660px) {
+			font-size: 40px;
+		}
+
+		&.small {
+			font-size: 14px;
+			font-weight: bold;
+		}
+	}
+
 	.settings {
 		background: transparent;
 		border: 0;
@@ -78,7 +210,7 @@
 	.container {
 		display: block;
 		position: relative;
-		padding-left: 35px;
+		padding-left: 25px;
 		margin-bottom: 12px;
 		cursor: pointer;
 		font-size: 14px;
@@ -124,21 +256,6 @@
 	/* Show the indicator (dot/circle) when checked */
 	.container input:checked ~ .checkmark:after {
 		display: block;
-	}
-
-	.main-page {
-		padding: var(--spacing-48) var(--spacing-24);
-		height: 100%;
-	}
-
-	.flex {
-		margin-top: var(--spacing-20);
-		gap: var(--spacing-12);
-		overflow: auto;
-		height: calc(80% - (var(--spacing-48) * 2));
-		padding: var(--spacing-12) var(--spacing-10);
-		outline: 1px solid var(--color-background);
-		border-radius: 4px;
 	}
 
 	dialog {

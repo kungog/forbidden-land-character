@@ -15,6 +15,13 @@
   --color-white: #fff;
   --color-blured: rgba(252, 249, 239, 0.92);
 
+  --color-player-0: rgba(201, 137, 77, 1);
+  --color-player-1: rgba(201, 84, 77, 1);
+  --color-player-2: rgba(147, 115, 166, 1);
+  --color-player-3: rgba(166, 115, 140, 1);
+  --color-player-4: rgba(139, 166, 117, 1);
+  --color-player-5: rgba(65, 143, 168, 1);
+
   --spacing-00: 0rem;
   --spacing-02: 0.2rem;
   --spacing-03: 0.3rem;
