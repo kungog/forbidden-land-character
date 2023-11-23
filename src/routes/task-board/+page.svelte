@@ -17,26 +17,28 @@
 	import { capitalize } from '$lib/helpers/utilites';
 
 	let activeBall = 0;
-	let active = '';
+	let activeBox = '';
 	let showModal = false;
 	let showTimeModal = false;
-	/* 	let activities = {
+	let activities = {
 		night: [],
 		day: [],
 		morning: [],
 		evening: []
-	} as IActivities; */
+	} as IActivities;
 
-	/* 	console.log(activities); */
-	/* 	const handlePlayerActivity = (id: number) => {
-		console.log('hej', { type: id, id: activeBall });
-		return activities[active].push({ type: id, id: activeBall });
-	}; */
+	const handlePlayerActivity = (subject: any) => {
+		// const exist = activities[activeBox].some((person) => person.id === subject.id);
+		const object = { type: subject, id: activeBall };
+
+		activities[activeBox] = activities[activeBox].filter((item) => item.id !== object.id);
+		activities[activeBox] = [...activities[activeBox], object];
+		showTimeModal = false;
+	};
 
 	const handlePeriodEvent = (time: any) => {
 		showTimeModal = true;
-		active = time.period;
-		console.log('hej', active);
+		activeBox = time.period;
 	};
 </script>
 
@@ -99,10 +101,17 @@
 			active={$currentDayTime.period === time.period}
 		>
 			<span>{time.text}</span>
-			<div class="flex column">
-				<!-- {#each activities.night as player}
-					<Ball --color={`var(--color-player-${player})`} --size={'25px'} />
-				{/each} -->
+			<div class="grid-box">
+				{#each activities[time.period] as player}
+					<div class="flex player-daily">
+						<Ball
+							--color={`var(--color-player-${player.id})`}
+							--size="45px"
+							handleClick={() => console.log('Remove')}
+						/>
+						<Text>{player.type.text}</Text>
+					</div>
+				{/each}
 			</div>
 		</Box>
 	{/each}
@@ -117,7 +126,7 @@
 			<Divider size="small" />
 			<div class="grid">
 				{#each ACTIVITES as activity}
-					<Box special inverted handleClick={() => activity.id}>
+					<Box special inverted handleClick={() => handlePlayerActivity(activity)}>
 						<Divider />
 						<span class="small">{activity.text}</span>
 					</Box>
@@ -130,8 +139,8 @@
 <style lang="scss">
 	.players-picker {
 		position: absolute;
-		gap: 10px;
-		padding-top: 10px;
+		gap: var(--spacing-10);
+		padding-top: var(--spacing-10);
 		top: 0;
 	}
 
@@ -139,13 +148,27 @@
 		width: calc(100% - var(--spacing-20) * 2);
 		justify-content: space-around;
 		position: absolute;
-		gap: 10px;
-		padding-top: 10px;
+		gap: var(--spacing-10);
+		padding-top: var(--spacing-10);
 		top: 80px;
 
 		@media (max-width: 660px) {
 			top: 40px;
 		}
+	}
+
+	.grid-box {
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		height: calc(100% - var(--spacing-10) * 2);
+		top: var(--spacing-10);
+		gap: var(--spacing-10);
+	}
+
+	.player-daily {
+		gap: var(--spacing-10);
 	}
 
 	.grid {
@@ -169,10 +192,6 @@
 			gap: var(--spacing-12);
 			grid-template-columns: repeat(1, 1fr);
 		}
-	}
-
-	.column {
-		gap: var(--spacing-10);
 	}
 
 	span {
