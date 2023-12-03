@@ -12,7 +12,7 @@
 	const LABEL = GENERAL_LABELS[$language];
 	const isUpdate = !typeCheckPost($modal);
 	const note = isUpdate ? notes[$modal.index] : '';
-	let objectKey = 'notes';
+	$: objectKey = isUpdate && !$showConfirm ? `${$modal.key}.${$modal.index}` : 'notes';
 	$: id = $showConfirm ? 'delete' : isUpdate ? 'update' : 'create';
 </script>
 

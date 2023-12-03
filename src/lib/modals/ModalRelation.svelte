@@ -12,7 +12,7 @@
 	const LABEL = GENERAL_LABELS[$language];
 	const isUpdate = !typeCheckPost($modal);
 	const relation = isUpdate ? relations[$modal?.index] : '';
-	let objectKey = 'relations';
+	$: objectKey = isUpdate && !$showConfirm ? `${$modal.key}.${$modal.index}` : 'relations';
 	$: id = $showConfirm ? 'delete' : isUpdate ? 'update' : 'create';
 </script>
 

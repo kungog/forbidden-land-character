@@ -16,15 +16,15 @@
 
 	const isUpdate = !typeCheckPost($modal);
 	let weapon = isUpdate ? weapons[$modal.index] : emptyWeaponObject;
-	let objectKey = 'weapons';
+	$: objectKey = isUpdate && !$showConfirm ? `${$modal.key}.${$modal.index}` : 'weapons';
 	$: id = $showConfirm ? 'delete' : isUpdate ? 'update' : 'create';
 
 	console.log('WEAPON :', weapon);
 	const handleAddDice = () => {
 		weapon.extra_dices = [...weapon.extra_dices, { value: 0, info: '' }];
 	};
-	const handleRemoveDice = (index: number) => {
-		weapon = { ...weapon, extra_dices: weapon.extra_dices.splice(index, 1) };
+	const handleRemoveDice = (extra: { value: number; info: string }) => {
+		weapon.extra_dices = weapon.extra_dices.filter((item) => item !== extra);
 	};
 </script>
 
@@ -48,8 +48,11 @@
 			<GridTemplate template="1fr 2fr 50px" gap={12}>
 				<Input iType="number" iLabel={LABEL.damage} iValue={extra.value} iFor="{index}_value" />
 				<Input iType="text" iLabel={LABEL.bonus} iValue={extra.info} iFor="{index}_info" />
-
-				<button class="align-self-bottom warning" on:click={() => handleRemoveDice(index)}>
+				<button
+					type="button"
+					class="align-self-bottom warning"
+					on:click={() => handleRemoveDice(extra)}
+				>
 					<TrashIcon color="var(--color-active)" />
 				</button>
 			</GridTemplate>

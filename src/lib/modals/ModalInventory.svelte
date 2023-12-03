@@ -14,7 +14,7 @@
 	const LABEL = GENERAL_LABELS[$language];
 	const isUpdate = !typeCheckPost($modal);
 	const item = isUpdate ? inventory[$modal.index] : emptyInventoryObject;
-	let objectKey = 'inventory';
+	$: objectKey = isUpdate && !$showConfirm ? `${$modal.key}.${$modal.index}` : 'inventory';
 	$: id = $showConfirm ? 'delete' : isUpdate ? 'update' : 'create';
 </script>
 
