@@ -70,7 +70,12 @@
 <section class="flex column">
 	{#if animals.length > 0}
 		{#each animals as animal, index}
-			<Box handleClick={() => handleAnimalClick(index)} active={index === $activeAnimal} transition>
+			<Box
+				size="small"
+				handleClick={() => handleAnimalClick(index)}
+				active={index === $activeAnimal}
+				transition
+			>
 				<div class="upper-part">
 					<div class="flex space-b">
 						<Text size="normal">{animal.name}</Text>
