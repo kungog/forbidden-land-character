@@ -5,7 +5,9 @@ const getObject = (key: any, value: any) => {
 	};
 };
 
-const createArrayFromObject = (objects: any) => {
+const createArrayFromObject = (
+	objects: Character['skills']
+): { key: keyof Character['skills']; value: number }[] => {
 	return Object.entries(objects).map((object) => {
 		return getObject(object[0], object[1]);
 	});

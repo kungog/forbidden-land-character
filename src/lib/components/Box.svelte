@@ -7,7 +7,7 @@
 	export let active: boolean = false;
 	export let transition: boolean = false;
 	export let special: boolean = false;
-	export let size: 'medium' | 'small' = 'small';
+	export let size: 'medium' | 'small' = 'medium';
 
 	$: isHidden = hidden ? 'hidden' : '';
 	$: isInverted = inverted ? 'inverted' : '';
@@ -30,7 +30,6 @@
 		background: var(--color-box);
 		color: var(--color-text);
 		border-radius: var(--radius-04);
-		// border: none;
 		border: 1px solid transparent;
 	}
 

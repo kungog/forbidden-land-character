@@ -1,11 +1,11 @@
 import { error } from '@sveltejs/kit';
 import { getMongoClient } from '$lib/server/client';
-import type { PageServerLoad } from './$types';
+import type { PageServerLoad } from '../../$types';
 import { DATABASE, COLLECTION } from '$lib/server/database';
 import { ObjectId } from 'mongodb';
 
-export const load = (async ({ params }) => {
-	const { id } = params as { id: Character['_id'] };
+export const load = (async ({ params }: { params: { id: Character['_id'] } }) => {
+	const { id } = params;
 	const database = await getMongoClient();
 	const response = await database
 		.db(DATABASE)

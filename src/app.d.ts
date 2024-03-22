@@ -11,7 +11,7 @@ declare global {
 	type MenuItems =
 		| 'experience'
 		| 'talents'
-		| 'armor'
+		| 'equipments'
 		| 'weapons'
 		| 'animals'
 		| 'inventory'

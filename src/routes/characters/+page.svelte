@@ -8,8 +8,6 @@
 	const characters = data?.characters;
 	let name = '';
 	let showModal = false;
-
-	console.log(characters);
 </script>
 
 <button on:click={() => (showModal = true)} class="add-more">
@@ -32,7 +30,7 @@
 	<h1>Characters</h1>
 	<Grid>
 		{#each characters as character}
-			<a href="/characters/{character._id}/base">
+			<a href="/characters/{character._id}">
 				<PickCharacter image="/assets/forbidden-lands-placeholder.jpeg" name={character.name} />
 			</a>
 		{/each}
