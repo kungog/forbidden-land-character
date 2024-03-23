@@ -108,7 +108,6 @@
 				{GENERAL_LABELS[$language].generate}
 			</button>
 		</div>
-		<Divider />
 		<div class="go-to-links">
 			<a href="/talents">
 				<Text size="large">
