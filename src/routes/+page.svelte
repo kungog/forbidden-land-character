@@ -215,7 +215,7 @@
 	.grid {
 		padding: 0 var(--spacing-16);
 		grid-template-columns: 25px 1fr 25px;
-		height: 100vh;
+		height: var(--main-height);
 
 		> div {
 			grid-column-start: 2;
