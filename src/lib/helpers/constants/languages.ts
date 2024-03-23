@@ -78,6 +78,7 @@ export const NO_INVENTORY_ANIMAL = {
 
 export const GENERAL_LABELS = {
 	sv: {
+		task_board: 'Uppdragstavla',
 		amount_players: 'Välj antal spelare',
 		pick_time: 'Välj tid på dygnet',
 		no_code: 'Ingen kod?',
@@ -134,6 +135,7 @@ export const GENERAL_LABELS = {
 		dark_secret: 'Mörk hemlighet'
 	},
 	en: {
+		task_board: 'Task board',
 		amount_players: 'Amount of players',
 		pick_time: 'Pick timeperiod during the day',
 		no_code: "Don't have code?",

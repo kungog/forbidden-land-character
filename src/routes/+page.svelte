@@ -5,7 +5,7 @@
 	import Overlay from '$components/Overlay.svelte';
 	import Text from '$components/Text.svelte';
 	import { language } from '$lib/store';
-	import { GENERAL_LABELS } from '$helpers/constants/languages';
+	import { BASE_LABELS, GENERAL_LABELS } from '$helpers/constants/languages';
 
 	let showModal = false;
 	$: activeLang = $language;
@@ -108,6 +108,20 @@
 				{GENERAL_LABELS[$language].generate}
 			</button>
 		</div>
+		<Divider />
+		<div class="go-to-links">
+			<a href="/talents">
+				<Text size="large">
+					{BASE_LABELS[$language].talents}
+				</Text>
+			</a>
+			<a href="/talents">
+				<Text size="large">
+					{GENERAL_LABELS[$language].task_board}
+				</Text>
+			</a>
+		</div>
+		<Divider size="small" />
 	</div>
 </div>
 
@@ -271,5 +285,12 @@
 				text-decoration: underline;
 			}
 		}
+	}
+
+	.go-to-links {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		margin-top: auto;
 	}
 </style>
