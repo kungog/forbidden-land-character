@@ -20,17 +20,26 @@
   --color-player-3: rgba(166, 115, 140, 1);
   --color-player-4: rgba(139, 166, 117, 1);
   --color-player-5: rgba(65, 143, 168, 1);
-  --color-player-6: rgba(205,121,177);
-  --color-player-7: rgba(91,181,159);
+  --color-player-6: rgba(205,121,177, 1);
+  --color-player-7: rgba(91,181,159, 1);
 
-  --color-talents: var( --color-player-0);
-  --color-weapons:var( --color-player-1);
-  --color-equipments: var( --color-player-2);
-  --color-experience: var( --color-player-3);
-  --color-inventory:  var( --color-player-4);
-  --color-animals:  var( --color-player-5);
-  --color-relations: var( --color-player-6);
-  --color-notes: var( --color-player-7);
+  --color-talents: var(--color-player-0);
+  --color-weapons: var(--color-player-1);
+  --color-equipments: var(--color-player-2);
+  --color-experience: var(--color-player-3);
+  --color-inventory: var(--color-player-4);
+  --color-animals: var(--color-player-5);
+  --color-relations: var(--color-player-6);
+  --color-notes: var(--color-player-7);
+
+  --color-talents-dark: hsl(29, 53%, 40%);
+  --color-weapons-dark: hsl(3, 53%, 40%);
+  --color-equipments-dark: hsl(278, 22%, 40%);
+  --color-experience-dark: hsl(331, 22%, 40%);
+  --color-inventory-dark:  hsl(93, 22%, 40%);
+  --color-animals-dark:  hsl(195, 44%, 40%);
+  --color-relations-dark: hsl(320, 46%, 40%);
+  --color-notes-dark: hsl(165, 38%, 40%);
 
   --spacing-00: 0rem;
   --spacing-02: 0.2rem;

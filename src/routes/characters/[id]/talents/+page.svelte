@@ -26,29 +26,41 @@
 	}) as (CharacterTalent & Talent)[];
 </script>
 
-<div class="flex justify-c">
+<section class="main-page">
 	<h1>{BASE_LABELS[$language].talents}</h1>
-</div>
 
-<section class="flex column">
-	{#if mergedTalents.length > 0}
-		{#each mergedTalents as talent, index}
-			<Box handleClick={() => handleTalentModal(index)}>
-				<div class="flex space-b">
-					<Text size="normal">{talent.name}</Text>
-					{talent.value}
-				</div>
-			</Box>
-		{/each}
-	{:else}
-		<Text>{NO_TALENTS[$language]}</Text>
-	{/if}
+	<div class="content flex column">
+		{#if mergedTalents.length > 0}
+			{#each mergedTalents as talent, index}
+				<Box handleClick={() => handleTalentModal(index)} background="var(--color-talents-dark)">
+					<div class="flex space-b">
+						<Text size="normal">{talent.name}</Text>
+						{talent.value}
+					</div>
+				</Box>
+			{/each}
+		{:else}
+			<Text>{NO_TALENTS[$language]}</Text>
+		{/if}
+	</div>
 </section>
 
 <style lang="scss">
-	section {
-		margin: 0 var(--spacing-16);
-		gap: var(--spacing-10);
+	.main-page {
+		padding: var(--spacing-16) var(--spacing-20) 0;
+		height: 100%;
+		background: var(--color-talents);
+		border-radius: 4px;
+	}
+
+	.content {
+		height: calc(100% - 34px - var(--spacing-24) - var(--spacing-20));
+		margin-top: var(--spacing-20);
+		gap: var(--spacing-12);
+		overflow: auto;
+		padding: var(--spacing-12) var(--spacing-10);
+		outline: 1px solid var(--color-talents-dark);
+		border-radius: 4px;
 	}
 
 	h1 {

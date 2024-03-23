@@ -8,6 +8,7 @@
 	export let transition: boolean = false;
 	export let special: boolean = false;
 	export let size: 'medium' | 'small' = 'medium';
+	export let background = '';
 
 	$: isHidden = hidden ? 'hidden' : '';
 	$: isInverted = inverted ? 'inverted' : '';
@@ -21,6 +22,7 @@
 	class={`${className} box-btn-${size} ${isHidden} ${isInverted} ${isActive} ${isSpecial}`}
 	in:fly={hasTransition}
 	type="button"
+	style={background ? `background: ${background}` : ''}
 >
 	<slot />
 </button>
