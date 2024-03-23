@@ -115,7 +115,7 @@
 					{BASE_LABELS[$language].talents}
 				</Text>
 			</a>
-			<a href="/talents">
+			<a href="/task-board">
 				<Text size="large">
 					{GENERAL_LABELS[$language].task_board}
 				</Text>
