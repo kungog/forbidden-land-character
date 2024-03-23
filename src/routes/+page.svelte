@@ -82,15 +82,13 @@
 	<div class="flex column align-c">
 		<Divider />
 		<img src="assets/fblands1.png" alt="forbidden-lands-logo" />
-		<Divider />
-		<Divider />
+		<Divider size="medium" />
 		<h1>{GENERAL_LABELS[$language].character_build}</h1>
 		<Text size="small">
 			{GENERAL_LABELS[$language].info_text}
 		</Text>
+		<Divider size="small" />
 
-		<Divider />
-		<Divider />
 		<form class="center column" method="post" use:enhance>
 			<label>
 				<Text bold>{GENERAL_LABELS[$language].your_passcode}</Text>
@@ -101,7 +99,7 @@
 				>{GENERAL_LABELS[$language].continue}</button
 			>
 		</form>
-		<Divider />
+		<Divider size="small" />
 		<div class="flex generate-code-container">
 			<p>{GENERAL_LABELS[$language].no_code}</p>
 			<button on:click={() => (passcode = generatePassword())}>
