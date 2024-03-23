@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Grid from '$lib/components/Grid.svelte';
-	import Input from '$lib/components/Input.svelte';
-	import Overlay from '$lib/components/Overlay.svelte';
-	import PickCharacter from '$lib/components/PickCharacter.svelte';
+	import Grid from '$components/Grid.svelte';
+	import Input from '$components/Input.svelte';
+	import Overlay from '$components/Overlay.svelte';
+	import PickCharacter from '$components/PickCharacter.svelte';
 	import type { PageData } from './$types';
 	export let data: PageData;
 	const characters = data?.characters;

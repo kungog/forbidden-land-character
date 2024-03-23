@@ -1,5 +1,5 @@
-import { getMongoClient, removeObjectId } from '$lib/server/client';
-import { DATABASE, COLLECTION } from '$lib/server/database';
+import { getMongoClient, removeObjectId } from '$server/client';
+import { DATABASE, COLLECTION } from '$server/database';
 
 export const actions = {
 	default: async ({ request }) => {

@@ -205,6 +205,12 @@ a:hover {
   margin-bottom: var(--spacing-10);
 }
 
+.menu-icons {
+  position: absolute;
+  filter: brightness(88%);
+  right: 55%;
+}
+
 h1 {
   font-size: 30px;
   font-weight: 900;

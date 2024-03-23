@@ -1,13 +1,13 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import Box from '$lib/components/Box.svelte';
-	import Text from '$lib/components/Text.svelte';
+	import Box from '$components/Box.svelte';
+	import Text from '$components/Text.svelte';
 	import {
 		NO_ANIMALS,
 		GENERAL_LABELS,
 		BASE_LABELS,
 		NO_INVENTORY_ANIMAL
-	} from '$lib/helpers/constants/languages';
+	} from '$helpers/constants/languages';
 	import { language, modal, showModal, activeAnimal } from '$lib/store';
 
 	export let data: PageData;

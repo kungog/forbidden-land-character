@@ -1,6 +1,16 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import Dashboard from '$lib/components/Character/Dashboard.svelte';
+	import Dashboard from '$components/Character/Dashboard.svelte';
+
+	import ArmorIcon from '$icons/Menu/ArmorIcon.svelte';
+	import WeaponIcon from '$icons/Menu/WeaponIcon.svelte';
+	import ExperienceIcon from '$icons/Menu/ExperienceIcon.svelte';
+	import HorseIcon from '$icons/Menu/HorseIcon.svelte';
+	import InventoryIcon from '$icons/Menu/InventoryIcon.svelte';
+	import RelationIcon from '$icons/Menu/RelationIcon.svelte';
+	import TalentIcon from '$icons/Menu/TalentIcon.svelte';
+	import NotesIcon from '$icons/Menu/NotesIcon.svelte';
+	import type { SvelteComponent } from 'svelte';
 
 	export let data: PageData;
 	const character = data?.character;
@@ -14,6 +24,20 @@
 		'relations',
 		'notes'
 	];
+
+	const component: Record<
+		MenuItems,
+		typeof SvelteComponent<{ width: number; height: number; color: string } & any>
+	> = {
+		experience: ExperienceIcon,
+		inventory: InventoryIcon,
+		animals: HorseIcon,
+		relations: RelationIcon,
+		talents: TalentIcon,
+		equipments: ArmorIcon,
+		weapons: WeaponIcon,
+		notes: NotesIcon
+	};
 </script>
 
 <Dashboard />
@@ -24,7 +48,8 @@
 			href="/characters/{character._id}/{item}"
 			style="background: var(--color-{item})"
 		>
-			{item}
+			<svelte:component this={component[item]} color="var(--color-{item})" height={75} width={75} />
+			<span>{item}</span>
 		</a>
 	{/each}
 </div>
@@ -42,5 +67,12 @@
 		text-transform: uppercase;
 		letter-spacing: 1.8px;
 		font-weight: bold;
+		position: relative;
+		overflow: hidden;
+	}
+
+	span {
+		position: relative;
+		z-index: 1;
 	}
 </style>

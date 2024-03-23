@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit';
-import { getMongoClient } from '$lib/server/client';
+import { getMongoClient } from '$server/client';
 import type { PageServerLoad } from '../../$types';
-import { DATABASE, COLLECTION } from '$lib/server/database';
+import { DATABASE, COLLECTION } from '$server/database';
 import { ObjectId } from 'mongodb';
 
 export const load = (async ({ params }: { params: { id: Character['_id'] } }) => {

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
+	import { GENERAL_LABELS } from '$helpers/constants/languages';
 	import {
 		language,
 		amountOfPlayers,
@@ -7,14 +7,14 @@
 		currentDayTime,
 		DAY_TIME
 	} from '$lib/store';
-	import Text from '$lib/components/Text.svelte';
-	import Overlay from '$lib/components/Overlay.svelte';
-	import Ball from '$lib/components/Ball.svelte';
+	import Text from '$components/Text.svelte';
+	import Overlay from '$components/Overlay.svelte';
+	import Ball from '$components/Ball.svelte';
 	import { ACTIVITES, type IActivities } from './helpers';
-	import Button from '$lib/components/Button.svelte';
-	import Box from '$lib/components/Box.svelte';
-	import Divider from '$lib/components/Divider.svelte';
-	import { capitalize } from '$lib/helpers/utilites';
+	import Button from '$components/Button.svelte';
+	import Box from '$components/Box.svelte';
+	import Divider from '$components/Divider.svelte';
+	import { capitalize } from '$helpers/utilites';
 
 	let activeBall = 0;
 	let activeBox = '';

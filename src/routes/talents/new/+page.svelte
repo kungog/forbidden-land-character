@@ -1,11 +1,11 @@
 <script lang="ts">
-	import GridTemplate from '$lib/modals/GridTemplate.svelte';
-	import Input from '$lib/components/Input.svelte';
-	import { ADD_NEW_TALENT } from '$lib/helpers/constants/languages';
+	import GridTemplate from '$modals/GridTemplate.svelte';
+	import Input from '$components/Input.svelte';
+	import { ADD_NEW_TALENT } from '$helpers/constants/languages';
 	import { language } from '$lib/store';
-	import Text from '$lib/components/Text.svelte';
-	import { capitalize } from '$lib/helpers/utilites';
-	import Divider from '$lib/components/Divider.svelte';
+	import Text from '$components/Text.svelte';
+	import { capitalize } from '$helpers/utilites';
+	import Divider from '$components/Divider.svelte';
 
 	const LABEL = ADD_NEW_TALENT[$language];
 </script>

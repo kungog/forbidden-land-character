@@ -1,9 +1,9 @@
 import { error } from '@sveltejs/kit';
-import { getMongoClient, removeObjectId } from '$lib/server/client';
+import { getMongoClient, removeObjectId } from '$server/client';
 import type { PageServerLoad } from './$types';
-import { DATABASE, COLLECTION } from '$lib/server/database';
-import { validateAccess } from '$lib/helpers/validate';
-import { emptyCharacter } from '$lib/helpers/getCharacterObject.js';
+import { DATABASE, COLLECTION } from '$server/database';
+import { validateAccess } from '$helpers/validate';
+import { emptyCharacter } from '$helpers/getCharacterObject.js';
 
 export const load = (async ({ cookies }) => {
 	const passcode = cookies.get('passcode');

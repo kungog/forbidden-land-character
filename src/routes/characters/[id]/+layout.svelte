@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Header from '$lib/layouts/Header.svelte';
-	import Container from '$lib/components/Container.svelte';
-	import Modals from '$lib/layouts/Modals.svelte';
+	import Header from '$layouts/Header.svelte';
+	import Container from '$components/Container.svelte';
+	import Modals from '$layouts/Modals.svelte';
 </script>
 
 <Header />

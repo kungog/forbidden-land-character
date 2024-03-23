@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { enhance } from '$app/forms';
-	import Divider from '$lib/components/Divider.svelte';
-	import Overlay from '$lib/components/Overlay.svelte';
-	import Text from '$lib/components/Text.svelte';
+	import Divider from '$components/Divider.svelte';
+	import Overlay from '$components/Overlay.svelte';
+	import Text from '$components/Text.svelte';
 	import { language } from '$lib/store';
-	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
+	import { GENERAL_LABELS } from '$helpers/constants/languages';
 
 	let showModal = false;
 	$: activeLang = $language;

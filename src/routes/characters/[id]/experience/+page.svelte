@@ -1,18 +1,18 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { language, modal, showModal } from '$lib/store';
-	import createArrayFromObject from '$lib/helpers/getObjectKeys';
-	import { SKILLS } from '$lib/helpers/constants/skills';
-	import { getSkillDice } from '$lib/helpers/getDices';
-	import { BASE_LABELS } from '$lib/helpers/constants/languages';
+	import createArrayFromObject from '$helpers/getObjectKeys';
+	import { SKILLS } from '$helpers/constants/skills';
+	import { getSkillDice } from '$helpers/getDices';
+	import { BASE_LABELS } from '$helpers/constants/languages';
 
-	import Box from '$lib/components/Box.svelte';
-	import Dices from '$lib/components/Dices.svelte';
-	import Text from '$lib/components/Text.svelte';
-	import CharismaIcon from '$lib/components/Icons/Property/CharismaIcon.svelte';
-	import FlexibilityIcon from '$lib/components/Icons/Property/FlexibilityIcon.svelte';
-	import IntelligenceIcon from '$lib/components/Icons/Property/IntelligenceIcon.svelte';
-	import StrengthIcon from '$lib/components/Icons/Property/StrengthIcon.svelte';
+	import Box from '$components/Box.svelte';
+	import Dices from '$components/Dices.svelte';
+	import Text from '$components/Text.svelte';
+	import CharismaIcon from '$icons/Property/CharismaIcon.svelte';
+	import FlexibilityIcon from '$icons/Property/FlexibilityIcon.svelte';
+	import IntelligenceIcon from '$icons/Property/IntelligenceIcon.svelte';
+	import StrengthIcon from '$icons/Property/StrengthIcon.svelte';
 
 	export let data: PageData;
 	const { skills, basic_properties }: Character = data.character;
@@ -48,7 +48,7 @@
 		<Box handleClick={() => handleModal(item.key, item.value)}>
 			<div class="flex space-b">
 				<div class="flex align-c">
-					<svelte:component this={propertyIcon[SKILLS[item.key].type]} width={16} height={16} />
+					<svelte:component this={propertyIcon[SKILLS[item.key].type]} width={24} height={24} />
 					<Text size="normal">{SKILLS[item.key].languages[$language]}</Text>
 				</div>
 				<Dices

@@ -1,12 +1,12 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { modal, showModal, language } from '$lib/store';
-	import Box from '$lib/components/Box.svelte';
-	import Text from '$lib/components/Text.svelte';
-	import BodyIcon from '$lib/components/Icons/General/BodyIcon.svelte';
-	import HelmetIcon from '$lib/components/Icons/General/HelmetIcon.svelte';
-	import ShieldIcon from '$lib/components/Icons/General/ShieldIcon.svelte';
-	import { BASE_LABELS } from '$lib/helpers/constants/languages';
+	import Box from '$components/Box.svelte';
+	import Text from '$components/Text.svelte';
+	import BodyIcon from '$icons/General/BodyIcon.svelte';
+	import HelmetIcon from '$icons/General/HelmetIcon.svelte';
+	import ShieldIcon from '$icons/General/ShieldIcon.svelte';
+	import { BASE_LABELS } from '$helpers/constants/languages';
 
 	export let data: PageData;
 	const {

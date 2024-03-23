@@ -2,7 +2,7 @@ import {
 	handleDeleteDatabase,
 	handleUpdateDatabase,
 	handleValidateFormInput
-} from '$lib/server/helpers';
+} from '$server/helpers';
 
 export const actions = {
 	update: async ({ cookies, request }) => {

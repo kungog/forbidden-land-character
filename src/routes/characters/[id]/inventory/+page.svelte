@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import Text from '$lib/components/Text.svelte';
-	import Box from '$lib/components/Box.svelte';
+	import Text from '$components/Text.svelte';
+	import Box from '$components/Box.svelte';
 	import { language, modal, showModal } from '$lib/store';
-	import { GENERAL_LABELS, BASE_LABELS } from '$lib/helpers/constants/languages';
+	import { GENERAL_LABELS, BASE_LABELS } from '$helpers/constants/languages';
 
 	export let data: PageData;
 	const { inventory }: Character = data.character;

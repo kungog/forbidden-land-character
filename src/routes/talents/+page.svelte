@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import GridTemplate from '$lib/modals/GridTemplate.svelte';
-	import Input from '$lib/components/Input.svelte';
-	import { ADD_NEW_TALENT, BASE_LABELS } from '$lib/helpers/constants/languages';
+	import GridTemplate from '$modals/GridTemplate.svelte';
+	import Input from '$components/Input.svelte';
+	import { ADD_NEW_TALENT, BASE_LABELS } from '$helpers/constants/languages';
 	import { language } from '$lib/store';
-	import Text from '$lib/components/Text.svelte';
-	import { capitalize } from '$lib/helpers/utilites';
-	import Divider from '$lib/components/Divider.svelte';
-	import Box from '$lib/components/Box.svelte';
-	import Overlay from '$lib/components/Overlay.svelte';
+	import Text from '$components/Text.svelte';
+	import { capitalize } from '$helpers/utilites';
+	import Divider from '$components/Divider.svelte';
+	import Box from '$components/Box.svelte';
+	import Overlay from '$components/Overlay.svelte';
 
 	const dbTalents: Talent[] = $page.data.talents;
 	const LABEL = ADD_NEW_TALENT[$language];

@@ -2,9 +2,9 @@
 	import type { PageData } from './$types';
 	import { language } from '$lib/store';
 	import { modal, showModal } from '$lib/store';
-	import Box from '$lib/components/Box.svelte';
-	import Text from '$lib/components/Text.svelte';
-	import { GENERAL_LABELS, BASE_LABELS } from '$lib/helpers/constants/languages';
+	import Box from '$components/Box.svelte';
+	import Text from '$components/Text.svelte';
+	import { GENERAL_LABELS, BASE_LABELS } from '$helpers/constants/languages';
 
 	export let data: PageData;
 	const { weapons }: Character = data.character;

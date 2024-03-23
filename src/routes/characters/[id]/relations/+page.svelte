@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import Box from '$lib/components/Box.svelte';
-	import Text from '$lib/components/Text.svelte';
-	import { NO_RELATIONS, BASE_LABELS } from '$lib/helpers/constants/languages';
+	import Box from '$components/Box.svelte';
+	import Text from '$components/Text.svelte';
+	import { NO_RELATIONS, BASE_LABELS } from '$helpers/constants/languages';
 	import { language, modal, showModal } from '$lib/store';
 	export let data: PageData;
 	const { relations }: Character = data.character;

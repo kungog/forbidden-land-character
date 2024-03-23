@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad, LayoutServerLoad } from './$types';
-import { getMongoClient } from '$lib/server/client';
-import { COLLECTION, DATABASE } from '$lib/server/database';
+import { getMongoClient } from '$server/client';
+import { COLLECTION, DATABASE } from '$server/database';
 
 export const load: LayoutServerLoad = (async () => {
 	const database = await getMongoClient();
