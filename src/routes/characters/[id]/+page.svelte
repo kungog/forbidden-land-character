@@ -49,7 +49,7 @@
 			style="background: var(--color-{item})"
 		>
 			<svelte:component this={component[item]} color="var(--color-{item})" height={75} width={75} />
-			<span>{item}</span>
+			<span style="color: var(--color-{item}-dark)">{item}</span>
 		</a>
 	{/each}
 </div>
@@ -74,5 +74,6 @@
 	span {
 		position: relative;
 		z-index: 1;
+		font-size: 18px;
 	}
 </style>
