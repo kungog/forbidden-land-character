@@ -13,8 +13,8 @@
 	import FlexibilityIcon from '$icons/Property/FlexibilityIcon.svelte';
 	import IntelligenceIcon from '$icons/Property/IntelligenceIcon.svelte';
 	import StrengthIcon from '$icons/Property/StrengthIcon.svelte';
-	import CategoryPage from '$components/CategoryPage.svelte';
-	import Content from '$components/Content.svelte';
+	import CategoryPage from '$layouts/CategoryPage.svelte';
+	import Content from '$layouts/Content.svelte';
 	import Experience from '$widgets/Parts/Experience.svelte';
 
 	export let data: PageData;

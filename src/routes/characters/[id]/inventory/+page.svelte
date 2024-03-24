@@ -4,8 +4,8 @@
 	import Box from '$components/Box.svelte';
 	import { language, modal, showModal } from '$lib/store';
 	import { GENERAL_LABELS, BASE_LABELS } from '$helpers/constants/languages';
-	import CategoryPage from '$components/CategoryPage.svelte';
-	import Content from '$components/Content.svelte';
+	import CategoryPage from '$layouts/CategoryPage.svelte';
+	import Content from '$layouts/Content.svelte';
 
 	export let data: PageData;
 	const { inventory }: Character = data.character;

@@ -4,8 +4,8 @@
 	import Text from '$components/Text.svelte';
 	import { NO_RELATIONS, BASE_LABELS } from '$helpers/constants/languages';
 	import { language, modal, showModal } from '$lib/store';
-	import CategoryPage from '$components/CategoryPage.svelte';
-	import Content from '$components/Content.svelte';
+	import CategoryPage from '$layouts/CategoryPage.svelte';
+	import Content from '$layouts/Content.svelte';
 	export let data: PageData;
 	const { relations }: Character = data.character;
 

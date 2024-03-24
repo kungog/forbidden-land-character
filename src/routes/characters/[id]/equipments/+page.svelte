@@ -7,9 +7,8 @@
 	import HelmetIcon from '$icons/General/HelmetIcon.svelte';
 	import ShieldIcon from '$icons/General/ShieldIcon.svelte';
 	import { BASE_LABELS } from '$helpers/constants/languages';
-	import CategoryPage from '$components/CategoryPage.svelte';
-	import Content from '$components/Content.svelte';
-	import Divider from '$components/Divider.svelte';
+	import CategoryPage from '$layouts/CategoryPage.svelte';
+	import Content from '$layouts/Content.svelte';
 
 	export let data: PageData;
 	const {

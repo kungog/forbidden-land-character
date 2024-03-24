@@ -4,8 +4,8 @@
 	import Box from '$components/Box.svelte';
 	import Text from '$components/Text.svelte';
 	import { NO_TALENTS, BASE_LABELS } from '$helpers/constants/languages';
-	import Content from '$components/Content.svelte';
-	import CategoryPage from '$components/CategoryPage.svelte';
+	import Content from '$layouts/Content.svelte';
+	import CategoryPage from '$layouts/CategoryPage.svelte';
 	import PowerPoint from '$widgets/Parts/PowerPoint.svelte';
 
 	export let data: PageData;
