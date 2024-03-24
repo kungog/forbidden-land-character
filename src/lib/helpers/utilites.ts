@@ -27,3 +27,8 @@ export const debounce = (func: () => void, timeoutValue = 250) => {
 		func();
 	}, timeoutValue);
 };
+
+const BASE_URL = '/characters/';
+export const getPath = (pathname: string, replace: string) => {
+	return pathname.replace(BASE_URL + replace + '/', '');
+};

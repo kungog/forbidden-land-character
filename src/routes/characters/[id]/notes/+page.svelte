@@ -4,6 +4,8 @@
 	import Text from '$components/Text.svelte';
 	import { language, modal, showModal } from '$lib/store';
 	import { NO_NOTES, BASE_LABELS } from '$helpers/constants/languages';
+	import CategoryPage from '$components/CategoryPage.svelte';
+	import Content from '$components/Content.svelte';
 
 	export let data: PageData;
 	const { notes }: Character = data.character;
@@ -20,29 +22,18 @@
 	};
 </script>
 
-<div class="flex justify-c">
+<CategoryPage>
 	<h1>{BASE_LABELS[$language].notes}</h1>
-</div>
 
-<section class="flex column">
-	{#if notes.length > 0}
-		{#each notes as note, index}
-			<Box handleClick={() => handleNoteModal(index)}>
-				<Text>{note}</Text>
-			</Box>
-		{/each}
-	{:else}
-		<Text>{NO_NOTES[$language]}</Text>
-	{/if}
-</section>
-
-<style lang="scss">
-	section {
-		margin: 0 var(--spacing-16);
-		gap: var(--spacing-10);
-	}
-
-	h1 {
-		margin-bottom: var(--spacing-16);
-	}
-</style>
+	<Content>
+		{#if notes.length > 0}
+			{#each notes as note, index}
+				<Box handleClick={() => handleNoteModal(index)}>
+					<Text>{note}</Text>
+				</Box>
+			{/each}
+		{:else}
+			<Text>{NO_NOTES[$language]}</Text>
+		{/if}
+	</Content>
+</CategoryPage>

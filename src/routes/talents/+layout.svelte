@@ -11,6 +11,6 @@
 <style>
 	main {
 		height: var(--main-height);
-		background: var(--color-box);
+		background: var(--color-background);
 	}
 </style>

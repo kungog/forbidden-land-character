@@ -14,7 +14,7 @@
 
 <style>
 	div {
-		padding: var(--size) 0;
+		padding: var(--size) 0 0 0;
 		width: 100%;
 	}
 

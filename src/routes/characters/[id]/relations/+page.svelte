@@ -4,6 +4,8 @@
 	import Text from '$components/Text.svelte';
 	import { NO_RELATIONS, BASE_LABELS } from '$helpers/constants/languages';
 	import { language, modal, showModal } from '$lib/store';
+	import CategoryPage from '$components/CategoryPage.svelte';
+	import Content from '$components/Content.svelte';
 	export let data: PageData;
 	const { relations }: Character = data.character;
 
@@ -19,29 +21,18 @@
 	};
 </script>
 
-<div class="flex justify-c">
+<CategoryPage>
 	<h1>{BASE_LABELS[$language].relations}</h1>
-</div>
 
-<section class="flex column">
-	{#if relations.length > 0}
-		{#each relations as relation, index}
-			<Box handleClick={() => handleRelationModal(index)}>
-				<Text>{relation}</Text>
-			</Box>
-		{/each}
-	{:else}
-		<Text>{NO_RELATIONS[$language]}</Text>
-	{/if}
-</section>
-
-<style lang="scss">
-	section {
-		margin: 0 var(--spacing-16);
-		gap: var(--spacing-10);
-	}
-
-	h1 {
-		margin-bottom: var(--spacing-16);
-	}
-</style>
+	<Content>
+		{#if relations.length > 0}
+			{#each relations as relation, index}
+				<Box handleClick={() => handleRelationModal(index)}>
+					<Text>{relation}</Text>
+				</Box>
+			{/each}
+		{:else}
+			<Text>{NO_RELATIONS[$language]}</Text>
+		{/if}
+	</Content>
+</CategoryPage>

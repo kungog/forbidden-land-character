@@ -36,7 +36,7 @@
 	<Text size="large">{BASE.talents}</Text>
 	<div class="flex column">
 		{#each filteredTalents as talent}
-			<Box handleClick={() => handleClick(talent)} inverted>
+			<Box handleClick={() => handleClick(talent)}>
 				<Text size="medium">{talent.name}</Text>
 			</Box>
 		{/each}
@@ -84,7 +84,7 @@
 		overflow: auto;
 		height: calc(80% - (var(--spacing-48) * 2));
 		padding: var(--spacing-12) var(--spacing-10);
-		outline: 1px solid var(--color-background);
+		outline: 1px solid var(--color-box);
 		border-radius: 4px;
 	}
 
@@ -109,7 +109,7 @@
 		z-index: 101;
 		min-height: 10%;
 		width: 90%;
-		background: var(--color-box);
+		background: var(--color-background);
 		border-radius: var(--radius-04);
 		padding: var(--spacing-16);
 		pointer-events: initial;

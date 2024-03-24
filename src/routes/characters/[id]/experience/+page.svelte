@@ -13,6 +13,8 @@
 	import FlexibilityIcon from '$icons/Property/FlexibilityIcon.svelte';
 	import IntelligenceIcon from '$icons/Property/IntelligenceIcon.svelte';
 	import StrengthIcon from '$icons/Property/StrengthIcon.svelte';
+	import CategoryPage from '$components/CategoryPage.svelte';
+	import Content from '$components/Content.svelte';
 
 	export let data: PageData;
 	const { skills, basic_properties }: Character = data.character;
@@ -39,39 +41,29 @@
 	};
 </script>
 
-<div class="flex justify-c">
-	<h1>{BASE_LABELS[$language].animals}</h1>
-</div>
-
-<section class="flex column">
-	{#each items as item}
-		<Box handleClick={() => handleModal(item.key, item.value)}>
-			<div class="flex space-b">
-				<div class="flex align-c">
-					<svelte:component this={propertyIcon[SKILLS[item.key].type]} width={24} height={24} />
-					<Text size="normal">{SKILLS[item.key].languages[$language]}</Text>
+<CategoryPage>
+	<h1>{BASE_LABELS[$language].experience}</h1>
+	<Content>
+		{#each items as item}
+			<Box handleClick={() => handleModal(item.key, item.value)}>
+				<div class="flex space-b">
+					<div class="flex align-c">
+						<svelte:component this={propertyIcon[SKILLS[item.key].type]} width={24} height={24} />
+						<Text size="normal">{SKILLS[item.key].languages[$language]}</Text>
+					</div>
+					<Dices
+						{...getSkillDice({
+							properties: basic_properties,
+							skill: { ...SKILLS[item.key], value: item.value }
+						})}
+					/>
 				</div>
-				<Dices
-					{...getSkillDice({
-						properties: basic_properties,
-						skill: { ...SKILLS[item.key], value: item.value }
-					})}
-				/>
-			</div>
-		</Box>
-	{/each}
-</section>
+			</Box>
+		{/each}
+	</Content>
+</CategoryPage>
 
 <style lang="scss">
-	section {
-		margin: 0 var(--spacing-16);
-		gap: var(--spacing-10);
-	}
-
-	h1 {
-		margin-bottom: var(--spacing-16);
-	}
-
 	.align-c :global(:nth-child(1)) {
 		margin-right: var(--spacing-10);
 	}

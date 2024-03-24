@@ -62,7 +62,6 @@
 				{#each AMOUNT_OF_PLAYERS as players}
 					<Box
 						special
-						inverted
 						handleClick={() => (($amountOfPlayers = players), (showModal = false))}
 						active={players === $amountOfPlayers}
 					>
@@ -127,7 +126,7 @@
 			<Divider size="small" />
 			<div class="grid">
 				{#each ACTIVITES as activity}
-					<Box special inverted handleClick={() => handlePlayerActivity(activity)}>
+					<Box special handleClick={() => handlePlayerActivity(activity)}>
 						<Divider />
 						<span class="small"><Text textCenter>{activity.text}</Text></span>
 					</Box>
@@ -248,7 +247,7 @@
 		z-index: 101;
 		min-height: 10%;
 		width: 90%;
-		background: var(--color-box);
+		background: var(--color-background);
 		border-radius: var(--radius-04);
 		padding: var(--spacing-16);
 		pointer-events: initial;

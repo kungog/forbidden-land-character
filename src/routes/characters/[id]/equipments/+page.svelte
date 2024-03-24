@@ -7,6 +7,9 @@
 	import HelmetIcon from '$icons/General/HelmetIcon.svelte';
 	import ShieldIcon from '$icons/General/ShieldIcon.svelte';
 	import { BASE_LABELS } from '$helpers/constants/languages';
+	import CategoryPage from '$components/CategoryPage.svelte';
+	import Content from '$components/Content.svelte';
+	import Divider from '$components/Divider.svelte';
 
 	export let data: PageData;
 	const {
@@ -25,46 +28,36 @@
 	};
 </script>
 
-<div class="flex justify-c">
+<CategoryPage>
 	<h1>{BASE_LABELS[$language].armor}</h1>
-</div>
-
-<section class="flex column">
-	<Box handleClick={() => handleArmor()}>
-		<div class="flex equipment">
-			<div class="flex">
-				<HelmetIcon />
-				<Text size="normal">{head.name ?? '-'}</Text>
+	<Content>
+		<Box handleClick={() => handleArmor()}>
+			<div class="flex equipment">
+				<div class="flex">
+					<HelmetIcon />
+					<Text size="normal">{head.name ?? '-'}</Text>
+				</div>
+				<Text>{head.value ?? 0}</Text>
 			</div>
-			<Text>{head.value ?? 0}</Text>
-		</div>
-		<div class="flex equipment">
-			<div class="flex">
-				<BodyIcon />
-				<Text size="normal">{body.name ?? '-'}</Text>
+			<div class="flex equipment">
+				<div class="flex">
+					<BodyIcon />
+					<Text size="normal">{body.name ?? '-'}</Text>
+				</div>
+				<Text>{body.value ?? 0}</Text>
 			</div>
-			<Text>{body.value ?? 0}</Text>
-		</div>
-		<div class="flex equipment">
-			<div class="flex">
-				<ShieldIcon />
-				<Text size="normal">{shield.name ?? '-'}</Text>
+			<div class="flex equipment">
+				<div class="flex">
+					<ShieldIcon />
+					<Text size="normal">{shield.name ?? '-'}</Text>
+				</div>
+				<Text>{shield.value ?? 0}</Text>
 			</div>
-			<Text>{shield.value ?? 0}</Text>
-		</div>
-	</Box>
-</section>
+		</Box>
+	</Content>
+</CategoryPage>
 
 <style lang="scss">
-	section {
-		margin: 0 var(--spacing-16);
-		gap: var(--spacing-10);
-	}
-
-	h1 {
-		margin-bottom: var(--spacing-16);
-	}
-
 	div {
 		&.equipment:not(:last-child) {
 			margin-bottom: var(--spacing-10);

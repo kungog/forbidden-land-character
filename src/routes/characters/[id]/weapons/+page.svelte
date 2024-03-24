@@ -5,6 +5,8 @@
 	import Box from '$components/Box.svelte';
 	import Text from '$components/Text.svelte';
 	import { GENERAL_LABELS, BASE_LABELS } from '$helpers/constants/languages';
+	import CategoryPage from '$components/CategoryPage.svelte';
+	import Content from '$components/Content.svelte';
 
 	export let data: PageData;
 	const { weapons }: Character = data.character;
@@ -23,39 +25,30 @@
 	const LABEL = GENERAL_LABELS[$language];
 </script>
 
-<div class="flex justify-c">
+<CategoryPage>
 	<h1>{BASE_LABELS[$language].weapons}</h1>
-</div>
 
-<section class="flex column">
-	{#each weapons as weapon, index}
-		<Box handleClick={() => handleWeaponModal(index)}>
-			<div class="upper-part">
-				<div class="flex space-b">
-					<Text size="normal">{weapon.type}</Text>
-					<Text>{weapon.additionals ?? ''}</Text>
+	<Content>
+		{#each weapons as weapon, index}
+			<Box handleClick={() => handleWeaponModal(index)}>
+				<div class="upper-part">
+					<div class="flex space-b">
+						<Text size="normal">{weapon.type}</Text>
+						<Text>{weapon.additionals ?? ''}</Text>
+					</div>
+
+					<div class="flex stats">
+						<Text>{LABEL['bonus']}: {weapon.bonus}</Text>
+						<Text>{LABEL['damage']}: {weapon.damage}</Text>
+						<Text>{LABEL['range']}: {weapon.range.toLocaleLowerCase()}</Text>
+					</div>
 				</div>
+			</Box>
+		{/each}
+	</Content>
+</CategoryPage>
 
-				<div class="flex stats">
-					<Text>{LABEL['bonus']}: {weapon.bonus}</Text>
-					<Text>{LABEL['damage']}: {weapon.damage}</Text>
-					<Text>{LABEL['range']}: {weapon.range.toLocaleLowerCase()}</Text>
-				</div>
-			</div>
-		</Box>
-	{/each}
-</section>
-
-<style lang="scss">
-	section {
-		margin: 0 var(--spacing-16);
-		gap: var(--spacing-10);
-	}
-
-	h1 {
-		margin-bottom: var(--spacing-16);
-	}
-
+<style>
 	.stats {
 		gap: var(--spacing-18);
 	}

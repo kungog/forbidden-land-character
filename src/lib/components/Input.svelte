@@ -26,7 +26,7 @@
 
 	input {
 		margin-top: var(--spacing-08);
-		background: var(--color-background);
+		background: var(--color-box);
 		border: 1px solid transparent;
 		padding: var(--spacing-10) var(--spacing-14);
 		width: 100%;
