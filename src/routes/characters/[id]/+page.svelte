@@ -13,6 +13,8 @@
 	import type { SvelteComponent } from 'svelte';
 	import { currentBase } from '$lib/store';
 	import Base from '$components/Character/Base.svelte';
+	import { BASE_LABELS } from '$helpers/constants/languages';
+	import { language } from '$lib/store';
 
 	export let data: PageData;
 	const { _id } = data?.character;
@@ -58,7 +60,7 @@
 			style="background: var(--color-{item})"
 		>
 			<svelte:component this={component[item]} color="var(--color-{item})" height={75} width={75} />
-			<span style="color: var(--color-{item}-dark)">{item}</span>
+			<span style="color: var(--color-{item}-dark)">{BASE_LABELS[$language][item]}</span>
 		</a>
 	{/each}
 </section>
