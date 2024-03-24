@@ -28,7 +28,7 @@
 <CategoryPage>
 	<h1>{BASE_LABELS[$language].weapons}</h1>
 
-	<Content>
+	<Content active>
 		{#each weapons as weapon, index}
 			<Box handleClick={() => handleWeaponModal(index)}>
 				<div class="upper-part">

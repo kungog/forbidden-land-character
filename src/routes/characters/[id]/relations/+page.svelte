@@ -24,7 +24,7 @@
 <CategoryPage>
 	<h1>{BASE_LABELS[$language].relations}</h1>
 
-	<Content>
+	<Content active>
 		{#if relations.length > 0}
 			{#each relations as relation, index}
 				<Box handleClick={() => handleRelationModal(index)}>

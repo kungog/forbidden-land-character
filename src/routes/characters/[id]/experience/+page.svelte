@@ -15,9 +15,10 @@
 	import StrengthIcon from '$icons/Property/StrengthIcon.svelte';
 	import CategoryPage from '$components/CategoryPage.svelte';
 	import Content from '$components/Content.svelte';
+	import Experience from '$widgets/Parts/Experience.svelte';
 
 	export let data: PageData;
-	const { skills, basic_properties }: Character = data.character;
+	const { experience, skills, basic_properties }: Character = data.character;
 
 	const items = createArrayFromObject(skills);
 
@@ -42,8 +43,11 @@
 </script>
 
 <CategoryPage>
-	<h1>{BASE_LABELS[$language].experience}</h1>
-	<Content>
+	<div class="flex space-b">
+		<h1>{BASE_LABELS[$language].experience}</h1>
+		<Experience {experience} />
+	</div>
+	<Content active>
 		{#each items as item}
 			<Box handleClick={() => handleModal(item.key, item.value)}>
 				<div class="flex space-b">

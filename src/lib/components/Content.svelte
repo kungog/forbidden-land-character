@@ -1,4 +1,14 @@
-<div class="flex column">
+<script lang="ts">
+	import { page } from '$app/stores';
+	import { getPath } from '$helpers/utilites';
+	export let active: boolean = false;
+
+	const pathname = $page.url.pathname;
+	const id = $page.data.character._id;
+	const path = getPath(pathname, id);
+</script>
+
+<div class="flex column" style={active ? `outline-color: var(--color-${path})` : ''}>
 	<slot />
 </div>
 

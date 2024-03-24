@@ -30,7 +30,7 @@
 
 <CategoryPage>
 	<h1>{BASE_LABELS[$language].armor}</h1>
-	<Content>
+	<Content active>
 		<Box handleClick={() => handleArmor()}>
 			<div class="flex equipment">
 				<div class="flex">

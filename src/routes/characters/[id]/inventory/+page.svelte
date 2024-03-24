@@ -27,7 +27,7 @@
 <CategoryPage>
 	<h1>{BASE_LABELS[$language].inventory}</h1>
 
-	<Content>
+	<Content active>
 		{#each inventory as item, index}
 			<Box handleClick={() => handleInventoryModal(index)}>
 				<div class="upper-part">

@@ -6,9 +6,10 @@
 	import { NO_TALENTS, BASE_LABELS } from '$helpers/constants/languages';
 	import Content from '$components/Content.svelte';
 	import CategoryPage from '$components/CategoryPage.svelte';
+	import PowerPoint from '$widgets/Parts/PowerPoint.svelte';
 
 	export let data: PageData;
-	const { talents }: Character = data.character;
+	const { power_points, talents }: Character = data.character;
 	const dbTalents: Talent[] = data.talents;
 
 	const handleTalentModal = (index: number) => {
@@ -29,8 +30,11 @@
 </script>
 
 <CategoryPage>
-	<h1>{BASE_LABELS[$language].talents}</h1>
-	<Content>
+	<div class="flex space-b">
+		<h1>{BASE_LABELS[$language].talents}</h1>
+		<PowerPoint {power_points} />
+	</div>
+	<Content active>
 		{#if mergedTalents.length > 0}
 			{#each mergedTalents as talent, index}
 				<Box handleClick={() => handleTalentModal(index)}>

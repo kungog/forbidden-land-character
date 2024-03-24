@@ -25,7 +25,7 @@
 <CategoryPage>
 	<h1>{BASE_LABELS[$language].notes}</h1>
 
-	<Content>
+	<Content active>
 		{#if notes.length > 0}
 			{#each notes as note, index}
 				<Box handleClick={() => handleNoteModal(index)}>
