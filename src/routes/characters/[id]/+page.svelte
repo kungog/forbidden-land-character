@@ -12,6 +12,7 @@
 	import NotesIcon from '$icons/Menu/NotesIcon.svelte';
 	import type { SvelteComponent } from 'svelte';
 	import { currentBase } from '$lib/store';
+	import Base from '$components/Character/Base.svelte';
 
 	export let data: PageData;
 	const { _id } = data?.character;
@@ -46,7 +47,7 @@
 	<Armor />
 {/if}
 {#if $currentBase === 2}
-	<div>Karaktäeen</div>
+	<Base />
 {/if}
 
 <section>

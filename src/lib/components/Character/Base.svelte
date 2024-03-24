@@ -1,67 +1,67 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { BASE_LABELS } from '$lib/helpers/constants/languages';
-	import Text from '../Text.svelte';
-	import { activeMenu, language, modal, showModal, type ModalKeys } from '$lib/store';
-	import Animals from '../Base/Animals.svelte';
-	import Armor from '../Base/Armor.svelte';
-	import Inventory from '../Base/Inventory.svelte';
-	import Notes from '../Base/Notes.svelte';
-	import Relations from '../Base/Relations.svelte';
-	import Skills from '../Base/Skills.svelte';
-	import Talents from '../Base/Talents.svelte';
-	import Weapons from '../Base/Weapons.svelte';
-	import Box from '../Box.svelte';
+	import { language } from '$lib/store';
+	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
+	import Box from '$components/Box.svelte';
+	import Text from '$components/Text.svelte';
+	import Conditions from '$lib/widgets/Conditions.svelte';
+	import Consumables from '$lib/widgets/Consumables.svelte';
+	import Money from '$lib/widgets/Money.svelte';
+	import Points from '$lib/widgets/Points.svelte';
+	import Properties from '$lib/widgets/Properties.svelte';
 
-	$: menuItem = $activeMenu;
-
-	const hide = ['experience', 'armor'];
-	const component = {
-		experience: Skills,
-		talents: Talents,
-		inventory: Inventory,
-		animals: Animals,
-		relations: Relations,
-		armor: Armor,
-		weapons: Weapons,
-		notes: Notes
-	};
-
-	const handleModal = () => {
-		$showModal = true;
-		$modal = {
-			id: $page.data.character._id,
-			type: 'POST',
-			key: menuItem as ModalKeys,
-			value: null,
-			index: 0
-		};
-	};
+	const { description }: Character = $page.data.character;
+	const LABEL = GENERAL_LABELS[$language];
 </script>
 
 <div>
-	<div class="flex space-b">
-		<Text size="medium">{BASE_LABELS[$language][menuItem]}</Text>
-		<Box handleClick={() => handleModal()} hidden={hide.includes(menuItem)}>
-			<Text size="large">+</Text>
-		</Box>
-	</div>
-	<div class="main-part">
-		<svelte:component this={component[menuItem]} />
-	</div>
+	<Box size="small" className="face" handleClick={() => console.log(description)}>
+		<Text>{LABEL.face}: {description.face}</Text>
+	</Box>
+	<Box size="small" className="body" handleClick={() => console.log(description)}>
+		<Text>{LABEL.body}: {description.body}</Text>
+	</Box>
+	<Box size="small" className="cloths" handleClick={() => console.log(description)}>
+		<Text>{LABEL.cloths}: {description.cloths}</Text>
+	</Box>
+	<Box size="small" className="secret" handleClick={() => console.log(description)}>
+		<Text>{LABEL.dark_secret}</Text>
+		<Text>{description.dark_secret}</Text>
+	</Box>
+	<Box
+		size="small"
+		className="misc flex column space-b"
+		handleClick={() => console.log(description)}
+	>
+		<span class="flex space-b">
+			<Text selfCenter={false}>{LABEL.reputation}:</Text>
+			<Text selfCenter={false}>{description.reputation}</Text>
+		</span>
+		<span class="flex space-b">
+			<Text selfCenter={false}>{LABEL.age}:</Text>
+			<Text selfCenter={false}>{description.age}</Text>
+		</span>
+		<Text selfCenter={false}>{LABEL.pride}: {description.pride}</Text>
+	</Box>
 </div>
 
 <style lang="scss">
-	.space-b {
-		padding-bottom: var(--spacing-10);
+	div {
+		display: grid;
+		grid-template-rows: auto;
+		gap: var(--spacing-08);
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-areas:
+			'face face misc'
+			'body body misc'
+			'cloths cloths misc'
+			'secret secret secret';
+		padding: 0 var(--spacing-10) var(--spacing-24);
+		justify-items: stretch;
+		min-height: 200px;
 	}
 
-	.main-part {
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing-08);
-		height: calc(var(--body-height-mobile) - 200px - var(--spacing-35));
-		overflow: auto;
-		padding-bottom: var(--spacing-20);
+	span {
+		width: 100%;
 	}
 </style>

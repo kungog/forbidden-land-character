@@ -178,11 +178,25 @@ a:hover {
 .shield {
   grid-area: shield;
 }
+
 .body {
   grid-area: body;
 }
-.head {
-  grid-area: head;
+
+.face {
+  grid-area: face;
+}
+
+.cloths {
+  grid-area: cloths;
+}
+
+.misc {
+  grid-area: misc;
+}
+
+.secret {
+  grid-area: secret;
 }
 
 .condition {
@@ -214,10 +228,6 @@ a:hover {
 
 .armor {
   grid-area: armor;
-}
-
-.misc {
-  grid-area: misc;
 }
 
 .upper-part > :first-child {
