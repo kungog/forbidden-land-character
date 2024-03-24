@@ -6,9 +6,10 @@
 	import { GENERAL_LABELS, BASE_LABELS } from '$helpers/constants/languages';
 	import CategoryPage from '$layouts/CategoryPage.svelte';
 	import Content from '$layouts/Content.svelte';
+	import Coin from '$widgets/Parts/Coin.svelte';
 
 	export let data: PageData;
-	const { inventory }: Character = data.character;
+	const { inventory, money }: Character = data.character;
 
 	const LABEL = GENERAL_LABELS[$language];
 
@@ -25,7 +26,14 @@
 </script>
 
 <CategoryPage>
-	<h1>{BASE_LABELS[$language].inventory}</h1>
+	<div class="flex space-b">
+		<h1>{BASE_LABELS[$language].inventory}</h1>
+		<div class="flex space-b align-c money">
+			<Coin type="gold" amount={money.gold} />
+			<Coin type="silver" amount={money.silver} />
+			<Coin type="copper" amount={money.copper} />
+		</div>
+	</div>
 
 	<Content active>
 		{#each inventory as item, index}
@@ -49,5 +57,9 @@
 <style lang="scss">
 	.stats {
 		gap: var(--spacing-18);
+	}
+
+	.money {
+		gap: var(--spacing-08);
 	}
 </style>
