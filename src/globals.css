@@ -175,6 +175,16 @@ a:hover {
   bottom: 0;
 }
 
+.shield {
+  grid-area: shield;
+}
+.body {
+  grid-area: body;
+}
+.head {
+  grid-area: head;
+}
+
 .condition {
   grid-area: condition;
 }

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import Dashboard from '$components/Character/Dashboard.svelte';
+	import Armor from '$components/Character/Armor.svelte';
 
-	import ArmorIcon from '$icons/Menu/ArmorIcon.svelte';
 	import WeaponIcon from '$icons/Menu/WeaponIcon.svelte';
 	import ExperienceIcon from '$icons/Menu/ExperienceIcon.svelte';
 	import HorseIcon from '$icons/Menu/HorseIcon.svelte';
@@ -11,13 +11,13 @@
 	import TalentIcon from '$icons/Menu/TalentIcon.svelte';
 	import NotesIcon from '$icons/Menu/NotesIcon.svelte';
 	import type { SvelteComponent } from 'svelte';
+	import { currentBase } from '$lib/store';
 
 	export let data: PageData;
-	const character = data?.character;
+	const { _id } = data?.character;
 	const MENU_ITEMS: MenuItems[] = [
 		'talents',
 		'experience',
-		'equipments',
 		'weapons',
 		'animals',
 		'inventory',
@@ -34,28 +34,36 @@
 		animals: HorseIcon,
 		relations: RelationIcon,
 		talents: TalentIcon,
-		equipments: ArmorIcon,
 		weapons: WeaponIcon,
 		notes: NotesIcon
 	};
 </script>
 
-<Dashboard />
-<div>
+{#if $currentBase === 0}
+	<Dashboard />
+{/if}
+{#if $currentBase === 1}
+	<Armor />
+{/if}
+{#if $currentBase === 2}
+	<div>Karaktäeen</div>
+{/if}
+
+<section>
 	{#each MENU_ITEMS as item}
 		<a
 			class="flex align-c justify-c"
-			href="/characters/{character._id}/{item}"
+			href="/characters/{_id}/{item}"
 			style="background: var(--color-{item})"
 		>
 			<svelte:component this={component[item]} color="var(--color-{item})" height={75} width={75} />
 			<span style="color: var(--color-{item}-dark)">{item}</span>
 		</a>
 	{/each}
-</div>
+</section>
 
 <style>
-	div {
+	section {
 		display: grid;
 		height: calc(100% - 210px);
 		gap: var(--spacing-10);

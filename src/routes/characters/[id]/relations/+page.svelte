@@ -6,6 +6,7 @@
 	import { language, modal, showModal } from '$lib/store';
 	import CategoryPage from '$layouts/CategoryPage.svelte';
 	import Content from '$layouts/Content.svelte';
+	import AddMore from '$components/AddMore.svelte';
 	export let data: PageData;
 	const { relations }: Character = data.character;
 
@@ -34,5 +35,7 @@
 		{:else}
 			<Text>{NO_RELATIONS[$language]}</Text>
 		{/if}
+
+		<AddMore />
 	</Content>
 </CategoryPage>

@@ -7,6 +7,7 @@
 	import Content from '$layouts/Content.svelte';
 	import CategoryPage from '$layouts/CategoryPage.svelte';
 	import PowerPoint from '$widgets/Parts/PowerPoint.svelte';
+	import AddMore from '$components/AddMore.svelte';
 
 	export let data: PageData;
 	const { power_points, talents }: Character = data.character;
@@ -44,6 +45,8 @@
 					</div>
 				</Box>
 			{/each}
+
+			<AddMore />
 		{:else}
 			<Text>{NO_TALENTS[$language]}</Text>
 		{/if}

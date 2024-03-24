@@ -34,6 +34,7 @@ export const amountOfPlayers = writable(PLAYER_AMOUNT);
 export const showModal = writable(false);
 export const showConfirm = writable(false);
 export const activeAnimal = writable(0);
+export const currentBase = writable(0);
 
 export type ModalKeys =
 	| 'armor'

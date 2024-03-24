@@ -7,6 +7,7 @@
 	import CategoryPage from '$layouts/CategoryPage.svelte';
 	import Content from '$layouts/Content.svelte';
 	import Coin from '$widgets/Parts/Coin.svelte';
+	import AddMore from '$components/AddMore.svelte';
 
 	export let data: PageData;
 	const { inventory, money }: Character = data.character;
@@ -51,6 +52,8 @@
 				</div>
 			</Box>
 		{/each}
+
+		<AddMore />
 	</Content>
 </CategoryPage>
 

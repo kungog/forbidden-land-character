@@ -7,6 +7,7 @@
 	import { GENERAL_LABELS, BASE_LABELS } from '$helpers/constants/languages';
 	import CategoryPage from '$layouts/CategoryPage.svelte';
 	import Content from '$layouts/Content.svelte';
+	import AddMore from '$components/AddMore.svelte';
 
 	export let data: PageData;
 	const { weapons }: Character = data.character;
@@ -45,6 +46,7 @@
 				</div>
 			</Box>
 		{/each}
+		<AddMore />
 	</Content>
 </CategoryPage>
 

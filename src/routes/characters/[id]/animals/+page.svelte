@@ -6,6 +6,7 @@
 	import { language, modal, showModal, activeAnimal } from '$lib/store';
 	import CategoryPage from '$layouts/CategoryPage.svelte';
 	import Content from '$layouts/Content.svelte';
+	import AddMore from '$components/AddMore.svelte';
 
 	export let data: PageData;
 	const { animals }: Character = data.character;
@@ -55,6 +56,8 @@
 		{:else}
 			<Text>{NO_ANIMALS[$language]}</Text>
 		{/if}
+
+		<AddMore />
 	</Content>
 </CategoryPage>
 
