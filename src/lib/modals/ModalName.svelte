@@ -6,17 +6,14 @@
 	import GridTemplate from './GridTemplate.svelte';
 	import ModalFooter from '$components/ModalFooter.svelte';
 	import ModalBody from '$components/ModalBody.svelte';
-	import FormAttributes from './FormAttributes.svelte';
 
 	const character: Character = $page.data.character;
 	const LABEL = GENERAL_LABELS[$language];
-	const id = 'update';
 </script>
 
-<ModalBody action="?/{id}" {id}>
-	<FormAttributes objectKey="base" />
+<ModalBody>
 	<GridTemplate template="1fr">
 		<Input iType="text" iLabel={LABEL.name} iValue={character.name} iFor="name" />
 	</GridTemplate>
 </ModalBody>
-<ModalFooter action={id} />
+<ModalFooter remove={false} />

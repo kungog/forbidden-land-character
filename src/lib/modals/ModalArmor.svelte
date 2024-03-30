@@ -12,10 +12,9 @@
 		armor: { head, body, shield }
 	}: Character = $page.data.character;
 	const LABEL = GENERAL_LABELS[$language];
-	const id = 'update';
 </script>
 
-<ModalBody action="?/{id}" {id}>
+<ModalBody>
 	<FormAttributes objectKey="armor" />
 	<GridTemplate>
 		<Input iType="text" iLabel={LABEL.helm} iValue={head.name} iFor="head_name" />
@@ -30,4 +29,4 @@
 		<Input iType="number" iLabel={LABEL.bonus} iValue={shield.value} iFor="shield_value" />
 	</GridTemplate>
 </ModalBody>
-<ModalFooter action={id} />
+<ModalFooter remove={false} />

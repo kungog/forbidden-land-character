@@ -8,15 +8,12 @@
 	import GridTemplate from './GridTemplate.svelte';
 	import ModalFooter from '$components/ModalFooter.svelte';
 	import ModalBody from '$components/ModalBody.svelte';
-	import FormAttributes from './FormAttributes.svelte';
 
 	const { basic_properties: properties }: Character = $page.data.character;
 	const LABEL = GENERAL_LABELS[$language];
-	const id = 'update';
 </script>
 
-<ModalBody action="?/{id}" {id}>
-	<FormAttributes objectKey="basic_properties" />
+<ModalBody>
 	{#each properties as property}
 		<Text>{capitalize(LABEL[property.id])}</Text>
 		<GridTemplate template="1fr 1fr">
@@ -31,4 +28,4 @@
 		</GridTemplate>
 	{/each}
 </ModalBody>
-<ModalFooter action={id} />
+<ModalFooter remove={false} />

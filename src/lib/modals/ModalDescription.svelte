@@ -6,15 +6,12 @@
 	import GridTemplate from './GridTemplate.svelte';
 	import ModalFooter from '$components/ModalFooter.svelte';
 	import ModalBody from '$components/ModalBody.svelte';
-	import FormAttributes from './FormAttributes.svelte';
 
 	const { description }: Character = $page.data.character;
 	const LABEL = GENERAL_LABELS[$language];
-	const id = 'update';
 </script>
 
-<ModalBody action="?/{id}" {id}>
-	<FormAttributes objectKey="description" />
+<ModalBody>
 	<GridTemplate template="1fr 1fr" gap={48}>
 		<Input iType="number" iLabel={LABEL.age} iValue={description.age} iFor="age" />
 		<Input
@@ -45,4 +42,4 @@
 		<Input iType="text" iLabel={LABEL.pride} iValue={description.pride} iFor="pride" />
 	</GridTemplate>
 </ModalBody>
-<ModalFooter action={id} />
+<ModalFooter remove={false} />

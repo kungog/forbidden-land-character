@@ -1,19 +1,18 @@
 <script lang="ts">
-	export let character: Character,
-		remove = true;
+	export let remove = true;
 	import { language, showConfirm } from '$store';
 	import { GENERAL_LABELS } from '$helpers/constants/languages';
 	import { capitalize } from '$helpers/utilites';
 	import TrashIcon from '$icons/General/TrashIcon.svelte';
-	const save = GENERAL_LABELS[$language]['save'];
+	import { page } from '$app/stores';
+	const character: Character = $page.data.character;
+	const save = GENERAL_LABELS[$language].save;
 
 	const submit = async () => {
-		const response = await fetch('/characters/' + character._id, {
+		await fetch(`/characters/${character._id}`, {
 			method: 'POST',
 			body: JSON.stringify(character)
 		});
-
-		await response.json();
 	};
 </script>
 
@@ -21,7 +20,7 @@
 	{#if remove}
 		<button on:click={() => ($showConfirm = true)}><TrashIcon /></button>
 	{/if}
-	<button on:click={() => submit()}>{capitalize(save)}</button>
+	<button on:click={submit}>{capitalize(save)}</button>
 </div>
 
 <style lang="scss">

@@ -13,7 +13,7 @@
 	const id = 'update';
 </script>
 
-<ModalBody action="?/{id}" {id}>
+<ModalBody>
 	<FormAttributes objectKey="consumables" />
 	<GridTemplate template="1fr">
 		<Input iType="number" iLabel={LABEL.arrows} iValue={consumables.arrows} iFor="arrows" />
@@ -28,4 +28,4 @@
 		<Input iType="number" iLabel={LABEL.water} iValue={consumables.water} iFor="water" />
 	</GridTemplate>
 </ModalBody>
-<ModalFooter action={id} />
+<ModalFooter remove={false} />

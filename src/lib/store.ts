@@ -56,8 +56,8 @@ export type ModalKeys =
 
 interface Modal {
 	type: ModalKeys;
-	index: number | null;
+	index: number;
 	objectKey?: keyof Skills;
 }
 
-export const modal = writable<Modal>({ type: 'animals', index: null });
+export const modal = writable<Modal>({ type: 'animals', index: 0 });

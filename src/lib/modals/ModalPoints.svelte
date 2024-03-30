@@ -4,17 +4,14 @@
 	import { language } from '$store';
 	import Input from '$components/Input.svelte';
 	import GridTemplate from './GridTemplate.svelte';
-	import FormAttributes from './FormAttributes.svelte';
 	import ModalBody from '$components/ModalBody.svelte';
 	import ModalFooter from '$components/ModalFooter.svelte';
 
 	const { experience, power_points: powerPoints }: Character = $page.data.character;
 	const LABEL = GENERAL_LABELS[$language];
-	const id = 'update';
 </script>
 
-<ModalBody action="?/{id}" {id}>
-	<FormAttributes objectKey="base" />
+<ModalBody>
 	<GridTemplate template="1fr">
 		<Input iType="number" iLabel={LABEL.experience} iValue={experience} iFor="experience" />
 	</GridTemplate>
@@ -22,4 +19,4 @@
 		<Input iType="number" iLabel={LABEL.power_points} iValue={powerPoints} iFor="power_points" />
 	</GridTemplate>
 </ModalBody>
-<ModalFooter action={id} />
+<ModalFooter remove={false} />

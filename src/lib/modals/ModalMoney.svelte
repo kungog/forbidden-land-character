@@ -10,10 +10,9 @@
 
 	const { money }: Character = $page.data.character;
 	const LABEL = GENERAL_LABELS[$language];
-	const id = 'update';
 </script>
 
-<ModalBody action="?/{id}" {id}>
+<ModalBody>
 	<FormAttributes objectKey="money" />
 	<GridTemplate template="1fr">
 		<Input iType="number" iLabel={LABEL.gold} iValue={money.gold} iFor="gold" />
@@ -25,4 +24,4 @@
 		<Input iType="number" iLabel={LABEL.copper} iValue={money.copper} iFor="copper" />
 	</GridTemplate>
 </ModalBody>
-<ModalFooter action={id} />
+<ModalFooter remove={false} />

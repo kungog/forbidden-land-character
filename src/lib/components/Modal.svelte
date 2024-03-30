@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import getSkillObject from '$helpers/getSkills';
 	import { capitalize } from '$helpers/utilites';
-	import { language, modal, showModal } from '$store';
+	import { language, modal, showConfirm, showModal } from '$store';
 	import Overlay from './Overlay.svelte';
 	import Text from './Text.svelte';
 
@@ -26,7 +26,7 @@
 	};
 
 	const label = getLabel();
-	const handleCloseModal = () => ($showModal = false);
+	const handleCloseModal = () => (($showModal = false), ($showConfirm = false));
 </script>
 
 <Overlay handleClick={() => handleCloseModal()} />

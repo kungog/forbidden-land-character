@@ -11,10 +11,9 @@
 
 	const { condition, critical_injuries: critical }: Character = $page.data.character;
 	const LABEL = GENERAL_LABELS[$language];
-	const id = 'update';
 </script>
 
-<ModalBody action="?/{id}" {id}>
+<ModalBody>
 	<FormAttributes objectKey="condition" />
 	<GridTemplate template="1fr">
 		<Input iType="text" iLabel={LABEL.critical} iValue={critical} iFor="critical_injuries" />
@@ -28,4 +27,4 @@
 		<BooleanRadio iLabel={LABEL.starved} iValue={condition.starved} iFor="starved" />
 	</GridTemplate>
 </ModalBody>
-<ModalFooter action={id} remove={false} />
+<ModalFooter remove={false} />
