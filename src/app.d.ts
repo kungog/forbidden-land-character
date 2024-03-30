@@ -73,8 +73,8 @@ declare global {
 
 	interface Weapon {
 		additionals: string;
-		bonus: string;
-		damage: string;
+		bonus: number;
+		damage: number;
 		range: string;
 		type: string;
 		extra_dices: WeaponExtraDices[];

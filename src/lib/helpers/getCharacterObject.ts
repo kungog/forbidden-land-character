@@ -1,7 +1,7 @@
 export const emptyWeaponObject: Weapon = {
-	type: '',
-	bonus: '',
-	damage: '',
+	type: 'New weapon',
+	bonus: 0,
+	damage: 0,
 	range: '',
 	additionals: '',
 	extra_dices: []
@@ -11,13 +11,13 @@ export const emptyAnimalObject: Animal = {
 	flexibility: 0,
 	strength: 0,
 	inventory: [],
-	name: ''
+	name: 'New animal'
 };
 
 export const emptyInventoryObject: Inventory = {
 	additionals: '',
 	bonus: '',
-	name: '',
+	name: 'New inventory item',
 	weight: 0
 };
 
