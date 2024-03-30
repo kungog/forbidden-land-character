@@ -16,29 +16,15 @@
 	import CategoryPage from '$layouts/CategoryPage.svelte';
 	import Content from '$layouts/Content.svelte';
 	import Experience from '$widgets/Parts/Experience.svelte';
+	export let data: { character: Character; talents: Talent[] } & PageData;
+	$: ({ experience, skills, basic_properties } = data.character);
 
-	export let data: PageData;
-	const { experience, skills, basic_properties }: Character = data.character;
-
-	const items = createArrayFromObject(skills);
-
+	const items = createArrayFromObject(skills ?? {});
 	const propertyIcon = {
 		strength: StrengthIcon,
 		charisma: CharismaIcon,
 		flexibility: FlexibilityIcon,
 		intelligence: IntelligenceIcon
-	};
-
-	const handleModal = (skill: keyof Character['skills'], value: number) => {
-		$showModal = true;
-		$modal = {
-			id: data.character._id,
-			type: 'PUT',
-			key: 'skills',
-			objectKey: skill,
-			value: value,
-			index: 0
-		};
 	};
 </script>
 
@@ -48,8 +34,17 @@
 		<Experience {experience} />
 	</div>
 	<Content active>
-		{#each items as item}
-			<Box handleClick={() => handleModal(item.key, item.value)}>
+		{#each items as item, index}
+			<Box
+				transition
+				handleClick={() => {
+					$showModal = true;
+					$modal = {
+						type: 'skills',
+						index
+					};
+				}}
+			>
 				<div class="flex space-b">
 					<div class="flex align-c">
 						<svelte:component this={propertyIcon[SKILLS[item.key].type]} width={24} height={24} />

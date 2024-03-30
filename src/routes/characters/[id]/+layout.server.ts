@@ -4,8 +4,14 @@ import type { PageServerLoad } from '../../$types';
 import { DATABASE, COLLECTION } from '$server/database';
 import { ObjectId } from 'mongodb';
 
-export const load = (async ({ params }: { params: { id: Character['_id'] } }) => {
+interface LoadProps {
+	depends: (value: string) => void;
+	params: { id: Character['_id'] };
+}
+
+export const load = (async ({ params, depends }: LoadProps) => {
 	const { id } = params;
+	depends('viewed:character');
 	const database = await getMongoClient();
 	const response = await database
 		.db(DATABASE)

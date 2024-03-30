@@ -7,9 +7,9 @@
 	import CategoryPage from '$layouts/CategoryPage.svelte';
 	import Content from '$layouts/Content.svelte';
 	import AddMore from '$components/AddMore.svelte';
-
-	export let data: PageData;
-	const { animals }: Character = data.character;
+	import { addNewItem } from '$helpers/utilites';
+	export let data: { character: Character; talents: Talent[] } & PageData;
+	$: ({ animals } = data.character);
 
 	const LABEL = GENERAL_LABELS[$language];
 	const BASE_LABEL = BASE_LABELS[$language];
@@ -17,43 +17,23 @@
 	$: animalIndex = $activeAnimal;
 	$: inventory =
 		animals.length > 0 ? animals[$activeAnimal].inventory : ([] as [] | Animal['inventory']);
-
-	const handleAnimalInventoryModal = (index: number) => {
-		$showModal = true;
-		$modal = {
-			id: data.character._id,
-			type: 'PUT',
-			key: 'animals_inventory',
-			index: index,
-			value: animals[animalIndex].inventory[index]
-		};
-	};
-
-	const handleAnimalInventory = () => {
-		$showModal = true;
-		$modal = {
-			id: data.character._id,
-			type: 'POST',
-			key: 'animals_inventory',
-			value: null,
-			index: 0
-		};
-	};
 </script>
 
 <CategoryPage>
-	<h1>{BASE_LABELS[$language].inventory}</h1>
+	<h1>{BASE_LABEL.inventory}</h1>
 	<Content>
-		<div class="flex space-b">
-			<Text size="normal">{BASE_LABEL['inventory']}</Text>
-			<Box handleClick={() => handleAnimalInventory()}>
-				<Text size="large">+</Text>
-			</Box>
-		</div>
-
 		{#if inventory?.length > 0}
 			{#each inventory as item, index}
-				<Box handleClick={() => handleAnimalInventoryModal(index)}>
+				<Box
+					transition
+					handleClick={() => {
+						$showModal = true;
+						$modal = {
+							type: 'animals_inventory',
+							index
+						};
+					}}
+				>
 					<div class="upper-part">
 						<div class="flex space-b">
 							<Text size="normal">{item.name}</Text>
@@ -61,8 +41,8 @@
 						</div>
 
 						<div class="flex stats">
-							<Text>{LABEL['weight']}: {item.weight}</Text>
-							<Text>{LABEL['bonus']}: {item.bonus}</Text>
+							<Text>{LABEL.weight}: {item.weight}</Text>
+							<Text>{LABEL.bonus}: {item.bonus}</Text>
 						</div>
 					</div>
 				</Box>
@@ -70,8 +50,7 @@
 		{:else}
 			<Text>{NO_INVENTORY_ANIMAL[$language]}</Text>
 		{/if}
-
-		<AddMore />
+		<AddMore handleClick={() => addNewItem(data.character, 'animal-inventory')} />
 	</Content>
 </CategoryPage>
 

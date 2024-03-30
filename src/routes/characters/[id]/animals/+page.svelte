@@ -7,21 +7,17 @@
 	import CategoryPage from '$layouts/CategoryPage.svelte';
 	import Content from '$layouts/Content.svelte';
 	import AddMore from '$components/AddMore.svelte';
-
-	export let data: PageData;
-	const { animals }: Character = data.character;
+	import { addNewItem } from '$helpers/utilites';
+	export let data: { character: Character; talents: Talent[] } & PageData;
+	$: ({ animals } = data.character);
 
 	const LABEL = GENERAL_LABELS[$language];
 
-	//FIXME
 	const handleModal = (index: number) => {
 		$showModal = true;
 		$modal = {
-			id: data.character._id,
-			type: 'PUT',
-			key: 'animals',
-			index: index,
-			value: animals[index]
+			type: 'animals',
+			index
 		};
 	};
 
@@ -36,7 +32,6 @@
 
 <CategoryPage>
 	<h1>{BASE_LABELS[$language].animals}</h1>
-
 	<Content active>
 		{#if animals.length > 0}
 			{#each animals as animal, index}
@@ -47,8 +42,8 @@
 						</div>
 
 						<div class="flex stats">
-							<Text>{LABEL['strength']}: {animal.strength}</Text>
-							<Text>{LABEL['flexibility']}: {animal.flexibility}</Text>
+							<Text>{LABEL.strength}: {animal.strength}</Text>
+							<Text>{LABEL.flexibility}: {animal.flexibility}</Text>
 						</div>
 					</div>
 				</Box>
@@ -56,8 +51,7 @@
 		{:else}
 			<Text>{NO_ANIMALS[$language]}</Text>
 		{/if}
-
-		<AddMore />
+		<AddMore handleClick={() => addNewItem(data.character, 'animal')} />
 	</Content>
 </CategoryPage>
 

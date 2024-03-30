@@ -5,23 +5,13 @@
 	import Box from '$components/Box.svelte';
 	import Text from '$components/Text.svelte';
 	import { GENERAL_LABELS, BASE_LABELS } from '$helpers/constants/languages';
+
 	import CategoryPage from '$layouts/CategoryPage.svelte';
 	import Content from '$layouts/Content.svelte';
 	import AddMore from '$components/AddMore.svelte';
-
-	export let data: PageData;
-	const { weapons }: Character = data.character;
-
-	const handleWeaponModal = (index: number) => {
-		$showModal = true;
-		$modal = {
-			id: data.character._id,
-			type: 'PUT',
-			key: 'weapons',
-			index: index,
-			value: weapons[index]
-		};
-	};
+	import { addNewItem } from '$helpers/utilites';
+	export let data: { character: Character } & PageData;
+	$: ({ weapons } = data.character);
 
 	const LABEL = GENERAL_LABELS[$language];
 </script>
@@ -31,7 +21,16 @@
 
 	<Content active>
 		{#each weapons as weapon, index}
-			<Box handleClick={() => handleWeaponModal(index)}>
+			<Box
+				transition
+				handleClick={() => {
+					$showModal = true;
+					$modal = {
+						type: 'weapons',
+						index
+					};
+				}}
+			>
 				<div class="upper-part">
 					<div class="flex space-b">
 						<Text size="normal">{weapon.type}</Text>
@@ -46,7 +45,7 @@
 				</div>
 			</Box>
 		{/each}
-		<AddMore />
+		<AddMore handleClick={() => addNewItem(data.character, 'weapon')} />
 	</Content>
 </CategoryPage>
 

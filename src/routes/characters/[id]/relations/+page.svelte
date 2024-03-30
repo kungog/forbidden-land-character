@@ -7,19 +7,9 @@
 	import CategoryPage from '$layouts/CategoryPage.svelte';
 	import Content from '$layouts/Content.svelte';
 	import AddMore from '$components/AddMore.svelte';
-	export let data: PageData;
-	const { relations }: Character = data.character;
-
-	const handleRelationModal = (index: number) => {
-		$showModal = true;
-		$modal = {
-			id: data.character._id,
-			type: 'PUT',
-			key: 'relations',
-			index: index,
-			value: relations[index]
-		};
-	};
+	import { addNewItem } from '$helpers/utilites';
+	export let data: { character: Character; talents: Talent[] } & PageData;
+	$: ({ relations } = data.character);
 </script>
 
 <CategoryPage>
@@ -28,14 +18,22 @@
 	<Content active>
 		{#if relations.length > 0}
 			{#each relations as relation, index}
-				<Box handleClick={() => handleRelationModal(index)}>
+				<Box
+					transition
+					handleClick={() => {
+						$showModal = true;
+						$modal = {
+							type: 'relations',
+							index
+						};
+					}}
+				>
 					<Text>{relation}</Text>
 				</Box>
 			{/each}
 		{:else}
 			<Text>{NO_RELATIONS[$language]}</Text>
 		{/if}
-
-		<AddMore />
+		<AddMore handleClick={() => addNewItem(data.character, 'relations')} />
 	</Content>
 </CategoryPage>

@@ -7,20 +7,10 @@
 	import CategoryPage from '$layouts/CategoryPage.svelte';
 	import Content from '$layouts/Content.svelte';
 	import AddMore from '$components/AddMore.svelte';
+	import { addNewItem } from '$helpers/utilites';
 
-	export let data: PageData;
-	const { notes }: Character = data.character;
-
-	const handleNoteModal = (index: number) => {
-		$showModal = true;
-		$modal = {
-			id: data.character._id,
-			type: 'PUT',
-			key: 'notes',
-			index: index,
-			value: notes[index]
-		};
-	};
+	export let data: { character: Character; talents: Talent[] } & PageData;
+	$: ({ notes } = data.character);
 </script>
 
 <CategoryPage>
@@ -29,14 +19,22 @@
 	<Content active>
 		{#if notes.length > 0}
 			{#each notes as note, index}
-				<Box handleClick={() => handleNoteModal(index)}>
+				<Box
+					transition
+					handleClick={() => {
+						$showModal = true;
+						$modal = {
+							type: 'notes',
+							index
+						};
+					}}
+				>
 					<Text>{note}</Text>
 				</Box>
 			{/each}
 		{:else}
 			<Text>{NO_NOTES[$language]}</Text>
 		{/if}
-
-		<AddMore />
+		<AddMore handleClick={() => addNewItem(data.character, 'notes')} />
 	</Content>
 </CategoryPage>

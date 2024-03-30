@@ -8,22 +8,11 @@
 	import Content from '$layouts/Content.svelte';
 	import Coin from '$widgets/Parts/Coin.svelte';
 	import AddMore from '$components/AddMore.svelte';
-
-	export let data: PageData;
-	const { inventory, money }: Character = data.character;
+	import { addNewItem } from '$helpers/utilites';
+	export let data: { character: Character; talents: Talent[] } & PageData;
+	$: ({ inventory, money } = data.character);
 
 	const LABEL = GENERAL_LABELS[$language];
-
-	const handleInventoryModal = (index: number) => {
-		$showModal = true;
-		$modal = {
-			id: data.character._id,
-			type: 'PUT',
-			key: 'inventory',
-			index: index,
-			value: inventory[index]
-		};
-	};
 </script>
 
 <CategoryPage>
@@ -38,7 +27,16 @@
 
 	<Content active>
 		{#each inventory as item, index}
-			<Box handleClick={() => handleInventoryModal(index)}>
+			<Box
+				transition
+				handleClick={() => {
+					$showModal = true;
+					$modal = {
+						type: 'inventory',
+						index
+					};
+				}}
+			>
 				<div class="upper-part">
 					<div class="flex space-b">
 						<Text size="normal">{item.name}</Text>
@@ -46,14 +44,13 @@
 					</div>
 
 					<div class="flex stats">
-						<Text>{LABEL['weight']}: {item.weight}</Text>
-						<Text>{LABEL['bonus']}: {item.bonus}</Text>
+						<Text>{LABEL.weight}: {item.weight}</Text>
+						<Text>{LABEL.bonus}: {item.bonus}</Text>
 					</div>
 				</div>
 			</Box>
 		{/each}
-
-		<AddMore />
+		<AddMore handleClick={() => addNewItem(data.character, 'inventory')} />
 	</Content>
 </CategoryPage>
 
