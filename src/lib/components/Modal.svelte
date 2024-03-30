@@ -62,7 +62,7 @@
 		max-height: 90vh;
 		overflow: auto;
 		width: 90%;
-		background: var(--color-box);
+		background: var(--color-background);
 		border-radius: var(--radius-04);
 		padding: var(--spacing-16);
 		pointer-events: initial;

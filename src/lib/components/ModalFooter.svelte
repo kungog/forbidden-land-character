@@ -1,18 +1,27 @@
 <script lang="ts">
-	export let action: string,
+	export let character: Character,
 		remove = true;
 	import { language, showConfirm } from '$lib/store';
 	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
 	import { capitalize } from '$lib/helpers/utilites';
 	import TrashIcon from './Icons/General/TrashIcon.svelte';
 	const save = GENERAL_LABELS[$language]['save'];
+
+	const submit = async () => {
+		const response = await fetch('/characters/' + character._id, {
+			method: 'POST',
+			body: JSON.stringify(character)
+		});
+
+		await response.json();
+	};
 </script>
 
 <div>
 	{#if remove}
 		<button on:click={() => ($showConfirm = true)}><TrashIcon /></button>
 	{/if}
-	<button form={action}>{capitalize(save)}</button>
+	<button on:click={() => submit()}>{capitalize(save)}</button>
 </div>
 
 <style lang="scss">

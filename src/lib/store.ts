@@ -55,13 +55,9 @@ export type ModalKeys =
 	| 'animals_inventory';
 
 interface Modal {
-	id: Character['_id'];
-	key: ModalKeys;
-	type: 'NULL' | 'POST' | 'PUT' | 'DELETE';
-	index: number;
-	value: any;
+	type: ModalKeys;
+	index: number | null;
 	objectKey?: keyof Skills;
-	talentId?: string;
 }
 
-export const modal = writable<Modal>();
+export const modal = writable<Modal>({ type: 'animals', index: null });
