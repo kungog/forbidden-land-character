@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import { showModal, language, modal } from '$lib/store';
+	import { showModal, language, modal } from '$store';
 	import Box from '$components/Box.svelte';
 	import Text from '$components/Text.svelte';
 	import { NO_TALENTS, BASE_LABELS } from '$helpers/constants/languages';

@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Conditions from '$lib/widgets/Conditions.svelte';
-	import Consumables from '$lib/widgets/Consumables.svelte';
-	import Money from '$lib/widgets/Money.svelte';
-	import Points from '$lib/widgets/Points.svelte';
-	import Properties from '$lib/widgets/Properties.svelte';
+	import Conditions from '$widgets/Conditions.svelte';
+	import Consumables from '$widgets/Consumables.svelte';
+	import Money from '$widgets/Money.svelte';
+	import Points from '$widgets/Points.svelte';
+	import Properties from '$widgets/Properties.svelte';
 </script>
 
 <div>

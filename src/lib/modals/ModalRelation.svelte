@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { language, modal, showConfirm } from '$lib/store';
-	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
-	import Textarea from '$lib/components/Textarea.svelte';
-	import { typeCheckPost } from '$lib/helpers/utilites';
-	import ModalBody from '$lib/components/ModalBody.svelte';
-	import ModalFooter from '$lib/components/ModalFooter.svelte';
+	import { language, modal, showConfirm } from '$store';
+	import { GENERAL_LABELS } from '$helpers/constants/languages';
+	import Textarea from '$components/Textarea.svelte';
+	import { typeCheckPost } from '$helpers/utilites';
+	import ModalBody from '$components/ModalBody.svelte';
+	import ModalFooter from '$components/ModalFooter.svelte';
 	import FormAttributes from './FormAttributes.svelte';
 
 	const { relations }: Character = $page.data.character;

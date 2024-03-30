@@ -10,7 +10,7 @@
 	import Content from '$layouts/Content.svelte';
 	import AddMore from '$components/AddMore.svelte';
 	import { addNewItem } from '$helpers/utilites';
-	export let data: { character: Character } & PageData;
+	export let data: { character: Character; talents: Talent[] } & PageData;
 	$: ({ weapons } = data.character);
 
 	const LABEL = GENERAL_LABELS[$language];

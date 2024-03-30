@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { capitalize } from '$lib/helpers/utilites';
+	import { capitalize } from '$helpers/utilites';
 
 	export let iType: 'text' | 'number' | 'textarea',
 		iLabel: string,

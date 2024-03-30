@@ -14,6 +14,7 @@ const config = {
 			$layouts: './src/lib/layouts/*',
 			$server: './src/lib/server/*',
 			$components: './src/lib/components/*',
+			$store: './src/lib/store.ts',
 		}
 	}
 };

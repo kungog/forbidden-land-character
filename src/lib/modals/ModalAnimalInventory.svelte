@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
-	import { emptyInventoryObject } from '$lib/helpers/getCharacterObject';
-	import { language, modal, activeAnimal, showConfirm } from '$lib/store';
-	import Input from '$lib/components/Input.svelte';
+	import { GENERAL_LABELS } from '$helpers/constants/languages';
+	import { emptyInventoryObject } from '$helpers/getCharacterObject';
+	import { language, modal, activeAnimal, showConfirm } from '$store';
+	import Input from '$components/Input.svelte';
 	import GridTemplate from './GridTemplate.svelte';
-	import { typeCheckPost } from '$lib/helpers/utilites';
-	import ModalBody from '$lib/components/ModalBody.svelte';
+	import { typeCheckPost } from '$helpers/utilites';
+	import ModalBody from '$components/ModalBody.svelte';
 	import FormAttributes from './FormAttributes.svelte';
-	import ModalFooter from '$lib/components/ModalFooter.svelte';
+	import ModalFooter from '$components/ModalFooter.svelte';
 
 	const { animals }: Character = $page.data.character;
 	const LABEL = GENERAL_LABELS[$language];

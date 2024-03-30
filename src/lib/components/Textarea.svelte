@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { capitalize } from '$lib/helpers/utilites';
+	import { capitalize } from '$helpers/utilites';
 
 	export let iLabel: string, iValue: string | number, iFor: string;
 </script>

@@ -1,24 +1,25 @@
 <script lang="ts">
-	import { modal, showModal } from '$lib/store';
-	import Modal from '$lib/components/Modal.svelte';
-	import ModalArmor from '$lib/modals/ModalArmor.svelte';
-	import ModalWeapon from '$lib/modals/ModalWeapon.svelte';
-	import ModalSkill from '$lib/modals/ModalSkill.svelte';
-	import ModalTalent from '$lib/modals/ModalTalent.svelte';
-	import ModalInventory from '$lib/modals/ModalInventory.svelte';
-	import ModalRelation from '$lib/modals/ModalRelation.svelte';
-	import ModalNote from '$lib/modals/ModalNote.svelte';
-	import ModalAnimal from '$lib/modals/ModalAnimal.svelte';
-	import ModalMoney from '$lib/modals/ModalMoney.svelte';
-	import ModalProperties from '$lib/modals/ModalProperties.svelte';
-	import ModalCondition from '$lib/modals/ModalCondition.svelte';
-	import ModalPoints from '$lib/modals/ModalPoints.svelte';
-	import ModalConsumables from '$lib/modals/ModalConsumables.svelte';
-	import ModalAnimalInventory from '$lib/modals/ModalAnimalInventory.svelte';
-	import ModalDescription from '$lib/modals/ModalDescription.svelte';
-	import ModalName from '$lib/modals/ModalName.svelte';
+	import { modal, showModal } from '$store';
+	import Modal from '$components/Modal.svelte';
+	import ModalArmor from '$modals/ModalArmor.svelte';
+	// import ModalWeapon from '$modals/ModalWeapon.svelte';
+	import ModalWeapon from '$modals/NewWeapon.svelte';
+	import ModalSkill from '$modals/ModalSkill.svelte';
+	import ModalTalent from '$modals/ModalTalent.svelte';
+	import ModalInventory from '$modals/ModalInventory.svelte';
+	import ModalRelation from '$modals/ModalRelation.svelte';
+	import ModalNote from '$modals/ModalNote.svelte';
+	import ModalAnimal from '$modals/ModalAnimal.svelte';
+	import ModalMoney from '$modals/ModalMoney.svelte';
+	import ModalProperties from '$modals/ModalProperties.svelte';
+	import ModalCondition from '$modals/ModalCondition.svelte';
+	import ModalPoints from '$modals/ModalPoints.svelte';
+	import ModalConsumables from '$modals/ModalConsumables.svelte';
+	import ModalAnimalInventory from '$modals/ModalAnimalInventory.svelte';
+	import ModalDescription from '$modals/ModalDescription.svelte';
+	import ModalName from '$modals/ModalName.svelte';
 
-	$: id = $modal?.key;
+	$: id = $modal.type;
 	$: show = $showModal;
 
 	const component = {

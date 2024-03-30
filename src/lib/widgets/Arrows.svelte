@@ -1,23 +1,23 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { modal, showModal } from '$lib/store';
-	import Box from '$lib/components/Box.svelte';
+	import { modal, showModal } from '$store';
+	import Box from '$components/Box.svelte';
 	import Consumable from './Parts/Consumable.svelte';
+	import type { PageData } from '../../routes/$types';
 
-	const { consumables }: Character = $page.data.character;
-
-	const handleConsumablesModal = () => {
-		$showModal = true;
-		$modal = {
-			id: $page.data.character._id,
-			type: 'PUT',
-			key: 'consumables',
-			index: 0,
-			value: consumables
-		};
-	};
+	export let data: { character: Character; talents: Talent[] } & PageData;
+	$: ({ consumables } = data.character);
 </script>
 
-<Box className="arrows" size="small" handleClick={() => handleConsumablesModal()}>
+<Box
+	className="arrows"
+	size="small"
+	handleClick={() => {
+		$showModal = true;
+		$modal = {
+			type: 'consumables',
+			index: 0
+		};
+	}}
+>
 	<Consumable type={'arrows'} dice={consumables.arrows} />
 </Box>

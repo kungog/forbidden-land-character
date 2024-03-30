@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import getSkillObject from '$lib/helpers/getSkills';
-	import { capitalize } from '$lib/helpers/utilites';
-	import { language, modal, showModal } from '$lib/store';
+	import getSkillObject from '$helpers/getSkills';
+	import { capitalize } from '$helpers/utilites';
+	import { language, modal, showModal } from '$store';
 	import Overlay from './Overlay.svelte';
 	import Text from './Text.svelte';
 

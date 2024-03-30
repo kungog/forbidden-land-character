@@ -2,7 +2,7 @@
 	import type { PageData } from './$types';
 	import Box from '$components/Box.svelte';
 	import Text from '$components/Text.svelte';
-	import { language, modal, showModal } from '$lib/store';
+	import { language, modal, showModal } from '$store';
 	import { NO_NOTES, BASE_LABELS } from '$helpers/constants/languages';
 	import CategoryPage from '$layouts/CategoryPage.svelte';
 	import Content from '$layouts/Content.svelte';

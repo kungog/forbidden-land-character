@@ -1,8 +1,8 @@
 <script lang="ts">
-	import CooledIcon from '$lib/components/Icons/Condition/CooledIcon.svelte';
-	import DryIcon from '$lib/components/Icons/Condition/DryIcon.svelte';
-	import SleeplessIcon from '$lib/components/Icons/Condition/SleeplessIcon.svelte';
-	import StarvedIcon from '$lib/components/Icons/Condition/StarvedIcon.svelte';
+	import CooledIcon from '$icons/Condition/CooledIcon.svelte';
+	import DryIcon from '$icons/Condition/DryIcon.svelte';
+	import SleeplessIcon from '$icons/Condition/SleeplessIcon.svelte';
+	import StarvedIcon from '$icons/Condition/StarvedIcon.svelte';
 
 	export let type: keyof Condition, isActive: boolean;
 

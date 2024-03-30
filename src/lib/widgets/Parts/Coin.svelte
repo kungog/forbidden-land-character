@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Text from '$lib/components/Text.svelte';
-	import CoinIcon from '$lib/components/Icons/General/CoinIcon.svelte';
+	import Text from '$components/Text.svelte';
+	import CoinIcon from '$icons/General/CoinIcon.svelte';
 
 	export let type: 'gold' | 'silver' | 'copper', amount: number;
 

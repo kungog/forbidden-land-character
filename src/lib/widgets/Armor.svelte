@@ -1,31 +1,29 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { modal, showModal } from '$lib/store';
-	import Box from '$lib/components/Box.svelte';
-	import HelmetIcon from '$lib/components/Icons/General/HelmetIcon.svelte';
-	import BodyIcon from '$lib/components/Icons/General/BodyIcon.svelte';
-	import ShieldIcon from '$lib/components/Icons/General/ShieldIcon.svelte';
-	import Text from '$lib/components/Text.svelte';
-
-	const {
+	import { modal, showModal } from '$store';
+	import Box from '$components/Box.svelte';
+	import HelmetIcon from '$icons/General/HelmetIcon.svelte';
+	import BodyIcon from '$icons/General/BodyIcon.svelte';
+	import ShieldIcon from '$icons/General/ShieldIcon.svelte';
+	import Text from '$components/Text.svelte';
+	import type { PageData } from '../../routes/$types';
+	export let data: { character: Character; talents: Talent[] } & PageData;
+	$: ({
 		armor: { head, body, shield }
-	}: Character = $page.data.character;
-
-	const handleArmor = () => {
-		$showModal = true;
-		$modal = {
-			id: $page.data.character._id,
-			type: 'PUT',
-			key: 'armor',
-			index: 0,
-			value: { head, body, shield }
-		};
-	};
+	} = data.character);
 
 	const iconSize = 22;
 </script>
 
-<Box className="armor grid align-c" handleClick={() => handleArmor()}>
+<Box
+	className="armor grid align-c"
+	handleClick={() => {
+		$showModal = true;
+		$modal = {
+			type: 'armor',
+			index: 0
+		};
+	}}
+>
 	<div class="flex space-b">
 		<div class="flex align-c">
 			<svelte:component this={HelmetIcon} height={iconSize} width={iconSize} />

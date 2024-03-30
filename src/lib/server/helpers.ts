@@ -1,9 +1,9 @@
 //@ts-nocheck
-import { BOOLEANS, NUMBERS, WEAPONS } from '$lib/helpers/constants/formValueTypes';
-import { formArmorValues, formPropertiesValues } from '$lib/helpers/form';
-import { validateUserAccess } from '$lib/helpers/validate';
-import { getMongoClient } from '$lib/server/client';
-import { DATABASE, COLLECTION } from '$lib/server/database';
+import { BOOLEANS, NUMBERS, WEAPONS } from '$helpers/constants/formValueTypes';
+import { formArmorValues, formPropertiesValues } from '$helpers/form';
+import { validateUserAccess } from '$helpers/validate';
+import { getMongoClient } from '$server/client';
+import { DATABASE, COLLECTION } from '$server/database';
 import type { Cookies } from '@sveltejs/kit';
 import { ObjectId } from 'mongodb';
 

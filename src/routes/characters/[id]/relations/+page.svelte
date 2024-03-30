@@ -3,7 +3,7 @@
 	import Box from '$components/Box.svelte';
 	import Text from '$components/Text.svelte';
 	import { NO_RELATIONS, BASE_LABELS } from '$helpers/constants/languages';
-	import { language, modal, showModal } from '$lib/store';
+	import { language, modal, showModal } from '$store';
 	import CategoryPage from '$layouts/CategoryPage.svelte';
 	import Content from '$layouts/Content.svelte';
 	import AddMore from '$components/AddMore.svelte';

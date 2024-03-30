@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import { language, modal, showModal } from '$lib/store';
+	import { language, modal, showModal } from '$store';
 	import createArrayFromObject from '$helpers/getObjectKeys';
 	import { SKILLS } from '$helpers/constants/skills';
 	import { getSkillDice } from '$helpers/getDices';

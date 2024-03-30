@@ -1,10 +1,10 @@
 <script lang="ts">
 	export let character: Character,
 		remove = true;
-	import { language, showConfirm } from '$lib/store';
-	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
-	import { capitalize } from '$lib/helpers/utilites';
-	import TrashIcon from './Icons/General/TrashIcon.svelte';
+	import { language, showConfirm } from '$store';
+	import { GENERAL_LABELS } from '$helpers/constants/languages';
+	import { capitalize } from '$helpers/utilites';
+	import TrashIcon from '$icons/General/TrashIcon.svelte';
 	const save = GENERAL_LABELS[$language]['save'];
 
 	const submit = async () => {

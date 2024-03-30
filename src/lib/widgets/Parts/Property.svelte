@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Text from '$lib/components/Text.svelte';
-	import CharismaIcon from '$lib/components/Icons/Property/CharismaIcon.svelte';
-	import FlexibilityIcon from '$lib/components/Icons/Property/FlexibilityIcon.svelte';
-	import IntelligenceIcon from '$lib/components/Icons/Property/IntelligenceIcon.svelte';
-	import StrengthIcon from '$lib/components/Icons/Property/StrengthIcon.svelte';
+	import Text from '$components/Text.svelte';
+	import CharismaIcon from '$icons/Property/CharismaIcon.svelte';
+	import FlexibilityIcon from '$icons/Property/FlexibilityIcon.svelte';
+	import IntelligenceIcon from '$icons/Property/IntelligenceIcon.svelte';
+	import StrengthIcon from '$icons/Property/StrengthIcon.svelte';
 
 	export let type: BasicProperties['id'],
 		amount: BasicProperties['value'],

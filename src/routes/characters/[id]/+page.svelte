@@ -2,7 +2,6 @@
 	import type { PageData } from './$types';
 	import Dashboard from '$components/Character/Dashboard.svelte';
 	import Armor from '$components/Character/Armor.svelte';
-
 	import WeaponIcon from '$icons/Menu/WeaponIcon.svelte';
 	import ExperienceIcon from '$icons/Menu/ExperienceIcon.svelte';
 	import HorseIcon from '$icons/Menu/HorseIcon.svelte';
@@ -11,10 +10,9 @@
 	import TalentIcon from '$icons/Menu/TalentIcon.svelte';
 	import NotesIcon from '$icons/Menu/NotesIcon.svelte';
 	import type { SvelteComponent } from 'svelte';
-	import { currentBase } from '$lib/store';
+	import { currentBase, language } from '$store';
 	import Base from '$components/Character/Base.svelte';
 	import { BASE_LABELS } from '$helpers/constants/languages';
-	import { language } from '$lib/store';
 
 	export let data: PageData;
 	const { _id } = data?.character;

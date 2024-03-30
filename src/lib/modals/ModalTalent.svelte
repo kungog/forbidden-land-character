@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { modal, showConfirm } from '$lib/store';
-	import Text from '$lib/components/Text.svelte';
-	import RadioButton from '$lib/components/RadioButton.svelte';
-	import { emptyTalentObject } from '$lib/helpers/getCharacterObject';
-	import ModalBody from '$lib/components/ModalBody.svelte';
-	import ModalFooter from '$lib/components/ModalFooter.svelte';
+	import { modal, showConfirm } from '$store';
+	import Text from '$components/Text.svelte';
+	import RadioButton from '$components/RadioButton.svelte';
+	import { emptyTalentObject } from '$helpers/getCharacterObject';
+	import ModalBody from '$components/ModalBody.svelte';
+	import ModalFooter from '$components/ModalFooter.svelte';
 	import FormAttributes from './FormAttributes.svelte';
-	import { typeCheckPost } from '$lib/helpers/utilites';
-	import Divider from '$lib/components/Divider.svelte';
+	import { typeCheckPost } from '$helpers/utilites';
+	import Divider from '$components/Divider.svelte';
 
 	const { talents: t }: Character = $page.data.character;
 	const dbTalents: Talent[] = $page.data.talents;

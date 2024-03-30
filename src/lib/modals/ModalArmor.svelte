@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
-	import { language } from '$lib/store';
-	import Input from '$lib/components/Input.svelte';
+	import { GENERAL_LABELS } from '$helpers/constants/languages';
+	import { language } from '$store';
+	import Input from '$components/Input.svelte';
 	import GridTemplate from './GridTemplate.svelte';
-	import ModalBody from '$lib/components/ModalBody.svelte';
+	import ModalBody from '$components/ModalBody.svelte';
 	import FormAttributes from './FormAttributes.svelte';
-	import ModalFooter from '$lib/components/ModalFooter.svelte';
+	import ModalFooter from '$components/ModalFooter.svelte';
 
 	const {
 		armor: { head, body, shield }

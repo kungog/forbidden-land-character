@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { language, showConfirm } from '$lib/store';
-	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
-	import { capitalize } from '$lib/helpers/utilites';
+	import { language, showConfirm } from '$store';
+	import { GENERAL_LABELS } from '$helpers/constants/languages';
+	import { capitalize } from '$helpers/utilites';
 	import Text from './Text.svelte';
 	import Divider from './Divider.svelte';
 	const labels = GENERAL_LABELS[$language];

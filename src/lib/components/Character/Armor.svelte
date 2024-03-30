@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import Box from '$components/Box.svelte';
 	import Equipment from '$components/Equipment.svelte';
-	import { modal, showModal } from '$lib/store';
+	import { modal, showModal } from '$store';
 
 	const {
 		armor: { head, body, shield }
@@ -11,11 +11,8 @@
 	const handleArmor = () => {
 		$showModal = true;
 		$modal = {
-			id: $page.data.character._id,
-			type: 'PUT',
-			key: 'armor',
-			index: 0,
-			value: { head, body, shield }
+			type: 'armor',
+			index: 0
 		};
 	};
 </script>

@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Text from '$lib/components/Text.svelte';
-	import BodyIcon from '$lib/components/Icons/General/BodyIcon.svelte';
-	import HelmetIcon from '$lib/components/Icons/General/HelmetIcon.svelte';
-	import ShieldIcon from '$lib/components/Icons/General/ShieldIcon.svelte';
+	import Text from '$components/Text.svelte';
+	import BodyIcon from '$icons/General/BodyIcon.svelte';
+	import HelmetIcon from '$icons/General/HelmetIcon.svelte';
+	import ShieldIcon from '$icons/General/ShieldIcon.svelte';
 	export let name: string, value: number, icon: 'shield' | 'body' | 'head';
 	const equipmentIcon = {
 		head: HelmetIcon,

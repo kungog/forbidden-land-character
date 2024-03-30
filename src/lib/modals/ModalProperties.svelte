@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
-	import { capitalize } from '$lib/helpers/utilites';
-	import { language } from '$lib/store';
-	import Input from '$lib/components/Input.svelte';
-	import Text from '$lib/components/Text.svelte';
+	import { GENERAL_LABELS } from '$helpers/constants/languages';
+	import { capitalize } from '$helpers/utilites';
+	import { language } from '$store';
+	import Input from '$components/Input.svelte';
+	import Text from '$components/Text.svelte';
 	import GridTemplate from './GridTemplate.svelte';
-	import ModalFooter from '$lib/components/ModalFooter.svelte';
-	import ModalBody from '$lib/components/ModalBody.svelte';
+	import ModalFooter from '$components/ModalFooter.svelte';
+	import ModalBody from '$components/ModalBody.svelte';
 	import FormAttributes from './FormAttributes.svelte';
 
 	const { basic_properties: properties }: Character = $page.data.character;

@@ -1,38 +1,36 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { language } from '$lib/store';
-	import { GENERAL_LABELS } from '$lib/helpers/constants/languages';
+	import { language, modal, showModal } from '$store';
+	import { GENERAL_LABELS } from '$helpers/constants/languages';
 	import Box from '$components/Box.svelte';
 	import Text from '$components/Text.svelte';
-	import Conditions from '$lib/widgets/Conditions.svelte';
-	import Consumables from '$lib/widgets/Consumables.svelte';
-	import Money from '$lib/widgets/Money.svelte';
-	import Points from '$lib/widgets/Points.svelte';
-	import Properties from '$lib/widgets/Properties.svelte';
-
 	const { description }: Character = $page.data.character;
 	const LABEL = GENERAL_LABELS[$language];
+
+	const handleCharacterInfo = () => {
+		$showModal = true;
+		$modal = {
+			type: 'description',
+			index: 0
+		};
+	};
 </script>
 
 <div>
-	<Box size="small" className="face" handleClick={() => console.log(description)}>
+	<Box size="small" className="face" handleClick={() => handleCharacterInfo()}>
 		<Text>{LABEL.face}: {description.face}</Text>
 	</Box>
-	<Box size="small" className="body" handleClick={() => console.log(description)}>
+	<Box size="small" className="body" handleClick={() => handleCharacterInfo()}>
 		<Text>{LABEL.body}: {description.body}</Text>
 	</Box>
-	<Box size="small" className="cloths" handleClick={() => console.log(description)}>
+	<Box size="small" className="cloths" handleClick={() => handleCharacterInfo()}>
 		<Text>{LABEL.cloths}: {description.cloths}</Text>
 	</Box>
-	<Box size="small" className="secret" handleClick={() => console.log(description)}>
+	<Box size="small" className="secret" handleClick={() => handleCharacterInfo()}>
 		<Text>{LABEL.dark_secret}</Text>
 		<Text>{description.dark_secret}</Text>
 	</Box>
-	<Box
-		size="small"
-		className="misc flex column space-b"
-		handleClick={() => console.log(description)}
-	>
+	<Box size="small" className="misc flex column space-b" handleClick={() => handleCharacterInfo()}>
 		<span class="flex space-b">
 			<Text selfCenter={false}>{LABEL.reputation}:</Text>
 			<Text selfCenter={false}>{description.reputation}</Text>

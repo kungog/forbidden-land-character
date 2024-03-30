@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import Button from '$lib/components/Button.svelte';
-	import Text from '$lib/components/Text.svelte';
-	import ArmorIcon from '$icons/Menu/ArmorIcon.svelte';
-	import { modal, showModal, currentBase } from '$lib/store';
+	import Button from '$components/Button.svelte';
+	import Text from '$components/Text.svelte';
+	import { modal, showModal, currentBase } from '$store';
 
 	const character: Character = $page.data.character;
 	const homePath = `/characters/${character._id}`;
@@ -11,27 +10,6 @@
 	const handleBaseChange = () => {
 		if ($currentBase < 3) $currentBase++;
 		if ($currentBase === 3) $currentBase = 0;
-	};
-
-	const handleCharacterInfo = () => {
-		$showModal = true;
-		$modal = {
-			id: $page.data.character._id,
-			type: 'PUT',
-			key: 'description',
-			index: 0,
-			value: character.description
-		};
-	};
-	const handleCharacterName = () => {
-		$showModal = true;
-		$modal = {
-			id: $page.data.character._id,
-			type: 'PUT',
-			key: 'name',
-			index: 0,
-			value: character.name
-		};
 	};
 
 	$: isHomePage = $page.url.pathname === homePath;
@@ -47,7 +25,16 @@
 			/>
 		</svg>
 	</a>
-	<Button loading={false} handleClick={() => handleCharacterName()}>
+	<Button
+		loading={false}
+		handleClick={() => {
+			$showModal = true;
+			$modal = {
+				type: 'name',
+				index: 0
+			};
+		}}
+	>
 		<Text size="medium">{character?.name ?? ''}</Text>
 	</Button>
 

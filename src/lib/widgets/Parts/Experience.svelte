@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Text from '$lib/components/Text.svelte';
+	import Text from '$components/Text.svelte';
 	export let experience: Character['power_points'];
 
 	const kpString = `${experience}/25`;
