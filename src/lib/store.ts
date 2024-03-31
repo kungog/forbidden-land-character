@@ -38,7 +38,6 @@ export const currentBase = writable(0);
 
 export type ModalKeys =
 	| 'armor'
-	| 'weapons'
 	| 'skills'
 	| 'inventory'
 	| 'talents'

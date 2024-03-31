@@ -1,8 +1,12 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { language, currentBase } from '$store';
+	import { GENERAL_LABELS } from '$helpers/constants/languages';
 	import Button from '$components/Button.svelte';
+	import GridTemplate from '$components/GridTemplate.svelte';
+	import Input from '$components/Input.svelte';
+	import Modal from '$components/Modal.svelte';
 	import Text from '$components/Text.svelte';
-	import { modal, showModal, currentBase } from '$store';
 
 	const character: Character = $page.data.character;
 	const homePath = `/characters/${character._id}`;
@@ -14,7 +18,19 @@
 
 	$: isHomePage = $page.url.pathname === homePath;
 	$: isNotHomePage = $page.url.pathname !== homePath;
+	let showModal = false;
+	$: edit = character.name;
+
+	const LABEL = GENERAL_LABELS[$language];
 </script>
+
+{#if showModal && edit}
+	<Modal handleClose={() => (showModal = false)} handleRemove={() => console.log('Delete: ', edit)}>
+		<GridTemplate template="1fr">
+			<Input iType="text" iLabel={LABEL.name} iValue={character.name} iFor="name" />
+		</GridTemplate>
+	</Modal>
+{/if}
 
 <header>
 	<a href={homePath} class="round-button">
@@ -25,16 +41,7 @@
 			/>
 		</svg>
 	</a>
-	<Button
-		loading={false}
-		handleClick={() => {
-			$showModal = true;
-			$modal = {
-				type: 'name',
-				index: 0
-			};
-		}}
-	>
+	<Button loading={false} handleClick={() => (showModal = true)}>
 		<Text size="medium">{character?.name ?? ''}</Text>
 	</Button>
 

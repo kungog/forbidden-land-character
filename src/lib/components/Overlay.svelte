@@ -6,7 +6,7 @@
 
 <style lang="scss">
 	button {
-		position: absolute;
+		position: fixed;
 		border: none;
 		padding: 0;
 		margin: 0;

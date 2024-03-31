@@ -1,5 +1,5 @@
 <script lang="ts">
-	import GridTemplate from '$modals/GridTemplate.svelte';
+	import GridTemplate from '$components/GridTemplate.svelte';
 	import Input from '$components/Input.svelte';
 	import { ADD_NEW_TALENT } from '$helpers/constants/languages';
 	import { language } from '$lib/store';

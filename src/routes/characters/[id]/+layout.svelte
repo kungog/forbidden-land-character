@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Header from '$layouts/Header.svelte';
 	import Container from '$components/Container.svelte';
-	import Modals from '$layouts/Modals.svelte';
 </script>
 
 <Header />
@@ -10,7 +9,6 @@
 		<slot />
 	</Container>
 </main>
-<Modals />
 
 <style>
 	main {

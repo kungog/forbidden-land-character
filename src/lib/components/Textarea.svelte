@@ -15,7 +15,7 @@
 		flex-direction: column;
 
 		textarea {
-			background: var(--color-background);
+			background: var(--color-box);
 			border: 1px solid transparent;
 			padding: var(--spacing-10) var(--spacing-14);
 			color: var(--color-text);

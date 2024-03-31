@@ -1,43 +1,24 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import getSkillObject from '$helpers/getSkills';
 	import { capitalize } from '$helpers/utilites';
-	import { language, modal, showConfirm, showModal } from '$store';
+	import ModalFooter from './ModalFooter.svelte';
 	import Overlay from './Overlay.svelte';
 	import Text from './Text.svelte';
-
-	const dbTalents: Talent[] = $page.data.talents;
-	const noLabels = ['weapons', 'newWeapon', 'newTalent'];
-	const getLabel = () => {
-		if (!$modal) return '';
-
-		if (noLabels.includes($modal.type)) return '';
-		if ($modal.type === 'skills' && $modal?.objectKey) {
-			const skillObject = getSkillObject($modal?.objectKey as keyof Skills, 0);
-			return skillObject.languages[$language];
-		}
-
-		if ($modal.type === 'talents') {
-			const talentId = $page.data.character.talents[$modal.index];
-			const talent = dbTalents.find((talent) => talent._id === talentId);
-			return talent?.name ?? '';
-		}
-
-		return '';
-	};
-
-	const label = getLabel();
-	const handleCloseModal = () => (($showModal = false), ($showConfirm = false));
+	export let handleClose: () => void,
+		handleRemove: any,
+		label: string = '';
 </script>
 
-<Overlay handleClick={() => handleCloseModal()} />
+<Overlay handleClick={handleClose} />
 <dialog>
 	<section>
-		<div>
+		<div class="flex">
 			<Text size="medium">{capitalize(label)}</Text>
-			<button on:click={() => handleCloseModal()}>x</button>
+			<button on:click={handleClose}>x</button>
 		</div>
-		<slot />
+		<div class="body">
+			<slot />
+		</div>
+		<ModalFooter />
 	</section>
 </dialog>
 
@@ -54,6 +35,7 @@
 		border: 0;
 		pointer-events: none;
 		padding: 0;
+		top: 0;
 	}
 
 	section {
@@ -82,5 +64,9 @@
 		align-items: center;
 		justify-content: center;
 		margin-left: auto;
+	}
+
+	.body {
+		padding: var(--spacing-18) 0 var(--spacing-48);
 	}
 </style>

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import GridTemplate from '$modals/GridTemplate.svelte';
+	import GridTemplate from '$components/GridTemplate.svelte';
 	import Input from '$components/Input.svelte';
 	import { ADD_NEW_TALENT, BASE_LABELS } from '$helpers/constants/languages';
 	import { language } from '$lib/store';

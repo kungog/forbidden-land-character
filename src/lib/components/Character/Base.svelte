@@ -1,36 +1,57 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { language, modal, showModal } from '$store';
+	import { language } from '$store';
 	import { GENERAL_LABELS } from '$helpers/constants/languages';
 	import Box from '$components/Box.svelte';
 	import Text from '$components/Text.svelte';
+	import Modal from '$components/Modal.svelte';
+	import GridTemplate from '$components/GridTemplate.svelte';
+	import Input from '$components/Input.svelte';
 	const { description }: Character = $page.data.character;
 	const LABEL = GENERAL_LABELS[$language];
-
-	const handleCharacterInfo = () => {
-		$showModal = true;
-		$modal = {
-			type: 'description',
-			index: 0
-		};
-	};
+	let showModal = false;
+	$: edit = description;
 </script>
 
+{#if showModal && edit}
+	<Modal handleClose={() => (showModal = false)} handleRemove={() => console.log('Delete: ', edit)}>
+		<GridTemplate template="1fr 1fr" gap={48}>
+			<Input iType="number" iLabel={LABEL.age} iValue={edit.age} iFor="age" />
+			<Input iType="number" iLabel={LABEL.reputation} iValue={edit.reputation} iFor="reputation" />
+		</GridTemplate>
+		<GridTemplate template="1fr">
+			<Input iType="text" iLabel={LABEL.face} iValue={edit.face} iFor="face" />
+		</GridTemplate>
+		<GridTemplate template="1fr">
+			<Input iType="text" iLabel={LABEL.body} iValue={edit.body} iFor="body" />
+		</GridTemplate>
+		<GridTemplate template="1fr">
+			<Input iType="text" iLabel={LABEL.cloths} iValue={edit.cloths} iFor="cloths" />
+		</GridTemplate>
+		<GridTemplate template="1fr">
+			<Input iType="text" iLabel={LABEL.dark_secret} iValue={edit.dark_secret} iFor="dark_secret" />
+		</GridTemplate>
+		<GridTemplate template="1fr">
+			<Input iType="text" iLabel={LABEL.pride} iValue={edit.pride} iFor="pride" />
+		</GridTemplate>
+	</Modal>
+{/if}
+
 <div>
-	<Box size="small" className="face" handleClick={() => handleCharacterInfo()}>
+	<Box size="small" className="face" handleClick={() => (showModal = true)}>
 		<Text>{LABEL.face}: {description.face}</Text>
 	</Box>
-	<Box size="small" className="body" handleClick={() => handleCharacterInfo()}>
+	<Box size="small" className="body" handleClick={() => (showModal = true)}>
 		<Text>{LABEL.body}: {description.body}</Text>
 	</Box>
-	<Box size="small" className="cloths" handleClick={() => handleCharacterInfo()}>
+	<Box size="small" className="cloths" handleClick={() => (showModal = true)}>
 		<Text>{LABEL.cloths}: {description.cloths}</Text>
 	</Box>
-	<Box size="small" className="secret" handleClick={() => handleCharacterInfo()}>
+	<Box size="small" className="secret" handleClick={() => (showModal = true)}>
 		<Text>{LABEL.dark_secret}</Text>
 		<Text>{description.dark_secret}</Text>
 	</Box>
-	<Box size="small" className="misc flex column space-b" handleClick={() => handleCharacterInfo()}>
+	<Box size="small" className="misc flex column space-b" handleClick={() => (showModal = true)}>
 		<span class="flex space-b">
 			<Text selfCenter={false}>{LABEL.reputation}:</Text>
 			<Text selfCenter={false}>{description.reputation}</Text>

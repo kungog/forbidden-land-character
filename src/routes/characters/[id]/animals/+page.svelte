@@ -3,39 +3,46 @@
 	import Box from '$components/Box.svelte';
 	import Text from '$components/Text.svelte';
 	import { NO_ANIMALS, GENERAL_LABELS, BASE_LABELS } from '$helpers/constants/languages';
-	import { language, modal, showModal, activeAnimal } from '$store';
+	import { language, activeAnimal } from '$store';
 	import CategoryPage from '$layouts/CategoryPage.svelte';
 	import Content from '$layouts/Content.svelte';
 	import AddMore from '$components/AddMore.svelte';
 	import { addNewItem } from '$helpers/utilites';
+	import Modal from '$components/Modal.svelte';
+	import GridTemplate from '$components/GridTemplate.svelte';
+	import Input from '$components/Input.svelte';
 	export let data: { character: Character; talents: Talent[] } & PageData;
 	$: ({ animals } = data.character);
-
+	let showModal = false;
+	$: edit = null as Animal | null;
 	const LABEL = GENERAL_LABELS[$language];
 
-	const handleModal = (index: number) => {
-		$showModal = true;
-		$modal = {
-			type: 'animals',
-			index
-		};
-	};
+	const handleAnimalClick = (index: number, animal: Animal) => {
+		if (index !== $activeAnimal) return ($activeAnimal = index);
 
-	const handleAnimalClick = (index: number) => {
-		if (index !== $activeAnimal) {
-			return ($activeAnimal = index);
-		}
-
-		return handleModal(index);
+		edit = animal;
+		showModal = true;
 	};
 </script>
+
+{#if showModal && edit}
+	<Modal handleClose={() => (showModal = false)} handleRemove={() => console.log('Delete: ', edit)}>
+		<GridTemplate template="1fr">
+			<Input iType="text" iLabel={LABEL.name} iValue={edit.name} iFor="name" />
+		</GridTemplate>
+		<GridTemplate template="1fr 1fr" gap={48}>
+			<Input iType="text" iLabel={LABEL.flexibility} iValue={edit.flexibility} iFor="flexibility" />
+			<Input iType="number" iLabel={LABEL.strength} iValue={edit.strength} iFor="strength" />
+		</GridTemplate>
+	</Modal>
+{/if}
 
 <CategoryPage>
 	<h1>{BASE_LABELS[$language].animals}</h1>
 	<Content active>
 		{#if animals.length > 0}
 			{#each animals as animal, index}
-				<Box size="small" handleClick={() => handleAnimalClick(index)} transition>
+				<Box size="small" handleClick={() => handleAnimalClick(index, animal)} transition>
 					<div class="upper-part">
 						<div class="flex space-b">
 							<Text size="normal">{animal.name}</Text>

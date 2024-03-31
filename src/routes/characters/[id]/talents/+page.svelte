@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import { showModal, language, modal } from '$store';
+	import { language } from '$store';
 	import Box from '$components/Box.svelte';
 	import Text from '$components/Text.svelte';
 	import { NO_TALENTS, BASE_LABELS } from '$helpers/constants/languages';
@@ -9,15 +9,40 @@
 	import PowerPoint from '$widgets/Parts/PowerPoint.svelte';
 	import AddMore from '$components/AddMore.svelte';
 	import { addNewItem } from '$helpers/utilites';
+	import Modal from '$components/Modal.svelte';
+	import Divider from '$components/Divider.svelte';
+	import RadioButton from '$components/RadioButton.svelte';
 	export let data: { character: Character; talents: Talent[] } & PageData;
 	$: ({ talents } = data.character);
+	$: edit = null as (CharacterTalent & Talent) | null;
+
+	let showModal = false;
 	const dbTalents = data.talents;
 	const mergedTalents =
-		talents?.map((talent) => {
+		(talents?.map((talent) => {
 			const match = dbTalents.find((item) => item._id === talent._id);
 			return match ? { ...talent, ...match } : talent;
-		}) ?? ([] as (CharacterTalent & Talent)[]);
+		}) as (CharacterTalent & Talent)[]) ?? [];
+
+	const talentInfo = dbTalents.find((item) => item._id === edit?._id) as Talent;
 </script>
+
+{#if showModal && edit}
+	<Modal handleClose={() => (showModal = false)} handleRemove={() => console.log('Delete: ', edit)}>
+		<Text selfCenter={false} size="small">{talentInfo.description}</Text>
+		<Divider size="small" />
+		<Text selfCenter={false} size="small">Nivå 1: {talentInfo.stages.one}</Text>
+		<Divider size="small" />
+		<Text selfCenter={false} size="small">Nivå 2: {talentInfo.stages.two}</Text>
+		<Divider size="small" />
+		<Text selfCenter={false} size="small">Nivå 3: {talentInfo.stages.three}</Text>
+		<Divider size="small" />
+
+		<Text selfCenter={false} size="normal">FV</Text>
+		<input type="hidden" name="_id" value={edit._id} />
+		<RadioButton iValue={edit.value} iFor="value" amount={3} />
+	</Modal>
+{/if}
 
 <CategoryPage>
 	<div class="flex space-b">
@@ -27,16 +52,7 @@
 	<Content active>
 		{#if mergedTalents.length > 0}
 			{#each mergedTalents as talent, index}
-				<Box
-					transition
-					handleClick={() => {
-						$showModal = true;
-						$modal = {
-							type: 'talents',
-							index
-						};
-					}}
-				>
+				<Box transition handleClick={() => (showModal = true)}>
 					<div class="flex space-b">
 						<Text size="normal">{talent.name}</Text>
 						{talent.value}

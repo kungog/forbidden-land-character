@@ -49,7 +49,7 @@
 	</dialog>
 {/if}
 
-<style lang="scss">
+<style>
 	.main-page {
 		padding: var(--spacing-48) 0;
 	}
