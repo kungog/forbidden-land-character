@@ -1,6 +1,7 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import Text from '$components/Text.svelte';
-	export let power_points: Character['power_points'];
+	const { power_points }: Character = $page.data.character;
 
 	const kpString = `${power_points}/10`;
 </script>

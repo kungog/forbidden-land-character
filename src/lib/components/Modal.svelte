@@ -9,16 +9,17 @@
 	const dbTalents: Talent[] = $page.data.talents;
 	const noLabels = ['weapons', 'newWeapon', 'newTalent'];
 	const getLabel = () => {
-		if (!$modal?.id) return '';
+		if (!$modal) return '';
 
-		if (noLabels.includes($modal?.id)) return '';
-		if ($modal?.key === 'skills' && $modal?.objectKey) {
+		if (noLabels.includes($modal.type)) return '';
+		if ($modal.type === 'skills' && $modal?.objectKey) {
 			const skillObject = getSkillObject($modal?.objectKey as keyof Skills, 0);
 			return skillObject.languages[$language];
 		}
 
-		if ($modal?.key === 'talents') {
-			const talent = dbTalents.find((talent) => talent._id === $modal.value.id);
+		if ($modal.type === 'talents') {
+			const talentId = $page.data.character.talents[$modal.index];
+			const talent = dbTalents.find((talent) => talent._id === talentId);
 			return talent?.name ?? '';
 		}
 

@@ -17,7 +17,7 @@
 	import Content from '$layouts/Content.svelte';
 	import Experience from '$widgets/Parts/Experience.svelte';
 	export let data: { character: Character; talents: Talent[] } & PageData;
-	$: ({ experience, skills, basic_properties } = data.character);
+	let { skills, basic_properties } = data.character;
 
 	const items = createArrayFromObject(skills ?? {});
 	const propertyIcon = {
@@ -31,7 +31,7 @@
 <CategoryPage>
 	<div class="flex space-b">
 		<h1>{BASE_LABELS[$language].experience}</h1>
-		<Experience {experience} />
+		<Experience />
 	</div>
 	<Content active>
 		{#each items as item, index}
@@ -45,11 +45,9 @@
 					};
 				}}
 			>
-				<div class="flex space-b">
-					<div class="flex align-c">
-						<svelte:component this={propertyIcon[SKILLS[item.key].type]} width={24} height={24} />
-						<Text size="normal">{SKILLS[item.key].languages[$language]}</Text>
-					</div>
+				<div class="box-items">
+					<svelte:component this={propertyIcon[SKILLS[item.key].type]} width={24} height={24} />
+					<Text size="normal">{SKILLS[item.key].languages[$language]}</Text>
 					<Dices
 						{...getSkillDice({
 							properties: basic_properties,
@@ -62,8 +60,10 @@
 	</Content>
 </CategoryPage>
 
-<style lang="scss">
-	.align-c :global(:nth-child(1)) {
-		margin-right: var(--spacing-10);
+<style>
+	.box-items {
+		display: grid;
+		grid-template-columns: 24px 2fr 1fr;
+		gap: var(--spacing-10);
 	}
 </style>

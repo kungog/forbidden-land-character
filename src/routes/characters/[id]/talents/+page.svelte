@@ -10,7 +10,7 @@
 	import AddMore from '$components/AddMore.svelte';
 	import { addNewItem } from '$helpers/utilites';
 	export let data: { character: Character; talents: Talent[] } & PageData;
-	$: ({ power_points, talents } = data.character);
+	$: ({ talents } = data.character);
 	const dbTalents = data.talents;
 	const mergedTalents =
 		talents?.map((talent) => {
@@ -22,7 +22,7 @@
 <CategoryPage>
 	<div class="flex space-b">
 		<h1>{BASE_LABELS[$language].talents}</h1>
-		<PowerPoint {power_points} />
+		<PowerPoint />
 	</div>
 	<Content active>
 		{#if mergedTalents.length > 0}

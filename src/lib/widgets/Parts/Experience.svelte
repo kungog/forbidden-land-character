@@ -1,7 +1,7 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import Text from '$components/Text.svelte';
-	export let experience: Character['power_points'];
-
+	const { experience }: Character = $page.data.character;
 	const kpString = `${experience}/25`;
 </script>
 
