@@ -7,7 +7,8 @@
 	export let onClose: () => void,
 		onDelete: () => void,
 		onSubmit: () => void,
-		label: string = '';
+		label: string = '',
+		remove = true;
 
 	let showConfirm = false;
 </script>
@@ -22,8 +23,8 @@
 		<div class="body">
 			<slot />
 		</div>
-		<ModalFooter {onSubmit} onConfirm={() => (showConfirm = true)} />
-		{#if showConfirm}
+		<ModalFooter {onSubmit} {remove} onConfirm={() => (showConfirm = true)} />
+		{#if showConfirm && remove}
 			<ModalConfirm {onDelete} onClose={() => (showConfirm = false)} />
 		{/if}
 	</section>

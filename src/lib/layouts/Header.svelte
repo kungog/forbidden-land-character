@@ -7,9 +7,12 @@
 	import Input from '$components/Input.svelte';
 	import Modal from '$components/Modal.svelte';
 	import Text from '$components/Text.svelte';
+	import { invalidate } from '$app/navigation';
+	import { BASE_URL } from '$helpers/utilites';
 
 	const character: Character = $page.data.character;
 	const homePath = `/characters/${character._id}`;
+	const LABEL = GENERAL_LABELS[$language];
 
 	const handleBaseChange = () => {
 		if ($currentBase < 3) $currentBase++;
@@ -18,16 +21,30 @@
 
 	$: isHomePage = $page.url.pathname === homePath;
 	$: isNotHomePage = $page.url.pathname !== homePath;
-	let showModal = false;
-	$: edit = character.name;
 
-	const LABEL = GENERAL_LABELS[$language];
+	let showModal = false;
+	let edit = character.name;
+
+	const onClose = () => {
+		showModal = false;
+	};
+
+	const onSubmit = async () => {
+		if (!edit) return console.error('Missing values in form');
+		await fetch(BASE_URL + character._id, {
+			method: 'POST',
+			body: JSON.stringify({ ...character, name: edit })
+		});
+
+		showModal = false;
+		invalidate('viewed:character');
+	};
 </script>
 
-{#if showModal && edit}
-	<Modal handleClose={() => (showModal = false)} handleRemove={() => console.log('Delete: ', edit)}>
+{#if showModal}
+	<Modal {onClose} {onSubmit} remove={false} onDelete={() => {}}>
 		<GridTemplate template="1fr">
-			<Input iType="text" iLabel={LABEL.name} iValue={character.name} iFor="name" />
+			<Input iType="text" iLabel={LABEL.name} bind:iValue={edit} iFor="name" />
 		</GridTemplate>
 	</Modal>
 {/if}

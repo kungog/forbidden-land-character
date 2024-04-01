@@ -1,7 +1,5 @@
 <script lang="ts">
-	export let remove = true,
-		onSubmit: () => void,
-		onConfirm: () => void;
+	export let remove: boolean, onSubmit: () => void, onConfirm: () => void;
 	import { language } from '$store';
 	import { GENERAL_LABELS } from '$helpers/constants/languages';
 	import { capitalize } from '$helpers/utilites';
