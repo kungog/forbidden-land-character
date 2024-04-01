@@ -7,7 +7,7 @@
 <div class="radio">
 	{#each Array.from({ length: amount }, (_, i) => i + 1) as number}
 		<label for={iFor}>
-			<input type="radio" name="scoops" value={number} bind:group={iValue} />
+			<input type="radio" name={iFor} value={number} bind:group={iValue} />
 			{number}
 		</label>
 	{/each}

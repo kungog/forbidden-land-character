@@ -37,6 +37,8 @@
 		showModal = false;
 		invalidate('viewed:character');
 	};
+
+	console.log(condition);
 </script>
 
 {#if showModal && edit}

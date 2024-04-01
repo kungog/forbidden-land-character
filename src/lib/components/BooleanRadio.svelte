@@ -12,11 +12,23 @@
 	<Text>{capitalize(iLabel)}</Text>
 	<div class="radio">
 		<div>
-			<input type="radio" name={iFor} value="false" checked={!iValue} />
+			<input
+				type="radio"
+				name={iFor}
+				value="false"
+				checked={iValue.toString() === 'false'}
+				bind:group={iValue}
+			/>
 			<label for={iFor}>{LABEL.no}</label>
 		</div>
 		<div>
-			<input type="radio" name={iFor} value="true" checked={iValue} />
+			<input
+				type="radio"
+				name={iFor}
+				value="true"
+				checked={iValue.toString() === 'true'}
+				bind:group={iValue}
+			/>
 			<label for={iFor}>{LABEL.yes}</label>
 		</div>
 	</div>

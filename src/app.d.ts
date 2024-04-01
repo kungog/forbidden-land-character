@@ -121,10 +121,10 @@ declare global {
 	}
 
 	interface Condition {
-		cooled: boolean;
-		dry: boolean;
-		sleepless: boolean;
-		starved: boolean;
+		cooled: string;
+		dry: string;
+		sleepless: string;
+		starved: string;
 	}
 
 	interface Consumables {
