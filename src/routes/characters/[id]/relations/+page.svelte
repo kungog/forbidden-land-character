@@ -17,7 +17,7 @@
 	const LABEL = GENERAL_LABELS[$language];
 
 	let showModal = false;
-	let edit: string | null = null;
+	let edit = '';
 	let editIndex = 0;
 
 	const onClose = () => {
@@ -25,7 +25,7 @@
 	};
 
 	const onSubmit = async () => {
-		if (!edit) return console.log('Error');
+		if (!edit) return console.error('Missing values in form');
 		const updated = relations.map((_, index: number) => (index === editIndex ? edit : _));
 		await fetch(BASE_URL + data.character._id, {
 			method: 'POST',
@@ -48,7 +48,7 @@
 	};
 </script>
 
-{#if showModal && edit}
+{#if showModal}
 	<Modal {onClose} {onDelete} {onSubmit}>
 		<Textarea iLabel={LABEL.relation} bind:iValue={edit} iFor="relation" />
 	</Modal>

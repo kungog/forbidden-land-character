@@ -27,7 +27,7 @@
 	};
 
 	const onSubmit = async () => {
-		if (!edit) return console.log('Error');
+		if (!edit) return console.error('Missing values in form');
 		const updated = inventory.map((_, index: number) => (index === editIndex ? edit : _));
 		await fetch(BASE_URL + data.character._id, {
 			method: 'POST',
@@ -81,12 +81,13 @@
 	</div>
 
 	<Content active label={NO_INVENTORY[$language]} empty={inventory.length === 0}>
-		{#each inventory as item}
+		{#each inventory as item, index}
 			<Box
 				transition
 				handleClick={() => {
 					showModal = true;
 					edit = item;
+					editIndex = index;
 				}}
 			>
 				<div class="upper-part">

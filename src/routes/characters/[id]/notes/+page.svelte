@@ -16,7 +16,7 @@
 	$: ({ notes } = data.character);
 
 	let showModal = false;
-	let edit: string | null = null;
+	let edit = '';
 	let editIndex = 0;
 
 	const onClose = () => {
@@ -24,7 +24,7 @@
 	};
 
 	const onSubmit = async () => {
-		if (!edit) return console.log('Error');
+		if (!edit) return console.error('Missing values in form');
 		const updated = notes.map((_, index: number) => (index === editIndex ? edit : _));
 		await fetch(BASE_URL + data.character._id, {
 			method: 'POST',
@@ -47,7 +47,7 @@
 	};
 </script>
 
-{#if showModal && edit}
+{#if showModal}
 	<Modal {onClose} {onDelete} {onSubmit}>
 		<Textarea iLabel={GENERAL_LABELS[$language].note} bind:iValue={edit} iFor="note" />
 	</Modal>

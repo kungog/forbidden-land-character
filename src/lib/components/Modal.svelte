@@ -8,6 +8,7 @@
 		onDelete: () => void,
 		onSubmit: () => void,
 		label: string = '',
+		specialButton: any = null,
 		remove = true;
 
 	let showConfirm = false;
@@ -23,7 +24,7 @@
 		<div class="body">
 			<slot />
 		</div>
-		<ModalFooter {onSubmit} {remove} onConfirm={() => (showConfirm = true)} />
+		<ModalFooter {onSubmit} {remove} onConfirm={() => (showConfirm = true)} {specialButton} />
 		{#if showConfirm && remove}
 			<ModalConfirm {onDelete} onClose={() => (showConfirm = false)} />
 		{/if}
