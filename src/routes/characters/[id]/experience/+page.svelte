@@ -22,6 +22,11 @@
 	import { BASE_URL } from '$helpers/utilites';
 	export let data: { character: Character; talents: Talent[] } & PageData;
 
+	interface SkillObject {
+		key: keyof Skills;
+		value: number;
+	}
+
 	const propertyIcon = {
 		strength: StrengthIcon,
 		charisma: CharismaIcon,
@@ -34,10 +39,6 @@
 
 	let showModal = false;
 	let edit: SkillObject | null = null;
-	interface SkillObject {
-		key: keyof Skills;
-		value: number;
-	}
 
 	const onClose = () => {
 		showModal = false;

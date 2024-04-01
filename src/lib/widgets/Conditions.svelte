@@ -37,8 +37,6 @@
 		showModal = false;
 		invalidate('viewed:character');
 	};
-
-	console.log(condition);
 </script>
 
 {#if showModal && edit}
@@ -73,7 +71,7 @@
 		</div>
 		<div class="flex align-c">
 			{#each items as item}
-				<Condition type={item.key} isActive={item.value === 'true'} />
+				<Condition type={item.key} isActive={item.value.toString() === 'true'} />
 			{/each}
 		</div>
 	</div>

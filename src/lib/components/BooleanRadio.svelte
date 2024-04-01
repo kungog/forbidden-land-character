@@ -4,7 +4,7 @@
 	import { language } from '$store';
 	import Text from './Text.svelte';
 
-	export let iValue: boolean, iFor: string, iLabel: string;
+	export let iValue: string, iFor: string, iLabel: string;
 	const LABEL = GENERAL_LABELS[$language];
 </script>
 
