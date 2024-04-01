@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import Dashboard from '$components/Character/Dashboard.svelte';
-	import Armor from '$components/Character/Armor.svelte';
-	import Base from '$components/Character/Base.svelte';
+	import Dashboard from '$widgets/Dashboard.svelte';
+	import Armor from '$widgets/Armor.svelte';
+	import Base from '$widgets/Base.svelte';
 	import WeaponIcon from '$icons/Menu/WeaponIcon.svelte';
 	import ExperienceIcon from '$icons/Menu/ExperienceIcon.svelte';
 	import HorseIcon from '$icons/Menu/HorseIcon.svelte';
@@ -40,15 +40,9 @@
 	};
 </script>
 
-{#if $currentBase === 0}
-	<Dashboard />
-{/if}
-{#if $currentBase === 1}
-	<Armor />
-{/if}
-{#if $currentBase === 2}
-	<Base />
-{/if}
+{#if $currentBase === 0} <Dashboard /> {/if}
+{#if $currentBase === 1} <Armor /> {/if}
+{#if $currentBase === 2} <Base /> {/if}
 
 <section>
 	{#each MENU_ITEMS as item}

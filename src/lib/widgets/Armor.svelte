@@ -1,25 +1,18 @@
 <script lang="ts">
-	import type { PageData } from '../../routes/$types';
-	import { GENERAL_LABELS } from '$helpers/constants/languages';
+	import { page } from '$app/stores';
 	import { language } from '$store';
+	import { GENERAL_LABELS } from '$helpers/constants/languages';
 	import Box from '$components/Box.svelte';
-	import HelmetIcon from '$icons/General/HelmetIcon.svelte';
-	import BodyIcon from '$icons/General/BodyIcon.svelte';
-	import ShieldIcon from '$icons/General/ShieldIcon.svelte';
-	import Text from '$components/Text.svelte';
+	import Equipment from '$components/Equipment.svelte';
 	import GridTemplate from '$components/GridTemplate.svelte';
 	import Input from '$components/Input.svelte';
 	import Modal from '$components/Modal.svelte';
-	export let data: { character: Character; talents: Talent[] } & PageData;
-	$: ({
+	const {
 		armor: { head, body, shield }
-	} = data.character);
-
-	const iconSize = 22;
-	const LABEL = GENERAL_LABELS[$language];
-
+	}: Character = $page.data.character;
 	let showModal = false;
 	$: edit = { head, body, shield };
+	const LABEL = GENERAL_LABELS[$language];
 </script>
 
 {#if showModal && edit}
@@ -39,35 +32,32 @@
 	</Modal>
 {/if}
 
-<Box className="armor grid align-c" handleClick={() => (showModal = true)}>
-	<div class="flex space-b">
-		<div class="flex align-c">
-			<svelte:component this={HelmetIcon} height={iconSize} width={iconSize} />
+<div>
+	<Box className="head" handleClick={() => (showModal = true)} size="small">
+		<Equipment {...head} icon="head" />
+	</Box>
 
-			<Text>{head.name ?? '-'}</Text>
-		</div>
-		<Text size="normal">{head.value ?? 0}</Text>
-	</div>
+	<Box className="body" handleClick={() => (showModal = true)} size="small">
+		<Equipment {...body} icon="body" />
+	</Box>
 
-	<div class="flex space-b">
-		<div class="flex align-c">
-			<svelte:component this={BodyIcon} height={iconSize} width={iconSize} />
-			<Text>{body.name ?? '-'}</Text>
-		</div>
-		<Text size="normal">{body.value ?? 0}</Text>
-	</div>
-
-	<div class="flex space-b">
-		<div class="flex align-c">
-			<svelte:component this={ShieldIcon} height={iconSize} width={iconSize} />
-			<Text>{shield.name ?? '-'}</Text>
-		</div>
-		<Text size="normal">{shield.value ?? 0}</Text>
-	</div>
-</Box>
+	<Box className="shield" handleClick={() => (showModal = true)} size="small">
+		<Equipment {...shield} icon="shield" />
+	</Box>
+</div>
 
 <style lang="scss">
-	.flex.align-c {
-		gap: var(--spacing-10);
+	div {
+		display: grid;
+		grid-template-rows: auto;
+		gap: var(--spacing-08);
+		grid-template-columns: repeat(1, 1fr);
+		grid-template-areas:
+			'head'
+			'body'
+			'shield';
+		padding: 0 var(--spacing-10) var(--spacing-24);
+		justify-items: stretch;
+		min-height: 200px;
 	}
 </style>
