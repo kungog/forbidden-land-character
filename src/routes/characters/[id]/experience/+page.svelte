@@ -21,7 +21,16 @@
 	import { invalidate } from '$app/navigation';
 	import { BASE_URL } from '$helpers/utilites';
 	export let data: { character: Character; talents: Talent[] } & PageData;
-	let { skills, basic_properties } = data.character;
+
+	const propertyIcon = {
+		strength: StrengthIcon,
+		charisma: CharismaIcon,
+		flexibility: FlexibilityIcon,
+		intelligence: IntelligenceIcon
+	};
+
+	$: ({ skills, basic_properties } = data.character);
+	$: items = createArrayFromObject(skills ?? {});
 
 	let showModal = false;
 	let edit: SkillObject | null = null;
@@ -29,14 +38,6 @@
 		key: keyof Skills;
 		value: number;
 	}
-
-	const items = createArrayFromObject(skills ?? {});
-	const propertyIcon = {
-		strength: StrengthIcon,
-		charisma: CharismaIcon,
-		flexibility: FlexibilityIcon,
-		intelligence: IntelligenceIcon
-	};
 
 	const onClose = () => {
 		showModal = false;
