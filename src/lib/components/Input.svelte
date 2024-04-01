@@ -8,7 +8,7 @@
 		iFor: string;
 </script>
 
-<label>
+<label for={iFor}>
 	{capitalize(iLabel)}
 	<input
 		name={iFor}
