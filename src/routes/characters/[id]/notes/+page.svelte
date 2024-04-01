@@ -27,7 +27,7 @@
 <CategoryPage>
 	<h1>{BASE_LABELS[$language].notes}</h1>
 
-	<Content active>
+	<Content active label={NO_NOTES[$language]} empty={notes.length === 0}>
 		{#if notes.length > 0}
 			{#each notes as note}
 				<Box
@@ -40,8 +40,6 @@
 					<Text>{note}</Text>
 				</Box>
 			{/each}
-		{:else}
-			<Text>{NO_NOTES[$language]}</Text>
 		{/if}
 		<AddMore handleClick={() => addNewItem(data.character, 'notes')} />
 	</Content>

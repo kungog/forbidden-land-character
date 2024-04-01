@@ -85,7 +85,7 @@ export const addNewItem = async (
 			break;
 
 		case 'relations':
-			newChar = { ...newChar, notes: [...newChar.relations, 'New relation'] };
+			newChar = { ...newChar, relations: [...newChar.relations, 'New relation'] };
 			break;
 	}
 

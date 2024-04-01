@@ -27,7 +27,7 @@
 <CategoryPage>
 	<h1>{BASE_LABELS[$language].relations}</h1>
 
-	<Content active>
+	<Content active label={NO_RELATIONS[$language]} empty={relations.length === 0}>
 		{#if relations.length > 0}
 			{#each relations as relation}
 				<Box
@@ -40,8 +40,6 @@
 					<Text>{relation}</Text>
 				</Box>
 			{/each}
-		{:else}
-			<Text>{NO_RELATIONS[$language]}</Text>
 		{/if}
 		<AddMore handleClick={() => addNewItem(data.character, 'relations')} />
 	</Content>

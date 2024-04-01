@@ -49,7 +49,7 @@
 		<h1>{BASE_LABELS[$language].talents}</h1>
 		<PowerPoint />
 	</div>
-	<Content active>
+	<Content active label={NO_TALENTS[$language]} empty={mergedTalents.length === 0}>
 		{#if mergedTalents.length > 0}
 			{#each mergedTalents as talent}
 				<Box transition handleClick={() => (showModal = true)}>
@@ -59,8 +59,6 @@
 					</div>
 				</Box>
 			{/each}
-		{:else}
-			<Text>{NO_TALENTS[$language]}</Text>
 		{/if}
 		<AddMore handleClick={() => addNewItem(data.character, 'talent')} />
 	</Content>

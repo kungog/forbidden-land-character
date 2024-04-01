@@ -76,6 +76,11 @@ export const NO_INVENTORY_ANIMAL = {
 	en: 'Why not let your animal carry?'
 };
 
+export const NO_WEAPONS = {
+	sv: 'Du kommer dö utan vapen',
+	en: 'You will die without weapon'
+};
+
 export const GENERAL_LABELS = {
 	sv: {
 		task_board: 'Uppdragstavla',

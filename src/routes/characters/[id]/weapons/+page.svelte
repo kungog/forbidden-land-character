@@ -3,7 +3,7 @@
 	import { language } from '$lib/store';
 	import Box from '$components/Box.svelte';
 	import Text from '$components/Text.svelte';
-	import { GENERAL_LABELS, BASE_LABELS } from '$helpers/constants/languages';
+	import { GENERAL_LABELS, BASE_LABELS, NO_WEAPONS } from '$helpers/constants/languages';
 
 	import CategoryPage from '$layouts/CategoryPage.svelte';
 	import Content from '$layouts/Content.svelte';
@@ -84,7 +84,7 @@
 <CategoryPage>
 	<h1>{BASE_LABELS[$language].weapons}</h1>
 
-	<Content active>
+	<Content active label={NO_WEAPONS[$language]} empty={weapons.length === 0}>
 		{#each weapons as weapon}
 			<Box
 				transition

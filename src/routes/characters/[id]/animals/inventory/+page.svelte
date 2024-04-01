@@ -41,7 +41,7 @@
 
 <CategoryPage>
 	<h1>{BASE_LABEL.inventory}</h1>
-	<Content>
+	<Content label={NO_INVENTORY_ANIMAL[$language]} empty={inventory.length === 0}>
 		{#if inventory?.length > 0}
 			{#each inventory as item}
 				<Box
@@ -64,8 +64,6 @@
 					</div>
 				</Box>
 			{/each}
-		{:else}
-			<Text>{NO_INVENTORY_ANIMAL[$language]}</Text>
 		{/if}
 		<AddMore handleClick={() => addNewItem(data.character, 'animal-inventory')} />
 	</Content>

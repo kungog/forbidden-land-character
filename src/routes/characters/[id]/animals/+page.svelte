@@ -39,7 +39,7 @@
 
 <CategoryPage>
 	<h1>{BASE_LABELS[$language].animals}</h1>
-	<Content active>
+	<Content active label={NO_ANIMALS[$language]} empty={animals.length === 0}>
 		{#if animals.length > 0}
 			{#each animals as animal, index}
 				<Box size="small" handleClick={() => handleAnimalClick(index, animal)} transition>
@@ -55,8 +55,6 @@
 					</div>
 				</Box>
 			{/each}
-		{:else}
-			<Text>{NO_ANIMALS[$language]}</Text>
 		{/if}
 		<AddMore handleClick={() => addNewItem(data.character, 'animal')} />
 	</Content>

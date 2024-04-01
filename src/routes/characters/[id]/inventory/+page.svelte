@@ -3,7 +3,7 @@
 	import Text from '$components/Text.svelte';
 	import Box from '$components/Box.svelte';
 	import { language } from '$store';
-	import { GENERAL_LABELS, BASE_LABELS } from '$helpers/constants/languages';
+	import { GENERAL_LABELS, BASE_LABELS, NO_INVENTORY } from '$helpers/constants/languages';
 	import CategoryPage from '$layouts/CategoryPage.svelte';
 	import Content from '$layouts/Content.svelte';
 	import Coin from '$widgets/Parts/Coin.svelte';
@@ -46,7 +46,7 @@
 		</div>
 	</div>
 
-	<Content active>
+	<Content active label={NO_INVENTORY[$language]} empty={inventory.length === 0}>
 		{#each inventory as item}
 			<Box
 				transition
