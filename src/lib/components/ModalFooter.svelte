@@ -1,16 +1,29 @@
 <script lang="ts">
-	export let remove: boolean, onSubmit: () => void, onConfirm: () => void, specialButton: any;
+	export let remove: boolean,
+		onSubmit: () => void,
+		onConfirm: () => void,
+		specialButton: any,
+		icon: 'dice' | 'talent' | 'trash' = 'dice';
 	import { language } from '$store';
 	import { GENERAL_LABELS } from '$helpers/constants/languages';
 	import { capitalize } from '$helpers/utilites';
 	import TrashIcon from '$icons/General/TrashIcon.svelte';
 	import DiceIcon from '$icons/General/DiceIcon.svelte';
+	import TalentIcon from '$icons/Menu/TalentIcon.svelte';
 	const save = GENERAL_LABELS[$language].save;
+
+	const specialIcons = {
+		dice: DiceIcon,
+		talent: TalentIcon,
+		trash: TrashIcon
+	};
 </script>
 
 <section>
 	{#if specialButton}
-		<button on:click={specialButton}><DiceIcon /></button>
+		<button on:click={specialButton}>
+			<svelte:component this={specialIcons[icon]} />
+		</button>
 	{/if}
 
 	<div>

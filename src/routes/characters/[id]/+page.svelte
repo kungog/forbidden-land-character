@@ -51,7 +51,13 @@
 			href="/characters/{_id}/{item}"
 			style="background: var(--color-{item})"
 		>
-			<svelte:component this={component[item]} color="var(--color-{item})" height={75} width={75} />
+			<svelte:component
+				this={component[item]}
+				className="menu-icons"
+				color="var(--color-{item})"
+				height={75}
+				width={75}
+			/>
 			<span style="color: var(--color-{item}-dark)">{BASE_LABELS[$language][item]}</span>
 		</a>
 	{/each}

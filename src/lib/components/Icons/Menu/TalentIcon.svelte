@@ -2,13 +2,14 @@
 	import { DEFAULT_NUMBER } from './helpers';
 	export let height = DEFAULT_NUMBER,
 		width = DEFAULT_NUMBER,
-		color = 'white';
+		color = 'white',
+		className = '';
 </script>
 
 <svg
 	{width}
 	{height}
-	class="menu-icons"
+	class={className}
 	viewBox="0 0 32 34"
 	fill="none"
 	xmlns="http://www.w3.org/2000/svg"

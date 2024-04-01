@@ -30,7 +30,7 @@ export const ADD_NEW_TALENT = {
 		description: 'Beskrivning',
 		one: 'Nivå ett',
 		two: 'Nivå två',
-		three: 'Nivå tree',
+		three: 'Nivå tre',
 		comment: 'Kommentar'
 	},
 	en: {

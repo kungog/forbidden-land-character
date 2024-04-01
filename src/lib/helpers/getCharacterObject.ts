@@ -22,7 +22,7 @@ export const emptyInventoryObject: Inventory = {
 };
 
 export const emptyTalentObject: CharacterTalent = {
-	_id: 'empty',
+	_id: 'new talent',
 	value: 1
 };
 
