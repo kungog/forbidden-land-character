@@ -129,6 +129,12 @@ a:hover {
   color: var(--color-box);
 }
 
+.radio {
+  display: flex;
+  gap: var(--spacing-10);
+  margin-top: var(--spacing-10);
+}
+
 .add-more {
   width: auto;
 }

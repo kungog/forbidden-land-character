@@ -4,7 +4,7 @@
 	import createArrayFromObject from '$helpers/getObjectKeys';
 	import { SKILLS } from '$helpers/constants/skills';
 	import { getSkillDice } from '$helpers/getDices';
-	import { BASE_LABELS, GENERAL_LABELS } from '$helpers/constants/languages';
+	import { BASE_LABELS } from '$helpers/constants/languages';
 
 	import Box from '$components/Box.svelte';
 	import Dices from '$components/Dices.svelte';
@@ -18,8 +18,17 @@
 	import Experience from '$widgets/Parts/Experience.svelte';
 	import Modal from '$components/Modal.svelte';
 	import RadioButton from '$components/RadioButton.svelte';
+	import { invalidate } from '$app/navigation';
+	import { BASE_URL } from '$helpers/utilites';
 	export let data: { character: Character; talents: Talent[] } & PageData;
 	let { skills, basic_properties } = data.character;
+
+	let showModal = false;
+	let edit: SkillObject | null = null;
+	interface SkillObject {
+		key: keyof Skills;
+		value: number;
+	}
 
 	const items = createArrayFromObject(skills ?? {});
 	const propertyIcon = {
@@ -29,22 +38,33 @@
 		intelligence: IntelligenceIcon
 	};
 
-	const LABEL = GENERAL_LABELS[$language];
-	let showModal = false;
-	$: edit = null as {
-		key: keyof Skills;
-		value: number;
-	} | null;
+	const onClose = () => {
+		showModal = false;
+	};
+
+	const onSubmit = async () => {
+		if (!edit) return console.error('Missing values in form');
+
+		await fetch(BASE_URL + data.character._id, {
+			method: 'POST',
+			body: JSON.stringify({ ...data.character, skills: { ...skills, [edit.key]: edit.value } })
+		});
+
+		showModal = false;
+		invalidate('viewed:character');
+	};
 </script>
 
 {#if showModal && edit}
 	<Modal
 		label={SKILLS[edit.key].languages[$language]}
-		handleClose={() => (showModal = false)}
-		handleRemove={() => console.log('Delete: ', edit)}
+		{onClose}
+		{onSubmit}
+		remove={false}
+		onDelete={() => {}}
 	>
 		<Text selfCenter={false} size="normal">FV</Text>
-		<RadioButton iValue={edit.value} iFor={edit.key} />
+		<RadioButton bind:iValue={edit.value} iFor={edit.key} />
 	</Modal>
 {/if}
 

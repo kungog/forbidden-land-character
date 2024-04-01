@@ -1,47 +1,39 @@
 <script lang="ts">
-	export let iValue: number | string,
+	export let iValue: number,
 		iFor: string,
 		amount: number = 5;
-
-	const amountOfButtons = Array.from({ length: amount }, (_, i) => i + 1);
 </script>
 
 <div class="radio">
-	{#each amountOfButtons as item}
-		<div>
-			<input type="radio" name={iFor} value={item} checked={iValue === item} />
-			<label for={iFor}>{item}</label>
-		</div>
+	{#each Array.from({ length: amount }, (_, i) => i + 1) as number}
+		<label for={iFor}>
+			<input type="radio" name="scoops" value={number} bind:group={iValue} />
+			{number}
+		</label>
 	{/each}
 </div>
 
-<style lang="scss">
-	.radio {
+<style>
+	input {
+		opacity: 0;
+		position: absolute;
+		width: 40px;
+		height: 40px;
+		margin: 0;
+	}
+
+	label {
 		display: flex;
-		gap: var(--spacing-10);
-		margin-top: var(--spacing-10);
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		border-radius: 999px;
+		cursor: pointer;
+		border: 1px solid var(--color-text);
+		color: var(--color-text);
 
-		input {
-			opacity: 0;
-			position: absolute;
-			width: 40px;
-			height: 40px;
-			margin: 0;
-		}
-
-		label {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 40px;
-			height: 40px;
-			border-radius: 999px;
-			cursor: pointer;
-			border: 1px solid var(--color-text);
-			color: var(--color-text);
-		}
-
-		input[type='radio']:checked + label {
+		&:has(input:checked) {
 			background-color: var(--color-accent);
 			border: 1px solid transparent;
 			color: var(--color-black);
