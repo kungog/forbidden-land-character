@@ -12,6 +12,8 @@
 	import GridTemplate from '$components/GridTemplate.svelte';
 	import Input from '$components/Input.svelte';
 	import { invalidate } from '$app/navigation';
+	import InventoryIcon from '$icons/Menu/InventoryIcon.svelte';
+	import { fly } from 'svelte/transition';
 	export let data: { character: Character; talents: Talent[] } & PageData;
 	$: ({ animals } = data.character);
 	const LABEL = GENERAL_LABELS[$language];
@@ -70,33 +72,53 @@
 	<Content active label={NO_ANIMALS[$language]} empty={animals.length === 0}>
 		{#if animals.length > 0}
 			{#each animals as animal, index}
-				<Box
-					size="small"
-					transition
-					handleClick={() => {
-						showModal = true;
-						edit = animal;
-						editIndex = index;
-					}}
-				>
-					<div class="upper-part">
-						<div class="flex space-b">
-							<Text size="normal">{animal.name}</Text>
-						</div>
+				<section>
+					<Box
+						size="small"
+						transition
+						handleClick={() => {
+							showModal = true;
+							edit = animal;
+							editIndex = index;
+						}}
+					>
+						<div class="upper-part">
+							<div class="flex space-b">
+								<Text size="normal">{animal.name}</Text>
+							</div>
 
-						<div class="flex stats">
-							<Text>{LABEL.strength}: {animal.strength}</Text>
-							<Text>{LABEL.flexibility}: {animal.flexibility}</Text>
+							<div class="flex stats">
+								<Text>{LABEL.strength}: {animal.strength}</Text>
+								<Text>{LABEL.flexibility}: {animal.flexibility}</Text>
+							</div>
 						</div>
-					</div>
-				</Box>
+					</Box>
+					<a
+						in:fly={{ y: 20 }}
+						class="center"
+						href={`/characters/${data.character._id}/animals/${index}/inventory`}
+					>
+						<InventoryIcon width={24} height={24} />
+					</a>
+				</section>
 			{/each}
 		{/if}
 		<AddMore handleClick={() => addNewItem(data.character, 'animal')} />
 	</Content>
 </CategoryPage>
 
-<style lang="scss">
+<style>
+	section {
+		display: grid;
+		grid-template-columns: 4fr 1fr;
+		gap: var(--spacing-08);
+	}
+
+	a {
+		background: var(--color-box);
+		border-radius: var(--radius-04);
+	}
+
 	.stats {
 		gap: var(--spacing-18);
 	}

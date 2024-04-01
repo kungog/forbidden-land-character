@@ -47,7 +47,7 @@ export const addNewItem = async (
 	index?: number
 ) => {
 	let newChar = char;
-
+	let currentAnimal: Animal, animal: Animal, animals: Animal[];
 	switch (type) {
 		case 'weapon':
 			newChar = { ...newChar, weapons: [...newChar.weapons, emptyWeaponObject] };
@@ -63,16 +63,18 @@ export const addNewItem = async (
 			break;
 
 		case 'animal-inventory':
-			if (!index) return console.error('Missing index');
+			if (typeof index !== 'number') return console.error('Missing index');
+			currentAnimal = newChar.animals[index];
+			animal = {
+				...newChar.animals[index],
+				inventory: [...currentAnimal.inventory, emptyInventoryObject]
+			};
+
+			animals = newChar.animals.map((_, pos: number) => (pos === index ? animal : _));
+
 			newChar = {
 				...newChar,
-				animals: [
-					...newChar.animals,
-					{
-						...newChar.animals[index],
-						inventory: [...newChar.animals[index].inventory, emptyInventoryObject]
-					}
-				]
+				animals
 			};
 			break;
 

@@ -19,7 +19,6 @@
 
 	let showModal = false;
 	let showPickTalent = false;
-	let selected: CharacterTalent & Talent;
 	let edit: CharacterTalent & Talent;
 	let editIndex = 0;
 

@@ -13,7 +13,6 @@
 	import GridTemplate from '$components/GridTemplate.svelte';
 	import Input from '$components/Input.svelte';
 	import TrashIcon from '$icons/General/TrashIcon.svelte';
-	import SpecialButton from '$components/SpecialButton.svelte';
 	import { invalidate } from '$app/navigation';
 
 	export let data: { character: Character; talents: Talent[] } & PageData;

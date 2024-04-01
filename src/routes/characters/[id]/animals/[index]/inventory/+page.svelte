@@ -12,18 +12,19 @@
 	import GridTemplate from '$components/GridTemplate.svelte';
 	import Input from '$components/Input.svelte';
 	import { invalidate } from '$app/navigation';
+	import { page } from '$app/stores';
 	export let data: { character: Character; talents: Talent[] } & PageData;
 	$: ({ animals } = data.character);
 
 	const LABEL = GENERAL_LABELS[$language];
 	const BASE_LABEL = BASE_LABELS[$language];
 	let showModal = false;
-	let edit: Inventory | null = null;
+	let edit: Inventory;
 	let editIndex = 0;
 
-	$: animalIndex = $activeAnimal;
-	$: inventory =
-		animals.length > 0 ? animals[$activeAnimal].inventory : ([] as [] | Animal['inventory']);
+	const index = Number($page.params.index);
+	$: animal = animals[index];
+	$: inventory = animal.inventory;
 
 	const onClose = () => {
 		showModal = false;
@@ -32,9 +33,13 @@
 	const onSubmit = async () => {
 		if (!edit) return console.error('Missing values in form');
 		const updated = inventory.map((_, index: number) => (index === editIndex ? edit : _));
+		const updatedAnimals = animals.map((animal, pos: number) =>
+			pos === index ? { ...animal, inventory: updated } : animal
+		);
+
 		await fetch(BASE_URL + data.character._id, {
 			method: 'POST',
-			body: JSON.stringify({ ...data.character, inventory: updated })
+			body: JSON.stringify({ ...data.character, animals: updatedAnimals })
 		});
 
 		showModal = false;
@@ -56,14 +61,19 @@
 {#if showModal && edit}
 	<Modal {onClose} {onDelete} {onSubmit}>
 		<GridTemplate template="1fr">
-			<Input iType="text" iLabel={LABEL.name} iValue={edit.name} iFor="name" />
+			<Input iType="text" iLabel={LABEL.name} bind:iValue={edit.name} iFor="name" />
 		</GridTemplate>
 		<GridTemplate template="1fr 1fr" gap={48}>
-			<Input iType="text" iLabel={LABEL.bonus} iValue={edit.bonus} iFor="bonus" />
-			<Input iType="number" iLabel={LABEL.weight} iValue={edit.weight} iFor="weight" />
+			<Input iType="text" iLabel={LABEL.bonus} bind:iValue={edit.bonus} iFor="bonus" />
+			<Input iType="number" iLabel={LABEL.weight} bind:iValue={edit.weight} iFor="weight" />
 		</GridTemplate>
 		<GridTemplate template="1fr">
-			<Input iType="text" iLabel={LABEL.additionals} iValue={edit.additionals} iFor="additionals" />
+			<Input
+				iType="text"
+				iLabel={LABEL.additionals}
+				bind:iValue={edit.additionals}
+				iFor="additionals"
+			/>
 		</GridTemplate>
 	</Modal>
 {/if}
@@ -95,7 +105,7 @@
 				</Box>
 			{/each}
 		{/if}
-		<AddMore handleClick={() => addNewItem(data.character, 'animal-inventory')} />
+		<AddMore handleClick={() => addNewItem(data.character, 'animal-inventory', index)} />
 	</Content>
 </CategoryPage>
 
