@@ -8,28 +8,45 @@
 	import Modal from '$components/Modal.svelte';
 	import GridTemplate from '$components/GridTemplate.svelte';
 	import Input from '$components/Input.svelte';
+	import { invalidate } from '$app/navigation';
+	import { BASE_URL } from '$helpers/utilites';
 
 	const { consumables }: Character = $page.data.character;
-	const items = createArrayFromObject(consumables);
+	$: items = createArrayFromObject(consumables);
 
 	const LABEL = GENERAL_LABELS[$language];
 	let showModal = false;
-	$: edit = consumables;
+	let edit = consumables;
+
+	const onClose = () => {
+		showModal = false;
+	};
+
+	const onSubmit = async () => {
+		if (!edit) return console.error('Missing values in form');
+		await fetch(BASE_URL + $page.data.character._id, {
+			method: 'POST',
+			body: JSON.stringify({ ...$page.data.character, consumables: edit })
+		});
+
+		showModal = false;
+		invalidate('viewed:character');
+	};
 </script>
 
 {#if showModal && edit}
-	<Modal handleClose={() => (showModal = false)} handleRemove={() => console.log('Delete: ', edit)}>
+	<Modal {onClose} {onSubmit} remove={false} onDelete={() => {}}>
 		<GridTemplate template="1fr">
-			<Input iType="number" iLabel={LABEL.arrows} iValue={edit.arrows} iFor="arrows" />
+			<Input iType="number" iLabel={LABEL.arrows} bind:iValue={edit.arrows} iFor="arrows" />
 		</GridTemplate>
 		<GridTemplate template="1fr">
-			<Input iType="number" iLabel={LABEL.food} iValue={edit.food} iFor="food" />
+			<Input iType="number" iLabel={LABEL.food} bind:iValue={edit.food} iFor="food" />
 		</GridTemplate>
 		<GridTemplate template="1fr">
-			<Input iType="number" iLabel={LABEL.torches} iValue={edit.torches} iFor="torches" />
+			<Input iType="number" iLabel={LABEL.torches} bind:iValue={edit.torches} iFor="torches" />
 		</GridTemplate>
 		<GridTemplate template="1fr">
-			<Input iType="number" iLabel={LABEL.water} iValue={edit.water} iFor="water" />
+			<Input iType="number" iLabel={LABEL.water} bind:iValue={edit.water} iFor="water" />
 		</GridTemplate>
 	</Modal>
 {/if}

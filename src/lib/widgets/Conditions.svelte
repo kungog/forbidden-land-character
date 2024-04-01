@@ -9,26 +9,57 @@
 	import BooleanRadio from '$components/BooleanRadio.svelte';
 	import Input from '$components/Input.svelte';
 	import GridTemplate from '$components/GridTemplate.svelte';
+	import { invalidate } from '$app/navigation';
+	import { BASE_URL } from '$helpers/utilites';
 
 	const { condition, critical_injuries: critical }: Character = $page.data.character;
-	const items = createArrayFromObject(condition);
+	$: items = createArrayFromObject(condition);
 	const LABEL = GENERAL_LABELS[$language];
+
 	let showModal = false;
-	$: edit = { condition, critical_injuries: critical };
+	let edit = { condition, critical_injuries: critical };
+
+	const onClose = () => {
+		showModal = false;
+	};
+
+	const onSubmit = async () => {
+		if (!edit) return console.error('Missing values in form');
+		await fetch(BASE_URL + $page.data.character._id, {
+			method: 'POST',
+			body: JSON.stringify({
+				...$page.data.character,
+				condition: edit.condition,
+				critical_injuries: edit.critical_injuries
+			})
+		});
+
+		showModal = false;
+		invalidate('viewed:character');
+	};
 </script>
 
 {#if showModal && edit}
-	<Modal handleClose={() => (showModal = false)} handleRemove={() => console.log('Delete: ', edit)}>
+	<Modal {onClose} {onSubmit} remove={false} onDelete={() => {}}>
 		<GridTemplate template="1fr">
-			<Input iType="text" iLabel={LABEL.critical} iValue={critical} iFor="critical_injuries" />
+			<Input
+				iType="text"
+				iLabel={LABEL.critical}
+				bind:iValue={edit.critical_injuries}
+				iFor="critical_injuries"
+			/>
 		</GridTemplate>
 		<GridTemplate template="1fr 1fr">
-			<BooleanRadio iLabel={LABEL.cooled} iValue={condition.cooled} iFor="cooled" />
-			<BooleanRadio iLabel={LABEL.dry} iValue={condition.dry} iFor="dry" />
+			<BooleanRadio iLabel={LABEL.cooled} bind:iValue={edit.condition.cooled} iFor="cooled" />
+			<BooleanRadio iLabel={LABEL.dry} bind:iValue={edit.condition.dry} iFor="dry" />
 		</GridTemplate>
 		<GridTemplate template="1fr 1fr">
-			<BooleanRadio iLabel={LABEL.sleepless} iValue={condition.sleepless} iFor="sleepless" />
-			<BooleanRadio iLabel={LABEL.starved} iValue={condition.starved} iFor="starved" />
+			<BooleanRadio
+				iLabel={LABEL.sleepless}
+				bind:iValue={edit.condition.sleepless}
+				iFor="sleepless"
+			/>
+			<BooleanRadio iLabel={LABEL.starved} bind:iValue={edit.condition.starved} iFor="starved" />
 		</GridTemplate>
 	</Modal>
 {/if}

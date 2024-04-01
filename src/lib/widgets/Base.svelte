@@ -7,32 +7,59 @@
 	import Modal from '$components/Modal.svelte';
 	import GridTemplate from '$components/GridTemplate.svelte';
 	import Input from '$components/Input.svelte';
+	import { invalidate } from '$app/navigation';
+	import { BASE_URL } from '$helpers/utilites';
 	const { description }: Character = $page.data.character;
 	const LABEL = GENERAL_LABELS[$language];
 	let showModal = false;
-	$: edit = description;
+	let edit = description;
+
+	const onClose = () => {
+		showModal = false;
+	};
+
+	const onSubmit = async () => {
+		if (!edit) return console.error('Missing values in form');
+		await fetch(BASE_URL + $page.data.character._id, {
+			method: 'POST',
+			body: JSON.stringify({ ...$page.data.character, description: edit })
+		});
+
+		showModal = false;
+		invalidate('viewed:character');
+	};
 </script>
 
 {#if showModal && edit}
-	<Modal handleClose={() => (showModal = false)} handleRemove={() => console.log('Delete: ', edit)}>
+	<Modal {onClose} {onSubmit} remove={false} onDelete={() => {}}>
 		<GridTemplate template="1fr 1fr" gap={48}>
-			<Input iType="number" iLabel={LABEL.age} iValue={edit.age} iFor="age" />
-			<Input iType="number" iLabel={LABEL.reputation} iValue={edit.reputation} iFor="reputation" />
+			<Input iType="number" iLabel={LABEL.age} bind:iValue={edit.age} iFor="age" />
+			<Input
+				iType="number"
+				iLabel={LABEL.reputation}
+				bind:iValue={edit.reputation}
+				iFor="reputation"
+			/>
 		</GridTemplate>
 		<GridTemplate template="1fr">
-			<Input iType="text" iLabel={LABEL.face} iValue={edit.face} iFor="face" />
+			<Input iType="text" iLabel={LABEL.face} bind:iValue={edit.face} iFor="face" />
 		</GridTemplate>
 		<GridTemplate template="1fr">
-			<Input iType="text" iLabel={LABEL.body} iValue={edit.body} iFor="body" />
+			<Input iType="text" iLabel={LABEL.body} bind:iValue={edit.body} iFor="body" />
 		</GridTemplate>
 		<GridTemplate template="1fr">
-			<Input iType="text" iLabel={LABEL.cloths} iValue={edit.cloths} iFor="cloths" />
+			<Input iType="text" iLabel={LABEL.cloths} bind:iValue={edit.cloths} iFor="cloths" />
 		</GridTemplate>
 		<GridTemplate template="1fr">
-			<Input iType="text" iLabel={LABEL.dark_secret} iValue={edit.dark_secret} iFor="dark_secret" />
+			<Input
+				iType="text"
+				iLabel={LABEL.dark_secret}
+				bind:iValue={edit.dark_secret}
+				iFor="dark_secret"
+			/>
 		</GridTemplate>
 		<GridTemplate template="1fr">
-			<Input iType="text" iLabel={LABEL.pride} iValue={edit.pride} iFor="pride" />
+			<Input iType="text" iLabel={LABEL.pride} bind:iValue={edit.pride} iFor="pride" />
 		</GridTemplate>
 	</Modal>
 {/if}

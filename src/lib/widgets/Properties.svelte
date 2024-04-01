@@ -7,26 +7,46 @@
 	import Modal from '$components/Modal.svelte';
 	import GridTemplate from '$components/GridTemplate.svelte';
 	import Input from '$components/Input.svelte';
-	import { capitalize } from '$helpers/utilites';
+	import { BASE_URL, capitalize } from '$helpers/utilites';
 	import Text from '$components/Text.svelte';
+	import { invalidate } from '$app/navigation';
 	const { basic_properties }: Character = $page.data.character;
-	let showModal = false;
-	$: edit = basic_properties;
-
 	const LABEL = GENERAL_LABELS[$language];
+	let showModal = false;
+	let edit = basic_properties;
+
+	const onClose = () => {
+		showModal = false;
+	};
+
+	const onSubmit = async () => {
+		if (!edit) return console.error('Missing values in form');
+		await fetch(BASE_URL + $page.data.character._id, {
+			method: 'POST',
+			body: JSON.stringify({ ...$page.data.character, basic_properties: edit })
+		});
+
+		showModal = false;
+		invalidate('viewed:character');
+	};
 </script>
 
 {#if showModal && edit}
-	<Modal handleClose={() => (showModal = false)} handleRemove={() => console.log('Delete: ', edit)}>
-		{#each basic_properties as property}
+	<Modal {onClose} {onSubmit} remove={false} onDelete={() => {}}>
+		{#each basic_properties as property, index}
 			<Text>{capitalize(LABEL[property.id])}</Text>
 			<GridTemplate template="1fr 1fr">
-				<Input iType="number" iLabel="" iValue={property.value} iFor="{property.id}_value" />
+				<Input
+					iType="number"
+					iLabel=""
+					bind:iValue={edit[index].value}
+					iFor="{property.id}_value"
+				/>
 				<Input
 					warning
 					iType="number"
 					iLabel=""
-					iValue={property.failure}
+					bind:iValue={edit[index].failure}
 					iFor="{property.id}_failure"
 				/>
 			</GridTemplate>

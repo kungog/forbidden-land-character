@@ -7,23 +7,40 @@
 	import Input from '$components/Input.svelte';
 	import Modal from '$components/Modal.svelte';
 	import Coin from './Parts/Coin.svelte';
+	import { BASE_URL } from '$helpers/utilites';
+	import { invalidate } from '$app/navigation';
 	const { money }: Character = $page.data.character;
 
 	const LABEL = GENERAL_LABELS[$language];
-	$: edit = money as Character['money'];
 	let showModal = false;
+	let edit = money;
+
+	const onClose = () => {
+		showModal = false;
+	};
+
+	const onSubmit = async () => {
+		if (!edit) return console.error('Missing values in form');
+		await fetch(BASE_URL + $page.data.character._id, {
+			method: 'POST',
+			body: JSON.stringify({ ...$page.data.character, armor: edit })
+		});
+
+		showModal = false;
+		invalidate('viewed:character');
+	};
 </script>
 
 {#if showModal && edit}
-	<Modal handleClose={() => (showModal = false)} handleRemove={() => console.log('Delete: ', edit)}>
+	<Modal {onClose} {onSubmit} remove={false} onDelete={() => {}}>
 		<GridTemplate template="1fr">
-			<Input iType="number" iLabel={LABEL.gold} iValue={money.gold} iFor="gold" />
+			<Input iType="number" iLabel={LABEL.gold} bind:iValue={money.gold} iFor="gold" />
 		</GridTemplate>
 		<GridTemplate template="1fr">
-			<Input iType="number" iLabel={LABEL.silver} iValue={money.silver} iFor="silver" />
+			<Input iType="number" iLabel={LABEL.silver} bind:iValue={money.silver} iFor="silver" />
 		</GridTemplate>
 		<GridTemplate template="1fr">
-			<Input iType="number" iLabel={LABEL.copper} iValue={money.copper} iFor="copper" />
+			<Input iType="number" iLabel={LABEL.copper} bind:iValue={money.copper} iFor="copper" />
 		</GridTemplate>
 	</Modal>
 {/if}

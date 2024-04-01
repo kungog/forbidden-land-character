@@ -8,20 +8,50 @@
 	import Modal from '$components/Modal.svelte';
 	import Experience from './Parts/Experience.svelte';
 	import PowerPoint from './Parts/PowerPoint.svelte';
+	import { BASE_URL } from '$helpers/utilites';
+	import { invalidate } from '$app/navigation';
 	const { experience, power_points }: Character = $page.data.character;
 	const LABEL = GENERAL_LABELS[$language];
-
 	let showModal = false;
-	$: edit = { experience, power_points };
+	let edit = { experience, power_points };
+
+	const onClose = () => {
+		showModal = false;
+	};
+
+	const onSubmit = async () => {
+		if (!edit) return console.error('Missing values in form');
+		await fetch(BASE_URL + $page.data.character._id, {
+			method: 'POST',
+			body: JSON.stringify({
+				...$page.data.character,
+				experience: edit.experience,
+				power_points: edit.power_points
+			})
+		});
+
+		showModal = false;
+		invalidate('viewed:character');
+	};
 </script>
 
 {#if showModal && edit}
-	<Modal handleClose={() => (showModal = false)} handleRemove={() => console.log('Delete: ', edit)}>
+	<Modal {onClose} {onSubmit} remove={false} onDelete={() => {}}>
 		<GridTemplate template="1fr">
-			<Input iType="number" iLabel={LABEL.experience} iValue={experience} iFor="experience" />
+			<Input
+				iType="number"
+				iLabel={LABEL.experience}
+				bind:iValue={edit.experience}
+				iFor="experience"
+			/>
 		</GridTemplate>
 		<GridTemplate template="1fr">
-			<Input iType="number" iLabel={LABEL.power_points} iValue={power_points} iFor="power_points" />
+			<Input
+				iType="number"
+				iLabel={LABEL.power_points}
+				bind:iValue={edit.power_points}
+				iFor="power_points"
+			/>
 		</GridTemplate>
 	</Modal>
 {/if}
