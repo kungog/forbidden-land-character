@@ -7,25 +7,54 @@
 	import CategoryPage from '$layouts/CategoryPage.svelte';
 	import Content from '$layouts/Content.svelte';
 	import AddMore from '$components/AddMore.svelte';
-	import { addNewItem } from '$helpers/utilites';
+	import { BASE_URL, addNewItem } from '$helpers/utilites';
 	import Modal from '$components/Modal.svelte';
 	import GridTemplate from '$components/GridTemplate.svelte';
 	import Input from '$components/Input.svelte';
+	import { invalidate } from '$app/navigation';
 	export let data: { character: Character; talents: Talent[] } & PageData;
 	$: ({ animals } = data.character);
-	$: edit = null as Inventory | null;
 
 	const LABEL = GENERAL_LABELS[$language];
 	const BASE_LABEL = BASE_LABELS[$language];
 	let showModal = false;
+	let edit: Inventory | null = null;
+	let editIndex = 0;
 
 	$: animalIndex = $activeAnimal;
 	$: inventory =
 		animals.length > 0 ? animals[$activeAnimal].inventory : ([] as [] | Animal['inventory']);
+
+	const onClose = () => {
+		showModal = false;
+	};
+
+	const onSubmit = async () => {
+		if (!edit) return console.error('Missing values in form');
+		const updated = inventory.map((_, index: number) => (index === editIndex ? edit : _));
+		await fetch(BASE_URL + data.character._id, {
+			method: 'POST',
+			body: JSON.stringify({ ...data.character, inventory: updated })
+		});
+
+		showModal = false;
+		invalidate('viewed:character');
+	};
+
+	const onDelete = async () => {
+		const updated = inventory.filter((_, index: number) => index !== editIndex);
+		await fetch(BASE_URL + data.character._id, {
+			method: 'POST',
+			body: JSON.stringify({ ...data.character, inventory: updated })
+		});
+
+		showModal = false;
+		invalidate('viewed:character');
+	};
 </script>
 
 {#if showModal && edit}
-	<Modal handleClose={() => (showModal = false)} handleRemove={() => console.log('Delete: ', edit)}>
+	<Modal {onClose} {onDelete} {onSubmit}>
 		<GridTemplate template="1fr">
 			<Input iType="text" iLabel={LABEL.name} iValue={edit.name} iFor="name" />
 		</GridTemplate>
@@ -43,12 +72,13 @@
 	<h1>{BASE_LABEL.inventory}</h1>
 	<Content label={NO_INVENTORY_ANIMAL[$language]} empty={inventory.length === 0}>
 		{#if inventory?.length > 0}
-			{#each inventory as item}
+			{#each inventory as item, index}
 				<Box
 					transition
 					handleClick={() => {
 						showModal = true;
 						edit = item;
+						editIndex = index;
 					}}
 				>
 					<div class="upper-part">
