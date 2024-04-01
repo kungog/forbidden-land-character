@@ -51,7 +51,7 @@
 	</div>
 	<Content active>
 		{#if mergedTalents.length > 0}
-			{#each mergedTalents as talent, index}
+			{#each mergedTalents as talent}
 				<Box transition handleClick={() => (showModal = true)}>
 					<div class="flex space-b">
 						<Text size="normal">{talent.name}</Text>
@@ -59,10 +59,9 @@
 					</div>
 				</Box>
 			{/each}
-
-			<AddMore handleClick={() => addNewItem(data.character, 'talent')} />
 		{:else}
 			<Text>{NO_TALENTS[$language]}</Text>
 		{/if}
+		<AddMore handleClick={() => addNewItem(data.character, 'talent')} />
 	</Content>
 </CategoryPage>
