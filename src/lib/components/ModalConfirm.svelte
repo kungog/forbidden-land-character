@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { language, showConfirm } from '$store';
+	export let onDelete: () => void, onClose: () => void;
+	import { language } from '$store';
 	import { GENERAL_LABELS } from '$helpers/constants/languages';
 	import { capitalize } from '$helpers/utilites';
 	import Text from './Text.svelte';
@@ -7,17 +8,15 @@
 	const labels = GENERAL_LABELS[$language];
 </script>
 
-{#if $showConfirm}
-	<div>
-		<Text size="medium">{capitalize(labels.sure)}</Text>
-		<Text size="medium">{capitalize(labels.no_regrets)}</Text>
-		<Divider />
-		<section>
-			<button form="delete">{capitalize(labels.yes)}</button>
-			<button on:click={() => ($showConfirm = false)}>{capitalize(labels.no)}</button>
-		</section>
-	</div>
-{/if}
+<div>
+	<Text size="medium">{capitalize(labels.sure)}</Text>
+	<Text size="medium">{capitalize(labels.no_regrets)}</Text>
+	<Divider />
+	<section>
+		<button on:click={onDelete}>{capitalize(labels.yes)}</button>
+		<button on:click={onClose}>{capitalize(labels.no)}</button>
+	</section>
+</div>
 
 <style lang="scss">
 	%shared-button {

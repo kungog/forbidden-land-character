@@ -1,24 +1,31 @@
 <script lang="ts">
 	import { capitalize } from '$helpers/utilites';
+	import ModalConfirm from './ModalConfirm.svelte';
 	import ModalFooter from './ModalFooter.svelte';
 	import Overlay from './Overlay.svelte';
 	import Text from './Text.svelte';
-	export let handleClose: () => void,
-		handleRemove: any,
+	export let onClose: () => void,
+		onDelete: () => void,
+		onSubmit: () => void,
 		label: string = '';
+
+	let showConfirm = false;
 </script>
 
-<Overlay handleClick={handleClose} />
+<Overlay handleClick={onClose} />
 <dialog>
 	<section>
 		<div class="flex">
 			<Text size="medium">{capitalize(label)}</Text>
-			<button on:click={handleClose}>x</button>
+			<button on:click={onClose}>x</button>
 		</div>
 		<div class="body">
 			<slot />
 		</div>
-		<ModalFooter />
+		<ModalFooter {onSubmit} onConfirm={() => (showConfirm = true)} />
+		{#if showConfirm}
+			<ModalConfirm {onDelete} onClose={() => (showConfirm = false)} />
+		{/if}
 	</section>
 </dialog>
 

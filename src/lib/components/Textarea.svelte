@@ -6,7 +6,7 @@
 
 <div>
 	<label for={iFor}>{capitalize(iLabel)}</label>
-	<textarea name={iFor} value={iValue} />
+	<textarea name={iFor} bind:value={iValue} />
 </div>
 
 <style lang="scss">
