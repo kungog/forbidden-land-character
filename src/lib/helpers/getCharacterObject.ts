@@ -2,7 +2,7 @@ export const emptyWeaponObject: Weapon = {
 	type: 'New weapon',
 	bonus: 0,
 	damage: 0,
-	range: '',
+	range: 'arm',
 	additionals: '',
 	extra_dices: []
 };

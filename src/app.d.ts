@@ -75,7 +75,7 @@ declare global {
 		additionals: string;
 		bonus: number;
 		damage: number;
-		range: string;
+		range: 'arm' | 'close' | 'short' | 'long';
 		type: string;
 		extra_dices: WeaponExtraDices[];
 	}

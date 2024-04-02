@@ -1,9 +1,14 @@
 <script lang="ts">
 	import Text from './Text.svelte';
 
-	export let type: 'property' | 'skill' | 'attack', amount: number | string | null;
+	type Types = 'property' | 'skill' | 'attack' | 'extra';
+	export let type: Types, amount: number | string | null;
 
-	let color: 'var(--color-active)' | 'var(--color-blue)' | 'var(--color-accent)';
+	let color:
+		| 'var(--color-active)'
+		| 'var(--color-blue)'
+		| 'var(--color-accent)'
+		| 'var(--color-copper)';
 
 	switch (type) {
 		case 'attack':
@@ -14,6 +19,9 @@
 			break;
 		case 'property':
 			color = 'var(--color-accent)';
+			break;
+		case 'extra':
+			color = 'var(--color-copper)';
 			break;
 	}
 </script>

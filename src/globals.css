@@ -245,7 +245,7 @@ a:hover {
 }
 
 .upper-part > :first-child {
-  margin-bottom: var(--spacing-10);
+  margin-bottom: var(--spacing-16);
 }
 
 .menu-icons {

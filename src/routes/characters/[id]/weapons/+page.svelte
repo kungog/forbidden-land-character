@@ -14,9 +14,12 @@
 	import Input from '$components/Input.svelte';
 	import TrashIcon from '$icons/General/TrashIcon.svelte';
 	import { invalidate } from '$app/navigation';
+	import { DICE_TYPES, PLAYER_REACH } from '$helpers/constants/game';
+	import Dice from '$components/Dice.svelte';
+	import Select from '$components/Select.svelte';
 
 	export let data: { character: Character; talents: Talent[] } & PageData;
-	$: ({ weapons } = data.character);
+	$: ({ weapons, basic_properties, skills } = data.character);
 	const LABEL = GENERAL_LABELS[$language];
 
 	let showModal = false;
@@ -59,6 +62,12 @@
 		if (!edit) return console.error('Missing values in form');
 		edit.extra_dices = edit.extra_dices.filter((_, index: number) => index !== diceIndex);
 	};
+
+	$: strength = basic_properties.find((item) => item.id === 'strength') ?? {
+		id: 'strength',
+		value: 1,
+		failure: 0
+	};
 </script>
 
 {#if showModal && edit}
@@ -71,7 +80,13 @@
 			<Input iType="number" iLabel={LABEL.damage} bind:iValue={edit.damage} iFor="damage" />
 		</GridTemplate>
 		<GridTemplate template="1fr">
-			<Input iType="text" iLabel={LABEL.range} bind:iValue={edit.range} iFor="range" />
+			<Select iLabel={LABEL.range} iFor="range" bind:iValue={edit.range}>
+				{#each PLAYER_REACH[$language] as reach}
+					<option value={reach.id}>
+						{reach.text}
+					</option>
+				{/each}
+			</Select>
 		</GridTemplate>
 		<GridTemplate template="1fr">
 			<Input
@@ -83,7 +98,13 @@
 		</GridTemplate>
 		{#each edit.extra_dices as dice, index}
 			<GridTemplate template="1fr 2fr 50px" gap={12}>
-				<Input iType="number" iLabel={LABEL.damage} bind:iValue={dice.value} iFor="{index}_value" />
+				<Select iLabel={LABEL.damage} iFor="{index}_value" bind:iValue={dice.value}>
+					{#each DICE_TYPES as dice}
+						<option value={dice.id}>
+							{dice.text}
+						</option>
+					{/each}
+				</Select>
 				<Input iType="text" iLabel={LABEL.bonus} bind:iValue={dice.info} iFor="{index}_info" />
 				<button on:click={() => handleRemoveDice(index)} class="align-self-bottom warning">
 					<TrashIcon color="var(--color-active)" width={38} height={38} />
@@ -112,10 +133,21 @@
 						<Text>{weapon.additionals ?? ''}</Text>
 					</div>
 
-					<div class="flex stats">
-						<Text>{LABEL['bonus']}: {weapon.bonus}</Text>
-						<Text>{LABEL['damage']}: {weapon.damage}</Text>
-						<Text>{LABEL['range']}: {weapon.range.toLocaleLowerCase()}</Text>
+					<div class="flex column stats">
+						<Text selfCenter={false}>
+							{LABEL['range']}:
+							{PLAYER_REACH[$language].find((reach) => reach.id === weapon.range)?.text}
+						</Text>
+						<Text selfCenter={false}>{LABEL['damage']}: {weapon.damage}</Text>
+
+						<div class="flex dices">
+							<Dice type="property" amount={strength?.value - strength?.failure} />
+							<Dice type="skill" amount={skills.close_combat} />
+							<Dice type="attack" amount={weapon.bonus} />
+							{#each weapon.extra_dices as dice}
+								<Dice type="extra" amount={'T' + dice.value} />
+							{/each}
+						</div>
 					</div>
 				</div>
 			</Box>
@@ -126,6 +158,11 @@
 
 <style>
 	.stats {
-		gap: var(--spacing-18);
+		gap: var(--spacing-10);
+	}
+
+	.dices {
+		gap: var(--spacing-10);
+		flex-wrap: wrap;
 	}
 </style>
