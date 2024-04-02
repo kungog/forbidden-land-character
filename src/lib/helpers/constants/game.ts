@@ -33,7 +33,12 @@ export const QUALITIES = {
 		{ id: 6, text: 'Krok' },
 		{ id: 7, text: 'Trubbig' },
 		{ id: 8, text: 'Lätt vapen' },
-		{ id: 9, text: 'Ladda är lång handling' }
+		{ id: 9, text: 'Ladda är lång handling' },
+		{ id: 10, text: 'Lätt föremål' },
+		{ id: 11, text: 'Tungt föremål' },
+		{ id: 12, text: 'Skyddsvärde 3 mot pilar och Stöt av vapen med Spets' },
+		{ id: 13, text: 'Rörlighet -2' },
+		{ id: 14, text: 'Ger -2 på Speja' }
 	],
 	en: [
 		{ id: 1, text: 'Light' },
@@ -44,7 +49,12 @@ export const QUALITIES = {
 		{ id: 6, text: 'Hook' },
 		{ id: 7, text: 'Obtuse' },
 		{ id: 8, text: 'Light weapon' },
-		{ id: 9, text: 'Loading is a long process' }
+		{ id: 9, text: 'Loading is a long process' },
+		{ id: 10, text: 'Light object' },
+		{ id: 11, text: 'Heavy object' },
+		{ id: 12, text: 'Defense value 3 against arrows and Impact from weapons with a Point' },
+		{ id: 13, text: 'Mobility -2' },
+		{ id: 14, text: 'Gives -2 to Spy' }
 	]
 };
 
@@ -165,4 +175,49 @@ export const RANGE_WEAPONS = [
 	{ id: 7, hands: '2H', bonus: 2, damage: 1, range: 'long', additionals: [] },
 	{ id: 8, hands: '2H', bonus: 2, damage: 2, range: 'long', additionals: [9] },
 	{ id: 9, hands: '2H', bonus: 1, damage: 3, range: 'long', additionals: [5, 9] }
+];
+
+export const BODY_PART_LABEL = {
+	sv: [
+		{ id: 1, text: 'Kropp' },
+		{ id: 2, text: 'Huvud' }
+	],
+	en: [
+		{ id: 1, text: 'Body' },
+		{ id: 2, text: 'Head' }
+	]
+};
+
+export const ARMOR_LABELS = {
+	sv: [
+		{ id: 1, text: 'Läder' },
+		{ id: 2, text: 'Nitläder' },
+		{ id: 3, text: 'Ringbrynja' },
+		{ id: 4, text: 'Helrustning' },
+		{ id: 5, text: 'Nitläderhuva' },
+		{ id: 6, text: 'Öppen hjälm' },
+		{ id: 7, text: 'Täckt hjälm' },
+		{ id: 8, text: 'Tunnhjälm' }
+	],
+	en: [
+		{ id: 1, text: 'Kastad sten' },
+		{ id: 2, text: 'Kastkniv' },
+		{ id: 3, text: 'Kastyxa' },
+		{ id: 4, text: 'Kastspjut' },
+		{ id: 5, text: 'Slunga' },
+		{ id: 6, text: 'Kortbåge' },
+		{ id: 7, text: 'Långbåge' },
+		{ id: 8, text: 'Lätt armborst' }
+	]
+};
+
+export const ARMOR = [
+	{ id: 1, body: 1, protection: 0, additionals: [10] },
+	{ id: 2, body: 1, protection: 3, additionals: [] },
+	{ id: 3, body: 1, protection: 6, additionals: [11, 12] },
+	{ id: 4, body: 1, protection: 8, additionals: [11, 13] },
+	{ id: 5, body: 2, protection: 1, additionals: [10] },
+	{ id: 6, body: 2, protection: 2, additionals: [10] },
+	{ id: 7, body: 2, protection: 3, additionals: [] },
+	{ id: 8, body: 2, protection: 4, additionals: [13] }
 ];
