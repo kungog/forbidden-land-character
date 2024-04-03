@@ -9,9 +9,12 @@
 	import Text from '$components/Text.svelte';
 	import { invalidate } from '$app/navigation';
 	import { BASE_URL } from '$helpers/utilites';
+	import ArrowLeft from '$icons/General/ArrowLeft.svelte';
+	import GridIcon from '$icons/General/GridIcon.svelte';
 
 	const character: Character = $page.data.character;
 	const homePath = `/characters/${character._id}`;
+	const goBackPath = `/characters/`;
 	const LABEL = GENERAL_LABELS[$language];
 
 	const handleBaseChange = () => {
@@ -50,13 +53,13 @@
 {/if}
 
 <header>
-	<a href={homePath} class="round-button">
-		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path
-				d="M12 0.90332L1.20173 11.7018L0.903275 12L1.49999 12.5968L1.79826 12.2983L12 2.09662L22.2017 12.2983L22.5 12.5968L23.0967 12L22.7983 11.7018L12 0.90332ZM4.49999 2.25004V7.27846L7.49999 4.27837V2.25004H4.49999ZM12 3.22162L2.99999 12.2216V22.7813H5.99999V15H10.5V22.7813H21V12.2216L12 3.22162ZM13.5 15H18V18.75H13.5V15Z"
-				fill={isHomePage ? 'var(--color-accent)' : 'white'}
-			/>
-		</svg>
+	<a href={isHomePage ? goBackPath : homePath} class="round-button">
+		{#if isHomePage}
+			<GridIcon color="var(--color-accent)" />
+		{/if}
+		{#if !isHomePage}
+			<ArrowLeft />
+		{/if}
 	</a>
 	<Button loading={false} handleClick={() => (showModal = true)}>
 		<Text size="medium">{character?.name ?? ''}</Text>
