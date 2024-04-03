@@ -127,27 +127,41 @@
 					editIndex = index;
 				}}
 			>
-				<div class="upper-part">
-					<div class="flex space-b">
-						<Text size="normal">{weapon.type}</Text>
-						<Text>{weapon.additionals ?? ''}</Text>
+				<div class="flex space-b">
+					<div>
+						<div class="upper-part">
+							<Text size="normal">{weapon.type}</Text>
+						</div>
+
+						<div class="flex column stats">
+							<Text selfCenter={false}>
+								{LABEL['range']}:
+								{PLAYER_REACH[$language].find((reach) => reach.id === weapon.range)?.text}
+							</Text>
+							<Text selfCenter={false}>{LABEL['damage']}: {weapon.damage}</Text>
+							<Text selfCenter={false}>{weapon.additionals ?? ''}</Text>
+						</div>
 					</div>
-
-					<div class="flex column stats">
-						<Text selfCenter={false}>
-							{LABEL['range']}:
-							{PLAYER_REACH[$language].find((reach) => reach.id === weapon.range)?.text}
-						</Text>
-						<Text selfCenter={false}>{LABEL['damage']}: {weapon.damage}</Text>
-
-						<div class="flex dices">
-							<Dice type="property" amount={strength?.value - strength?.failure} />
-							<Dice type="skill" amount={skills.close_combat} />
-							<Dice type="attack" amount={weapon.bonus} />
-							{#each weapon.extra_dices as dice}
-								<Dice type="extra" amount={'T' + dice.value} />
+					<div class="flex column dices">
+						<div class="flex">
+							{#each Array(strength?.value - strength?.failure) as _}
+								<Dice type="property" amount="" size={20} />
 							{/each}
 						</div>
+						<div class="flex">
+							{#each Array(skills.close_combat) as _}
+								<Dice type="skill" amount="" size={20} />
+							{/each}
+						</div>
+						<div class="flex">
+							{#each Array(weapon.bonus) as _}
+								<Dice type="attack" amount="" size={20} />
+							{/each}
+						</div>
+
+						{#each weapon.extra_dices as dice}
+							<Dice type="extra" amount={' T' + dice.value} size={20} />
+						{/each}
 					</div>
 				</div>
 			</Box>
@@ -158,11 +172,10 @@
 
 <style>
 	.stats {
-		gap: var(--spacing-10);
+		gap: var(--spacing-08);
 	}
 
 	.dices {
-		gap: var(--spacing-10);
-		flex-wrap: wrap;
+		align-items: flex-end;
 	}
 </style>
