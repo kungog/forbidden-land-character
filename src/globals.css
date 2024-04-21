@@ -9,6 +9,10 @@
   --color-silver: #929292;
   --color-copper: #F2A965;
   --color-accent: #FFF7AE;
+  
+  --color-success: hsl(143, 100%, 25%);
+  --color-warning: hsl(37, 100%, 25%);
+  --color-error: hsl(354, 100%, 25%);
 
   --color-text: #ffffff;
   --color-black: #1c1c1c;
@@ -97,6 +101,7 @@
   --index-header: 10;
   --index-panel: 30;
   --index-modal: 20;
+  --index-toaster: 40;
 
   --main-height: 100svh;
   --body-height-mobile: calc(var(--main-height) - var(--header-height-mobile));

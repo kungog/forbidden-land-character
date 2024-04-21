@@ -60,3 +60,11 @@ interface Modal {
 }
 
 export const modal = writable<Modal>({ type: 'animals', index: 0 });
+
+type Toaster = {
+	type: 'success' | 'error';
+	text?: string;
+	timeout: number;
+} | null;
+
+export const showToaster = writable<Toaster>(null);
