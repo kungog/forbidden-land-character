@@ -2,7 +2,7 @@
 	import type { PageData } from './$types';
 	import Text from '$components/Text.svelte';
 	import Box from '$components/Box.svelte';
-	import { language } from '$store';
+	import { language, showToaster } from '$store';
 	import { GENERAL_LABELS, BASE_LABELS, NO_INVENTORY } from '$helpers/constants/languages';
 	import CategoryPage from '$layouts/CategoryPage.svelte';
 	import Content from '$layouts/Content.svelte';
@@ -39,6 +39,12 @@
 
 		showModal = false;
 		invalidate('viewed:character');
+
+		$showToaster = {
+			type: 'success',
+			text: 'Updated: ' + edit.name,
+			timeout: 3500
+		};
 	};
 
 	const onDelete = async () => {

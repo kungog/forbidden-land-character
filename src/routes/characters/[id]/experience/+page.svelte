@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import { language } from '$store';
+	import { language, showToaster } from '$store';
 	import createArrayFromObject from '$helpers/getObjectKeys';
 	import { SKILLS } from '$helpers/constants/skills';
 	import { getSkillDice } from '$helpers/getDices';
@@ -54,6 +54,12 @@
 
 		showModal = false;
 		invalidate('viewed:character');
+
+		$showToaster = {
+			type: 'success',
+			text: 'Updated: Experience',
+			timeout: 3500
+		};
 	};
 </script>
 

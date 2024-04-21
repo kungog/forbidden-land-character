@@ -3,7 +3,7 @@
 	import { invalidate } from '$app/navigation';
 	import Box from '$components/Box.svelte';
 	import Text from '$components/Text.svelte';
-	import { language } from '$store';
+	import { language, showToaster } from '$store';
 	import { NO_NOTES, BASE_LABELS, GENERAL_LABELS } from '$helpers/constants/languages';
 	import CategoryPage from '$layouts/CategoryPage.svelte';
 	import Content from '$layouts/Content.svelte';
@@ -33,6 +33,12 @@
 
 		showModal = false;
 		invalidate('viewed:character');
+
+		$showToaster = {
+			type: 'success',
+			text: 'Updated: Notes',
+			timeout: 3500
+		};
 	};
 
 	const onDelete = async () => {

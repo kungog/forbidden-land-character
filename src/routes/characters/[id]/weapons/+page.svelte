@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import { language } from '$lib/store';
+	import { language, showToaster } from '$lib/store';
 	import Box from '$components/Box.svelte';
 	import Text from '$components/Text.svelte';
 	import { GENERAL_LABELS, BASE_LABELS, NO_WEAPONS } from '$helpers/constants/languages';
@@ -40,6 +40,12 @@
 
 		showModal = false;
 		invalidate('viewed:character');
+
+		$showToaster = {
+			type: 'success',
+			text: 'Updated: ' + edit.type,
+			timeout: 3500
+		};
 	};
 
 	const onDelete = async () => {
