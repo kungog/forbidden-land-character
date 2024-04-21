@@ -7,7 +7,7 @@
 	import Input from '$components/Input.svelte';
 	import Modal from '$components/Modal.svelte';
 	import Coin from './Parts/Coin.svelte';
-	import { BASE_URL } from '$helpers/utilites';
+	import { BASE_URL, objectValueToNumber } from '$helpers/utilites';
 	import { invalidate } from '$app/navigation';
 	const { money }: Character = $page.data.character;
 
@@ -20,10 +20,14 @@
 	};
 
 	const onSubmit = async () => {
+		const converted = objectValueToNumber(edit);
 		if (!edit) return console.error('Missing values in form');
 		await fetch(BASE_URL + $page.data.character._id, {
 			method: 'POST',
-			body: JSON.stringify({ ...$page.data.character, armor: edit })
+			body: JSON.stringify({
+				...$page.data.character,
+				money: converted
+			})
 		});
 
 		showModal = false;

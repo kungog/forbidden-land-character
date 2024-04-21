@@ -9,7 +9,7 @@
 	import GridTemplate from '$components/GridTemplate.svelte';
 	import Input from '$components/Input.svelte';
 	import { invalidate } from '$app/navigation';
-	import { BASE_URL } from '$helpers/utilites';
+	import { BASE_URL, objectValueToNumber } from '$helpers/utilites';
 
 	const { consumables }: Character = $page.data.character;
 	$: items = createArrayFromObject(consumables);
@@ -23,10 +23,14 @@
 	};
 
 	const onSubmit = async () => {
+		const converted = objectValueToNumber(edit);
 		if (!edit) return console.error('Missing values in form');
 		await fetch(BASE_URL + $page.data.character._id, {
 			method: 'POST',
-			body: JSON.stringify({ ...$page.data.character, consumables: edit })
+			body: JSON.stringify({
+				...$page.data.character,
+				consumables: converted
+			})
 		});
 
 		showModal = false;

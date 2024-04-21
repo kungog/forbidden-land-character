@@ -6,6 +6,20 @@ import {
 	emptyWeaponObject
 } from './getCharacterObject';
 
+export const objectValueToNumber = (object: any, exceptions?: string[]) => {
+	const converted = object;
+
+	for (const [key, value] of Object.entries(object)) {
+		if (exceptions?.includes(key)) {
+			converted[key] = value;
+		} else {
+			converted[key] = Number(value);
+		}
+	}
+
+	return converted;
+};
+
 export const nullCheck = (value: string) => {
 	return value || value === '' ? value : null;
 };

@@ -7,7 +7,7 @@
 	import GridTemplate from '$components/GridTemplate.svelte';
 	import Input from '$components/Input.svelte';
 	import Modal from '$components/Modal.svelte';
-	import { BASE_URL } from '$helpers/utilites';
+	import { BASE_URL, objectValueToNumber } from '$helpers/utilites';
 	import { invalidate } from '$app/navigation';
 	const LABEL = GENERAL_LABELS[$language];
 	const {
@@ -21,10 +21,21 @@
 	};
 
 	const onSubmit = async () => {
+		const convertedHead = objectValueToNumber(edit.head, ['name']);
+		const convertedBody = objectValueToNumber(edit.body, ['name']);
+		const convertedShield = objectValueToNumber(edit.shield, ['name']);
 		if (!edit) return console.error('Missing values in form');
+
 		await fetch(BASE_URL + $page.data.character._id, {
 			method: 'POST',
-			body: JSON.stringify({ ...$page.data.character, armor: edit })
+			body: JSON.stringify({
+				...$page.data.character,
+				armor: {
+					head: convertedHead,
+					body: convertedBody,
+					shield: convertedShield
+				}
+			})
 		});
 
 		showModal = false;

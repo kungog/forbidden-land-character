@@ -8,7 +8,7 @@
 	import Modal from '$components/Modal.svelte';
 	import Experience from './Parts/Experience.svelte';
 	import PowerPoint from './Parts/PowerPoint.svelte';
-	import { BASE_URL } from '$helpers/utilites';
+	import { BASE_URL, objectValueToNumber } from '$helpers/utilites';
 	import { invalidate } from '$app/navigation';
 	const { experience, power_points }: Character = $page.data.character;
 	const LABEL = GENERAL_LABELS[$language];
@@ -20,13 +20,14 @@
 	};
 
 	const onSubmit = async () => {
+		const converted = objectValueToNumber(edit);
 		if (!edit) return console.error('Missing values in form');
 		await fetch(BASE_URL + $page.data.character._id, {
 			method: 'POST',
 			body: JSON.stringify({
 				...$page.data.character,
-				experience: edit.experience,
-				power_points: edit.power_points
+				experience: converted.experience,
+				power_points: converted.power_points
 			})
 		});
 
