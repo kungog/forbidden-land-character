@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Dice from './Dice.svelte';
 
-	export let property: number | null, skill: number | null, attack: number | string | null;
+	export let property: number | null, skill: number | null, attack: number | null;
 
 	const showProperty = typeof property === 'number';
 	const showSkill = typeof skill === 'number';
@@ -9,20 +9,20 @@
 </script>
 
 <div>
-	{#if showProperty}
+	{#if showProperty && property && property > 0}
 		<Dice type="property" amount={property} />
 	{/if}
-	{#if showSkill}
+	{#if showSkill && skill && skill > 0}
 		<Dice type="skill" amount={skill} />
 	{/if}
-	{#if showAttack}
+	{#if showAttack && attack && attack > 0}
 		<Dice type="attack" amount={attack} />
 	{/if}
 </div>
 
-<style lang="scss">
+<style>
 	div {
 		display: flex;
-		gap: 10px;
+		gap: var(--spacing-10);
 	}
 </style>
