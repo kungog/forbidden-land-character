@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { language, currentBase } from '$store';
+	import { language, currentBase, showToaster } from '$store';
 	import { GENERAL_LABELS } from '$helpers/constants/languages';
 	import Button from '$components/Button.svelte';
 	import GridTemplate from '$components/GridTemplate.svelte';
@@ -41,6 +41,12 @@
 
 		showModal = false;
 		invalidate('viewed:character');
+
+		$showToaster = {
+			type: 'success',
+			text: 'Updated: ' + edit,
+			timeout: 3500
+		};
 	};
 </script>
 

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { GENERAL_LABELS } from '$helpers/constants/languages';
-	import { language } from '$store';
+	import { language, showToaster } from '$store';
 	import createArrayFromObject from '$helpers/getObjectKeys';
 	import Box from '$components/Box.svelte';
 	import Consumable from './Parts/Consumable.svelte';
@@ -35,6 +35,12 @@
 
 		showModal = false;
 		invalidate('viewed:character');
+
+		$showToaster = {
+			type: 'success',
+			text: 'Updated: Character consumables',
+			timeout: 3500
+		};
 	};
 </script>
 

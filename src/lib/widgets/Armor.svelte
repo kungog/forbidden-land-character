@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { language } from '$store';
+	import { language, showToaster } from '$store';
 	import { GENERAL_LABELS } from '$helpers/constants/languages';
 	import Box from '$components/Box.svelte';
 	import Equipment from '$components/Equipment.svelte';
@@ -40,6 +40,12 @@
 
 		showModal = false;
 		invalidate('viewed:character');
+
+		$showToaster = {
+			type: 'success',
+			text: 'Updated: Armor',
+			timeout: 3500
+		};
 	};
 </script>
 

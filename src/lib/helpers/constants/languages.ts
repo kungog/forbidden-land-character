@@ -1,3 +1,20 @@
+export const SUCCESS_LABELS = {
+	sv: {
+		properties: 'Egenskaper',
+		consumables: 'Förbrukningsvaror',
+		money: 'Pengar',
+		points: 'Erfarenhetspoäng och Kraftpoäng',
+		relations: 'Relationer'
+	},
+	en: {
+		properties: 'Egenskaper',
+		consumables: 'Förbrukningsvaror',
+		money: 'Pengar',
+		points: 'Erfarenhetspoäng och Kraftpoäng',
+		relations: 'Relationer'
+	}
+};
+
 export const BASE_LABELS = {
 	sv: {
 		experience: 'Färdigheter',

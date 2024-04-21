@@ -32,7 +32,7 @@
 	div {
 		display: grid;
 		justify-items: center;
-		gap: 10px;
+		gap: var(--spacing-10);
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: 1fr;
 	}

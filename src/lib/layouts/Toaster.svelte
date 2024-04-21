@@ -29,7 +29,7 @@
 <style>
 	div {
 		position: absolute;
-		bottom: var(--spacing-16);
+		top: var(--spacing-16);
 		right: var(--spacing-16);
 		padding: 20px;
 		border-radius: var(--radius-04);
