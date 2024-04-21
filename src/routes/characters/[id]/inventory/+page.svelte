@@ -8,7 +8,7 @@
 	import Content from '$layouts/Content.svelte';
 	import Coin from '$widgets/Parts/Coin.svelte';
 	import AddMore from '$components/AddMore.svelte';
-	import { BASE_URL, addNewItem } from '$helpers/utilites';
+	import { BASE_URL, addNewItem, objectValueToNumber } from '$helpers/utilites';
 	import Modal from '$components/Modal.svelte';
 	import GridTemplate from '$components/GridTemplate.svelte';
 	import Input from '$components/Input.svelte';
@@ -28,7 +28,10 @@
 
 	const onSubmit = async () => {
 		if (!edit) return console.error('Missing values in form');
-		const updated = inventory.map((_, index: number) => (index === editIndex ? edit : _));
+		const updated = inventory.map((_, index: number) =>
+			index === editIndex ? objectValueToNumber(edit, ['name', 'additionals']) : _
+		);
+
 		await fetch(BASE_URL + data.character._id, {
 			method: 'POST',
 			body: JSON.stringify({ ...data.character, inventory: updated })

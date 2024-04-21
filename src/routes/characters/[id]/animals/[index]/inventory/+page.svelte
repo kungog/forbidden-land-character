@@ -7,7 +7,7 @@
 	import CategoryPage from '$layouts/CategoryPage.svelte';
 	import Content from '$layouts/Content.svelte';
 	import AddMore from '$components/AddMore.svelte';
-	import { BASE_URL, addNewItem } from '$helpers/utilites';
+	import { BASE_URL, addNewItem, objectValueToNumber } from '$helpers/utilites';
 	import Modal from '$components/Modal.svelte';
 	import GridTemplate from '$components/GridTemplate.svelte';
 	import Input from '$components/Input.svelte';
@@ -32,7 +32,10 @@
 
 	const onSubmit = async () => {
 		if (!edit) return console.error('Missing values in form');
-		const updated = inventory.map((_, index: number) => (index === editIndex ? edit : _));
+		const updated = inventory.map((_, index: number) =>
+			index === editIndex ? objectValueToNumber(edit, ['name', 'bonus']) : _
+		);
+
 		const updatedAnimals = animals.map((animal, pos: number) =>
 			pos === index ? { ...animal, inventory: updated } : animal
 		);
@@ -48,9 +51,13 @@
 
 	const onDelete = async () => {
 		const updated = inventory.filter((_, index: number) => index !== editIndex);
+		const updatedAnimals = animals.map((animal, pos: number) =>
+			pos === index ? { ...animal, inventory: updated } : animal
+		);
+
 		await fetch(BASE_URL + data.character._id, {
 			method: 'POST',
-			body: JSON.stringify({ ...data.character, inventory: updated })
+			body: JSON.stringify({ ...data.character, animals: updatedAnimals })
 		});
 
 		showModal = false;
