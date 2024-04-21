@@ -10,12 +10,22 @@
 
 <label for={iFor}>
 	{capitalize(iLabel)}
-	<input
-		name={iFor}
-		{...{ type: iType }}
-		bind:value={iValue}
-		style={warning ? 'color: var(--color-active);' : 'color: var(--color-text);'}
-	/>
+	{#if iType === 'textarea'}
+		<textarea
+			name={iFor}
+			{...{ type: iType }}
+			bind:value={iValue}
+			rows="3"
+			style={warning ? 'color: var(--color-active);' : 'color: var(--color-text);'}
+		/>
+	{:else}
+		<input
+			name={iFor}
+			{...{ type: iType }}
+			bind:value={iValue}
+			style={warning ? 'color: var(--color-active);' : 'color: var(--color-text);'}
+		/>
+	{/if}
 </label>
 
 <style lang="scss">
@@ -24,7 +34,8 @@
 		color: var(--color-text);
 	}
 
-	input {
+	input,
+	textarea {
 		margin-top: var(--spacing-08);
 		background: var(--color-box);
 		border: 1px solid transparent;

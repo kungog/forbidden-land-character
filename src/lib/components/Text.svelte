@@ -3,7 +3,8 @@
 		bold: boolean = false,
 		textCenter: boolean = false,
 		selfCenter: boolean = true,
-		color: string = 'var(--color-text)';
+		color: string = 'var(--color-text)',
+		style: string = '';
 	const sizes = {
 		large: '20px',
 		medium: '18px',
@@ -18,7 +19,7 @@
 </script>
 
 <p
-	style="--align: {selfStyle}; --text: {textStyle};  --size: {fontSize}; --weight: {weightStyle}; color: {color};"
+	style="--align: {selfStyle}; --text: {textStyle};  --size: {fontSize}; --weight: {weightStyle}; color: {color}; {style}"
 >
 	<slot />
 </p>
@@ -30,5 +31,6 @@
 
 		text-align: var(--text);
 		align-self: var(--align);
+		letter-spacing: normal;
 	}
 </style>

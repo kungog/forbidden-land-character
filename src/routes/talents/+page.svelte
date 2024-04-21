@@ -47,26 +47,36 @@
 	<Overlay handleClick={() => ((showModal = false), (talent = null))} />
 	<dialog>
 		<section>
-			<Text selfCenter={false}>{talent?.description}</Text>
+			<Text selfCenter={false} style=" line-height: 1.2;">
+				{talent?.description}
+			</Text>
 
 			{#if talent?.stages?.one?.length}
 				<Divider size="small" />
-				<Text selfCenter={false} size="small">{LABEL.one}: {talent?.stages.one}</Text>
+				<Text selfCenter={false} size="small" style="line-height: 1.2;">
+					{LABEL.one}: {talent?.stages.one}
+				</Text>
 			{/if}
 
 			{#if talent?.stages.two?.length}
 				<Divider size="small" />
-				<Text selfCenter={false} size="small">{LABEL.two}: {talent?.stages.two}</Text>
+				<Text selfCenter={false} size="small" style="line-height: 1.2;">
+					{LABEL.two}: {talent?.stages.two}
+				</Text>
 			{/if}
 
 			{#if talent?.stages.three?.length}
 				<Divider size="small" />
-				<Text selfCenter={false} size="small">{LABEL.three}: {talent?.stages.three}</Text>
+				<Text selfCenter={false} size="small" style=" line-height: 1.2;">
+					{LABEL.three}: {talent?.stages.three}
+				</Text>
 			{/if}
 
 			{#if talent?.comment.length}
 				<Divider size="small" />
-				<Text selfCenter={false} size="small">{LABEL.comment}: {talent?.comment}</Text>
+				<Text selfCenter={false} size="small" style="line-height: 1.2;">
+					{LABEL.comment}: {talent?.comment}
+				</Text>
 			{/if}
 		</section>
 	</dialog>
